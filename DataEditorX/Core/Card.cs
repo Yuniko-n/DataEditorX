@@ -145,7 +145,6 @@ namespace DataEditorX.Core
 				return false;
 		}
 		/// <summary>
-		/// 比较卡片，除脚本提示文本
 		/// </summary>
 		/// <param name="other"></param>
 		/// <returns></returns>
@@ -178,6 +177,12 @@ namespace DataEditorX.Core
 				equalBool = false;
 			else if (!this.desc.Equals(other.desc))
 				equalBool = false;
+			/// 比较脚本提示文本
+			for (int i = 0; i < STR_MAX; i++)
+			{
+				if (!this.str[i].Equals(other.str[i]))
+					return false;
+			}
 			return equalBool;
 		}
 		/// <summary>
