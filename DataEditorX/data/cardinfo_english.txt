@@ -7,7 +7,7 @@
 0x4	Anime/DIY
 0x1004	Anime
 0x8	Illegal
-0x10	VG
+0x10	Video Game
 0x20	Custom
 0x40	Speed
 0x41	Speed/OCG
@@ -19,6 +19,8 @@
 0x200	Rush
 0x300	Rush/Pre-release
 0x700	Rush/???
+0x400	Legend
+0x1000	Hidden
 ##attribute
 -1	custom
 0x0	Attribute
@@ -116,11 +118,6 @@
 0x400000	Creator God
 0x800000	Wyrm
 0x1000000	Cyberse
-0x2000000	Race-19
-0x4000000	Race-1A
-0x8000000	Race-1B
-0x10000000	Race-1C
-0x20000000	Race-1D
 ##type
 0x1	Monster    
 0x2	Spell     
@@ -149,11 +146,11 @@
 0x1000000	Pendulum   
 0x2000000	SPSummon  
 0x4000000	Link
-0x8000000	Type-27    
-0x10000000	Type-28   
-0x20000000	Type-29   
-0x40000000	Type-30    
-0x80000000	Type-31   
+0x8000000	Skill      
+0x10000000	Action    
+0x20000000	Plus       
+0x40000000	Minor      
+0x80000000	Armor      
 ##setname
 -1	Custom
 0x0	No Archetype
