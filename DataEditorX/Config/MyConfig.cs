@@ -97,6 +97,10 @@ namespace DataEditorX.Config
         /// </summary>
         public const string TAG_ADD_REQUIRE = "add_require";
         /// <summary>
+        /// 读取PNG图片
+        /// </summary>
+        public const string TAG_READ_PNG = "read_PNG";
+        /// <summary>
         /// 检查系统语言
         /// </summary>
         public const string TAG_CHECK_SYSLANG = "check_system_language";

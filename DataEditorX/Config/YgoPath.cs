@@ -59,16 +59,24 @@ namespace DataEditorX.Config
 		//字符串id
 		public string GetImage(string id)
 		{
-			return MyPath.Combine(picpath, id + ".jpg");
+			if (File.Exists(MyPath.Combine(picpath, id + ".png")) && MyConfig.readBoolean(MyConfig.TAG_READ_PNG)) {
+				return MyPath.Combine(picpath, id + ".png");
+			} else {
+				return MyPath.Combine(picpath, id + ".jpg");
+			}
 		}
 		//public string GetImageThum(string id)
 		//{
 		//	return MyPath.Combine(picpath2, id + ".jpg");
 		//}
 		public string GetImageField(string id)
-        {
-            return MyPath.Combine(fieldpath, id+ ".png");//场地图
-        }
+		{
+			if (File.Exists(MyPath.Combine(fieldpath, id + ".png")) && MyConfig.readBoolean(MyConfig.TAG_READ_PNG)) {
+				return MyPath.Combine(fieldpath, id + ".png");//场地图
+			} else {
+				return MyPath.Combine(fieldpath, id + ".jpg");//场地图
+			}
+		}
 		public string GetScript(string id)
 		{
 			return MyPath.Combine(luapath, "c" + id + ".lua");

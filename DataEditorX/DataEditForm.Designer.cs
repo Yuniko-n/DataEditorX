@@ -60,6 +60,7 @@ namespace DataEditorX
             this.menuitem_operacardsfile = new System.Windows.Forms.ToolStripMenuItem();
             this.menuitem_openfileinthis = new System.Windows.Forms.ToolStripMenuItem();
             this.menuitem_addrequire = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuitem_readPNG = new System.Windows.Forms.ToolStripMenuItem();
             this.tsep2 = new System.Windows.Forms.ToolStripSeparator();
             this.menuitem_readydk = new System.Windows.Forms.ToolStripMenuItem();
             this.menuitem_readimages = new System.Windows.Forms.ToolStripMenuItem();
@@ -309,6 +310,7 @@ namespace DataEditorX
             this.menuitem_operacardsfile,
             this.menuitem_openfileinthis,
             this.menuitem_addrequire,
+            this.menuitem_readPNG,
             this.tsep2,
             this.menuitem_readydk,
             this.menuitem_readimages,
@@ -349,6 +351,13 @@ namespace DataEditorX
             this.menuitem_addrequire.Size = new System.Drawing.Size(238, 22);
             this.menuitem_addrequire.Text = "Add REQUIRE Automatically";
             this.menuitem_addrequire.Click += new System.EventHandler(this.menuitem_addrequire_Click);
+            // 
+            // menuitem_readPNG
+            // 
+            this.menuitem_readPNG.Name = "menuitem_readPNG";
+            this.menuitem_readPNG.Size = new System.Drawing.Size(238, 22);
+            this.menuitem_readPNG.Text = "Read PNG picture";
+            this.menuitem_readPNG.Click += new System.EventHandler(this.menuitem_readPNG_Click);
             // 
             // tsep2
             // 
@@ -1367,6 +1376,7 @@ namespace DataEditorX
         private System.Windows.Forms.Panel pl_bottom;
         private System.Windows.Forms.Panel pl_main;
         private System.Windows.Forms.ToolStripMenuItem menuitem_addrequire;
+        private System.Windows.Forms.ToolStripMenuItem menuitem_readPNG;
         private System.Windows.Forms.SplitContainer splitContainer;
         private DFlowLayoutPanel pl_markers;
     }

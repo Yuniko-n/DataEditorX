@@ -49,6 +49,7 @@ DataEditForm.mainMenu.menu_data	資料(&D)
 DataEditForm.mainMenu.menuitem_operacardsfile	同步操作卡片圖片和指令碼
 DataEditForm.mainMenu.menuitem_openfileinthis	用CodeEditor開啟指令碼
 DataEditForm.mainMenu.menuitem_addrequire	創建指令碼時自動添加require
+DataEditForm.mainMenu.menuitem_readPNG	讀取PNG格式的圖片
 DataEditForm.mainMenu.menuitem_findluafunc	從C++原始碼查詢Lua函式
 DataEditForm.mainMenu.menuitem_readydk	從卡組檔案讀取卡片(&Y)
 DataEditForm.mainMenu.menuitem_readimages	從卡圖資料夾讀取卡片(&I)

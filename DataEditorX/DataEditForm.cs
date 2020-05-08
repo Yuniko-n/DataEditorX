@@ -165,6 +165,8 @@ namespace DataEditorX
 			menuitem_operacardsfile.Checked = MyConfig.readBoolean(MyConfig.TAG_DELETE_WITH);
 			//用CodeEditor打开脚本
 			menuitem_openfileinthis.Checked = MyConfig.readBoolean(MyConfig.TAG_OPEN_IN_THIS);
+			//读取PNG图片
+			menuitem_readPNG.Checked = MyConfig.readBoolean(MyConfig.TAG_READ_PNG);
 			//自动检查更新
 			menuitem_autocheckupdate.Checked = MyConfig.readBoolean(MyConfig.TAG_AUTO_CHECK_UPDATE);
             //add require automatically
@@ -1663,6 +1665,12 @@ namespace DataEditorX
             menuitem_addrequire.Checked = (addrequire.Length > 0);
             MyConfig.Save(MyConfig.TAG_ADD_REQUIRE, addrequire);
         }
+		//读取PNG图片
+		private void menuitem_readPNG_Click(object sender, EventArgs e)
+		{
+			menuitem_readPNG.Checked = !menuitem_readPNG.Checked;
+			MyConfig.Save(MyConfig.TAG_READ_PNG, menuitem_readPNG.Checked.ToString().ToLower());
+		}
         #endregion
 
         #region 语言菜单
