@@ -8,6 +8,8 @@
 using System.IO;
 using System.Net;
 using System.Text;
+using System.Security.Cryptography.X509Certificates;
+using System.Net.Security;
 
 namespace DataEditorX.Common
 {
@@ -106,13 +108,28 @@ namespace DataEditorX.Common
 		public static string GetHtmlContentByUrl(string url)
 		{
 			string htmlContent = string.Empty;
+			HttpWebRequest httpWebRequest = null;
 			try
 			{
-				HttpWebRequest httpWebRequest =
-					(HttpWebRequest)WebRequest.Create(url);
+				if (url.StartsWith("https", System.StringComparison.OrdinalIgnoreCase))
+				{
+					httpWebRequest = WebRequest.Create(url) as HttpWebRequest;
+					ServicePointManager.ServerCertificateValidationCallback = new RemoteCertificateValidationCallback(CheckValidationResult);
+					httpWebRequest.ProtocolVersion = HttpVersion.Version11;
+					// 这里设置了协议类型
+					ServicePointManager.SecurityProtocol = (SecurityProtocolType)3072;// SecurityProtocolType.Tls1.2;
+					httpWebRequest.KeepAlive = false;
+					ServicePointManager.CheckCertificateRevocationList = true;
+					ServicePointManager.DefaultConnectionLimit = 100;
+					ServicePointManager.Expect100Continue = false;
+				}
+				else
+				{
+					httpWebRequest = (HttpWebRequest)WebRequest.Create(url);
+				}
 				httpWebRequest.Timeout = 15000;
-				using (HttpWebResponse httpWebResponse =
-				       (HttpWebResponse)httpWebRequest.GetResponse())
+				httpWebRequest.UserAgent = "Mozilla/5.0 (MSIE 10.0; Windows NT 6.1; Trident/5.0)";
+				using (HttpWebResponse httpWebResponse = (HttpWebResponse)httpWebRequest.GetResponse())
 				{
 					using (Stream stream = httpWebResponse.GetResponseStream())
 					{
@@ -133,6 +150,11 @@ namespace DataEditorX.Common
 
 			}
 			return "";
+		}
+
+		private static bool CheckValidationResult(object sender, X509Certificate certificate, X509Chain chain, SslPolicyErrors errors)
+		{
+			return true;
 		}
 		#endregion
 
