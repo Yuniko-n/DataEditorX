@@ -100,6 +100,8 @@ namespace DataEditorX
             history.ReadHistory(MyPath.Combine(datapath, MyConfig.FILE_HISTORY));
             //加载多语言
             LanguageHelper.LoadFormLabels(conflang);
+            //需要对比的数据属性
+            GetCompTypeItem();
         }
         void InitForm()
         {
@@ -429,6 +431,209 @@ namespace DataEditorX
         }
 
         #endregion
+
+		#region 需要对比的数据属性
+		private void GetCompTypeItem()
+		{
+			menuitem_comptype.DropDownItems.Clear();
+			//卡片密码
+			ToolStripMenuItem CardId = new ToolStripMenuItem(LanguageHelper.GetMsg(LMSG.CardId));
+			CardId.Click += SetCompType_Id;
+			if (MyConfig.readBoolean(MyConfig.TAG_CARD_ID))
+				CardId.Checked = true;
+			menuitem_comptype.DropDownItems.Add(CardId);
+			//卡片名称
+			ToolStripMenuItem CardName = new ToolStripMenuItem(LanguageHelper.GetMsg(LMSG.CardName));
+			CardName.Click += SetCompType_Name;
+			if (MyConfig.readBoolean(MyConfig.TAG_CARD_NAME))
+				CardName.Checked = true;
+			menuitem_comptype.DropDownItems.Add(CardName);
+			//卡片规则
+			ToolStripMenuItem CardOt = new ToolStripMenuItem(LanguageHelper.GetMsg(LMSG.CardOt));
+			CardOt.Click += SetCompType_Ot;
+			if (MyConfig.readBoolean(MyConfig.TAG_CARD_OT))
+				CardOt.Checked = true;
+			menuitem_comptype.DropDownItems.Add(CardOt);
+			//卡片同名卡
+			ToolStripMenuItem CardAlias = new ToolStripMenuItem(LanguageHelper.GetMsg(LMSG.CardAlias));
+			CardAlias.Click += SetCompType_Alias;
+			if (MyConfig.readBoolean(MyConfig.TAG_CARD_ALIAS))
+				CardAlias.Checked = true;
+			menuitem_comptype.DropDownItems.Add(CardAlias);
+			//卡片系列
+			ToolStripMenuItem CardSetcode = new ToolStripMenuItem(LanguageHelper.GetMsg(LMSG.CardSetcode));
+			CardSetcode.Click += SetCompType_Setcode;
+			if (MyConfig.readBoolean(MyConfig.TAG_CARD_SETCODE))
+				CardSetcode.Checked = true;
+			menuitem_comptype.DropDownItems.Add(CardSetcode);
+			//卡片类型
+			ToolStripMenuItem CardType = new ToolStripMenuItem(LanguageHelper.GetMsg(LMSG.CardType));
+			CardType.Click += SetCompType_Type;
+			if (MyConfig.readBoolean(MyConfig.TAG_CARD_TYPE))
+				CardType.Checked = true;
+			menuitem_comptype.DropDownItems.Add(CardType);
+			//攻击力
+			ToolStripMenuItem CardAtk = new ToolStripMenuItem(LanguageHelper.GetMsg(LMSG.CardAtk));
+			CardAtk.Click += SetCompType_Atk;
+			if (MyConfig.readBoolean(MyConfig.TAG_CARD_ATK))
+				CardAtk.Checked = true;
+			menuitem_comptype.DropDownItems.Add(CardAtk);
+			//防御力
+			ToolStripMenuItem CardDef = new ToolStripMenuItem(LanguageHelper.GetMsg(LMSG.CardDef));
+			CardDef.Click += SetCompType_Def;
+			if (MyConfig.readBoolean(MyConfig.TAG_CARD_DEF))
+				CardDef.Checked = true;
+			menuitem_comptype.DropDownItems.Add(CardDef);
+			//卡片等级
+			ToolStripMenuItem CardLevel = new ToolStripMenuItem(LanguageHelper.GetMsg(LMSG.CardLevel));
+			CardLevel.Click += SetCompType_Level;
+			if (MyConfig.readBoolean(MyConfig.TAG_CARD_LEVEL))
+				CardLevel.Checked = true;
+			menuitem_comptype.DropDownItems.Add(CardLevel);
+			//卡片种族
+			ToolStripMenuItem CardRace = new ToolStripMenuItem(LanguageHelper.GetMsg(LMSG.CardRace));
+			CardRace.Click += SetCompType_Race;
+			if (MyConfig.readBoolean(MyConfig.TAG_CARD_RACE))
+				CardRace.Checked = true;
+			menuitem_comptype.DropDownItems.Add(CardRace);
+			//卡片属性
+			ToolStripMenuItem CardAttribute = new ToolStripMenuItem(LanguageHelper.GetMsg(LMSG.CardAttribute));
+			CardAttribute.Click += SetCompType_Attribute;
+			if (MyConfig.readBoolean(MyConfig.TAG_CARD_ATTRIBUTE))
+				CardAttribute.Checked = true;
+			menuitem_comptype.DropDownItems.Add(CardAttribute);
+			//效果分类
+			ToolStripMenuItem CardCategory = new ToolStripMenuItem(LanguageHelper.GetMsg(LMSG.CardCategory));
+			CardCategory.Click += SetCompType_Category;
+			if (MyConfig.readBoolean(MyConfig.TAG_CARD_CATEGORY))
+				CardCategory.Checked = true;
+			menuitem_comptype.DropDownItems.Add(CardCategory);
+			//效果描述文字
+			ToolStripMenuItem CardDesc = new ToolStripMenuItem(LanguageHelper.GetMsg(LMSG.CardDesc));
+			CardDesc.Click += SetCompType_Desc;
+			if (MyConfig.readBoolean(MyConfig.TAG_CARD_DESC))
+				CardDesc.Checked = true;
+			menuitem_comptype.DropDownItems.Add(CardDesc);
+			//脚本提示文字
+			ToolStripMenuItem CardStr = new ToolStripMenuItem(LanguageHelper.GetMsg(LMSG.CardStr));
+			CardStr.Click += SetCompType_Str;
+			if (MyConfig.readBoolean(MyConfig.TAG_CARD_STR))
+				CardStr.Checked = true;
+			menuitem_comptype.DropDownItems.Add(CardStr);
+		}
+
+		void SetCompType_Id(object sender, EventArgs e)
+		{
+			ToolStripMenuItem CardId = (ToolStripMenuItem)sender;
+			CardId.Checked = !CardId.Checked;
+			MyConfig.Save(MyConfig.TAG_CARD_ID, CardId.Checked.ToString().ToLower());
+			GetCompTypeItem();
+		}
+
+		void SetCompType_Name(object sender, EventArgs e)
+		{
+			ToolStripMenuItem CardName = (ToolStripMenuItem)sender;
+			CardName.Checked = !CardName.Checked;
+			MyConfig.Save(MyConfig.TAG_CARD_NAME, CardName.Checked.ToString().ToLower());
+			GetCompTypeItem();
+		}
+
+		void SetCompType_Ot(object sender, EventArgs e)
+		{
+			ToolStripMenuItem CardOt = (ToolStripMenuItem)sender;
+			CardOt.Checked = !CardOt.Checked;
+			MyConfig.Save(MyConfig.TAG_CARD_OT, CardOt.Checked.ToString().ToLower());
+			GetCompTypeItem();
+		}
+
+		void SetCompType_Alias(object sender, EventArgs e)
+		{
+			ToolStripMenuItem CardAlias = (ToolStripMenuItem)sender;
+			CardAlias.Checked = !CardAlias.Checked;
+			MyConfig.Save(MyConfig.TAG_CARD_ALIAS, CardAlias.Checked.ToString().ToLower());
+			GetCompTypeItem();
+		}
+
+		void SetCompType_Setcode(object sender, EventArgs e)
+		{
+			ToolStripMenuItem CardSetcode = (ToolStripMenuItem)sender;
+			CardSetcode.Checked = !CardSetcode.Checked;
+			MyConfig.Save(MyConfig.TAG_CARD_SETCODE, CardSetcode.Checked.ToString().ToLower());
+			GetCompTypeItem();
+		}
+
+		void SetCompType_Type(object sender, EventArgs e)
+		{
+			ToolStripMenuItem CardType = (ToolStripMenuItem)sender;
+			CardType.Checked = !CardType.Checked;
+			MyConfig.Save(MyConfig.TAG_CARD_TYPE, CardType.Checked.ToString().ToLower());
+			GetCompTypeItem();
+		}
+
+		void SetCompType_Atk(object sender, EventArgs e)
+		{
+			ToolStripMenuItem CardAtk = (ToolStripMenuItem)sender;
+			CardAtk.Checked = !CardAtk.Checked;
+			MyConfig.Save(MyConfig.TAG_CARD_ATK, CardAtk.Checked.ToString().ToLower());
+			GetCompTypeItem();
+		}
+
+		void SetCompType_Def(object sender, EventArgs e)
+		{
+			ToolStripMenuItem CardDef = (ToolStripMenuItem)sender;
+			CardDef.Checked = !CardDef.Checked;
+			MyConfig.Save(MyConfig.TAG_CARD_DEF, CardDef.Checked.ToString().ToLower());
+			GetCompTypeItem();
+		}
+
+		void SetCompType_Level(object sender, EventArgs e)
+		{
+			ToolStripMenuItem CardLevel = (ToolStripMenuItem)sender;
+			CardLevel.Checked = !CardLevel.Checked;
+			MyConfig.Save(MyConfig.TAG_CARD_LEVEL, CardLevel.Checked.ToString().ToLower());
+			GetCompTypeItem();
+		}
+
+		void SetCompType_Race(object sender, EventArgs e)
+		{
+			ToolStripMenuItem CardRace = (ToolStripMenuItem)sender;
+			CardRace.Checked = !CardRace.Checked;
+			MyConfig.Save(MyConfig.TAG_CARD_RACE, CardRace.Checked.ToString().ToLower());
+			GetCompTypeItem();
+		}
+
+		void SetCompType_Attribute(object sender, EventArgs e)
+		{
+			ToolStripMenuItem CardAttribute = (ToolStripMenuItem)sender;
+			CardAttribute.Checked = !CardAttribute.Checked;
+			MyConfig.Save(MyConfig.TAG_CARD_ATTRIBUTE, CardAttribute.Checked.ToString().ToLower());
+			GetCompTypeItem();
+		}
+
+		void SetCompType_Category(object sender, EventArgs e)
+		{
+			ToolStripMenuItem CardCategory = (ToolStripMenuItem)sender;
+			CardCategory.Checked = !CardCategory.Checked;
+			MyConfig.Save(MyConfig.TAG_CARD_CATEGORY, CardCategory.Checked.ToString().ToLower());
+			GetCompTypeItem();
+		}
+
+		void SetCompType_Desc(object sender, EventArgs e)
+		{
+			ToolStripMenuItem CardDesc = (ToolStripMenuItem)sender;
+			CardDesc.Checked = !CardDesc.Checked;
+			MyConfig.Save(MyConfig.TAG_CARD_DESC, CardDesc.Checked.ToString().ToLower());
+			GetCompTypeItem();
+		}
+
+		void SetCompType_Str(object sender, EventArgs e)
+		{
+			ToolStripMenuItem CardStr = (ToolStripMenuItem)sender;
+			CardStr.Checked = !CardStr.Checked;
+			MyConfig.Save(MyConfig.TAG_CARD_STR, CardStr.Checked.ToString().ToLower());
+			GetCompTypeItem();
+		}
+		#endregion
 
         #region 数据对比
         //设置数据库1

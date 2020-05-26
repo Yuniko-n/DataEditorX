@@ -81,6 +81,7 @@ MainForm.mainMenu.menuitem_save	儲存
 MainForm.mainMenu.menuitem_copyselect	複製選中卡片
 MainForm.mainMenu.menuitem_copyall	複製所有卡片
 MainForm.mainMenu.menuitem_pastecards	貼上卡片
+MainForm.mainMenu.menuitem_comptype	需要對比的資料庫屬性
 MainForm.mainMenu.menuitem_comp1	作為對比的資料庫1
 MainForm.mainMenu.menuitem_comp2	作為對比的資料庫2
 MainForm.mainMenu.menuitem_history	資料庫歷史
@@ -169,3 +170,17 @@ MainForm.mainMenu.menuitem_closeall	關閉所有
 0x49	請重啟程式使更改生效。
 0x4a	從MSE存檔匯出圖片完成。
 0x4b	從MSE存檔匯出圖片失敗。
+0x100	卡片編碼
+0x101	卡片名稱
+0x102	卡片規則
+0x103	卡片同名卡
+0x104	卡片系列
+0x105	卡片型別
+0x106	攻擊力
+0x107	防御力
+0x108	卡片等級
+0x109	卡片種族
+0x110	卡片屬性
+0x111	效果分類
+0x112	效果描述文字
+0x113	指令碼提示文字

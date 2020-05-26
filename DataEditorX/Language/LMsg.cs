@@ -94,6 +94,22 @@ namespace DataEditorX.Language
 		PlzRestart = 0x49,
 		exportMseImages = 0x4a,
 		exportMseImagesErr = 0x4b,
+
+		CardId = 0x100,
+		CardName = 0x101,
+		CardOt = 0x102,
+		CardAlias = 0x103,
+		CardSetcode = 0x104,
+		CardType = 0x105,
+		CardAtk = 0x106,
+		CardDef = 0x107,
+		CardLevel = 0x108,
+		CardRace = 0x109,
+		CardAttribute = 0x110,
+		CardCategory = 0x111,
+		CardDesc = 0x112,
+		CardStr = 0x113,
+
         COUNT,
     }
 }

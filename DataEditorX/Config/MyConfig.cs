@@ -179,6 +179,37 @@ namespace DataEditorX.Config
         public const string TAG_MARKER = "link marker";
         #endregion
 
+        #region 需要对比的数据属性
+		/// <summary>卡片密码</summary>
+		public const string TAG_CARD_ID = "CardId";
+		/// <summary>卡片名称</summary>
+		public const string TAG_CARD_NAME = "CardName";
+		/// <summary>卡片规则</summary>
+		public const string TAG_CARD_OT = "CardOt";
+		/// <summary>卡片同名卡</summary>
+		public const string TAG_CARD_ALIAS = "CardAlias";
+		/// <summary>卡片系列号</summary>
+		public const string TAG_CARD_SETCODE = "CardSetcode";
+		/// <summary>卡片种类</summary>
+		public const string TAG_CARD_TYPE = "CardType";
+		/// <summary>攻击力</summary>
+		public const string TAG_CARD_ATK = "CardAtk";
+		/// <summary>防御力</summary>
+		public const string TAG_CARD_DEF = "CardDef";
+		/// <summary>卡片等级</summary>
+		public const string TAG_CARD_LEVEL = "CardLevel";
+		/// <summary>卡片种族</summary>
+		public const string TAG_CARD_RACE = "CardRace";
+		/// <summary>卡片属性</summary>
+		public const string TAG_CARD_ATTRIBUTE = "CardAttribute";
+		/// <summary>效果种类</summary>
+		public const string TAG_CARD_CATEGORY = "CardCategory";
+		/// <summary>描述文本</summary>
+		public const string TAG_CARD_DESC = "CardDesc";
+		/// <summary>脚本文件文字</summary>
+        public const string TAG_CARD_STR = "CardStr";
+        #endregion
+
         #region 读取内容
         /// <summary>
         /// 读取字符串值

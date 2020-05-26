@@ -164,3 +164,17 @@ MainForm.mainMenu.menuitem_closeall	Close All
 0x49	Please restart program to apply changes.
 0x4a	Export Mse-set to Images OK.
 0x4b	Export Mse-set to Images Fail.
+0x100	Code
+0x101	Name
+0x102	Rule
+0x103	Alias
+0x104	Archetype
+0x105	Type
+0x106	ATK
+0x107	DEF
+0x108	Level
+0x109	Race
+0x110	Attribute
+0x111	Category
+0x112	Desc
+0x113	Script texts

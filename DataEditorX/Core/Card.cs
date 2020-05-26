@@ -6,6 +6,7 @@
 using System;
 using System.Globalization;
 using System.Text.RegularExpressions;
+using DataEditorX.Config;
 using DataEditorX.Core.Info;
 
 namespace DataEditorX.Core
@@ -151,37 +152,39 @@ namespace DataEditorX.Core
         public bool EqualsData(Card other)
 		{
 			bool equalBool = true;
-			if (this.id != other.id)
+			if (this.id != other.id && MyConfig.readBoolean(MyConfig.TAG_CARD_ID))
 				equalBool = false;
-			else if (this.ot != other.ot)
+			else if (this.ot != other.ot && MyConfig.readBoolean(MyConfig.TAG_CARD_OT))
 				equalBool = false;
-			else if (this.alias != other.alias)
+			else if (this.alias != other.alias && MyConfig.readBoolean(MyConfig.TAG_CARD_ALIAS))
 				equalBool = false;
-			else if (this.setcode != other.setcode)
+			else if (this.setcode != other.setcode && MyConfig.readBoolean(MyConfig.TAG_CARD_SETCODE))
 				equalBool = false;
-			else if (this.type != other.type)
+			else if (this.type != other.type && MyConfig.readBoolean(MyConfig.TAG_CARD_TYPE))
 				equalBool = false;
-			else if (this.atk != other.atk)
+			else if (this.atk != other.atk && MyConfig.readBoolean(MyConfig.TAG_CARD_ATK))
 				equalBool = false;
-			else if (this.def != other.def)
+			else if (this.def != other.def && MyConfig.readBoolean(MyConfig.TAG_CARD_DEF))
 				equalBool = false;
-			else if (this.level != other.level)
+			else if (this.level != other.level && MyConfig.readBoolean(MyConfig.TAG_CARD_LEVEL))
 				equalBool = false;
-			else if (this.race != other.race)
+			else if (this.race != other.race && MyConfig.readBoolean(MyConfig.TAG_CARD_RACE))
 				equalBool = false;
-			else if (this.attribute != other.attribute)
+			else if (this.attribute != other.attribute && MyConfig.readBoolean(MyConfig.TAG_CARD_ATTRIBUTE))
 				equalBool = false;
-			else if (this.category != other.category)
+			else if (this.category != other.category && MyConfig.readBoolean(MyConfig.TAG_CARD_CATEGORY))
 				equalBool = false;
-			else if (!this.name.Equals(other.name))
+			else if (!this.name.Equals(other.name) && MyConfig.readBoolean(MyConfig.TAG_CARD_NAME))
 				equalBool = false;
-			else if (!this.desc.Equals(other.desc))
+			else if (!this.desc.Equals(other.desc) && MyConfig.readBoolean(MyConfig.TAG_CARD_DESC))
 				equalBool = false;
 			/// 比较脚本提示文本
-			for (int i = 0; i < STR_MAX; i++)
-			{
-				if (!this.str[i].Equals(other.str[i]))
-					return false;
+			if (MyConfig.readBoolean(MyConfig.TAG_CARD_STR)) {
+				for (int i = 0; i < STR_MAX; i++)
+				{
+					if (!this.str[i].Equals(other.str[i]))
+						return false;
+				}
 			}
 			return equalBool;
 		}

@@ -61,6 +61,7 @@ namespace DataEditorX
             this.menuitem_copyall = new System.Windows.Forms.ToolStripMenuItem();
             this.menuitem_pastecards = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+            this.menuitem_comptype = new System.Windows.Forms.ToolStripMenuItem();
             this.menuitem_comp1 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuitem_comp2 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
@@ -158,6 +159,7 @@ namespace DataEditorX
             this.menuitem_copyall,
             this.menuitem_pastecards,
             this.toolStripSeparator4,
+            this.menuitem_comptype,
             this.menuitem_comp1,
             this.menuitem_comp2,
             this.toolStripSeparator1,
@@ -227,6 +229,12 @@ namespace DataEditorX
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
             this.toolStripSeparator4.Size = new System.Drawing.Size(258, 6);
+            // 
+            // menuitem_comptype
+            // 
+            this.menuitem_comptype.Name = "menuitem_comptype";
+            this.menuitem_comptype.Size = new System.Drawing.Size(261, 22);
+            this.menuitem_comptype.Text = "Comparison type";
             // 
             // menuitem_comp1
             // 
@@ -358,6 +366,7 @@ namespace DataEditorX
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
 		private System.Windows.Forms.ToolStripMenuItem menuitem_comp2;
 		private System.Windows.Forms.ToolStripMenuItem menuitem_comp1;
+		private System.Windows.Forms.ToolStripMenuItem menuitem_comptype;
 		private System.Windows.Forms.ToolStripMenuItem menuitem_pastecards;
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
