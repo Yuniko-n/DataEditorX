@@ -454,12 +454,6 @@ namespace DataEditorX
 			if (MyConfig.readBoolean(MyConfig.TAG_CARD_OT))
 				CardOt.Checked = true;
 			menuitem_comptype.DropDownItems.Add(CardOt);
-			//卡片同名卡
-			ToolStripMenuItem CardAlias = new ToolStripMenuItem(LanguageHelper.GetMsg(LMSG.CardAlias));
-			CardAlias.Click += SetCompType_Alias;
-			if (MyConfig.readBoolean(MyConfig.TAG_CARD_ALIAS))
-				CardAlias.Checked = true;
-			menuitem_comptype.DropDownItems.Add(CardAlias);
 			//卡片系列
 			ToolStripMenuItem CardSetcode = new ToolStripMenuItem(LanguageHelper.GetMsg(LMSG.CardSetcode));
 			CardSetcode.Click += SetCompType_Setcode;
@@ -472,18 +466,6 @@ namespace DataEditorX
 			if (MyConfig.readBoolean(MyConfig.TAG_CARD_TYPE))
 				CardType.Checked = true;
 			menuitem_comptype.DropDownItems.Add(CardType);
-			//攻击力
-			ToolStripMenuItem CardAtk = new ToolStripMenuItem(LanguageHelper.GetMsg(LMSG.CardAtk));
-			CardAtk.Click += SetCompType_Atk;
-			if (MyConfig.readBoolean(MyConfig.TAG_CARD_ATK))
-				CardAtk.Checked = true;
-			menuitem_comptype.DropDownItems.Add(CardAtk);
-			//防御力
-			ToolStripMenuItem CardDef = new ToolStripMenuItem(LanguageHelper.GetMsg(LMSG.CardDef));
-			CardDef.Click += SetCompType_Def;
-			if (MyConfig.readBoolean(MyConfig.TAG_CARD_DEF))
-				CardDef.Checked = true;
-			menuitem_comptype.DropDownItems.Add(CardDef);
 			//卡片等级
 			ToolStripMenuItem CardLevel = new ToolStripMenuItem(LanguageHelper.GetMsg(LMSG.CardLevel));
 			CardLevel.Click += SetCompType_Level;
@@ -508,6 +490,24 @@ namespace DataEditorX
 			if (MyConfig.readBoolean(MyConfig.TAG_CARD_CATEGORY))
 				CardCategory.Checked = true;
 			menuitem_comptype.DropDownItems.Add(CardCategory);
+			//卡片同名卡
+			ToolStripMenuItem CardAlias = new ToolStripMenuItem(LanguageHelper.GetMsg(LMSG.CardAlias));
+			CardAlias.Click += SetCompType_Alias;
+			if (MyConfig.readBoolean(MyConfig.TAG_CARD_ALIAS))
+				CardAlias.Checked = true;
+			menuitem_comptype.DropDownItems.Add(CardAlias);
+			//卡片攻击力
+			ToolStripMenuItem CardAtk = new ToolStripMenuItem(LanguageHelper.GetMsg(LMSG.CardAtk));
+			CardAtk.Click += SetCompType_Atk;
+			if (MyConfig.readBoolean(MyConfig.TAG_CARD_ATK))
+				CardAtk.Checked = true;
+			menuitem_comptype.DropDownItems.Add(CardAtk);
+			//卡片防御力
+			ToolStripMenuItem CardDef = new ToolStripMenuItem(LanguageHelper.GetMsg(LMSG.CardDef));
+			CardDef.Click += SetCompType_Def;
+			if (MyConfig.readBoolean(MyConfig.TAG_CARD_DEF))
+				CardDef.Checked = true;
+			menuitem_comptype.DropDownItems.Add(CardDef);
 			//效果描述文字
 			ToolStripMenuItem CardDesc = new ToolStripMenuItem(LanguageHelper.GetMsg(LMSG.CardDesc));
 			CardDesc.Click += SetCompType_Desc;
