@@ -79,6 +79,17 @@ namespace DataEditorX.Config
 		}
 		public string GetScript(string id)
 		{
+			if (Directory.Exists(luapath))
+			{
+				DirectoryInfo[] ScriptInfos = (new DirectoryInfo(luapath)).GetDirectories();
+				for (int i = 0; i < ScriptInfos.Length; i++)
+				{
+					if (File.Exists(MyPath.Combine(ScriptInfos[i].FullName, "c" + id + ".lua")))
+					{
+						return MyPath.Combine(ScriptInfos[i].FullName, "c" + id + ".lua");
+					}
+				}
+			}
 			return MyPath.Combine(luapath, "c" + id + ".lua");
 		}
 		public string GetModuleScript(string modulescript)
