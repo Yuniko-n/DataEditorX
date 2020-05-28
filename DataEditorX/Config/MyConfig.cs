@@ -49,6 +49,18 @@ namespace DataEditorX.Config
         /// </summary>
         public const string TAG_LANGUAGE = "language";
         /// <summary>
+        /// OpenCC数据目录
+        /// </summary>
+        public const string TAG_OPENCC = "opencc";
+        /// <summary>
+        /// OpenCC
+        /// </summary>
+        public const string TAG_OPENCC_CNS = "opencc_cns";
+        /// <summary>
+        /// OpenCC
+        /// </summary>
+        public const string TAG_OPENCC_CNT = "opencc_cnt";
+        /// <summary>
         /// 临时文件
         /// </summary>
         public const string FILE_TEMP = "open.tmp";

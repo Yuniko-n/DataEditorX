@@ -959,5 +959,12 @@ namespace DataEditorX.Core.Mse
 
             return text;
         }
+
+        public string ReplaceWithCNsOrCNt(string text, string configFileName)
+        {
+            text = text.Replace(text, OpenCC.Converter.Convert(text, configFileName));
+
+            return text;
+        }
 	}
 }

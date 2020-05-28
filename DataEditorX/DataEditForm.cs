@@ -177,6 +177,7 @@ namespace DataEditorX
 			//获取MSE配菜单
 			AddMenuItemFormMSE();
 			//
+			GetOpenCCConfigItem();
 			GetLanguageItem();
 			//   CheckUpdate(false);//检查更新
 		}
@@ -1832,7 +1833,143 @@ namespace DataEditorX
                 }
             }
         }
-		
+
+        #region 数据库中文繁简转换
+        void GetOpenCCConfigItem()
+		{
+			string opencc_path = MyPath.Combine(Application.StartupPath, MyConfig.TAG_OPENCC);
+			if (!Directory.Exists(opencc_path))
+				return;
+			string[] files = Directory.GetFiles(opencc_path);
+			menuitem_replace_with_cns.DropDownItems.Clear();
+			foreach (string file in files)
+			{
+				string name = MyPath.getFullFileName(MyConfig.TAG_OPENCC_CNT, file);
+				if (string.IsNullOrEmpty(name))
+					continue;
+				TextInfo txinfo = new CultureInfo(CultureInfo.InstalledUICulture.Name).TextInfo;
+				ToolStripMenuItem config = new ToolStripMenuItem(txinfo.ToTitleCase(name));
+				config.ToolTipText = file;
+				config.Click += SetOpenCC_CNT_Config;
+				if (MyConfig.readString(MyConfig.TAG_OPENCC_CNT).Equals(name, StringComparison.OrdinalIgnoreCase))
+					config.Checked = true;
+				menuitem_replace_with_cns.DropDownItems.Add(config);
+			}
+            ToolStripMenuItem toTraditional = new ToolStripMenuItem(LanguageHelper.GetMsg(LMSG.StartReplace));
+            toTraditional.Click += menuitem_ReplaceWithCNtClick;
+            menuitem_replace_with_cns.DropDownItems.Add(toTraditional);
+
+			menuitem_replace_with_cnt.DropDownItems.Clear();
+			foreach (string file in files)
+			{
+				string name = MyPath.getFullFileName(MyConfig.TAG_OPENCC_CNS, file);
+				if (string.IsNullOrEmpty(name))
+					continue;
+				TextInfo txinfo = new CultureInfo(CultureInfo.InstalledUICulture.Name).TextInfo;
+				ToolStripMenuItem config = new ToolStripMenuItem(txinfo.ToTitleCase(name));
+				config.ToolTipText = file;
+				config.Click += SetOpenCC_CNS_Config;
+				if (MyConfig.readString(MyConfig.TAG_OPENCC_CNS).Equals(name, StringComparison.OrdinalIgnoreCase))
+					config.Checked = true;
+				menuitem_replace_with_cnt.DropDownItems.Add(config);
+			}
+            ToolStripMenuItem toSimplified = new ToolStripMenuItem(LanguageHelper.GetMsg(LMSG.StartReplace));
+            toSimplified.Click += menuitem_ReplaceWithCNsClick;
+            menuitem_replace_with_cnt.DropDownItems.Add(toSimplified);
+		}
+		void SetOpenCC_CNT_Config(object sender, EventArgs e)
+		{
+			if (isRun())
+				return;
+			if (sender is ToolStripMenuItem)
+			{
+				ToolStripMenuItem CNT_config = (ToolStripMenuItem)sender;
+				MyConfig.Save(MyConfig.TAG_OPENCC_CNT, CNT_config.Text);
+				GetOpenCCConfigItem();
+			}
+		}
+		void SetOpenCC_CNS_Config(object sender, EventArgs e)
+		{
+			if (isRun())
+				return;
+			if (sender is ToolStripMenuItem)
+			{
+				ToolStripMenuItem CNS_config = (ToolStripMenuItem)sender;
+				MyConfig.Save(MyConfig.TAG_OPENCC_CNS, CNS_config.Text);
+				GetOpenCCConfigItem();
+			}
+		}
+
+        void menuitem_ReplaceWithCNtClick(object sender, EventArgs e)
+        {
+            if (!CheckOpen())
+                return;
+            using (SaveFileDialog dlg = new SaveFileDialog())
+            {
+                dlg.Title = LanguageHelper.GetMsg(LMSG.SelectDataBasePath);
+                dlg.Filter = LanguageHelper.GetMsg(LMSG.CdbType);
+                if (dlg.ShowDialog() == DialogResult.OK)
+                {
+                    Card[] cards = DataBase.Read(nowCdbFile, true, "");
+                    int count = cards.Length;
+                    if (cards == null || cards.Length == 0)
+                        return;
+                    if (DataBase.Create(dlg.FileName))
+                    {
+                        string configName = MyPath.Combine(MyPath.Combine(Application.StartupPath, MyConfig.TAG_OPENCC), MyPath.getFileName(MyConfig.TAG_OPENCC_CNT, MyConfig.readString(MyConfig.TAG_OPENCC_CNT), ".json"));
+                        for (int i = 0; i < count; i++)
+                        {
+                            if (cards[i].name != null)
+                            {
+                                cards[i].name = tasker.MseHelper.ReplaceWithCNsOrCNt(cards[i].name, configName);
+                            }
+                            if (cards[i].desc != null)
+                            {
+                                cards[i].desc = tasker.MseHelper.ReplaceWithCNsOrCNt(cards[i].desc, configName);
+                            }
+                        }
+                        DataBase.CopyDB(dlg.FileName, false, cards);
+                        MyMsg.Show(LMSG.CopyCardsToDBIsOK);
+                    }
+                }
+            }
+        }
+        void menuitem_ReplaceWithCNsClick(object sender, EventArgs e)
+        {
+            if (!CheckOpen())
+                return;
+            using (SaveFileDialog dlg = new SaveFileDialog())
+            {
+                dlg.Title = LanguageHelper.GetMsg(LMSG.SelectDataBasePath);
+                dlg.Filter = LanguageHelper.GetMsg(LMSG.CdbType);
+                if (dlg.ShowDialog() == DialogResult.OK)
+                {
+                    Card[] cards = DataBase.Read(nowCdbFile, true, "");
+                    int count = cards.Length;
+                    if (cards == null || cards.Length == 0)
+                        return;
+                    if (DataBase.Create(dlg.FileName))
+                    {
+                        string configName = MyPath.Combine(MyPath.Combine(Application.StartupPath, MyConfig.TAG_OPENCC), MyPath.getFileName(MyConfig.TAG_OPENCC_CNS, MyConfig.readString(MyConfig.TAG_OPENCC_CNS), ".json"));
+                        for (int i = 0; i < count; i++)
+                        {
+                            if (cards[i].name != null)
+                            {
+                                cards[i].name = tasker.MseHelper.ReplaceWithCNsOrCNt(cards[i].name, configName);
+                            }
+                            if (cards[i].desc != null)
+                            {
+                                cards[i].desc = tasker.MseHelper.ReplaceWithCNsOrCNt(cards[i].desc, configName);
+                            }
+                        }
+                        DataBase.CopyDB(dlg.FileName, false, cards);
+                        MyMsg.Show(LMSG.CopyCardsToDBIsOK);
+                    }
+                }
+            }
+        }
+        #endregion
+
 		private void text2LinkMarks(string text)
 		{
 			try{

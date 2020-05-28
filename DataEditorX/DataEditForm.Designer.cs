@@ -77,6 +77,8 @@ namespace DataEditorX
             this.menuitem_cancelTask = new System.Windows.Forms.ToolStripMenuItem();
             this.menuitem_autoreturn = new System.Windows.Forms.ToolStripMenuItem();
             this.menuitem_replace = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuitem_replace_with_cns = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuitem_replace_with_cnt = new System.Windows.Forms.ToolStripMenuItem();
             this.menuitem_help = new System.Windows.Forms.ToolStripMenuItem();
             this.menuitem_about = new System.Windows.Forms.ToolStripMenuItem();
             this.menuitem_language = new System.Windows.Forms.ToolStripMenuItem();
@@ -326,7 +328,9 @@ namespace DataEditorX
             this.tsep1,
             this.menuitem_cancelTask,
             this.menuitem_autoreturn,
-            this.menuitem_replace});
+            this.menuitem_replace,
+            this.menuitem_replace_with_cns,
+            this.menuitem_replace_with_cnt});
             this.menu_data.Name = "menu_data";
             this.menu_data.Size = new System.Drawing.Size(62, 21);
             this.menu_data.Text = "Data(&T)";
@@ -462,6 +466,20 @@ namespace DataEditorX
             this.menuitem_replace.Size = new System.Drawing.Size(238, 22);
             this.menuitem_replace.Text = "*Auto replace";
             this.menuitem_replace.Click += new System.EventHandler(this.Menuitem_replaceClick);
+            // 
+            // menuitem_replace_with_cns
+            // 
+            this.menuitem_replace_with_cns.Name = "menuitem_replace_with_cns";
+            this.menuitem_replace_with_cns.Size = new System.Drawing.Size(238, 22);
+            this.menuitem_replace_with_cns.Text = "Replace with simplified";
+            //this.menuitem_replace_with_cns.Click += new System.EventHandler(this.menuitem_ReplaceWithCNsClick);
+            // 
+            // menuitem_replace_with_cnt
+            // 
+            this.menuitem_replace_with_cnt.Name = "menuitem_replace_with_cnt";
+            this.menuitem_replace_with_cnt.Size = new System.Drawing.Size(238, 22);
+            this.menuitem_replace_with_cnt.Text = "Replace with traditional";
+            //this.menuitem_replace_with_cnt.Click += new System.EventHandler(this.menuitem_ReplaceWithCNtClick);
             // 
             // menuitem_help
             // 
@@ -1371,6 +1389,8 @@ namespace DataEditorX
 		private System.Windows.Forms.ToolStripMenuItem menuitem_export_all_sql;
 		private System.Windows.Forms.ToolStripMenuItem menuitem_autoreturn;
         private System.Windows.Forms.ToolStripMenuItem menuitem_replace;
+        private System.Windows.Forms.ToolStripMenuItem menuitem_replace_with_cns;
+        private System.Windows.Forms.ToolStripMenuItem menuitem_replace_with_cnt;
         private System.Windows.Forms.Label lb_markers;
         private System.Windows.Forms.TextBox tb_link;
         private System.Windows.Forms.Panel pl_bottom;

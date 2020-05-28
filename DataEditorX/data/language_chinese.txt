@@ -73,6 +73,8 @@ DataEditForm.mainMenu.menuitem_autocheckupdate	自动检查更新
 DataEditForm.mainMenu.menuitem_github	源码
 DataEditForm.mainMenu.menuitem_autoreturn	(特殊功能)中文自动换行
 DataEditForm.mainMenu.menuitem_replace	(特殊功能)批量替换文本
+DataEditForm.mainMenu.menuitem_replace_with_cns	(特殊功能)中文简体转繁体
+DataEditForm.mainMenu.menuitem_replace_with_cnt	(特殊功能)中文繁体转简体
 #
 MainForm.mainMenu.menuitem_file	文件(&F)
 MainForm.mainMenu.menuitem_open	打开
@@ -170,6 +172,7 @@ MainForm.mainMenu.menuitem_closeall	关闭所有
 0x49	请重启程序使更改生效。
 0x4a	从MSE存档导出图片完成。
 0x4b	从MSE存档导出图片失败。
+0x4c	>>>开始转换<<<
 0x100	卡片密码
 0x101	卡片名称
 0x102	卡片规则

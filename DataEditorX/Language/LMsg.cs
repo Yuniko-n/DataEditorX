@@ -94,6 +94,7 @@ namespace DataEditorX.Language
 		PlzRestart = 0x49,
 		exportMseImages = 0x4a,
 		exportMseImagesErr = 0x4b,
+		StartReplace = 0x4c,
 
 		CardId = 0x100,
 		CardName = 0x101,
