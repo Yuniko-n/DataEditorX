@@ -177,8 +177,9 @@ namespace DataEditorX
 			//获取MSE配菜单
 			AddMenuItemFormMSE();
 			//
-			GetOpenCCConfigItem();
 			GetLanguageItem();
+			GetRuleItem();
+			GetOpenCCConfigItem();
 			//   CheckUpdate(false);//检查更新
 		}
 		//窗体关闭
@@ -1833,6 +1834,75 @@ namespace DataEditorX
                 }
             }
         }
+
+		#region 替换卡片规则
+		public Dictionary<long, string> CardRules = null;
+		public string toRule = null;
+		void GetRuleItem()
+		{
+			string conf = MyConfig.GetCardInfoFile(MyPath.Combine(Application.StartupPath, MyConfig.TAG_DATA));
+			string text = File.ReadAllText(conf);
+			CardRules = DataManager.Read(text, MyConfig.TAG_RULE);
+			menuitem_replacerules.DropDownItems.Clear();
+			foreach (KeyValuePair<long, string> name in CardRules)
+			{
+				string txinfo = name.Value;
+				ToolStripMenuItem rule = new ToolStripMenuItem(txinfo);
+				rule.ToolTipText = txinfo;
+				rule.Click += SetRule_Click;
+				if (MyConfig.readString(MyConfig.TAG_CARD_RULE).Equals(txinfo, StringComparison.OrdinalIgnoreCase))
+					rule.Checked = true;
+				menuitem_replacerules.DropDownItems.Add(rule);
+			}
+			ToolStripMenuItem toTraditional = new ToolStripMenuItem(LanguageHelper.GetMsg(LMSG.StartReplace));
+			toTraditional.Click += Menuitem_replacerulesClick;
+			menuitem_replacerules.DropDownItems.Add(toTraditional);
+		}
+		void SetRule_Click(object sender, EventArgs e)
+		{
+			if (isRun())
+				return;
+			if (sender is ToolStripMenuItem)
+			{
+				ToolStripMenuItem Rule = (ToolStripMenuItem)sender;
+				toRule = Rule.Text;
+				MyConfig.Save(MyConfig.TAG_CARD_RULE, toRule);
+				GetRuleItem();
+			}
+		}
+		void Menuitem_replacerulesClick(object sender, EventArgs e)
+		{
+			if (!CheckOpen())
+				return;
+			using (SaveFileDialog dlg = new SaveFileDialog())
+			{
+				dlg.Title = LanguageHelper.GetMsg(LMSG.SelectDataBasePath);
+				dlg.Filter = LanguageHelper.GetMsg(LMSG.CdbType);
+				if (dlg.ShowDialog() == DialogResult.OK)
+				{
+					Card[] cards = DataBase.Read(nowCdbFile, true, "");
+					int count = cards.Length;
+					long rule = 0;
+					foreach (KeyValuePair<long, string> name in CardRules)
+					{
+						if (name.Value == toRule)
+							rule = name.Key;
+					}
+					if (cards == null || cards.Length == 0)
+						return;
+					if (DataBase.Create(dlg.FileName))
+					{
+						for (int i = 0; i < count; i++)
+						{
+							cards[i].ot = int.Parse(rule.ToString());
+						}
+						DataBase.CopyDB(dlg.FileName, false, cards);
+						MyMsg.Show(LMSG.CopyCardsToDBIsOK);
+					}
+				}
+			}
+		}
+		#endregion
 
         #region 数据库中文繁简转换
         void GetOpenCCConfigItem()

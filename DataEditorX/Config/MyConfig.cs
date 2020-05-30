@@ -49,6 +49,10 @@ namespace DataEditorX.Config
         /// </summary>
         public const string TAG_LANGUAGE = "language";
         /// <summary>
+        /// 转换规则
+        /// </summary>
+        public const string TAG_CARD_RULE = "Replace rule";
+        /// <summary>
         /// OpenCC数据目录
         /// </summary>
         public const string TAG_OPENCC = "opencc";

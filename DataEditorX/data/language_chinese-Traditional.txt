@@ -73,6 +73,7 @@ DataEditForm.mainMenu.menuitem_autocheckupdate	自動檢查更新
 DataEditForm.mainMenu.menuitem_github	原始碼
 DataEditForm.mainMenu.menuitem_autoreturn	(特殊功能)中文自動換行
 DataEditForm.mainMenu.menuitem_replace	(特殊功能)批量替換文本
+DataEditForm.mainMenu.menuitem_replacerules	(特殊功能)批量替換規則
 DataEditForm.mainMenu.menuitem_replace_with_cns	(特殊功能)中文简体转繁体
 DataEditForm.mainMenu.menuitem_replace_with_cnt	(特殊功能)中文繁体转简体
 #
