@@ -1837,7 +1837,6 @@ namespace DataEditorX
 
 		#region 替换卡片规则
 		public Dictionary<long, string> CardRules = null;
-		public string toRule = null;
 		void GetRuleItem()
 		{
 			string conf = MyConfig.GetCardInfoFile(MyPath.Combine(Application.StartupPath, MyConfig.TAG_DATA));
@@ -1865,8 +1864,7 @@ namespace DataEditorX
 			if (sender is ToolStripMenuItem)
 			{
 				ToolStripMenuItem Rule = (ToolStripMenuItem)sender;
-				toRule = Rule.Text;
-				MyConfig.Save(MyConfig.TAG_CARD_RULE, toRule);
+				MyConfig.Save(MyConfig.TAG_CARD_RULE, Rule.Text);
 				GetRuleItem();
 			}
 		}
@@ -1885,7 +1883,7 @@ namespace DataEditorX
 					long rule = 0;
 					foreach (KeyValuePair<long, string> name in CardRules)
 					{
-						if (name.Value == toRule)
+						if (name.Value == MyConfig.readString(MyConfig.TAG_CARD_RULE))
 							rule = name.Key;
 					}
 					if (cards == null || cards.Length == 0)
