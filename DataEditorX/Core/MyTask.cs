@@ -12,6 +12,8 @@ namespace DataEditorX.Core
         CheckUpdate,
         ///<summary>导出数据</summary>
         ExportData,
+        ///<summary>繁简转换</summary>
+        ReplaceWithCNsOrCNt,
         ///<summary>保存为MSE存档</summary>
         SaveAsMSE,
         ///<summary>裁剪图片</summary>

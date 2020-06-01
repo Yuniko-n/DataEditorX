@@ -1968,74 +1968,38 @@ namespace DataEditorX
 			}
 		}
 
-        void menuitem_ReplaceWithCNtClick(object sender, EventArgs e)
-        {
-            if (!CheckOpen())
-                return;
-            using (SaveFileDialog dlg = new SaveFileDialog())
-            {
-                dlg.Title = LanguageHelper.GetMsg(LMSG.SelectDataBasePath);
-                dlg.Filter = LanguageHelper.GetMsg(LMSG.CdbType);
-                if (dlg.ShowDialog() == DialogResult.OK)
-                {
-                    Card[] cards = DataBase.Read(nowCdbFile, true, "");
-                    int count = cards.Length;
-                    if (cards == null || cards.Length == 0)
-                        return;
-                    if (DataBase.Create(dlg.FileName))
-                    {
-                        string configName = MyPath.Combine(MyPath.Combine(Application.StartupPath, MyConfig.TAG_OPENCC), MyPath.getFileName(MyConfig.TAG_OPENCC_CNT, MyConfig.readString(MyConfig.TAG_OPENCC_CNT), ".json"));
-                        for (int i = 0; i < count; i++)
-                        {
-                            if (cards[i].name != null)
-                            {
-                                cards[i].name = tasker.MseHelper.ReplaceWithCNsOrCNt(cards[i].name, configName);
-                            }
-                            if (cards[i].desc != null)
-                            {
-                                cards[i].desc = tasker.MseHelper.ReplaceWithCNsOrCNt(cards[i].desc, configName);
-                            }
-                        }
-                        DataBase.CopyDB(dlg.FileName, false, cards);
-                        MyMsg.Show(LMSG.CopyCardsToDBIsOK);
-                    }
-                }
-            }
-        }
-        void menuitem_ReplaceWithCNsClick(object sender, EventArgs e)
-        {
-            if (!CheckOpen())
-                return;
-            using (SaveFileDialog dlg = new SaveFileDialog())
-            {
-                dlg.Title = LanguageHelper.GetMsg(LMSG.SelectDataBasePath);
-                dlg.Filter = LanguageHelper.GetMsg(LMSG.CdbType);
-                if (dlg.ShowDialog() == DialogResult.OK)
-                {
-                    Card[] cards = DataBase.Read(nowCdbFile, true, "");
-                    int count = cards.Length;
-                    if (cards == null || cards.Length == 0)
-                        return;
-                    if (DataBase.Create(dlg.FileName))
-                    {
-                        string configName = MyPath.Combine(MyPath.Combine(Application.StartupPath, MyConfig.TAG_OPENCC), MyPath.getFileName(MyConfig.TAG_OPENCC_CNS, MyConfig.readString(MyConfig.TAG_OPENCC_CNS), ".json"));
-                        for (int i = 0; i < count; i++)
-                        {
-                            if (cards[i].name != null)
-                            {
-                                cards[i].name = tasker.MseHelper.ReplaceWithCNsOrCNt(cards[i].name, configName);
-                            }
-                            if (cards[i].desc != null)
-                            {
-                                cards[i].desc = tasker.MseHelper.ReplaceWithCNsOrCNt(cards[i].desc, configName);
-                            }
-                        }
-                        DataBase.CopyDB(dlg.FileName, false, cards);
-                        MyMsg.Show(LMSG.CopyCardsToDBIsOK);
-                    }
-                }
-            }
-        }
+		void menuitem_ReplaceWithCNtClick(object sender, EventArgs e)
+		{
+			if (!CheckOpen())
+				return;
+			RunReplace(MyPath.Combine(MyPath.Combine(Application.StartupPath, MyConfig.TAG_OPENCC), MyPath.getFileName(MyConfig.TAG_OPENCC_CNT, MyConfig.readString(MyConfig.TAG_OPENCC_CNT), ".json")));
+		}
+		void menuitem_ReplaceWithCNsClick(object sender, EventArgs e)
+		{
+			if (!CheckOpen())
+				return;
+			RunReplace(MyPath.Combine(MyPath.Combine(Application.StartupPath, MyConfig.TAG_OPENCC), MyPath.getFileName(MyConfig.TAG_OPENCC_CNS, MyConfig.readString(MyConfig.TAG_OPENCC_CNS), ".json")));
+
+		}
+		void RunReplace(string configFileName)
+		{
+			using (SaveFileDialog dlg = new SaveFileDialog())
+			{
+				dlg.Title = LanguageHelper.GetMsg(LMSG.SelectDataBasePath);
+				dlg.Filter = LanguageHelper.GetMsg(LMSG.CdbType);
+				if (dlg.ShowDialog() == DialogResult.OK)
+				{
+					if (DataBase.Create(dlg.FileName))
+					{
+						tasker.SetTask(MyTask.ReplaceWithCNsOrCNt,
+									GetCardList(false),
+									configFileName,
+									dlg.FileName);
+						Run(LanguageHelper.GetMsg(LMSG.ExportData));
+					}
+				}
+			}
+		}
         #endregion
 
 		private void text2LinkMarks(string text)
