@@ -398,6 +398,11 @@ namespace DataEditorX.Core
 
 			for (int i = 0; i < count; i++)
 			{
+				if (isCancel)
+				{
+					File.Delete(cdbName);
+					return;
+				}
 				worker.ReportProgress(i / count, string.Format("{0}/{1}", i, count));
 				if (cards[i].name != null)
 				{
