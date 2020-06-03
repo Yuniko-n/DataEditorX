@@ -10,6 +10,7 @@ namespace DataEditorX.Core
 {
     public class CardEdit
     {
+        public static bool cardEdit = false;
         IDataForm dataform;
 		public AddCommand addCard;
 		public ModCommand modCard;

@@ -841,7 +841,10 @@ namespace DataEditorX
 		void Btn_modClick(object sender, EventArgs e)
 		{
 			if (cardedit != null)
+			{
+				CardEdit.cardEdit = true;
 				cmdManager.ExcuteCommand(cardedit.modCard, menuitem_operacardsfile.Checked);
+			}
 		}
 		//打开脚本
 		void Btn_luaClick(object sender, EventArgs e)

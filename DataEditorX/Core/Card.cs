@@ -152,32 +152,33 @@ namespace DataEditorX.Core
         public bool EqualsData(Card other)
 		{
 			bool equalBool = true;
-			if (this.id != other.id && MyConfig.readBoolean(MyConfig.TAG_CARD_ID))
+			if (this.id != other.id && (MyConfig.readBoolean(MyConfig.TAG_CARD_ID) || CardEdit.cardEdit))
 				equalBool = false;
-			else if (this.ot != other.ot && MyConfig.readBoolean(MyConfig.TAG_CARD_OT))
+			else if (this.ot != other.ot && (MyConfig.readBoolean(MyConfig.TAG_CARD_OT) || CardEdit.cardEdit))
 				equalBool = false;
-			else if (this.alias != other.alias && MyConfig.readBoolean(MyConfig.TAG_CARD_ALIAS))
+			else if (this.alias != other.alias && (MyConfig.readBoolean(MyConfig.TAG_CARD_ALIAS) || CardEdit.cardEdit))
 				equalBool = false;
-			else if (this.setcode != other.setcode && MyConfig.readBoolean(MyConfig.TAG_CARD_SETCODE))
+			else if (this.setcode != other.setcode && (MyConfig.readBoolean(MyConfig.TAG_CARD_SETCODE) || CardEdit.cardEdit))
 				equalBool = false;
-			else if (this.type != other.type && MyConfig.readBoolean(MyConfig.TAG_CARD_TYPE))
+			else if (this.type != other.type && (MyConfig.readBoolean(MyConfig.TAG_CARD_TYPE) || CardEdit.cardEdit))
 				equalBool = false;
-			else if (this.atk != other.atk && MyConfig.readBoolean(MyConfig.TAG_CARD_ATK))
+			else if (this.atk != other.atk && (MyConfig.readBoolean(MyConfig.TAG_CARD_ATK) || CardEdit.cardEdit))
 				equalBool = false;
-			else if (this.def != other.def && MyConfig.readBoolean(MyConfig.TAG_CARD_DEF))
+			else if (this.def != other.def && (MyConfig.readBoolean(MyConfig.TAG_CARD_DEF) || CardEdit.cardEdit))
 				equalBool = false;
-			else if (this.level != other.level && MyConfig.readBoolean(MyConfig.TAG_CARD_LEVEL))
+			else if (this.level != other.level && (MyConfig.readBoolean(MyConfig.TAG_CARD_LEVEL) || CardEdit.cardEdit))
 				equalBool = false;
-			else if (this.race != other.race && MyConfig.readBoolean(MyConfig.TAG_CARD_RACE))
+			else if (this.race != other.race && (MyConfig.readBoolean(MyConfig.TAG_CARD_RACE) || CardEdit.cardEdit))
 				equalBool = false;
-			else if (this.attribute != other.attribute && MyConfig.readBoolean(MyConfig.TAG_CARD_ATTRIBUTE))
+			else if (this.attribute != other.attribute && (MyConfig.readBoolean(MyConfig.TAG_CARD_ATTRIBUTE) || CardEdit.cardEdit))
 				equalBool = false;
-			else if (this.category != other.category && MyConfig.readBoolean(MyConfig.TAG_CARD_CATEGORY))
+			else if (this.category != other.category && (MyConfig.readBoolean(MyConfig.TAG_CARD_CATEGORY) || CardEdit.cardEdit))
 				equalBool = false;
-			else if (!this.name.Equals(other.name) && MyConfig.readBoolean(MyConfig.TAG_CARD_NAME))
+			else if (!this.name.Equals(other.name) && (MyConfig.readBoolean(MyConfig.TAG_CARD_NAME) || CardEdit.cardEdit))
 				equalBool = false;
-			else if (!this.desc.Equals(other.desc) && MyConfig.readBoolean(MyConfig.TAG_CARD_DESC))
+			else if (!this.desc.Equals(other.desc) && (MyConfig.readBoolean(MyConfig.TAG_CARD_DESC) || CardEdit.cardEdit))
 				equalBool = false;
+			CardEdit.cardEdit = false;
 			/// 比较脚本提示文本
 			if (MyConfig.readBoolean(MyConfig.TAG_CARD_STR)) {
 				for (int i = 0; i < STR_MAX; i++)
