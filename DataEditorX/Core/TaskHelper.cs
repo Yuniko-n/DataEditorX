@@ -447,7 +447,7 @@ namespace DataEditorX.Core
 		#region 繁简转换
 		public void ReplaceWithCNsOrCNt(string configName, string cdbName)
 		{
-			Card[] cards = cardlist;
+			Card[] cards = this.cardlist;
 			int count = cards.Length;
 			if (cards == null || cards.Length == 0)
 				return;
@@ -459,7 +459,7 @@ namespace DataEditorX.Core
 					File.Delete(cdbName);
 					return;
 				}
-				worker.ReportProgress(i / count, string.Format("{0}/{1}", i, count));
+				this.worker.ReportProgress(i / count, string.Format("{0}/{1}", i, count));
 				if (cards[i].name != null)
 				{
 					cards[i].name = MseHelper.ReplaceWithCNsOrCNt(cards[i].name, configName);
@@ -490,9 +490,9 @@ namespace DataEditorX.Core
                     }
                     break;
 				case MyTask.ReplaceWithCNsOrCNt:
-					if (mArgs != null && mArgs.Length >= 1)
+					if (this.mArgs != null && this.mArgs.Length >= 1)
 					{
-						ReplaceWithCNsOrCNt(mArgs[0], mArgs[1]);
+						this.ReplaceWithCNsOrCNt(this.mArgs[0], this.mArgs[1]);
 					}
 					break;
                 case MyTask.CheckUpdate:

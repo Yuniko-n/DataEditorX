@@ -92,7 +92,8 @@ namespace DataEditorX.Config
             long lkey;
             foreach (string line in lines)
             {
-                string l = line.Trim(); //姑且做一下Trim 190324 by JoyJ
+                //string l = line.Trim(); //姑且做一下Trim 190324 by JoyJ
+                string l = line; //不去空格
                 if (l.StartsWith("#"))
                 {
                     continue;

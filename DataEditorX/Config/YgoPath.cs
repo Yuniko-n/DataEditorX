@@ -56,7 +56,7 @@ namespace DataEditorX.Config
         //字符串id
         public string GetImage(string id)
         {
-            if (File.Exists(MyPath.Combine(this.picpath, id + ".png")) && MyConfig.readBoolean(MyConfig.TAG_READ_PNG)) {
+            if (File.Exists(MyPath.Combine(this.picpath, id + ".png")) && MyConfig.ReadBoolean(MyConfig.TAG_READ_PNG)) {
                 return MyPath.Combine(this.picpath, id + ".png");
             } else {
                 return MyPath.Combine(this.picpath, id + ".jpg");
@@ -68,7 +68,7 @@ namespace DataEditorX.Config
         //}
         public string GetImageField(string id)
         {
-            if (File.Exists(MyPath.Combine(this.fieldpath, id + ".png")) && MyConfig.readBoolean(MyConfig.TAG_READ_PNG)) {
+            if (File.Exists(MyPath.Combine(this.fieldpath, id + ".png")) && MyConfig.ReadBoolean(MyConfig.TAG_READ_PNG)) {
                 return MyPath.Combine(this.fieldpath, id + ".png");//场地图
             } else {
                 return MyPath.Combine(this.fieldpath, id + ".jpg");//场地图
