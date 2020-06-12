@@ -1,7 +1,7 @@
 ﻿
 namespace DataEditorX.Core.Info
 {
-    public enum CardRule :int
+    public enum CardRule : int
     {
         /// <summary>无</summary>
         NONE = 0,

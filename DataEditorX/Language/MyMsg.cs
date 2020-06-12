@@ -5,12 +5,7 @@
  * 时间: 7:40
  * 
  */
-using System;
-using System.IO;
-using System.Text;
 using System.Windows.Forms;
-using System.Configuration;
-using System.Collections.Generic;
 
 namespace DataEditorX.Language
 {
@@ -19,61 +14,69 @@ namespace DataEditorX.Language
     /// </summary>
     public static class MyMsg
     {
-        static string info, warning, error, question;
+        static readonly string _info, _warning, _error, _question;
         static MyMsg()
         {
-            info = LanguageHelper.GetMsg(LMSG.titleInfo);
-            warning = LanguageHelper.GetMsg(LMSG.titleWarning);
-            error = LanguageHelper.GetMsg(LMSG.titleError);
-            question = LanguageHelper.GetMsg(LMSG.titleQuestion);
+            _info = LanguageHelper.GetMsg(LMSG.titleInfo);
+            _warning = LanguageHelper.GetMsg(LMSG.titleWarning);
+            _error = LanguageHelper.GetMsg(LMSG.titleError);
+            _question = LanguageHelper.GetMsg(LMSG.titleQuestion);
         }
         public static void Show(string strMsg)
         {
-            MessageBox.Show(strMsg, info,
+            MessageBox.Show(strMsg, _info,
                             MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
         public static void Warning(string strWarn)
         {
-            MessageBox.Show(strWarn, warning,
+            MessageBox.Show(strWarn, _warning,
                             MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
         public static void Error(string strError)
         {
-            MessageBox.Show(strError, error,
+            MessageBox.Show(strError, _error,
                             MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
         public static bool Question(string strQues)
         {
-            if(MessageBox.Show(strQues, question,
+            if (MessageBox.Show(strQues, _question,
                                MessageBoxButtons.OKCancel,
-                               MessageBoxIcon.Question)==DialogResult.OK)
+                               MessageBoxIcon.Question) == DialogResult.OK)
+            {
                 return true;
+            }
             else
+            {
                 return false;
+            }
         }
         public static void Show(LMSG msg)
         {
-            MessageBox.Show(LanguageHelper.GetMsg(msg), info,
+            MessageBox.Show(LanguageHelper.GetMsg(msg), _info,
                             MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
         public static void Warning(LMSG msg)
         {
-            MessageBox.Show(LanguageHelper.GetMsg(msg), warning,
+            MessageBox.Show(LanguageHelper.GetMsg(msg), _warning,
                             MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
         public static void Error(LMSG msg)
         {
-            MessageBox.Show(LanguageHelper.GetMsg(msg), error,
+            MessageBox.Show(LanguageHelper.GetMsg(msg), _error,
                             MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
         public static bool Question(LMSG msg)
         {
-            if(MessageBox.Show(LanguageHelper.GetMsg(msg), question,
+            if (MessageBox.Show(LanguageHelper.GetMsg(msg), _question,
                                MessageBoxButtons.OKCancel,
-                               MessageBoxIcon.Question)==DialogResult.OK)
+                               MessageBoxIcon.Question) == DialogResult.OK)
+            {
                 return true;
+            }
             else
+            {
                 return false;
+            }
         }
     }
 }

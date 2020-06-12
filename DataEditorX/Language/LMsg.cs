@@ -5,13 +5,12 @@
  * 时间: 10:21
  * 
  */
-using System;
 
 namespace DataEditorX.Language
 {
     public enum LMSG : uint
     {
-        titleInfo = 0 ,
+        titleInfo = 0,
         titleError = 0x1,
         titleWarning = 0x2,
         titleQuestion = 0x3,
@@ -91,9 +90,9 @@ namespace DataEditorX.Language
         ReadMSE = 0x47,
         ReadMSEisOK = 0x48,
 
-		PlzRestart = 0x49,
-		exportMseImages = 0x4a,
-		exportMseImagesErr = 0x4b,
+        PlzRestart = 0x49,
+        exportMseImages = 0x4a,
+        exportMseImagesErr = 0x4b,
 		StartReplace = 0x4c,
 
 		CardId = 0x100,

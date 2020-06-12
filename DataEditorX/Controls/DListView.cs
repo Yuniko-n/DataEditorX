@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 
 namespace DataEditorX
 {
@@ -9,10 +6,10 @@ namespace DataEditorX
     {
         public DListView()
         {
-            SetStyle(ControlStyles.OptimizedDoubleBuffer |
+            this.SetStyle(ControlStyles.OptimizedDoubleBuffer |
                      ControlStyles.AllPaintingInWmPaint,
                      true);
-            UpdateStyles();
+            this.UpdateStyles();
         }
     }
 }

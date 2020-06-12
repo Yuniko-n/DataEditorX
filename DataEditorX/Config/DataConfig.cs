@@ -18,11 +18,11 @@ namespace DataEditorX.Config
     {
         public DataConfig()
         {
-            InitMember(MyPath.Combine(Application.StartupPath, MyConfig.TAG_CARDINFO+".txt"));
+            this.InitMember(MyPath.Combine(Application.StartupPath, MyConfig.TAG_CARDINFO + ".txt"));
         }
         public DataConfig(string conf)
         {
-            InitMember(conf);
+            this.InitMember(conf);
         }
         /// <summary>
         /// 初始化成员
@@ -31,30 +31,30 @@ namespace DataEditorX.Config
         public void InitMember(string conf)
         {
             //conf = MyPath.Combine(datapath, MyConfig.FILE_INFO);
-            if(!File.Exists(conf))
+            if (!File.Exists(conf))
             {
-                dicCardRules = new Dictionary<long, string>();
-                dicSetnames = new Dictionary<long, string>();
-                dicCardTypes = new Dictionary<long, string>();
-                dicLinkMarkers = new Dictionary<long, string>();
-                dicCardcategorys = new Dictionary<long, string>();
-                dicCardAttributes = new Dictionary<long, string>();
-                dicCardRaces = new Dictionary<long, string>();
-                dicCardLevels = new Dictionary<long, string>();
+                this.dicCardRules = new Dictionary<long, string>();
+                this.dicSetnames = new Dictionary<long, string>();
+                this.dicCardTypes = new Dictionary<long, string>();
+                this.dicLinkMarkers = new Dictionary<long, string>();
+                this.dicCardcategorys = new Dictionary<long, string>();
+                this.dicCardAttributes = new Dictionary<long, string>();
+                this.dicCardRaces = new Dictionary<long, string>();
+                this.dicCardLevels = new Dictionary<long, string>();
                 return;
             }
             //提取内容
             string text = File.ReadAllText(conf);
-            dicCardRules = DataManager.Read(text, MyConfig.TAG_RULE);
-            dicSetnames = DataManager.Read(text, MyConfig.TAG_SETNAME);
-            dicCardTypes = DataManager.Read(text, MyConfig.TAG_TYPE);
-            dicLinkMarkers = DataManager.Read(text, MyConfig.TAG_MARKER);
-            dicCardcategorys = DataManager.Read(text, MyConfig.TAG_CATEGORY);
-            dicCardAttributes = DataManager.Read(text, MyConfig.TAG_ATTRIBUTE);
-            dicCardRaces = DataManager.Read(text, MyConfig.TAG_RACE);
-            dicCardLevels = DataManager.Read(text, MyConfig.TAG_LEVEL);
+            this.dicCardRules = DataManager.Read(text, MyConfig.TAG_RULE);
+            this.dicSetnames = DataManager.Read(text, MyConfig.TAG_SETNAME);
+            this.dicCardTypes = DataManager.Read(text, MyConfig.TAG_TYPE);
+            this.dicLinkMarkers = DataManager.Read(text, MyConfig.TAG_MARKER);
+            this.dicCardcategorys = DataManager.Read(text, MyConfig.TAG_CATEGORY);
+            this.dicCardAttributes = DataManager.Read(text, MyConfig.TAG_ATTRIBUTE);
+            this.dicCardRaces = DataManager.Read(text, MyConfig.TAG_RACE);
+            this.dicCardLevels = DataManager.Read(text, MyConfig.TAG_LEVEL);
 
-		}
+        }
         /// <summary>
         /// 规则
         /// </summary>

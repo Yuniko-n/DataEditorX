@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.IO;
+﻿using System.IO;
 
 namespace DataEditorX.Config
 {
@@ -9,18 +6,18 @@ namespace DataEditorX.Config
     {
         public YgoPath(string gamepath)
         {
-            SetPath(gamepath);
+            this.SetPath(gamepath);
         }
         public void SetPath(string gamepath)
         {
             this.gamepath = gamepath;
-            picpath = MyPath.Combine(gamepath, "pics");
-            fieldpath = MyPath.Combine(picpath, "field");
-            picpath2 = MyPath.Combine(picpath, "thumbnail");
-            luapath = MyPath.Combine(gamepath, "script");
-            ydkpath = MyPath.Combine(gamepath, "deck");
-            replaypath = MyPath.Combine(gamepath, "replay");
-		}
+            this.picpath = MyPath.Combine(gamepath, "pics");
+            this.fieldpath = MyPath.Combine(this.picpath, "field");
+            this.picpath2 = MyPath.Combine(this.picpath, "thumbnail");
+            this.luapath = MyPath.Combine(gamepath, "script");
+            this.ydkpath = MyPath.Combine(gamepath, "deck");
+            this.replaypath = MyPath.Combine(gamepath, "replay");
+        }
         /// <summary>游戏目录</summary>
         public string gamepath;
         /// <summary>大图目录</summary>
@@ -36,52 +33,52 @@ namespace DataEditorX.Config
         /// <summary>录像目录</summary>
         public string replaypath;
 
-		public string GetImage(long id)
+        public string GetImage(long id)
         {
-			return GetImage(id.ToString());
-		}
-		//public string GetImageThum(long id)
-		//{
-		//	return GetImageThum(id.ToString());
-		//}
-		public string GetImageField(long id)
-        {
-			return GetImageField(id.ToString());//场地图
+            return this.GetImage(id.ToString());
         }
-		public string GetScript(long id)
+        //public string GetImageThum(long id)
+        //{
+        //	return GetImageThum(id.ToString());
+        //}
+        public string GetImageField(long id)
         {
-			return GetScript(id.ToString());
-		}
-		public string GetYdk(string name)
-		{
-			return MyPath.Combine(ydkpath, name + ".ydk");
-		}
-		//字符串id
-		public string GetImage(string id)
-		{
-			if (File.Exists(MyPath.Combine(picpath, id + ".png")) && MyConfig.readBoolean(MyConfig.TAG_READ_PNG)) {
-				return MyPath.Combine(picpath, id + ".png");
-			} else {
-				return MyPath.Combine(picpath, id + ".jpg");
-			}
-		}
-		//public string GetImageThum(string id)
-		//{
-		//	return MyPath.Combine(picpath2, id + ".jpg");
-		//}
-		public string GetImageField(string id)
-		{
-			if (File.Exists(MyPath.Combine(fieldpath, id + ".png")) && MyConfig.readBoolean(MyConfig.TAG_READ_PNG)) {
-				return MyPath.Combine(fieldpath, id + ".png");//场地图
-			} else {
-				return MyPath.Combine(fieldpath, id + ".jpg");//场地图
-			}
-		}
-		public string GetScript(string id)
-		{
-			if (Directory.Exists(luapath))
+            return this.GetImageField(id.ToString());//场地图
+        }
+        public string GetScript(long id)
+        {
+            return this.GetScript(id.ToString());
+        }
+        public string GetYdk(string name)
+        {
+            return MyPath.Combine(this.ydkpath, name + ".ydk");
+        }
+        //字符串id
+        public string GetImage(string id)
+        {
+            if (File.Exists(MyPath.Combine(this.picpath, id + ".png")) && MyConfig.readBoolean(MyConfig.TAG_READ_PNG)) {
+                return MyPath.Combine(this.picpath, id + ".png");
+            } else {
+                return MyPath.Combine(this.picpath, id + ".jpg");
+            }
+        }
+        //public string GetImageThum(string id)
+        //{
+        //	return MyPath.Combine(picpath2, id + ".jpg");
+        //}
+        public string GetImageField(string id)
+        {
+            if (File.Exists(MyPath.Combine(this.fieldpath, id + ".png")) && MyConfig.readBoolean(MyConfig.TAG_READ_PNG)) {
+                return MyPath.Combine(this.fieldpath, id + ".png");//场地图
+            } else {
+                return MyPath.Combine(this.fieldpath, id + ".jpg");//场地图
+            }
+        }
+        public string GetScript(string id)
+        {
+			if (Directory.Exists(this.luapath))
 			{
-				DirectoryInfo[] ScriptInfos = (new DirectoryInfo(luapath)).GetDirectories();
+				DirectoryInfo[] ScriptInfos = (new DirectoryInfo(this.luapath)).GetDirectories();
 				for (int i = 0; i < ScriptInfos.Length; i++)
 				{
 					if (File.Exists(MyPath.Combine(ScriptInfos[i].FullName, "c" + id + ".lua")))
@@ -90,32 +87,32 @@ namespace DataEditorX.Config
 					}
 				}
 			}
-			return MyPath.Combine(luapath, "c" + id + ".lua");
-		}
-		public string GetModuleScript(string modulescript)
-		{
-			return MyPath.Combine(luapath, modulescript + ".lua");
-		}
+            return MyPath.Combine(this.luapath, "c" + id + ".lua");
+        }
+        public string GetModuleScript(string modulescript)
+        {
+            return MyPath.Combine(this.luapath, modulescript + ".lua");
+        }
 
-		public string[] GetCardfiles(long id)
-		{
-			string[] files = new string[]{
-				GetImage(id),//大图
+        public string[] GetCardfiles(long id)
+        {
+            string[] files = new string[]{
+                this.GetImage(id),//大图
 				//GetImageThum(id),//小图
-				GetImageField(id),//场地图
-				GetScript(id)
-		   };
-			return files;
-		}
-		public string[] GetCardfiles(string id)
-		{
-			string[] files = new string[]{
-				GetImage(id),//大图
+				this.GetImageField(id),//场地图
+				this.GetScript(id)
+           };
+            return files;
+        }
+        public string[] GetCardfiles(string id)
+        {
+            string[] files = new string[]{
+                this.GetImage(id),//大图
 				//GetImageThum(id),//小图
-				GetImageField(id),//场地图
-				GetScript(id)
-		   };
-			return files;
-		}
-	}
+				this.GetImageField(id),//场地图
+				this.GetScript(id)
+           };
+            return files;
+        }
+    }
 }

@@ -145,7 +145,7 @@ bit库已删除，请用操作符操作，详见 utility.lua
 返回c的卡片记载的阶级
 
 ●bool Card.IsXyzLevel(Card c, Card xyzc, int lv)
-检查c对于超量怪兽xyzc的超量用等级是否是lv
+检查c对于XYZ怪兽xyzc的XYZ用等级是否是lv
 
 ●int Card.GetLeftScale(Card c)
 返回c的左灵摆刻度
@@ -360,7 +360,7 @@ location 的值是 LOCATION_MZONE,LOCATION_SZONE,LOCATIOIN_ONFIELD
 检查c用作同调素材时是否属于类型type（与IsType的区别在于对于魔陷区的怪兽卡，用其原本类型作判断）
 
 ●bool Card.IsXyzType(Card c, int type)
-检查c用作超量素材时是否属于类型type（与IsType的区别在于对于魔陷区的怪兽卡，用其原本类型作判断）
+检查c用作XYZ素材时是否属于类型type（与IsType的区别在于对于魔陷区的怪兽卡，用其原本类型作判断）
 
 ●bool Card.IsLinkType(Card c, int type)
 检查c用作连接素材时是否属于类型type（与IsType的区别在于对于魔陷区的怪兽卡，用其原本类型作判断）
@@ -458,7 +458,7 @@ location 的值是 LOCATION_MZONE,LOCATION_SZONE,LOCATIOIN_ONFIELD
 返回c当前叠放着的卡片数量
 
 ●Card Card.GetOverlayTarget(Card c)
-返回以c为超量素材的卡
+返回以c为XYZ素材的卡
 
 ●bool Card.CheckRemoveOverlayCard(Card c, int player, int count, int reason)
 检查玩家player能否以reason为原因，至少移除c叠放的count张卡
@@ -645,7 +645,7 @@ RESET_CARD        重置卡片的效果      reset_code为效果owner的卡号
 如果tuner是nil，此函数与Card.IsSpecialSummonable作用相同
 
 ●bool Card.IsXyzSummonable(Card c, Group mg|nil[, min=0, max=0])
-检查是否可以在场上的卡[或mg][中选出 min-max 个超量素材]对c进行超量召唤手续
+检查是否可以在场上的卡[或mg][中选出 min-max 个XYZ素材]对c进行XYZ召唤手续
 如果mg为nil，此函数与 c:IsSpecialSummonable(SUMMON_TYPE_XYZ)作用相同
 
 ●bool Card.IsSummonable(Card c, bool ignore_count, Effect e|nil[, int min=0, int zone=0x1f])
@@ -843,7 +843,7 @@ location的默认值与c的种类有关，灵摆怪兽需要指定能否在怪�
 检查c是否可以作为[仪式怪兽sc的]仪式素材,没有指定sc的场合，必须填nil
 
 ●bool Card.IsCanBeXyzMaterial(Card c, Card sc|nil)
-检查c是否可以成为[超量怪兽sc的]超量素材,没有指定sc的场合，必须填nil
+检查c是否可以成为[XYZ怪兽sc的]XYZ素材,没有指定sc的场合，必须填nil
 
 ●bool Card.IsCanBeLinkMaterial(Card c, Card sc|nil)
 检查c是否可以成为[连接怪兽sc的]连接素材,没有指定sc的场合，必须填nil
@@ -955,10 +955,23 @@ CARDDATA_LINK_MARKER	12
 返回c的原本连接标记。
 
 ●bool Card.IsXyzSummonableByRose(Card c, Card c1, Card c2)
-返回c是否可以用c1和c2这2张卡为素材超量召唤。超量召唤时，c1的等级当作和c2相同。
+返回c是否可以用c1和c2这2张卡为素材XYZ召唤。XYZ召唤时，c1的等级当作和c2相同。
 
 ●int Card.GetRemovedOverlayCount(Card c)
-返回c本回合被取除的超量素材数量。
+返回c本回合被取除的XYZ素材数量。
+
+●int Card.GetOriginalCode(Card c)
+返回c的卡片记载的代号
+
+●bool Card.IsOriginalCodeRule(Card c，int code)
+检查c是否在规则上当做code使用
+
+●bool Card.IsLinkSummonable(Card c, Group mg|nil[, min=0, max=0])
+检查是否可以在场上的卡[或mg][中选出 min-max 个连接素材]对c进行连接召唤手续
+如果mg为nil，此函数与 c:IsSpecialSummonable(SUMMON_TYPE_LINK)作用相同
+
+●bool Card.IsCanOverlay(Card c)
+检查c是否可以作为XYZ素材
 
 ========== Effect ==========
 ●Effect Effect.CreateEffect(Card c)
@@ -1382,8 +1395,8 @@ Duel.ChangePosition, Duel.SpecialSummon, Duel.DiscardDeck
 让玩家player以tuner作为调整,场上的卡[或mg]为素材，对c进行同调召唤手续
 
 ●void Duel.XyzSummon(int player, Card c, Group mg|nil[, min=0, max=0])
-让玩家player用场上的卡[或mg][选min-max个素材]对c进行超量召唤手续
-mg非空且min为0则直接把mg全部作为超量素材
+让玩家player用场上的卡[或mg][选min-max个素材]对c进行XYZ召唤手续
+mg非空且min为0则直接把mg全部作为XYZ素材
 
 ●void Duel.MSet(int player, Card c, bool ignore_count, Effect e|nil[,int min=0, int zone=0x1f])
 让玩家 player 以效果e对c[在区域 zone]进行通常召唤的Set，至少使用min个祭品
@@ -1880,7 +1893,9 @@ f1是 1 只需要满足的过滤条件，f2是 min-max 只需要满足的过滤�
 包含手卡·场上的怪兽的以及受 EFFECT_EXTRA_FUSION_MATERIAL 影响的卡
 
 ●void Duel.SetSelectedCard(Card|Group cards)
-将cards设置为Group.SelectWithSumEqual或Group.SelectWithSumGreater已选择的卡片（？）
+将准备由Duel.GrabSelectedCard读取的卡片/卡片组设置为cards。
+单独使用没有意义，要配合Duel.GrabSelectedCard来读取。
+用于多个函数先后使用，又无法相互传递数据时的参数传递。
 
 ●void Duel.SetTargetCard(Card|Group targets)
 把当前正在处理的连锁的对象设置成targets
@@ -1919,10 +1934,10 @@ f1是 1 只需要满足的过滤条件，f2是 min-max 只需要满足的过滤�
 返回连锁chainc包含的操作分类的数量
 
 ●bool Duel.CheckXyzMaterial(Card c, function f|nil, int lv, int min, int max, Group mg|nil)
-检查场上[或mg中]是否存在超量召唤c的超量用等级为lv的min-max个满足条件f的叠放素材
+检查场上[或mg中]是否存在XYZ召唤c的XYZ用等级为lv的min-max个满足条件f的叠放素材
 
 ●Group Duel.SelectXyzMaterial(int player, Card c, function f|nil, int lv, int min, int max[, Group mg|nil])
-让玩家player为超量怪兽c从场上[或mg中]选择超量用等级为lv的min-max个满足条件f的叠放素材
+让玩家player为XYZ怪兽c从场上[或mg中]选择XYZ用等级为lv的min-max个满足条件f的叠放素材
 
 ●void Duel.Overlay(Card c, Card|Group ocard)
 把ocard作为c的叠放卡叠放
@@ -2225,10 +2240,40 @@ CARDDATA_LINK_MARKER	12
 获取以player的视野，zone区域的所有卡。
 
 ●bool Duel.XyzSummonByRose(int player, Card xyzcard, Card c1, Card c2)
-用c1和c2这2张卡为素材把xyzcard超量召唤。超量召唤时，c1的等级当作和c2相同。
+用c1和c2这2张卡为素材把XYZ卡XYZ召唤。XYZ召唤时，c1的等级当作和c2相同。
 
 ●void Duel.LoadScript(string filename)
 加载文件名是filename的脚本。该函数会自动在脚本目录下搜索脚本文件进行加载。
+
+●int Duel.SelectField(int player, int flag1, int flag2, int count)
+让玩家player选择场地。flag1为低位，flag2为高位，两者合并组成可选区域；count为可以选择的数量。
+返回值是选择的场地。
+
+●void Duel.LinkSummon(int player, Card pcard, Group mg|nil[, Card lcard, int minc, int maxc])
+让玩家player以mg[中除lcard以外的最少minc，最多maxc张卡]为素材将pcard连接召唤。
+
+●Card Duel.GetBattleMonster(int player)
+返回由player操控的正处于战斗中的怪兽。如果没有战斗或没有目标则会返回nil。
+
+●bool Duel.IsSummonCancelable()
+返回当前进行特殊召唤的行为是否可以回滚并撤销。
+
+●Card|Group Duel.GrabSelectedCard()
+返回由Duel.SetSelectedCard设置的卡片或卡片组。
+单独使用没有意义，必须先用Duel.SetSelectedCard进行设置。
+
+●void Duel.ClearOperationInfo(int chainc)
+将chainc的OperationInfo清除。用于如堕天使复制并使用墓地效果之类，卡片效果不应当被响应的情况。
+
+●bool Duel.IsPlayerCanMSet(int player[, int sumtype, Card scard])
+检查玩家player是否可以[以sumtype的召唤方式将scard]盖放。
+如果要加入后面的可选参数，则所有两个可选参数都必须加上。
+
+●bool Duel.IsPlayerCanSSet(int player[, Card scard])
+检查玩家player是否可以[将scard]盖放。
+
+●bool Duel.IsPlayerCanAdditionalSummon(int player)
+检查玩家player是否有通常召唤外的召唤次数。
 
 ========== aux ============
 ##只说明常用的函数
@@ -2357,15 +2402,15 @@ f2 和 f3 若为nil，则等价于aux.AddSynchroProcedure(c,f1,f4,minc[, maxc])
 调弦之魔术师(73941492)专用
 
 ●void aux.AddXyzProcedure(Card c, function f|nil, int lv, int ct[, function alterf|nil, int desc|nil, int maxc=ct, function op|nil])
-为c添加超量召唤手续
+为c添加XYZ召唤手续
 用满足条件 f 的等级为 lv 的 ct[-maxc] 只怪兽进行叠放
-或者在单个怪兽（通常是超量怪兽）上叠放
+或者在单个怪兽（通常是XYZ怪兽）上叠放
 alterf 为这个怪兽满足的条件，desc为描述，op为叠放时需要的操作（比如 希望皇龙）
 
 ●void aux.AddXyzProcedureLevelFree(Card c, function f|nil, function gf|nil, int minc, int maxc[, function alterf|nil, int desc|nil, function op|nil])
-为c添加超量召唤手续
+为c添加XYZ召唤手续
 用满足条件 f 的卡片组里，满足 gf 的 minc[-maxc] 只怪兽进行叠放，f 为必要条件，gf 为额外条件
-或者在单个怪兽（通常是超量怪兽）上叠放
+或者在单个怪兽（通常是XYZ怪兽）上叠放
 alterf为这个怪兽满足的条件，desc为描述，op为叠放时需要的操作（比如 闪光No.0 希望之异热同心）
 
 ●void aux.AddFusionProcMix(Card c, bool sub, bool insf, ...)
@@ -2651,7 +2696,7 @@ function aux.synlimit(e,se,sp,st)
 end
 
 ●bool aux.xyzlimit(Effect e, Effect se, int sp, int st)
-不能用 超量召唤 以外的方式召唤(广义的) 的过滤函数的简单写法，用在效果注册里 SetValue
+不能用 XYZ召唤 以外的方式召唤(广义的) 的过滤函数的简单写法，用在效果注册里 SetValue
 se 指召唤这张卡的效果， sp 是召唤的玩家， st 是召唤的类型
 function aux.xyzlimit(e,se,sp,st)
 	return st&SUMMON_TYPE_XYZ==SUMMON_TYPE_XYZ

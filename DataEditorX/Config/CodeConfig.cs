@@ -1,8 +1,7 @@
-﻿using System;
+﻿using FastColoredTextBoxNS;
+using System;
 using System.Collections.Generic;
 using System.IO;
-
-using FastColoredTextBoxNS;
 
 namespace DataEditorX.Config
 {
@@ -15,29 +14,29 @@ namespace DataEditorX.Config
         #region 成员
         public CodeConfig()
         {
-            tooltipDic = new SortedList<string, string>();
-            longTooltipDic = new SortedList<string, string>();
-            items = new List<AutocompleteItem>();
+            this.tooltipDic = new SortedList<string, string>();
+            this.longTooltipDic = new SortedList<string, string>();
+            this.items = new List<AutocompleteItem>();
         }
 
         //函数提示
-        SortedList<string, string> tooltipDic;
-        SortedList<string, string> longTooltipDic;
-        List<AutocompleteItem> items;
+        readonly SortedList<string, string> tooltipDic;
+        readonly SortedList<string, string> longTooltipDic;
+        readonly List<AutocompleteItem> items;
         /// <summary>
         /// 输入提示
         /// </summary>
         public SortedList<string, string> TooltipDic
         {
-            get { return tooltipDic; }
+            get { return this.tooltipDic; }
         }
         public SortedList<string, string> LongTooltipDic
         {
-            get { return longTooltipDic; }
+            get { return this.longTooltipDic; }
         }
         public AutocompleteItem[] Items
         {
-            get { return items.ToArray(); }
+            get { return this.items.ToArray(); }
         }
         #endregion
 
@@ -51,9 +50,9 @@ namespace DataEditorX.Config
             foreach (long k in dic.Keys)
             {
                 string key = "0x" + k.ToString("x");
-                if (!tooltipDic.ContainsKey(key))
+                if (!this.tooltipDic.ContainsKey(key))
                 {
-                    AddToolIipDic(key, dic[k]);
+                    this.AddToolIipDic(key, dic[k]);
                 }
             }
         }
@@ -75,7 +74,7 @@ namespace DataEditorX.Config
                         string[] ws = line.Split(' ');
                         if (ws.Length > 2)
                         {
-                            AddToolIipDic(ws[1], ws[2]);
+                            this.AddToolIipDic(ws[1], ws[2]);
                         }
                     }
                 }
@@ -88,7 +87,10 @@ namespace DataEditorX.Config
         public void AddFunction(string funtxt)
         {
             if (!File.Exists(funtxt))
+            {
                 return;
+            }
+
             string[] lines = File.ReadAllLines(funtxt);
             bool isFind = false;
             string name = "";
@@ -98,11 +100,14 @@ namespace DataEditorX.Config
                 if (string.IsNullOrEmpty(line)
                    || line.StartsWith("==")
                    || line.StartsWith("#"))
+                {
                     continue;
+                }
+
                 if (line.StartsWith("●"))
                 {
                     //add
-                    AddToolIipDic(name, desc);
+                    this.AddToolIipDic(name, desc);
                     int w = line.IndexOf("(");
                     int t = line.IndexOf(" ");
 
@@ -119,7 +124,7 @@ namespace DataEditorX.Config
                     desc += Environment.NewLine + line;
                 }
             }
-            AddToolIipDic(name, desc);
+            this.AddToolIipDic(name, desc);
         }
         #endregion
 
@@ -128,21 +133,26 @@ namespace DataEditorX.Config
         {
             //conList.Add("con");
             if (!File.Exists(conlua))
+            {
                 return;
+            }
+
             string[] lines = File.ReadAllLines(conlua);
             foreach (string line in lines)
             {
                 if (line.StartsWith("--"))
+                {
                     continue;
-                string k = line, desc = line;
+                }
+
                 int t = line.IndexOf("=");
-                int t2 = line.IndexOf("--");
+                _ = line.IndexOf("--");
                 //常量 = 0x1 ---注释
-                k = (t > 0) ? line.Substring(0, t).TrimEnd(new char[] { ' ', '\t' })
+                string k = (t > 0) ? line.Substring(0, t).TrimEnd(new char[] { ' ', '\t' })
                     : line;
-                desc = (t > 0) ? line.Substring(t + 1).Replace("--", "\n")
-                    : line;
-                AddToolIipDic(k, desc);
+                string desc = (t > 0) ? line.Substring(t + 1).Replace("--", "\n")
+    : line;
+                this.AddToolIipDic(k, desc);
             }
         }
         #endregion
@@ -150,60 +160,81 @@ namespace DataEditorX.Config
         #region 处理
         public void InitAutoMenus()
         {
-            items.Clear();
-            foreach (string k in tooltipDic.Keys)
+            this.items.Clear();
+            foreach (string k in this.tooltipDic.Keys)
             {
-                AutocompleteItem item = new AutocompleteItem(k);
-                item.ToolTipTitle = k;
-                item.ToolTipText = tooltipDic[k];
-                items.Add(item);
+                AutocompleteItem item = new AutocompleteItem(k)
+                {
+                    ToolTipTitle = k,
+                    ToolTipText = this.tooltipDic[k]
+                };
+                this.items.Add(item);
             }
-            foreach (string k in longTooltipDic.Keys)
+            foreach (string k in this.longTooltipDic.Keys)
             {
-                if (tooltipDic.ContainsKey(k))
+                if (this.tooltipDic.ContainsKey(k))
+                {
                     continue;
-                AutocompleteItem item = new AutocompleteItem(k);
-                item.ToolTipTitle = k;
-                item.ToolTipText = longTooltipDic[k];
-                items.Add(item);
+                }
+
+                AutocompleteItem item = new AutocompleteItem(k)
+                {
+                    ToolTipTitle = k,
+                    ToolTipText = this.longTooltipDic[k]
+                };
+                this.items.Add(item);
             }
         }
         string GetShortName(string name)
         {
             int t = name.IndexOf(".");
             if (t > 0)
+            {
                 return name.Substring(t + 1);
+            }
             else
+            {
                 return name;
+            }
         }
         void AddToolIipDic(string key, string val)
         {
-            string skey = GetShortName(key);
-            if (tooltipDic.ContainsKey(skey))//存在
+            string skey = this.GetShortName(key);
+            if (this.tooltipDic.ContainsKey(skey))//存在
             {
-                string nval = tooltipDic[skey];
+                string nval = this.tooltipDic[skey];
                 if (!nval.EndsWith(Environment.NewLine))
+                {
                     nval += Environment.NewLine;
-                nval += Environment.NewLine +val;
-                tooltipDic[skey] = nval;
+                }
+
+                nval += Environment.NewLine + val;
+                this.tooltipDic[skey] = nval;
             }
             else
-                tooltipDic.Add(skey, val);
+            {
+                this.tooltipDic.Add(skey, val);
+            }
             //
-            AddLongToolIipDic(key, val);
+            this.AddLongToolIipDic(key, val);
         }
         void AddLongToolIipDic(string key, string val)
         {
-            if (longTooltipDic.ContainsKey(key))//存在
+            if (this.longTooltipDic.ContainsKey(key))//存在
             {
-                string nval = longTooltipDic[key];
+                string nval = this.longTooltipDic[key];
                 if (!nval.EndsWith(Environment.NewLine))
+                {
                     nval += Environment.NewLine;
+                }
+
                 nval += Environment.NewLine + val;
-                longTooltipDic[key] = nval;
+                this.longTooltipDic[key] = nval;
             }
             else
-                longTooltipDic.Add(key, val);
+            {
+                this.longTooltipDic.Add(key, val);
+            }
         }
         #endregion
     }

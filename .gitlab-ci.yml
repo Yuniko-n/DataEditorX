@@ -1,0 +1,33 @@
+stages:
+  - build
+  - deploy
+  
+variables:
+  GIT_DEPTH: "1"
+
+build_dex:
+  stage: build
+  dependencies: []
+  tags:
+    - linux
+  #only:
+  #  - master
+  image: mono
+  script:
+    - ./ci/build.sh
+  artifacts:
+    paths:
+      - dist/
+
+upload_to_minio:
+  stage: deploy
+  dependencies:
+    - build_dex
+  tags: 
+    - linux
+  image: python
+  script:
+    - pip install -U -i https://mirrors.aliyun.com/pypi/simple/ awscli
+    - aws s3 --endpoint=https://minio.mycard.moe:9000 sync dist/ s3://mycard/DataEditorX
+  only:
+    - tags

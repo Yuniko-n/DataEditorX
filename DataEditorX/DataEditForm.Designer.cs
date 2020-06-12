@@ -146,6 +146,7 @@ namespace DataEditorX
             this.mainMenu.SuspendLayout();
             this.pl_bottom.SuspendLayout();
             this.pl_main.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer)).BeginInit();
             this.splitContainer.Panel1.SuspendLayout();
             this.splitContainer.Panel2.SuspendLayout();
             this.splitContainer.SuspendLayout();
@@ -514,6 +515,7 @@ namespace DataEditorX
             this.menuitem_language.Name = "menuitem_language";
             this.menuitem_language.Size = new System.Drawing.Size(189, 22);
             this.menuitem_language.Text = "Language";
+            this.menuitem_language.Click += new System.EventHandler(this.menuitem_language_Click);
             // 
             // menuitem_checkupdate
             // 
@@ -555,7 +557,7 @@ namespace DataEditorX
             this.tb_cardname.Location = new System.Drawing.Point(5, 3);
             this.tb_cardname.Name = "tb_cardname";
             this.tb_cardname.Size = new System.Drawing.Size(339, 21);
-            this.tb_cardname.TabIndex = 4;
+            this.tb_cardname.TabIndex = 1;
             this.tb_cardname.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.tb_cardname.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Tb_cardnameKeyDown);
             // 
@@ -678,7 +680,8 @@ namespace DataEditorX
             this.tb_cardtext.Name = "tb_cardtext";
             this.tb_cardtext.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.tb_cardtext.Size = new System.Drawing.Size(340, 200);
-            this.tb_cardtext.TabIndex = 4;
+            this.tb_cardtext.TabIndex = 121;
+            this.tb_cardtext.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tb_cardtext_KeyDown);
             // 
             // tb_edittext
             // 
@@ -710,7 +713,7 @@ namespace DataEditorX
             this.tb_pleft.MaxLength = 12;
             this.tb_pleft.Name = "tb_pleft";
             this.tb_pleft.Size = new System.Drawing.Size(40, 21);
-            this.tb_pleft.TabIndex = 8;
+            this.tb_pleft.TabIndex = 115;
             this.tb_pleft.Text = "0";
             this.tb_pleft.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -720,7 +723,7 @@ namespace DataEditorX
             this.tb_pright.MaxLength = 12;
             this.tb_pright.Name = "tb_pright";
             this.tb_pright.Size = new System.Drawing.Size(40, 21);
-            this.tb_pright.TabIndex = 8;
+            this.tb_pright.TabIndex = 116;
             this.tb_pright.Text = "0";
             this.tb_pright.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -815,7 +818,7 @@ namespace DataEditorX
             this.tb_atk.MaxLength = 12;
             this.tb_atk.Name = "tb_atk";
             this.tb_atk.Size = new System.Drawing.Size(40, 21);
-            this.tb_atk.TabIndex = 8;
+            this.tb_atk.TabIndex = 117;
             this.tb_atk.Text = "0";
             this.tb_atk.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -825,7 +828,7 @@ namespace DataEditorX
             this.tb_def.MaxLength = 12;
             this.tb_def.Name = "tb_def";
             this.tb_def.Size = new System.Drawing.Size(40, 21);
-            this.tb_def.TabIndex = 8;
+            this.tb_def.TabIndex = 118;
             this.tb_def.Text = "0";
             this.tb_def.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -836,7 +839,7 @@ namespace DataEditorX
             this.tb_cardcode.MaxLength = 12;
             this.tb_cardcode.Name = "tb_cardcode";
             this.tb_cardcode.Size = new System.Drawing.Size(67, 21);
-            this.tb_cardcode.TabIndex = 8;
+            this.tb_cardcode.TabIndex = 120;
             this.tb_cardcode.Text = "0";
             this.tb_cardcode.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.tb_cardcode.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Tb_cardcodeKeyPress);
@@ -858,7 +861,7 @@ namespace DataEditorX
             this.tb_cardalias.MaxLength = 12;
             this.tb_cardalias.Name = "tb_cardalias";
             this.tb_cardalias.Size = new System.Drawing.Size(67, 21);
-            this.tb_cardalias.TabIndex = 8;
+            this.tb_cardalias.TabIndex = 119;
             this.tb_cardalias.Text = "0";
             this.tb_cardalias.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -1019,7 +1022,7 @@ namespace DataEditorX
             this.tb_setcode1.MaxLength = 4;
             this.tb_setcode1.Name = "tb_setcode1";
             this.tb_setcode1.Size = new System.Drawing.Size(30, 21);
-            this.tb_setcode1.TabIndex = 18;
+            this.tb_setcode1.TabIndex = 111;
             this.tb_setcode1.Text = "0";
             this.tb_setcode1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.tb_setcode1.TextChanged += new System.EventHandler(this.tb_setcode1_TextChanged);
@@ -1031,7 +1034,7 @@ namespace DataEditorX
             this.tb_setcode2.MaxLength = 4;
             this.tb_setcode2.Name = "tb_setcode2";
             this.tb_setcode2.Size = new System.Drawing.Size(30, 21);
-            this.tb_setcode2.TabIndex = 18;
+            this.tb_setcode2.TabIndex = 112;
             this.tb_setcode2.Text = "0";
             this.tb_setcode2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.tb_setcode2.TextChanged += new System.EventHandler(this.tb_setcode2_TextChanged);
@@ -1043,7 +1046,7 @@ namespace DataEditorX
             this.tb_setcode3.MaxLength = 4;
             this.tb_setcode3.Name = "tb_setcode3";
             this.tb_setcode3.Size = new System.Drawing.Size(30, 21);
-            this.tb_setcode3.TabIndex = 18;
+            this.tb_setcode3.TabIndex = 113;
             this.tb_setcode3.Text = "0";
             this.tb_setcode3.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.tb_setcode3.TextChanged += new System.EventHandler(this.tb_setcode3_TextChanged);
@@ -1055,7 +1058,7 @@ namespace DataEditorX
             this.tb_setcode4.MaxLength = 4;
             this.tb_setcode4.Name = "tb_setcode4";
             this.tb_setcode4.Size = new System.Drawing.Size(30, 21);
-            this.tb_setcode4.TabIndex = 18;
+            this.tb_setcode4.TabIndex = 114;
             this.tb_setcode4.Text = "0";
             this.tb_setcode4.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.tb_setcode4.TextChanged += new System.EventHandler(this.tb_setcode4_TextChanged);
@@ -1295,6 +1298,7 @@ namespace DataEditorX
             this.splitContainer.Panel1.ResumeLayout(false);
             this.splitContainer.Panel2.ResumeLayout(false);
             this.splitContainer.Panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer)).EndInit();
             this.splitContainer.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();

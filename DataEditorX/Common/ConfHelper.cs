@@ -1,7 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using System.Globalization;
+using System.Text;
 
 namespace DataEditorX.Common
 {
@@ -16,11 +15,14 @@ namespace DataEditorX.Common
         /// </summary>
         /// <param name="line"></param>
         /// <returns></returns>
-        public static string getValue(string line)
+        public static string GetValue(string line)
         {
             int t = line.IndexOf('=');
             if (t > 0)
+            {
                 return line.Substring(t + 1).Trim();
+            }
+
             return "";
         }
         /// <summary>
@@ -28,11 +30,14 @@ namespace DataEditorX.Common
         /// </summary>
         /// <param name="word"></param>
         /// <returns></returns>
-        public static string getValue1(string word)
+        public static string GetValue1(string word)
         {
             int i = word.IndexOf(SEP_LINE);
             if (i > 0)
+            {
                 return word.Substring(0, i);
+            }
+
             return word;
         }
         /// <summary>
@@ -40,11 +45,14 @@ namespace DataEditorX.Common
         /// </summary>
         /// <param name="word"></param>
         /// <returns></returns>
-        public static string getValue2(string word)
+        public static string GetValue2(string word)
         {
             int i = word.IndexOf(SEP_LINE);
             if (i > 0)
+            {
                 return word.Substring(i + SEP_LINE.Length);
+            }
+
             return "";
         }
         /// <summary>
@@ -52,16 +60,16 @@ namespace DataEditorX.Common
         /// </summary>
         /// <param name="line"></param>
         /// <returns></returns>
-        public static string getMultLineValue(string line)
+        public static string GetMultLineValue(string line)
         {
-            return getRegex(getValue(line));
+            return GetRegex(GetValue(line));
         }
         /// <summary>
         /// 替换特殊符
         /// </summary>
         /// <param name="word"></param>
         /// <returns></returns>
-        public static string getRegex(string word)
+        public static string GetRegex(string word)
         {
             StringBuilder sb = new StringBuilder(word);
             sb.Replace("\\r", "\r");
@@ -75,12 +83,16 @@ namespace DataEditorX.Common
         /// </summary>
         /// <param name="line"></param>
         /// <returns></returns>
-        public static bool getBooleanValue(string line)
+        public static bool GetBooleanValue(string line)
         {
-            if (getValue(line).ToLower() == "true")
+            if (GetValue(line).ToLower() == "true")
+            {
                 return true;
+            }
             else
+            {
                 return false;
+            }
         }
         /// <summary>
         /// 获取int值
@@ -88,15 +100,15 @@ namespace DataEditorX.Common
         /// <param name="line"></param>
         /// <param name="defalut">失败的值</param>
         /// <returns></returns>
-        public static int getIntegerValue(string line, int defalut)
+        public static int GetIntegerValue(string line, int defalut)
         {
             int i;
             try
             {
-                i = int.Parse(getValue(line));
+                i = int.Parse(GetValue(line));
                 return i;
             }
-            catch{}
+            catch { }
             return defalut;
         }
         /// <summary>
@@ -113,10 +125,11 @@ namespace DataEditorX.Common
             {
                 string strkey = line.Substring(i + 2, j - i - 1);
                 string strval = line.Substring(j + 1);
-                long key;
-                long.TryParse(strkey, NumberStyles.HexNumber, null, out key);
+                long.TryParse(strkey, NumberStyles.HexNumber, null, out long key);
                 if (!dic.ContainsKey(key))
+                {
                     dic.Add(key, strval.Trim());
+                }
             }
         }
     }
