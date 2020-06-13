@@ -12,6 +12,8 @@ CodeEditForm.mainMenu.menuitem_replace	替換
 CodeEditForm.mainMenu.menuitem_setcard	設定卡片庫
 CodeEditForm.mainMenu.menuitem_help	幫助(&H)
 CodeEditForm.mainMenu.menuitem_about	關於
+CodeEditForm.mainMenu.menuitem_testlua	語法錯誤檢查
+CodeEditForm.mainMenu.menuitem_tools	工具(&T)
 #
 DataEditForm.pl_bottom.btn_img	匯入圖片
 DataEditForm.pl_main.splitContainer..lb_types	卡片型別
@@ -173,7 +175,8 @@ MainForm.mainMenu.menuitem_closeall	關閉所有
 0x49	請重啟程式使更改生效。
 0x4a	從MSE存檔匯出圖片完成。
 0x4b	從MSE存檔匯出圖片失敗。
-0x4c	>>>開始轉換<<<
+0x4c	測試完成，沒有發現語法錯誤。
+0x90	>>>開始轉換<<<
 0x100	卡片編碼
 0x101	卡片名稱
 0x102	卡片規則

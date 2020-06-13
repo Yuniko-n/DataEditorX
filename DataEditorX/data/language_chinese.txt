@@ -12,6 +12,8 @@ CodeEditForm.mainMenu.menuitem_replace	替换
 CodeEditForm.mainMenu.menuitem_setcard	设置卡片库
 CodeEditForm.mainMenu.menuitem_help	帮助(&H)
 CodeEditForm.mainMenu.menuitem_about	关于
+CodeEditForm.mainMenu.menuitem_testlua	语法错误检查
+CodeEditForm.mainMenu.menuitem_tools	工具(&T)
 #
 DataEditForm.pl_bottom.btn_img	导入图片
 DataEditForm.pl_main.splitContainer..lb_types	卡片类型
@@ -173,7 +175,8 @@ MainForm.mainMenu.menuitem_closeall	关闭所有
 0x49	请重启程序使更改生效。
 0x4a	从MSE存档导出图片完成。
 0x4b	从MSE存档导出图片失败。
-0x4c	>>>开始转换<<<
+0x4c	测试完成，没有发现语法错误。
+0x90	>>>开始转换<<<
 0x100	卡片密码
 0x101	卡片名称
 0x102	卡片规则

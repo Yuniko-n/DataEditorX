@@ -1081,7 +1081,7 @@ namespace DataEditorX
 			MyMsg.Show(
 				LanguageHelper.GetMsg(LMSG.About) + "\t" + Application.ProductName + "\n"
 				+ LanguageHelper.GetMsg(LMSG.Version) + "\t" + Application.ProductVersion + "\n"
-				+ LanguageHelper.GetMsg(LMSG.Author) + "\t菜菜 | Nanahira | Yuniko-n | JoyJ");
+				+ LanguageHelper.GetMsg(LMSG.Author) + "\t菜菜 | Nanahira | JoyJ | Yuniko-n");
 		}
 
 		void Menuitem_checkupdateClick(object sender, EventArgs e)

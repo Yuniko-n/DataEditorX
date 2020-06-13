@@ -14,7 +14,7 @@ wget -O DataEditorX/data/strings.conf https://koishi.pro/ygopro/strings.conf
 
 # build
 nuget restore
-xbuild /p:Configuration=Release /p:OutDir=$PWD/output/ /p:TargetFrameworkVersion=v4.6 
+msbuild /p:Configuration=Release /p:Platform="Any CPU" /p:OutDir=$PWD/output/ /p:TargetFrameworkVersion=v4.6
 
 # zip
 mkdir -p dist/releases

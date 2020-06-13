@@ -52,6 +52,8 @@ namespace DataEditorX
             this.menuitem_setcard = new System.Windows.Forms.ToolStripMenuItem();
             this.menuitem_help = new System.Windows.Forms.ToolStripMenuItem();
             this.menuitem_about = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuitem_tools = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuitem_testlua = new System.Windows.Forms.ToolStripMenuItem();
             this.tb_input = new System.Windows.Forms.TextBox();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
@@ -66,7 +68,8 @@ namespace DataEditorX
             this.mainMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menuitem_file,
             this.menuitem_setting,
-            this.menuitem_help});
+            this.menuitem_help,
+            this.menuitem_tools});
             this.mainMenu.Location = new System.Drawing.Point(0, 0);
             this.mainMenu.Name = "mainMenu";
             this.mainMenu.Size = new System.Drawing.Size(705, 25);
@@ -129,8 +132,8 @@ namespace DataEditorX
             this.menuitem_replace,
             this.menuitem_setcard});
             this.menuitem_setting.Name = "menuitem_setting";
-            this.menuitem_setting.Size = new System.Drawing.Size(67, 21);
-            this.menuitem_setting.Text = "Tools(&S)";
+            this.menuitem_setting.Size = new System.Drawing.Size(81, 21);
+            this.menuitem_setting.Text = "Settings(&S)";
             // 
             // menuitem_showmap
             // 
@@ -181,9 +184,25 @@ namespace DataEditorX
             // menuitem_about
             // 
             this.menuitem_about.Name = "menuitem_about";
-            this.menuitem_about.Size = new System.Drawing.Size(111, 22);
+            this.menuitem_about.Size = new System.Drawing.Size(180, 22);
             this.menuitem_about.Text = "About";
             this.menuitem_about.Click += new System.EventHandler(this.AboutToolStripMenuItemClick);
+            // 
+            // menuitem_tools
+            // 
+            this.menuitem_tools.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuitem_testlua});
+            this.menuitem_tools.Name = "menuitem_tools";
+            this.menuitem_tools.Size = new System.Drawing.Size(67, 21);
+            this.menuitem_tools.Text = "Tools(&T)";
+            // 
+            // menuitem_testlua
+            // 
+            this.menuitem_testlua.Name = "menuitem_testlua";
+            this.menuitem_testlua.ShortcutKeys = System.Windows.Forms.Keys.F5;
+            this.menuitem_testlua.Size = new System.Drawing.Size(180, 22);
+            this.menuitem_testlua.Text = "Syntax Check";
+            this.menuitem_testlua.Click += new System.EventHandler(this.menuitem_testlua_Click);
             // 
             // tb_input
             // 
@@ -226,6 +245,8 @@ namespace DataEditorX
             this.fctb.CharWidth = 10;
             this.fctb.CommentPrefix = "--";
             this.fctb.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.fctb.DelayedEventsInterval = 1;
+            this.fctb.DelayedTextChangedInterval = 1;
             this.fctb.DisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
             this.fctb.Dock = System.Windows.Forms.DockStyle.Fill;
             this.fctb.Font = new System.Drawing.Font("Consolas", 14.25F);
@@ -244,8 +265,10 @@ namespace DataEditorX
             this.fctb.RightBracket = ')';
             this.fctb.RightBracket2 = '}';
             this.fctb.SelectionColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(255)))));
+            this.fctb.ServiceColors = ((FastColoredTextBoxNS.ServiceColors)(resources.GetObject("fctb.ServiceColors")));
             this.fctb.Size = new System.Drawing.Size(514, 369);
             this.fctb.TabIndex = 0;
+            this.fctb.ToolTipDelay = 1;
             this.fctb.WordWrap = true;
             this.fctb.Zoom = 100;
             this.fctb.ToolTipNeeded += new System.EventHandler<FastColoredTextBoxNS.ToolTipNeededEventArgs>(this.FctbToolTipNeeded);
@@ -308,7 +331,7 @@ namespace DataEditorX
         private System.Windows.Forms.MenuStrip mainMenu;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.ToolTip toolTip1;
-		
-
-	}
+        private System.Windows.Forms.ToolStripMenuItem menuitem_tools;
+        private System.Windows.Forms.ToolStripMenuItem menuitem_testlua;
+    }
 }

@@ -15,15 +15,20 @@ namespace FastColoredTextBoxNS
     {
         public Label lbTooltip;
         Point lastMouseCoord;
-
         public FastColoredTextBoxEx() : base()
         {
-            this.SyntaxHighlighter = new MySyntaxHighlighter();
+            this.SyntaxHighlighter = new MySyntaxHighlighter(this);
             this.TextChanged += this.FctbTextChanged;
             this.ToolTipDelay = 1;
             this.DelayedEventsInterval = 1;
             this.DelayedTextChangedInterval = 1;
+            this.Selection.ColumnSelectionMode = true;
             this.InitializeComponent();
+        }
+
+        public override void OnTextChanged()
+        {
+
         }
 
         public new event EventHandler<ToolTipNeededEventArgs> ToolTipNeeded;
@@ -67,7 +72,10 @@ namespace FastColoredTextBoxNS
                 this.ShowTooltipWithLabel(ea.ToolTipTitle, ea.ToolTipText);
             }
         }
-
+        public void ShowTooltipWithLabel(AutocompleteItem item)
+        {
+            this.ShowTooltipWithLabel(item.ToolTipTitle, item.ToolTipText);
+        }
         public void ShowTooltipWithLabel(string title, string text, int height)
         {
             this.lbTooltip.Visible = true;

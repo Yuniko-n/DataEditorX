@@ -1,8 +1,8 @@
-﻿[DataEditorX]3.0.0.1[DataEditorX]
-[URL]https://github.com/Yuniko-n/DataEditorX/releases/download/3.0.0.1/DataEditorX-3.0.0.1.zip[URL]
+﻿[DataEditorX]3.0.0.2[DataEditorX]
+[URL]https://github.com/Yuniko-n/DataEditorX/releases/download/3.0.0.1/DataEditorX-3.0.0.2.zip[URL]
 
 ★运行环境(Environment)
-本程序基于.Net framework 2.0(3.5)开发
+本程序基于.Net framework 4.6开发
 必备DLL：
 System.Data.SQLite.dll				数据库操作
 FastColoredTextBox.dll				脚本编辑
