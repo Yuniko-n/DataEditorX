@@ -628,5 +628,11 @@ namespace DataEditorX
                 MyMsg.Show(LMSG.syntaxCheckPassed);
             }
         }
+
+        private void effectCreatorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            EffectCreatorForm form = new EffectCreatorForm();
+            form.Show();
+        }
     }
 }

@@ -54,6 +54,7 @@ namespace DataEditorX
             this.menuitem_about = new System.Windows.Forms.ToolStripMenuItem();
             this.menuitem_tools = new System.Windows.Forms.ToolStripMenuItem();
             this.menuitem_testlua = new System.Windows.Forms.ToolStripMenuItem();
+            this.effectCreatorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tb_input = new System.Windows.Forms.TextBox();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
@@ -184,14 +185,15 @@ namespace DataEditorX
             // menuitem_about
             // 
             this.menuitem_about.Name = "menuitem_about";
-            this.menuitem_about.Size = new System.Drawing.Size(180, 22);
+            this.menuitem_about.Size = new System.Drawing.Size(111, 22);
             this.menuitem_about.Text = "About";
             this.menuitem_about.Click += new System.EventHandler(this.AboutToolStripMenuItemClick);
             // 
             // menuitem_tools
             // 
             this.menuitem_tools.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.menuitem_testlua});
+            this.menuitem_testlua,
+            this.effectCreatorToolStripMenuItem});
             this.menuitem_tools.Name = "menuitem_tools";
             this.menuitem_tools.Size = new System.Drawing.Size(67, 21);
             this.menuitem_tools.Text = "Tools(&T)";
@@ -203,6 +205,15 @@ namespace DataEditorX
             this.menuitem_testlua.Size = new System.Drawing.Size(180, 22);
             this.menuitem_testlua.Text = "Syntax Check";
             this.menuitem_testlua.Click += new System.EventHandler(this.menuitem_testlua_Click);
+            // 
+            // effectCreatorToolStripMenuItem
+            // 
+            this.effectCreatorToolStripMenuItem.Name = "effectCreatorToolStripMenuItem";
+            this.effectCreatorToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F3;
+            this.effectCreatorToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.effectCreatorToolStripMenuItem.Text = "Effect Creator";
+            this.effectCreatorToolStripMenuItem.Visible = false;
+            this.effectCreatorToolStripMenuItem.Click += new System.EventHandler(this.effectCreatorToolStripMenuItem_Click);
             // 
             // tb_input
             // 
@@ -300,6 +311,7 @@ namespace DataEditorX
             this.MainMenuStrip = this.mainMenu;
             this.Name = "CodeEditForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.TabText = "CodeEditor";
             this.Text = "CodeEditor";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.CodeEditFormFormClosing);
             this.Load += new System.EventHandler(this.CodeEditFormLoad);
@@ -333,5 +345,6 @@ namespace DataEditorX
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.ToolStripMenuItem menuitem_tools;
         private System.Windows.Forms.ToolStripMenuItem menuitem_testlua;
+        private System.Windows.Forms.ToolStripMenuItem effectCreatorToolStripMenuItem;
     }
 }
