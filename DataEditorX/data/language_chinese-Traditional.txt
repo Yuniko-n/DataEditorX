@@ -12,8 +12,9 @@ CodeEditForm.mainMenu.menuitem_replace	替換
 CodeEditForm.mainMenu.menuitem_setcard	設定卡片庫
 CodeEditForm.mainMenu.menuitem_help	幫助(&H)
 CodeEditForm.mainMenu.menuitem_about	關於
-CodeEditForm.mainMenu.menuitem_testlua	語法錯誤檢查
 CodeEditForm.mainMenu.menuitem_tools	工具(&T)
+CodeEditForm.mainMenu.menuitem_testlua	語法錯誤檢查
+CodeEditForm.mainMenu.menuitem_effectcreator	效果生成器
 #
 DataEditForm.pl_bottom.btn_img	匯入圖片
 DataEditForm.pl_main.splitContainer..lb_types	卡片型別
@@ -132,7 +133,7 @@ MainForm.mainMenu.menuitem_closeall	關閉所有
 0x1e	關於：
 0x1f	版本：
 0x20	作者：
-0x21	資料庫檔案(*.cdb)|*.cdb|所有檔案(*.*)|*.*
+0x21	資料庫檔案(*.cdb)|*.cdb|指令碼文件(*.lua)|*.lua|所有檔案(*.*)|*.*
 0x22	卡組檔案(*.ydk)|*.ydk|所有檔案(*.*)|*.*
 0x23	系列號輸入出錯！
 0x24	選擇卡片影象
@@ -176,6 +177,7 @@ MainForm.mainMenu.menuitem_closeall	關閉所有
 0x4a	從MSE存檔匯出圖片完成。
 0x4b	從MSE存檔匯出圖片失敗。
 0x4c	測試完成，沒有發現語法錯誤。
+0x4d	一次性打開大量檔案將導致卡頓，是否繼續？
 0x90	>>>開始轉換<<<
 0x100	卡片編碼
 0x101	卡片名稱
