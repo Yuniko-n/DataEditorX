@@ -313,7 +313,35 @@ EVENT_PHASE						阶段结束时
 EVENT_PHASE_START				阶段开始时
 EVENT_ADD_COUNTER				增加指示物时
 EVENT_REMOVE_COUNTER			去除指示物时				Card.RemoveCounter()必须手动触发此事件
-EVENT_CUSTOM					自訂事件
+EVENT_CUSTOM					自定义事件
+!EFFECT_PROPERTY
+EFFECT_FLAG_CARD_TARGET				此效果取对象
+EFFECT_FLAG_IGNORE_RANGE			此效果影响任何区域的卡
+EFFECT_FLAG_ABSOLUTE_TARGET			此效果的Target Range不会因为控制权的改变而改变
+EFFECT_FLAG_IGNORE_IMMUNE			此效果无视效果免疫
+EFFECT_FLAG_SET_AVAILABLE			此效果影响场上里侧的卡，或可在里侧状态发动
+EFFECT_FLAG_CANNOT_INACTIVATE		此卡的发动不能被无效
+EFFECT_FLAG_CANNOT_NEGATE			此效果的发动不能被无效
+EFFECT_FLAG_CANNOT_DISABLE			此效果的效果不能被无效
+EFFECT_FLAG_PLAYER_TARGET			此效果以玩家为对象
+EFFECT_FLAG_BOTH_SIDE				此效果双方都能使用				如王宫的弹压
+EFFECT_FLAG_COPY_INHERIT			此效果若被复制，则继承其Reset属性
+EFFECT_FLAG_DAMAGE_STEP				此效果可以在伤害步骤发动
+EFFECT_FLAG_DAMAGE_CAL				此效果可以在伤害计算时发动
+EFFECT_FLAG_DELAY					此效果是“场合”效果(另开连锁)而非“时”效果
+EFFECT_FLAG_SINGLE_RANGE			此效果只对持有效果的卡有效
+EFFECT_FLAG_UNCOPYABLE				此效果不能复制
+EFFECT_FLAG_OATH					此效果是对卡效果的誓约限制(发动无效不适用，效果无效也适用)
+EFFECT_FLAG_SPSUM_PARAM				此效果将怪兽出场时需要遵守一定表示形式				用于EFFECT_SPSUMMON_PROC等正规召唤手续相关Code，在TargetRange设置
+EFFECT_FLAG_REPEAT					此效果在场面变化后需要重新计算					只适用于永续效果
+EFFECT_FLAG_NO_TURN_RESET			此效果的使用次数计数不随回合结束而重置				发条全家
+EFFECT_FLAG_EVENT_PLAYER			此效果视为玩家进行的动作						影响效果处理的触发者是“效果持有者”还是“受影响的玩家/受影响的卡的持有者”
+EFFECT_FLAG_OWNER_RELATE			此效果在效果持有者(Owner)失效后也失效
+EFFECT_FLAG_CLIENT_HINT				此效果在触发时需要进行提示客户端					用于诸如全场代破的效果，让玩家知道效果适用
+EFFECT_FLAG_CONTINUOUS_TARGET		此效果要与其他卡建立持续对象关系
+EFFECT_FLAG_LIMIT_ZONE				此魔法·陷阱卡发动时只能在某些区域发动				如灵摆转移：要将卡转移到灵摆区，就不能在灵摆区发动
+EFFECT_FLAG_IMMEDIATELY_APPLY		此效果在发动时而不是效果处理时就适用				基本上只用于永续效果。大概只能用于辅助其他事件？
+EFFECT_FLAG2_COF					此通常魔法卡可以在主要阶段以外发动
 !CATEGORY
 CATEGORY_DESTROY				破坏效果
 CATEGORY_RELEASE				解放效果
@@ -344,7 +372,7 @@ CATEGORY_DICE					骰子效果
 CATEGORY_LEAVE_GRAVE			涉及墓地的效果
 CATEGORY_LVCHANGE				改变等级效果
 CATEGORY_NEGATE					使发动无效效果
-CATEGORY_ANNOUNCE				發動時宣言卡名的效果
+CATEGORY_ANNOUNCE				发动時宣言卡名的效果
 CATEGORY_FUSION_SUMMON			融合召唤效果
 CATEGORY_TOEXTRA				回额外卡组效果
 !TIMING

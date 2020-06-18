@@ -664,8 +664,8 @@ e~=nil则检查c是否可以以效果e进行通常召唤的set，min表示至少
 如果nocheck是true则不检查c的召唤条件，如果nolimit是true则不检查c的苏生限制
 
 ●bool Card.IsAbleToHand(Card c)
-检查c是否可以送去手牌
-注：仅当卡片或者玩家受到“不能加入手牌”的效果的影响时（如雷王）此函数才返回false
+检查c是否可以送去手卡
+注：仅当卡片或者玩家受到“不能加入手卡”的效果的影响时（如雷王）此函数才返回false
 ##以下几个函数类似
 
 ●bool Card.IsAbleToDeck(Card c)
@@ -682,9 +682,9 @@ e~=nil则检查c是否可以以效果e进行通常召唤的set，min表示至少
 检查c是否可以被玩家player除外
 
 ●bool Card.IsAbleToHandAsCost(Card c)
-检查c是否可以作为cost送去手牌
+检查c是否可以作为cost送去手卡
 注：此函数会在Card.IsAbleToHand的基础上追加检测c的实际目的地
-当c送往手牌会被送去其它地方时（如缩退回路适用中，或者c是融合、同调 等额外怪兽的一种），此函数返回false
+当c送往手卡会被送去其它地方时（如缩退回路适用中，或者c是融合、同调 等额外怪兽的一种），此函数返回false
 ##以下几个函数类似
 
 ●bool Card.IsAbleToDeckAsCost(Card c)
@@ -874,7 +874,7 @@ location的默认值与c的种类有关，灵摆怪兽需要指定能否在怪�
 ●void Card.CancelToGrave(Card c[, bool cancel=true])
 取消送墓确定状态，cancel=false则重新设置送墓确定状态
 注：送墓确定状态指的是在场上发动的不留场的魔法和陷阱后，这些卡片的状态
-送墓确定状态中的卡无法返回手牌和卡组，并且连锁结束时送去墓地
+送墓确定状态中的卡无法返回手卡和卡组，并且连锁结束时送去墓地
 此函数的作用是取消此状态使其留场，用于光之护封剑和废铁稻草人等卡
 
 ●int,int Card.GetTributeRequirement(Card c)
@@ -1364,8 +1364,8 @@ end
 以reason原因把targets送去墓地，返回值是实际被操作的数量
 
 ●int Duel.SendtoHand(Card|Group targets, int player|nil, int reason)
-以reason原因把targets送去玩家player的手牌，返回值是实际被操作的数量
-如果player是nil则返回卡的持有者的手牌
+以reason原因把targets送去玩家player的手卡，返回值是实际被操作的数量
+如果player是nil则返回卡的持有者的手卡
 
 ●int Duel.SendtoDeck(Card|Group targets, int player|nil, int seq, int reason)
 以reason原因把targets送去玩家player的卡组，返回值是实际被操作的数量
@@ -1527,7 +1527,7 @@ TIMING_DAMAGE				=0x20000    	--造成伤害时点
 TIMING_RECOVER				=0x40000		--回复时点
 TIMING_DESTROY				=0x80000    	--破坏时点
 TIMING_REMOVE				=0x100000   	--除外时点
-TIMING_TOHAND				=0x200000   	--加入手牌时点（检索、回收等）
+TIMING_TOHAND				=0x200000   	--加入手卡时点（检索、回收等）
 TIMING_TODECK				=0x400000   	--回卡组时点
 TIMING_TOGRAVE				=0x800000   	--进墓地时点
 TIMING_BATTLE_PHASE			=0x1000000  	--战斗阶段时点
@@ -2130,7 +2130,7 @@ local ac=Duel.AnnounceCardFilter(tp,table.unpack(c28776350.announce_filter))
 检查玩家player是否能除外c
 
 ●bool Duel.IsPlayerCanSendtoHand(int player, Card c)
-检查玩家是否能把c送去手牌
+检查玩家是否能把c送去手卡
 
 ●bool Duel.IsPlayerCanSendtoGrave(int player, Card c)
 检查玩家是否能把c送去墓地

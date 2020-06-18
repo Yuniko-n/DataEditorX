@@ -1273,6 +1273,7 @@ namespace DataEditorX
             // 
             // DataEditForm
             // 
+            this.AllowDrop = true;
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(991, 617);
             this.Controls.Add(this.pl_main);
@@ -1288,6 +1289,8 @@ namespace DataEditorX
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.DataEditFormFormClosing);
             this.Load += new System.EventHandler(this.DataEditFormLoad);
             this.SizeChanged += new System.EventHandler(this.DataEditFormSizeChanged);
+            this.DragDrop += new System.Windows.Forms.DragEventHandler(this.OnDragDrop);
+            this.DragEnter += new System.Windows.Forms.DragEventHandler(this.OnDragEnter);
             this.Enter += new System.EventHandler(this.DataEditFormEnter);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.DataEditForm_KeyDown);
             this.mainMenu.ResumeLayout(false);

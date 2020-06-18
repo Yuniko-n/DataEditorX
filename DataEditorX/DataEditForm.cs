@@ -2338,6 +2338,37 @@ namespace DataEditorX
 
 		}
 
+		private void OnDragDrop(object sender, DragEventArgs e)
+		{
+			string[] drops = (string[])e.Data.GetData(DataFormats.FileDrop);
+			List<string> files = new List<string>();
+			foreach (string file in drops)
+			{
+				if (Directory.Exists(file))
+				{
+					files.AddRange(Directory.EnumerateFiles(file, "*.cdb", SearchOption.AllDirectories));
+					files.AddRange(Directory.EnumerateFiles(file, "*.lua", SearchOption.AllDirectories));
+				}
+				files.Add(file);
+			}
+			if (files.Count > 5)
+			{
+				if (!MyMsg.Question(LMSG.IfOpenLotsOfFile))
+				{
+					return;
+				}
+			}
+			foreach (string file in files)
+			{
+				(this.DockPanel.Parent as MainForm).Open(file);
+			}
+		}
+
+		private void OnDragEnter(object sender, DragEventArgs e)
+		{
+			e.Effect = DragDropEffects.All;
+		}
+
 		void Tb_linkKeyPress(object sender, KeyPressEventArgs e)
 		{
 			if (e.KeyChar != '0' && e.KeyChar != '1' && e.KeyChar != 1 && e.KeyChar != 22 && e.KeyChar != 3 && e.KeyChar != 8)

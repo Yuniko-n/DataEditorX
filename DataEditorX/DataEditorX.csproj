@@ -85,10 +85,15 @@
     </Reference>
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xaml" />
     <Reference Include="System.Xml" />
-    <Reference Include="WeifenLuo.WinFormsUI.Docking, Version=2.1.6643.41644, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\WeifenLuo.WinFormsUI.Docking.2.1.0\lib\net20\WeifenLuo.WinFormsUI.Docking.dll</HintPath>
+    <Reference Include="WeifenLuo.WinFormsUI.Docking, Version=3.0.6.0, Culture=neutral, PublicKeyToken=5cded1a1a0a7b481, processorArchitecture=MSIL">
+      <HintPath>..\packages\DockPanelSuite.3.0.6\lib\net40\WeifenLuo.WinFormsUI.Docking.dll</HintPath>
     </Reference>
+    <Reference Include="WeifenLuo.WinFormsUI.Docking.ThemeVS2015, Version=3.0.6.0, Culture=neutral, PublicKeyToken=5cded1a1a0a7b481, processorArchitecture=MSIL">
+      <HintPath>..\packages\DockPanelSuite.ThemeVS2015.3.0.6\lib\net40\WeifenLuo.WinFormsUI.Docking.ThemeVS2015.dll</HintPath>
+    </Reference>
+    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CodeEditForm.cs">
@@ -149,6 +154,12 @@
     <Compile Include="Core\TaskHelper.cs" />
     <Compile Include="Core\TCGEditor\CardSet.cs" />
     <Compile Include="Core\YGOUtil.cs" />
+    <Compile Include="CountLimitForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CountLimitForm.Designer.cs">
+      <DependentUpon>CountLimitForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="DataEditForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -160,6 +171,12 @@
     </Compile>
     <Compile Include="EffectCreatorForm.Designer.cs">
       <DependentUpon>EffectCreatorForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ResetForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ResetForm.Designer.cs">
+      <DependentUpon>ResetForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Language\LanguageHelper.cs" />
     <Compile Include="Language\LMsg.cs" />
@@ -241,6 +258,9 @@
     <EmbeddedResource Include="Controls\FastColoredTextBoxEx.resx">
       <DependentUpon>FastColoredTextBoxEx.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="CountLimitForm.resx">
+      <DependentUpon>CountLimitForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DataEditForm.resx">
       <DependentUpon>DataEditForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -249,6 +269,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ResetForm.resx">
+      <DependentUpon>ResetForm.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

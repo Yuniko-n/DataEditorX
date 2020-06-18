@@ -94,7 +94,7 @@ namespace DataEditorX.Language
         exportMseImages = 0x4a,
         exportMseImagesErr = 0x4b,
         syntaxCheckPassed = 0x4c,
-
+        IfOpenLotsOfFile = 0x4d,
 		StartReplace = 0x90,
 		CardId = 0x100,
 		CardName = 0x101,
@@ -110,7 +110,6 @@ namespace DataEditorX.Language
 		CardCategory = 0x111,
 		CardDesc = 0x112,
 		CardStr = 0x113,
-
         COUNT,
     }
 }

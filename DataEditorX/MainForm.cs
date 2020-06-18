@@ -109,7 +109,7 @@ namespace DataEditorX
             LanguageHelper.SetFormLabel(this);
 
             //设置所有窗口的语言
-            DockContentCollection contents = this.dockPanel1.Contents;
+            DockContentCollection contents = this.dockPanel.Contents;
             foreach (DockContent dc in contents)
             {
                 if (dc is Form)
@@ -191,7 +191,7 @@ namespace DataEditorX
             cf.InitTooltip(this.codecfg);
             //打开文件
             cf.Open(file);
-            cf.Show(this.dockPanel1, DockState.Document);
+            cf.Show(this.dockPanel, DockState.Document);
         }
         //打开数据库
         void OpenDataBase(string file)
@@ -209,7 +209,7 @@ namespace DataEditorX
             LanguageHelper.SetFormLabel(def);
             //初始化界面数据
             def.InitControl(this.datacfg);
-            def.Show(this.dockPanel1, DockState.Document);
+            def.Show(this.dockPanel, DockState.Document);
         }
         //打开文件
         public void Open(string file)
@@ -243,7 +243,7 @@ namespace DataEditorX
         //检查是否打开
         bool FindEditForm(string file, bool isOpen)
         {
-            DockContentCollection contents = this.dockPanel1.Contents;
+            DockContentCollection contents = this.dockPanel.Contents;
             //遍历所有标签
             foreach (DockContent dc in contents)
             {
@@ -279,9 +279,9 @@ namespace DataEditorX
         //关闭当前
         void CloseToolStripMenuItemClick(object sender, EventArgs e)
         {
-            if (this.dockPanel1.ActiveContent.DockHandler != null)
+            if (this.dockPanel.ActiveContent.DockHandler != null)
             {
-                this.dockPanel1.ActiveContent.DockHandler.Close();
+                this.dockPanel.ActiveContent.DockHandler.Close();
             }
         }
         //打开脚本编辑
@@ -298,7 +298,7 @@ namespace DataEditorX
         //关闭其他或者所有
         void CloseMdi(bool isall)
         {
-            DockContentCollection contents = this.dockPanel1.Contents;
+            DockContentCollection contents = this.dockPanel.Contents;
             int num = contents.Count - 1;
             try
             {
@@ -310,7 +310,7 @@ namespace DataEditorX
                         {
                             contents[num].DockHandler.Close();
                         }
-                        else if (this.dockPanel1.ActiveContent != contents[num])
+                        else if (this.dockPanel.ActiveContent != contents[num])
                         {
                             contents[num].DockHandler.Close();
                         }
@@ -336,7 +336,7 @@ namespace DataEditorX
         //得到当前的数据编辑
         DataEditForm GetActive()
         {
-            DataEditForm df = this.dockPanel1.ActiveContent as DataEditForm;
+            DataEditForm df = this.dockPanel.ActiveContent as DataEditForm;
             return df;
         }
         //打开文件
@@ -345,7 +345,7 @@ namespace DataEditorX
             using (OpenFileDialog dlg = new OpenFileDialog())
             {
                 dlg.Title = LanguageHelper.GetMsg(LMSG.OpenFile);
-                if (this.GetActive() != null || this.dockPanel1.Contents.Count == 0)//判断当前窗口是不是DataEditor
+                if (this.GetActive() != null || this.dockPanel.Contents.Count == 0)//判断当前窗口是不是DataEditor
                 {
                     dlg.Filter = LanguageHelper.GetMsg(LMSG.CdbType);
                 }
@@ -410,7 +410,7 @@ namespace DataEditorX
         //保存文件
         void Menuitem_saveClick(object sender, EventArgs e)
         {
-            if (this.dockPanel1.ActiveContent is IEditForm cf)
+            if (this.dockPanel.ActiveContent is IEditForm cf)
             {
                 if (cf.Save())//是否保存成功
                 {
@@ -759,5 +759,6 @@ namespace DataEditorX
                 th.Start();
             }
         }
+
     }
 }

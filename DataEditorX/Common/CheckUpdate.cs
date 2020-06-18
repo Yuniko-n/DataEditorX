@@ -67,7 +67,7 @@ namespace DataEditorX.Common
         {
             bool hasNew = false;
 #if DEBUG
-			System.Windows.Forms.MessageBox.Show(oldver + "=>" + ver);
+            System.Windows.Forms.MessageBox.Show(oldver + "=>" + ver);
 #endif
             string[] vers = ver.Split('.');
             string[] oldvers = oldver.Split('.');

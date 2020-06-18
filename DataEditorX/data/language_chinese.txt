@@ -12,8 +12,9 @@ CodeEditForm.mainMenu.menuitem_replace	替换
 CodeEditForm.mainMenu.menuitem_setcard	设置卡片库
 CodeEditForm.mainMenu.menuitem_help	帮助(&H)
 CodeEditForm.mainMenu.menuitem_about	关于
-CodeEditForm.mainMenu.menuitem_testlua	语法错误检查
 CodeEditForm.mainMenu.menuitem_tools	工具(&T)
+CodeEditForm.mainMenu.menuitem_testlua	语法错误检查
+CodeEditForm.mainMenu.menuitem_effectcreator	效果生成器
 #
 DataEditForm.pl_bottom.btn_img	导入图片
 DataEditForm.pl_main.splitContainer..lb_types	卡片类型
@@ -132,7 +133,7 @@ MainForm.mainMenu.menuitem_closeall	关闭所有
 0x1e	关于：
 0x1f	版本：
 0x20	作者：
-0x21	数据库文件(*.cdb)|*.cdb|所有文件(*.*)|*.*
+0x21	数据库文件(*.cdb)|*.cdb|脚本文件(*.lua)|*.lua|所有文件(*.*)|*.*
 0x22	卡组文件(*.ydk)|*.ydk|所有文件(*.*)|*.*
 0x23	系列号输入出错！
 0x24	选择卡片图像
@@ -166,7 +167,7 @@ MainForm.mainMenu.menuitem_closeall	关闭所有
 0x40	是否对比卡片信息？
 0x41	对比完成
 0x42	打开文件
-0x43	脚本文件(*.lua)|*.lua|所有文件(*.*)|*.*
+0x43	脚本文件(*.lua)|*.lua|数据库文件(*.cdb)|*.cdb|所有文件(*.*)|*.*
 0x44	新建文件
 0x45	保存完成
 0x46	是否保存脚本？
@@ -176,6 +177,7 @@ MainForm.mainMenu.menuitem_closeall	关闭所有
 0x4a	从MSE存档导出图片完成。
 0x4b	从MSE存档导出图片失败。
 0x4c	测试完成，没有发现语法错误。
+0x4d	一次性打开大量文件将导致卡顿，是否继续？
 0x90	>>>开始转换<<<
 0x100	卡片密码
 0x101	卡片名称

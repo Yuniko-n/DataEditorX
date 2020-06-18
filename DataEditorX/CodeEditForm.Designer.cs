@@ -54,7 +54,7 @@ namespace DataEditorX
             this.menuitem_about = new System.Windows.Forms.ToolStripMenuItem();
             this.menuitem_tools = new System.Windows.Forms.ToolStripMenuItem();
             this.menuitem_testlua = new System.Windows.Forms.ToolStripMenuItem();
-            this.effectCreatorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuitem_effectcreator = new System.Windows.Forms.ToolStripMenuItem();
             this.tb_input = new System.Windows.Forms.TextBox();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
@@ -193,7 +193,7 @@ namespace DataEditorX
             // 
             this.menuitem_tools.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menuitem_testlua,
-            this.effectCreatorToolStripMenuItem});
+            this.menuitem_effectcreator});
             this.menuitem_tools.Name = "menuitem_tools";
             this.menuitem_tools.Size = new System.Drawing.Size(67, 21);
             this.menuitem_tools.Text = "Tools(&T)";
@@ -202,18 +202,17 @@ namespace DataEditorX
             // 
             this.menuitem_testlua.Name = "menuitem_testlua";
             this.menuitem_testlua.ShortcutKeys = System.Windows.Forms.Keys.F5;
-            this.menuitem_testlua.Size = new System.Drawing.Size(180, 22);
+            this.menuitem_testlua.Size = new System.Drawing.Size(177, 22);
             this.menuitem_testlua.Text = "Syntax Check";
             this.menuitem_testlua.Click += new System.EventHandler(this.menuitem_testlua_Click);
             // 
-            // effectCreatorToolStripMenuItem
+            // menuitem_effectcreator
             // 
-            this.effectCreatorToolStripMenuItem.Name = "effectCreatorToolStripMenuItem";
-            this.effectCreatorToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F3;
-            this.effectCreatorToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.effectCreatorToolStripMenuItem.Text = "Effect Creator";
-            this.effectCreatorToolStripMenuItem.Visible = false;
-            this.effectCreatorToolStripMenuItem.Click += new System.EventHandler(this.effectCreatorToolStripMenuItem_Click);
+            this.menuitem_effectcreator.Name = "menuitem_effectcreator";
+            this.menuitem_effectcreator.ShortcutKeys = System.Windows.Forms.Keys.F3;
+            this.menuitem_effectcreator.Size = new System.Drawing.Size(177, 22);
+            this.menuitem_effectcreator.Text = "Effect Creator";
+            this.menuitem_effectcreator.Click += new System.EventHandler(this.effectCreatorToolStripMenuItem_Click);
             // 
             // tb_input
             // 
@@ -284,6 +283,8 @@ namespace DataEditorX
             this.fctb.Zoom = 100;
             this.fctb.ToolTipNeeded += new System.EventHandler<FastColoredTextBoxNS.ToolTipNeededEventArgs>(this.FctbToolTipNeeded);
             this.fctb.SelectionChangedDelayed += new System.EventHandler(this.FctbSelectionChangedDelayed);
+            this.fctb.DragDrop += new System.Windows.Forms.DragEventHandler(this.OnDragDtop);
+            this.fctb.DragEnter += new System.Windows.Forms.DragEventHandler(this.OnDragEnter);
             this.fctb.MouseClick += new System.Windows.Forms.MouseEventHandler(this.FctbMouseClick);
             // 
             // documentMap1
@@ -301,6 +302,7 @@ namespace DataEditorX
             // 
             // CodeEditForm
             // 
+            this.AllowDrop = true;
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(705, 415);
             this.Controls.Add(this.fctb);
@@ -315,6 +317,8 @@ namespace DataEditorX
             this.Text = "CodeEditor";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.CodeEditFormFormClosing);
             this.Load += new System.EventHandler(this.CodeEditFormLoad);
+            this.DragDrop += new System.Windows.Forms.DragEventHandler(this.OnDragDtop);
+            this.DragEnter += new System.Windows.Forms.DragEventHandler(this.OnDragEnter);
             this.Enter += new System.EventHandler(this.CodeEditFormEnter);
             this.mainMenu.ResumeLayout(false);
             this.mainMenu.PerformLayout();
@@ -345,6 +349,6 @@ namespace DataEditorX
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.ToolStripMenuItem menuitem_tools;
         private System.Windows.Forms.ToolStripMenuItem menuitem_testlua;
-        private System.Windows.Forms.ToolStripMenuItem effectCreatorToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem menuitem_effectcreator;
     }
 }

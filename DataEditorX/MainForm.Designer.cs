@@ -36,7 +36,8 @@ namespace DataEditorX
 		private void InitializeComponent()
 		{
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            this.dockPanel1 = new WeifenLuo.WinFormsUI.Docking.DockPanel();
+            this.dockPanel = new WeifenLuo.WinFormsUI.Docking.DockPanel();
+            this.theme = new WeifenLuo.WinFormsUI.Docking.VS2015LightTheme();
             this.mainMenu = new System.Windows.Forms.MenuStrip();
             this.menuitem_file = new System.Windows.Forms.ToolStripMenuItem();
             this.menuitem_open = new System.Windows.Forms.ToolStripMenuItem();
@@ -66,15 +67,19 @@ namespace DataEditorX
             this.mainMenu.SuspendLayout();
             this.SuspendLayout();
             // 
-            // dockPanel1
+            // dockPanel
             // 
-            this.dockPanel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.dockPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dockPanel1.Location = new System.Drawing.Point(0, 25);
-            this.dockPanel1.Margin = new System.Windows.Forms.Padding(0);
-            this.dockPanel1.Name = "dockPanel1";
-            this.dockPanel1.Size = new System.Drawing.Size(992, 736);
-            this.dockPanel1.TabIndex = 0;
+            this.dockPanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.dockPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dockPanel.DockBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(242)))));
+            this.dockPanel.Location = new System.Drawing.Point(0, 25);
+            this.dockPanel.Margin = new System.Windows.Forms.Padding(0);
+            this.dockPanel.Name = "dockPanel";
+            this.dockPanel.Padding = new System.Windows.Forms.Padding(6);
+            this.dockPanel.ShowAutoHideContentOnHover = false;
+            this.dockPanel.Size = new System.Drawing.Size(992, 736);
+            this.dockPanel.TabIndex = 0;
+            this.dockPanel.Theme = this.theme;
             // 
             // mainMenu
             // 
@@ -284,7 +289,7 @@ namespace DataEditorX
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(992, 761);
-            this.Controls.Add(this.dockPanel1);
+            this.Controls.Add(this.dockPanel);
             this.Controls.Add(this.mainMenu);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.IsMdiContainer = true;
@@ -324,9 +329,9 @@ namespace DataEditorX
 		private System.Windows.Forms.ToolStripMenuItem menuitem_windows;
 		private System.Windows.Forms.ToolStripMenuItem menuitem_file;
 		private System.Windows.Forms.MenuStrip mainMenu;
-		private WeifenLuo.WinFormsUI.Docking.DockPanel dockPanel1;
+		private WeifenLuo.WinFormsUI.Docking.DockPanel dockPanel;
         private System.Windows.Forms.ToolStripMenuItem menuitem_shistory;
         private System.ComponentModel.BackgroundWorker bgWorker1;
-	
-	}
+        private WeifenLuo.WinFormsUI.Docking.VS2015LightTheme theme;
+    }
 }

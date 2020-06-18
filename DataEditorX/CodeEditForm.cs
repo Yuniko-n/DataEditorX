@@ -241,7 +241,7 @@ namespace DataEditorX
             }
             else
             {
-                str = this.nowFile + "-" + this.title;
+                str = new FileInfo(this.nowFile).Name;
             }
 
             if (this.MdiParent != null)//如果父容器不为空
@@ -249,17 +249,18 @@ namespace DataEditorX
                 if (string.IsNullOrEmpty(this.nowFile))
                 {
                     this.Text = this.title;
+                    this.TabText = this.title;
                 }
                 else
                 {
                     this.Text = Path.GetFileName(this.nowFile);
                 }
-
                 this.MdiParent.Text = str;
             }
             else
             {
                 this.Text = str;
+                this.TabText = str;
             }
         }
 
@@ -633,6 +634,37 @@ namespace DataEditorX
         {
             EffectCreatorForm form = new EffectCreatorForm();
             form.Show();
+        }
+
+        private void OnDragEnter(object sender, DragEventArgs e)
+        {
+            e.Effect = DragDropEffects.All;
+        }
+
+        private void OnDragDtop(object sender, DragEventArgs e)
+        {
+            string[] drops = (string[])e.Data.GetData(DataFormats.FileDrop);
+            List<string> files = new List<string>();
+            foreach (string file in drops)
+            {
+                if (Directory.Exists(file))
+                {
+                    files.AddRange(Directory.EnumerateFiles(file, "*.cdb", SearchOption.AllDirectories));
+                    files.AddRange(Directory.EnumerateFiles(file, "*.lua", SearchOption.AllDirectories));
+                }
+                files.Add(file);
+            }
+            if (files.Count > 5)
+            {
+                if (!MyMsg.Question(LMSG.IfOpenLotsOfFile))
+                {
+                    return;
+                }
+            }
+            foreach (string file in files)
+            {
+                (this.DockPanel.Parent as MainForm).Open(file);
+            }
         }
     }
 }
