@@ -202,7 +202,7 @@ namespace DataEditorX
             // 
             this.menuitem_testlua.Name = "menuitem_testlua";
             this.menuitem_testlua.ShortcutKeys = System.Windows.Forms.Keys.F5;
-            this.menuitem_testlua.Size = new System.Drawing.Size(177, 22);
+            this.menuitem_testlua.Size = new System.Drawing.Size(180, 22);
             this.menuitem_testlua.Text = "Syntax Check";
             this.menuitem_testlua.Click += new System.EventHandler(this.menuitem_testlua_Click);
             // 
@@ -210,8 +210,9 @@ namespace DataEditorX
             // 
             this.menuitem_effectcreator.Name = "menuitem_effectcreator";
             this.menuitem_effectcreator.ShortcutKeys = System.Windows.Forms.Keys.F3;
-            this.menuitem_effectcreator.Size = new System.Drawing.Size(177, 22);
+            this.menuitem_effectcreator.Size = new System.Drawing.Size(180, 22);
             this.menuitem_effectcreator.Text = "Effect Creator";
+            this.menuitem_effectcreator.Visible = false;
             this.menuitem_effectcreator.Click += new System.EventHandler(this.effectCreatorToolStripMenuItem_Click);
             // 
             // tb_input

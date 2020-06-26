@@ -573,7 +573,7 @@ namespace DataEditorX
                 return;
             }
             //highlight same words
-            var ranges = this.fctb.VisibleRange.GetRanges("\\b" + text + "\\b");
+            var ranges = this.fctb.Range.GetRanges("\\b" + text + "\\b");
             foreach (var r in ranges)
             {
                 r.SetStyle(this.sameWordsStyle);

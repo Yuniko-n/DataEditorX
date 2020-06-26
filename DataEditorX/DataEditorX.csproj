@@ -172,6 +172,12 @@
     <Compile Include="EffectCreatorForm.Designer.cs">
       <DependentUpon>EffectCreatorForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="PositionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PositionForm.Designer.cs">
+      <DependentUpon>PositionForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="ResetForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -269,6 +275,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PositionForm.resx">
+      <DependentUpon>PositionForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ResetForm.resx">
       <DependentUpon>ResetForm.cs</DependentUpon>
