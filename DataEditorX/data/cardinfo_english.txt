@@ -3,7 +3,7 @@
 0x0	Rule
 0x1	OCG
 0x2	TCG
-0x3	OCG&TCG
+0x3	OCG & TCG
 0x4	Anime/DIY
 0x100	Pre-release
 0x101	Pre-release/OCG
@@ -23,8 +23,7 @@
 0x1000	Hidden
 0x20	Custom
 ##attribute
--1	custom
-0x0	Attribute
+0x0	(N/A) Attribute
 0x1	EARTH
 0x2	WATER
 0x4	FIRE
@@ -33,8 +32,7 @@
 0x20	DARK
 0x40	DIVINE
 ##level
--1	custom
-0x0	Level/Rank/Link
+0x0	(N/A) Level/Rank/Link
 0x1	1★
 0x2	2★
 0x3	3★
@@ -92,8 +90,7 @@
 0x40000000	Control            
 0x80000000	Move Zones
 ##race
--1	custom
-0x0	Race
+0x0	(N/A) Race
 0x1	Warrior
 0x2	Spellcaster
 0x4	Fairy
@@ -153,8 +150,7 @@
 0x40000000	Minor      
 0x80000000	Armor      
 ##setname
--1	Custom
-0x0	No Archetype
+0x0	(N/A) Archetype
 0x1	Ally of Justice
 0x2	Genex
 0x1002	R-Genex

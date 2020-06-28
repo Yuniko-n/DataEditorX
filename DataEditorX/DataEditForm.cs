@@ -369,11 +369,35 @@ namespace DataEditorX
 						Margin = fpanel.Margin
 					};
 					//_cbox.Click += PanelOnCheckClick;
+					_cbox.CheckedChanged += this._cbox_CheckedChanged;
 					fpanel.Controls.Add(_cbox);
 				}
 			}
 			fpanel.ResumeLayout(false);
 			fpanel.PerformLayout();
+		}
+
+		private void _cbox_CheckedChanged(object sender, EventArgs e)
+		{
+			CheckBox cbox = (CheckBox)sender;
+			if (cbox.Parent== this.pl_cardtype)
+			{
+				if ((long)cbox.Tag == (long)Core.Info.CardType.TYPE_LINK)
+				{
+					this.SetEnabled(this.pl_markers, cbox.Checked);
+					this.tb_def.ReadOnly = cbox.Checked;
+					this.tb_link.ReadOnly = !cbox.Checked;
+				}
+				if ((long)cbox.Tag == (long)Core.Info.CardType.TYPE_PENDULUM)
+				{
+					this.tb_pleft.ReadOnly = !cbox.Checked;
+					this.tb_pright.ReadOnly = !cbox.Checked;
+				}
+			}
+			else if (cbox.Parent == this.pl_markers)
+			{
+				this.setLinkMarks(this.GetCheck(this.pl_markers));
+			}
 		}
 
 		//初始化ComboBox
@@ -2138,7 +2162,8 @@ namespace DataEditorX
 				rule.Click += this.SetRule_Click;
 				if (MyConfig.ReadString(MyConfig.TAG_CARD_RULE).Equals(txinfo, StringComparison.OrdinalIgnoreCase))
 					rule.Checked = true;
-				this.menuitem_replacerules.DropDownItems.Add(rule);
+				if (name.Key != 0)
+					this.menuitem_replacerules.DropDownItems.Add(rule);
 			}
 			ToolStripMenuItem toTraditional = new ToolStripMenuItem(LanguageHelper.GetMsg(LMSG.StartReplace));
 			toTraditional.Click += this.Menuitem_replacerulesClick;

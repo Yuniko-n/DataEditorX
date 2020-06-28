@@ -713,6 +713,7 @@ namespace DataEditorX
             this.tb_pleft.MaxLength = 12;
             this.tb_pleft.Name = "tb_pleft";
             this.tb_pleft.Size = new System.Drawing.Size(40, 21);
+            this.tb_pleft.ReadOnly = true;
             this.tb_pleft.TabIndex = 115;
             this.tb_pleft.Text = "0";
             this.tb_pleft.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -723,6 +724,7 @@ namespace DataEditorX
             this.tb_pright.MaxLength = 12;
             this.tb_pright.Name = "tb_pright";
             this.tb_pright.Size = new System.Drawing.Size(40, 21);
+            this.tb_pright.ReadOnly = true;
             this.tb_pright.TabIndex = 116;
             this.tb_pright.Text = "0";
             this.tb_pright.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
