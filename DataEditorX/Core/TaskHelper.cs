@@ -169,6 +169,7 @@ namespace DataEditorX.Core
                 MyPath.Combine(Application.StartupPath, newver + ".zip")))
             {
                 MyMsg.Show(LMSG.DownloadSucceed);
+				System.Diagnostics.Process.Start("explorer.exe", Application.StartupPath);
             }
             else
             {
