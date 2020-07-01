@@ -51,7 +51,7 @@ DataEditForm.mainMenu.menuitem_mseconfig	設定MSE的配置檔案
 DataEditForm.mainMenu.menu_data	資料(&D)
 DataEditForm.mainMenu.menuitem_operacardsfile	同步操作卡片圖片和指令碼
 DataEditForm.mainMenu.menuitem_openfileinthis	用CodeEditor開啟指令碼
-DataEditForm.mainMenu.menuitem_addrequire	創建指令碼時自動添加require
+DataEditForm.mainMenu.menuitem_addrequire	建立指令碼時自動新增require
 DataEditForm.mainMenu.menuitem_readPNG	讀取PNG格式的圖片
 DataEditForm.mainMenu.menuitem_findluafunc	從C++原始碼查詢Lua函式
 DataEditForm.mainMenu.menuitem_readydk	從卡組檔案讀取卡片(&Y)
@@ -61,8 +61,8 @@ DataEditForm.mainMenu.menuitem_exportdata	匯出資料庫和圖片指令碼為zi
 DataEditForm.mainMenu.menuitem_readmse	讀取MSE存檔
 DataEditForm.mainMenu.menuitem_saveasmse_select	把選中導為MSE存檔
 DataEditForm.mainMenu.menuitem_saveasmse	把結果導為MSE存檔
-DataEditForm.mainMenu.menuitem_cutimages	批量裁剪卡圖
-DataEditForm.mainMenu.menuitem_convertimage	批量匯入卡圖
+DataEditForm.mainMenu.menuitem_cutimages	批次裁剪卡圖
+DataEditForm.mainMenu.menuitem_convertimage	批次匯入卡圖
 DataEditForm.mainMenu.menuitem_exportMSEimage	從MSE存檔匯出圖片(再次點選停止)
 DataEditForm.mainMenu.menuitem_cancelTask	取消任務
 DataEditForm.mainMenu.menuitem_testpendulumtext	測試靈擺效果文字
@@ -75,10 +75,10 @@ DataEditForm.mainMenu.menuitem_checkupdate	檢查更新
 DataEditForm.mainMenu.menuitem_autocheckupdate	自動檢查更新
 DataEditForm.mainMenu.menuitem_github	原始碼
 DataEditForm.mainMenu.menuitem_autoreturn	(特殊功能)中文自動換行
-DataEditForm.mainMenu.menuitem_replace	(特殊功能)批量替換文本
-DataEditForm.mainMenu.menuitem_replacerules	(特殊功能)批量替換規則
-DataEditForm.mainMenu.menuitem_replace_with_cns	(特殊功能)中文简体转繁体
-DataEditForm.mainMenu.menuitem_replace_with_cnt	(特殊功能)中文繁体转简体
+DataEditForm.mainMenu.menuitem_replace	(特殊功能)批次替換文字
+DataEditForm.mainMenu.menuitem_replacerules	(特殊功能)批次替換規則
+DataEditForm.mainMenu.menuitem_replace_with_cns	(特殊功能)中文簡體轉繁體
+DataEditForm.mainMenu.menuitem_replace_with_cnt	(特殊功能)中文繁體轉簡體
 #
 MainForm.mainMenu.menuitem_file	檔案(&F)
 MainForm.mainMenu.menuitem_open	開啟
@@ -133,7 +133,7 @@ MainForm.mainMenu.menuitem_closeall	關閉所有
 0x1e	關於：
 0x1f	版本：
 0x20	作者：
-0x21	資料庫檔案(*.cdb)|*.cdb|指令碼文件(*.lua)|*.lua|所有檔案(*.*)|*.*
+0x21	資料庫檔案(*.cdb)|*.cdb|指令碼檔案(*.lua)|*.lua|所有檔案(*.*)|*.*
 0x22	卡組檔案(*.ydk)|*.ydk|所有檔案(*.*)|*.*
 0x23	系列號輸入出錯！
 0x24	選擇卡片影象
@@ -177,7 +177,7 @@ MainForm.mainMenu.menuitem_closeall	關閉所有
 0x4a	從MSE存檔匯出圖片完成。
 0x4b	從MSE存檔匯出圖片失敗。
 0x4c	測試完成，沒有發現語法錯誤。
-0x4d	一次性打開大量檔案將導致卡頓，是否繼續？
+0x4d	一次性開啟大量檔案將導致卡頓，是否繼續？
 0x90	>>>開始轉換<<<
 0x100	卡片編碼
 0x101	卡片名稱
@@ -186,7 +186,7 @@ MainForm.mainMenu.menuitem_closeall	關閉所有
 0x104	卡片系列
 0x105	卡片型別
 0x106	卡片攻擊力
-0x107	卡片防御力
+0x107	卡片防禦力
 0x108	卡片等級
 0x109	卡片種族
 0x110	卡片屬性
