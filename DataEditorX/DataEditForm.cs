@@ -2366,6 +2366,10 @@ namespace DataEditorX
 		private void OnDragDrop(object sender, DragEventArgs e)
 		{
 			string[] drops = (string[])e.Data.GetData(DataFormats.FileDrop);
+			if (drops == null)
+			{
+				return;
+			}
 			List<string> files = new List<string>();
 			foreach (string file in drops)
 			{

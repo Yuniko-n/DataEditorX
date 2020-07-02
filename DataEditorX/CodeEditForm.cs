@@ -605,7 +605,8 @@ namespace DataEditorX
 
         private void menuitem_testlua_Click(object sender, EventArgs e)
         {
-            string fn = new FileInfo(this.nowFile).Name;
+            FileInfo fi = new FileInfo(this.nowFile);
+            string fn = fi.Name;
             if (!fn.ToUpper().EndsWith(".LUA"))
             {
                 return;
@@ -614,10 +615,11 @@ namespace DataEditorX
             bool error=false;
             try
             {
-
+                Directory.SetCurrentDirectory(fi.DirectoryName);
                 Lua lua = new Lua();
                 var env = lua.CreateEnvironment();
-                env.DoChunk("Duel={} Effect={} Card={} aux={} Auxiliary={} _G={}" + cCode + "={} " + this.fctb.Text, "test.lua");
+                string pre = "Duel={} Effect={} Card={} aux={} Auxiliary={} " + cCode + "={} Duel.LoadScript=function(str) end ";
+                env.DoChunk(pre + this.fctb.Text, "test.lua");
             }
             catch (LuaException ex)
             {
@@ -644,6 +646,10 @@ namespace DataEditorX
         private void OnDragDtop(object sender, DragEventArgs e)
         {
             string[] drops = (string[])e.Data.GetData(DataFormats.FileDrop);
+            if (drops == null)
+            {
+                return;
+            }
             List<string> files = new List<string>();
             foreach (string file in drops)
             {

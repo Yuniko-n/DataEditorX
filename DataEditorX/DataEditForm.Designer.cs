@@ -139,10 +139,10 @@ namespace DataEditorX
             this.lv_cardlist = new DataEditorX.DListView();
             this.ch_cardcode = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.ch_cardname = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.pl_markers = new DataEditorX.DFlowLayoutPanel();
             this.pl_cardtype = new DataEditorX.DFlowLayoutPanel();
             this.pl_category = new DataEditorX.DFlowLayoutPanel();
             this.lb_scripttext = new DataEditorX.DListBox();
-            this.pl_markers = new DataEditorX.DFlowLayoutPanel();
             this.mainMenu.SuspendLayout();
             this.pl_bottom.SuspendLayout();
             this.pl_main.SuspendLayout();
@@ -1145,6 +1145,7 @@ namespace DataEditorX
             // 
             // splitContainer.Panel2
             // 
+            this.splitContainer.Panel2.Controls.Add(this.pl_markers);
             this.splitContainer.Panel2.Controls.Add(this.pl_cardtype);
             this.splitContainer.Panel2.Controls.Add(this.tb_cardtext);
             this.splitContainer.Panel2.Controls.Add(this.tb_cardname);
@@ -1173,7 +1174,6 @@ namespace DataEditorX
             this.splitContainer.Panel2.Controls.Add(this.tb_cardalias);
             this.splitContainer.Panel2.Controls.Add(this.tb_setcode1);
             this.splitContainer.Panel2.Controls.Add(this.tb_atk);
-            this.splitContainer.Panel2.Controls.Add(this.pl_markers);
             this.splitContainer.Panel2.Controls.Add(this.lb_cardcode);
             this.splitContainer.Panel2.Controls.Add(this.lb_pleft_right);
             this.splitContainer.Panel2.Controls.Add(this.lb_cardalias);
@@ -1220,6 +1220,17 @@ namespace DataEditorX
             this.ch_cardname.Text = "Card Name";
             this.ch_cardname.Width = 1294;
             // 
+            // pl_markers
+            // 
+            this.pl_markers.AutoScroll = true;
+            this.pl_markers.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.pl_markers.Location = new System.Drawing.Point(265, 234);
+            this.pl_markers.Margin = new System.Windows.Forms.Padding(1, 2, 1, 2);
+            this.pl_markers.Name = "pl_markers";
+            this.pl_markers.Padding = new System.Windows.Forms.Padding(2);
+            this.pl_markers.Size = new System.Drawing.Size(63, 60);
+            this.pl_markers.TabIndex = 20;
+            // 
             // pl_cardtype
             // 
             this.pl_cardtype.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -1261,17 +1272,6 @@ namespace DataEditorX
             this.lb_scripttext.Size = new System.Drawing.Size(301, 115);
             this.lb_scripttext.TabIndex = 6;
             this.lb_scripttext.SelectedIndexChanged += new System.EventHandler(this.Lb_scripttextSelectedIndexChanged);
-            // 
-            // pl_markers
-            // 
-            this.pl_markers.AutoScroll = true;
-            this.pl_markers.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.pl_markers.Location = new System.Drawing.Point(275, 233);
-            this.pl_markers.Margin = new System.Windows.Forms.Padding(1, 2, 1, 2);
-            this.pl_markers.Name = "pl_markers";
-            this.pl_markers.Padding = new System.Windows.Forms.Padding(2);
-            this.pl_markers.Size = new System.Drawing.Size(60, 60);
-            this.pl_markers.TabIndex = 20;
             // 
             // DataEditForm
             // 
