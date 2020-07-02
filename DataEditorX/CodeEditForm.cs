@@ -618,7 +618,8 @@ namespace DataEditorX
                 Directory.SetCurrentDirectory(fi.DirectoryName);
                 Lua lua = new Lua();
                 var env = lua.CreateEnvironment();
-                string pre = "Duel={} Effect={} Card={} aux={} Auxiliary={} " + cCode + "={} Duel.LoadScript=function(str) end ";
+                string GetID = "function GetID() return " + cCode + " end "; //EDOPro
+                string pre = GetID + "Duel={} Effect={} Card={} aux={} Auxiliary={} " + cCode + "={} Duel.LoadScript=function(str) end ";
                 env.DoChunk(pre + this.fctb.Text, "test.lua");
             }
             catch (LuaException ex)
