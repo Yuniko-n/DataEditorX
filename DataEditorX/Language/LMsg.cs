@@ -95,7 +95,9 @@ namespace DataEditorX.Language
         exportMseImagesErr = 0x4b,
         syntaxCheckPassed = 0x4c,
         IfOpenLotsOfFile = 0x4d,
+
 		StartReplace = 0x90,
+		PerformanceWarning = 0x91,
 		CardId = 0x100,
 		CardName = 0x101,
 		CardOt = 0x102,

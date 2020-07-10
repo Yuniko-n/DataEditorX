@@ -2295,6 +2295,10 @@ namespace DataEditorX
 		}
 		void RunReplace(string configFileName)
 		{
+			if (DataBase.Read(nowCdbFile, true, "").Length > 1000)
+			{
+				MyMsg.Show(LMSG.PerformanceWarning);
+			}
 			using (SaveFileDialog dlg = new SaveFileDialog())
 			{
 				dlg.Title = LanguageHelper.GetMsg(LMSG.SelectDataBasePath);
