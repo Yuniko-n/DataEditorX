@@ -241,7 +241,7 @@ namespace DataEditorX
             }
             else
             {
-                str = new FileInfo(this.nowFile).Name;
+                str = this.nowFile + "-" + this.title;
             }
 
             if (this.MdiParent != null)//如果父容器不为空
@@ -260,7 +260,10 @@ namespace DataEditorX
             else
             {
                 this.Text = str;
-                this.TabText = str;
+                if (!string.IsNullOrEmpty(this.nowFile))
+                {
+                    this.TabText = new FileInfo(this.nowFile).Name;
+                }
             }
         }
 
