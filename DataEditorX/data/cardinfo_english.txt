@@ -150,6 +150,7 @@
 0x40000000	Minor      
 0x80000000	Armor      
 ##setname
+-1	[Custom]
 0x0	(N/A) Archetype
 0x1	Ally of Justice
 0x2	Genex

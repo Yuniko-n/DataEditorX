@@ -504,6 +504,10 @@ namespace DataEditorX
 			{
 				cb.SelectedIndex = index;
 			}
+			else
+			{
+				cb.SelectedIndex = 0;
+			}
 		}
 		//得到所选值
 		long GetSelect(ComboBox cb)

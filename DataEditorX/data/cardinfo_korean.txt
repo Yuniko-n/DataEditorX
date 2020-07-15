@@ -150,6 +150,7 @@
 0x40000000	Minor
 0x80000000	Armor
 ##setname
+-1	[Custom]
 0x0	(카드군)
 0x1	얼리 오브 저스티스(정발명:A·O·J)
 0x2	제넥스
