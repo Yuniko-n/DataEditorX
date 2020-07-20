@@ -187,6 +187,7 @@ namespace DataEditorX
 			//获取MSE配菜单
 			this.AddMenuItemFormMSE();
 			//
+			this.InitOpencc();
 			this.GetRuleItem();
 			this.GetOpenCCConfigItem();
 			this.GetLanguageItem();
@@ -2218,59 +2219,69 @@ namespace DataEditorX
 		}
 		#endregion
 
-        #region 数据库中文繁简转换
-        void GetOpenCCConfigItem()
-		{
-			string opencc_path = MyPath.Combine(Application.StartupPath, MyConfig.TAG_OPENCC);
-			if (!Directory.Exists(opencc_path))
-				return;
-			string[] files = Directory.GetFiles(opencc_path);
-			this.menuitem_replace_with_cns.DropDownItems.Clear();
-			foreach (string file in files)
-			{
-				string name = MyPath.GetFullFileName(MyConfig.TAG_OPENCC_CNT, file);
-				if (string.IsNullOrEmpty(name))
-					continue;
-				TextInfo txinfo = new CultureInfo(CultureInfo.InstalledUICulture.Name).TextInfo;
-				ToolStripMenuItem config = new ToolStripMenuItem(txinfo.ToTitleCase(name));
-				config.ToolTipText = file;
-				config.Click += this.SetOpenCC_CNT_Config;
-				if (MyConfig.ReadString(MyConfig.TAG_OPENCC_CNT).Equals(name, StringComparison.OrdinalIgnoreCase))
-					config.Checked = true;
-				this.menuitem_replace_with_cns.DropDownItems.Add(config);
-			}
-            ToolStripMenuItem toTraditional = new ToolStripMenuItem(LanguageHelper.GetMsg(LMSG.StartReplace));
-            toTraditional.Click += this.menuitem_ReplaceWithCNtClick;
-            this.menuitem_replace_with_cns.DropDownItems.Add(toTraditional);
+		#region 数据库中文繁简转换
+		public Dictionary<long, string> OPENCC_CNS = null;
+		public Dictionary<long, string> OPENCC_CNT = null;
 
-			this.menuitem_replace_with_cnt.DropDownItems.Clear();
-			foreach (string file in files)
+		public Dictionary<long, string> OPENCC_CNS_NAME = null;
+		public Dictionary<long, string> OPENCC_CNT_NAME = null;
+
+		void InitOpencc()
+		{
+			string conf = MyPath.Combine(this.datapath, MyConfig.TAG_OPENCC + ".txt");
+			if (!File.Exists(conf))
 			{
-				string name = MyPath.GetFullFileName(MyConfig.TAG_OPENCC_CNS, file);
+				this.OPENCC_CNS = new Dictionary<long, string>();
+				this.OPENCC_CNT = new Dictionary<long, string>();
+				this.OPENCC_CNS_NAME = new Dictionary<long, string>();
+				this.OPENCC_CNT_NAME = new Dictionary<long, string>();
+				return;
+			}
+			//提取内容
+			string text = File.ReadAllText(conf);
+			this.OPENCC_CNS = DataManager.Read(text, MyConfig.TAG_OPENCC_CNS);
+			this.OPENCC_CNT = DataManager.Read(text, MyConfig.TAG_OPENCC_CNT);
+			this.OPENCC_CNS_NAME = DataManager.Read(text, MyConfig.TAG_OPENCC_CNS + "_name");
+			this.OPENCC_CNT_NAME = DataManager.Read(text, MyConfig.TAG_OPENCC_CNT + "_name");
+		}
+
+		void GetOpenCCConfigItem()
+		{
+			this.menuitem_replace_with_cns.DropDownItems.Clear();
+			foreach (long key in OPENCC_CNS.Keys)
+			{
+				string name = DataManager.GetValue(this.OPENCC_CNS_NAME, key);
 				if (string.IsNullOrEmpty(name))
 					continue;
 				TextInfo txinfo = new CultureInfo(CultureInfo.InstalledUICulture.Name).TextInfo;
 				ToolStripMenuItem config = new ToolStripMenuItem(txinfo.ToTitleCase(name));
-				config.ToolTipText = file;
+				config.ToolTipText = name;
 				config.Click += this.SetOpenCC_CNS_Config;
 				if (MyConfig.ReadString(MyConfig.TAG_OPENCC_CNS).Equals(name, StringComparison.OrdinalIgnoreCase))
 					config.Checked = true;
+				this.menuitem_replace_with_cns.DropDownItems.Add(config);
+			}
+			ToolStripMenuItem toTraditional = new ToolStripMenuItem(LanguageHelper.GetMsg(LMSG.StartReplace));
+			toTraditional.Click += this.menuitem_ReplaceWithCNsClick;
+			this.menuitem_replace_with_cns.DropDownItems.Add(toTraditional);
+
+			this.menuitem_replace_with_cnt.DropDownItems.Clear();
+			foreach (long key in OPENCC_CNT.Keys)
+			{
+				string name = DataManager.GetValue(this.OPENCC_CNT_NAME, key);
+				if (string.IsNullOrEmpty(name))
+					continue;
+				TextInfo txinfo = new CultureInfo(CultureInfo.InstalledUICulture.Name).TextInfo;
+				ToolStripMenuItem config = new ToolStripMenuItem(txinfo.ToTitleCase(name));
+				config.ToolTipText = name;
+				config.Click += this.SetOpenCC_CNT_Config;
+				if (MyConfig.ReadString(MyConfig.TAG_OPENCC_CNT).Equals(name, StringComparison.OrdinalIgnoreCase))
+					config.Checked = true;
 				this.menuitem_replace_with_cnt.DropDownItems.Add(config);
 			}
-            ToolStripMenuItem toSimplified = new ToolStripMenuItem(LanguageHelper.GetMsg(LMSG.StartReplace));
-            toSimplified.Click += this.menuitem_ReplaceWithCNsClick;
-            this.menuitem_replace_with_cnt.DropDownItems.Add(toSimplified);
-		}
-		void SetOpenCC_CNT_Config(object sender, EventArgs e)
-		{
-			if (this.isRun())
-				return;
-			if (sender is ToolStripMenuItem)
-			{
-				ToolStripMenuItem CNT_config = (ToolStripMenuItem)sender;
-				MyConfig.Save(MyConfig.TAG_OPENCC_CNT, CNT_config.Text);
-				this.GetOpenCCConfigItem();
-			}
+			ToolStripMenuItem toSimplified = new ToolStripMenuItem(LanguageHelper.GetMsg(LMSG.StartReplace));
+			toSimplified.Click += this.menuitem_ReplaceWithCNtClick;
+			this.menuitem_replace_with_cnt.DropDownItems.Add(toSimplified);
 		}
 		void SetOpenCC_CNS_Config(object sender, EventArgs e)
 		{
@@ -2283,19 +2294,30 @@ namespace DataEditorX
 				this.GetOpenCCConfigItem();
 			}
 		}
-
-		void menuitem_ReplaceWithCNtClick(object sender, EventArgs e)
+		void SetOpenCC_CNT_Config(object sender, EventArgs e)
 		{
-			if (!this.CheckOpen())
+			if (this.isRun())
 				return;
-			RunReplace(MyPath.Combine(MyPath.Combine(Application.StartupPath, MyConfig.TAG_OPENCC), MyPath.getFileName(MyConfig.TAG_OPENCC_CNT, MyConfig.ReadString(MyConfig.TAG_OPENCC_CNT), ".json")));
+			if (sender is ToolStripMenuItem)
+			{
+				ToolStripMenuItem CNT_config = (ToolStripMenuItem)sender;
+				MyConfig.Save(MyConfig.TAG_OPENCC_CNT, CNT_config.Text);
+				this.GetOpenCCConfigItem();
+			}
 		}
 		void menuitem_ReplaceWithCNsClick(object sender, EventArgs e)
 		{
 			if (!this.CheckOpen())
 				return;
-			RunReplace(MyPath.Combine(MyPath.Combine(Application.StartupPath, MyConfig.TAG_OPENCC), MyPath.getFileName(MyConfig.TAG_OPENCC_CNS, MyConfig.ReadString(MyConfig.TAG_OPENCC_CNS), ".json")));
-
+			RunReplace(MyPath.Combine(MyPath.Combine(Application.StartupPath, MyConfig.TAG_OPENCC), 
+						DataManager.GetValue(this.OPENCC_CNS, DataManager.GetKey(this.OPENCC_CNS_NAME, MyConfig.ReadString(MyConfig.TAG_OPENCC_CNS)))));
+		}
+		void menuitem_ReplaceWithCNtClick(object sender, EventArgs e)
+		{
+			if (!this.CheckOpen())
+				return;
+			RunReplace(MyPath.Combine(MyPath.Combine(Application.StartupPath, MyConfig.TAG_OPENCC), 
+						DataManager.GetValue(this.OPENCC_CNT, DataManager.GetKey(this.OPENCC_CNT_NAME, MyConfig.ReadString(MyConfig.TAG_OPENCC_CNT)))));
 		}
 		void RunReplace(string configFileName)
 		{
@@ -2320,7 +2342,7 @@ namespace DataEditorX
 				}
 			}
 		}
-        #endregion
+		#endregion
 
 		private void text2LinkMarks(string text)
 		{

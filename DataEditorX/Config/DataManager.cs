@@ -132,6 +132,16 @@ namespace DataEditorX.Config
             }
             return list;
         }
+        public static long GetKey(Dictionary<long, string> dic, string values)
+        {
+            long key = 0;
+            foreach (KeyValuePair<long, string> name in dic)
+            {
+                if (name.Value == values)
+                    key = name.Key;
+            }
+            return key;
+        }
         public static string[] GetValues(Dictionary<long, string> dic)
         {
             List<string> list = new List<string>();

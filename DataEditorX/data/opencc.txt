@@ -1,0 +1,38 @@
+################ 使用 tab 分隔
+################ opencc_cns: 简体转繁体配置
+################ opencc_cns_name: CNS配置文件对应名
+################ opencc_cnt: 繁体转简体，或者繁体转繁体配置
+################ opencc_cnt_name: CNT配置文件对应名
+##opencc_cns
+0x0	s2t.json
+0x1	s2tw.json
+0x2	s2hk.json
+0x3	s2twp.json
+##opencc_cns_name
+0x0	简体到繁体
+0x1	简体到台湾正体
+0x2	简体到香港繁体
+0x3	简体到繁体（台湾正体标准）并转换为台湾常用词汇
+##opencc_cnt
+0x0	t2s.json
+0x1	tw2s.json
+0x2	hk2s.json
+0x3	tw2sp.json
+0x4	t2tw.json
+0x5	hk2t.json
+0x6	t2hk.json
+0x7	t2jp.json
+0x8	jp2t.json
+0x9	tw2t.json
+##opencc_cnt_name
+0x0	繁體到簡體
+0x1	臺灣正體到簡體
+0x2	香港繁體到簡體
+0x3	繁體（臺灣正體標準）到簡體並轉換爲中國大陸常用詞彙
+0x4	繁體（OpenCC 標準）到臺灣正體
+0x5	香港繁體到繁體（OpenCC 標準）
+0x6	繁體（OpenCC 標準）到香港繁體
+0x7	繁體（OpenCC 標準，舊字體）到日文新字體
+0x8	日文新字體到繁體（OpenCC 標準，舊字體）
+0x9	臺灣正體到繁體（OpenCC 標準）
+#end

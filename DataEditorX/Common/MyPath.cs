@@ -114,7 +114,7 @@ namespace System.IO
         {
             return tag + "_" + lang + ".txt";
         }
-        public static string getFileName(string tag,string lang, string type)
+        public static string GetFileName(string tag,string lang, string type)
         {
             return tag + "_" + lang + type;
         }

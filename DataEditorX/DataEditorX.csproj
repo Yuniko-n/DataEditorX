@@ -329,6 +329,11 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="data\opencc.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="opencc\*">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
