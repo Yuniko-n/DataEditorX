@@ -2170,6 +2170,7 @@ namespace DataEditorX
 				if (name.Key != 0)
 					this.menuitem_replacerules.DropDownItems.Add(rule);
 			}
+			this.menuitem_replacerules.DropDownItems.Add(new ToolStripSeparator());
 			ToolStripMenuItem toTraditional = new ToolStripMenuItem(LanguageHelper.GetMsg(LMSG.StartReplace));
 			toTraditional.Click += this.Menuitem_replacerulesClick;
 			this.menuitem_replacerules.DropDownItems.Add(toTraditional);
@@ -2261,6 +2262,7 @@ namespace DataEditorX
 					config.Checked = true;
 				this.menuitem_replace_with_cns.DropDownItems.Add(config);
 			}
+			this.menuitem_replace_with_cns.DropDownItems.Add(new ToolStripSeparator());
 			ToolStripMenuItem toTraditional = new ToolStripMenuItem(LanguageHelper.GetMsg(LMSG.StartReplace));
 			toTraditional.Click += this.menuitem_ReplaceWithCNsClick;
 			this.menuitem_replace_with_cns.DropDownItems.Add(toTraditional);
@@ -2271,6 +2273,8 @@ namespace DataEditorX
 				string name = DataManager.GetValue(this.OPENCC_CNT_NAME, key);
 				if (string.IsNullOrEmpty(name))
 					continue;
+				if (key == 4) //繁体转繁体分隔
+					this.menuitem_replace_with_cnt.DropDownItems.Add(new ToolStripSeparator());
 				TextInfo txinfo = new CultureInfo(CultureInfo.InstalledUICulture.Name).TextInfo;
 				ToolStripMenuItem config = new ToolStripMenuItem(txinfo.ToTitleCase(name));
 				config.ToolTipText = name;
@@ -2279,6 +2283,7 @@ namespace DataEditorX
 					config.Checked = true;
 				this.menuitem_replace_with_cnt.DropDownItems.Add(config);
 			}
+			this.menuitem_replace_with_cnt.DropDownItems.Add(new ToolStripSeparator());
 			ToolStripMenuItem toSimplified = new ToolStripMenuItem(LanguageHelper.GetMsg(LMSG.StartReplace));
 			toSimplified.Click += this.menuitem_ReplaceWithCNtClick;
 			this.menuitem_replace_with_cnt.DropDownItems.Add(toSimplified);
