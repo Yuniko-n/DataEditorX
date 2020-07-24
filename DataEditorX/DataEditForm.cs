@@ -2159,15 +2159,15 @@ namespace DataEditorX
 			string text = File.ReadAllText(conf);
 			CardRules = DataManager.Read(text, MyConfig.TAG_RULE);
 			this.menuitem_replacerules.DropDownItems.Clear();
-			foreach (KeyValuePair<long, string> name in CardRules)
+			foreach (long key in this.CardRules.Keys)
 			{
-				string txinfo = name.Value;
+				string txinfo = DataManager.GetValue(this.CardRules, key);
 				ToolStripMenuItem rule = new ToolStripMenuItem(txinfo);
 				rule.ToolTipText = txinfo;
 				rule.Click += this.SetRule_Click;
 				if (MyConfig.ReadString(MyConfig.TAG_CARD_RULE).Equals(txinfo, StringComparison.OrdinalIgnoreCase))
 					rule.Checked = true;
-				if (name.Key != 0)
+				if (key != 0)
 					this.menuitem_replacerules.DropDownItems.Add(rule);
 			}
 			this.menuitem_replacerules.DropDownItems.Add(new ToolStripSeparator());
@@ -2198,12 +2198,7 @@ namespace DataEditorX
 				{
 					Card[] cards = DataBase.Read(nowCdbFile, true, "");
 					int count = cards.Length;
-					long rule = 0;
-					foreach (KeyValuePair<long, string> name in CardRules)
-					{
-						if (name.Value == MyConfig.ReadString(MyConfig.TAG_CARD_RULE))
-							rule = name.Key;
-					}
+					long rule = DataManager.GetKey(this.CardRules, MyConfig.ReadString(MyConfig.TAG_CARD_RULE));
 					if (cards == null || cards.Length == 0)
 						return;
 					if (DataBase.Create(dlg.FileName))
@@ -2249,16 +2244,15 @@ namespace DataEditorX
 		void GetOpenCCConfigItem()
 		{
 			this.menuitem_replace_with_cns.DropDownItems.Clear();
-			foreach (long key in OPENCC_CNS.Keys)
+			foreach (long key in this.OPENCC_CNS.Keys)
 			{
-				string name = DataManager.GetValue(this.OPENCC_CNS_NAME, key);
-				if (string.IsNullOrEmpty(name))
+				string txinfo = DataManager.GetValue(this.OPENCC_CNS_NAME, key);
+				if (string.IsNullOrEmpty(txinfo))
 					continue;
-				TextInfo txinfo = new CultureInfo(CultureInfo.InstalledUICulture.Name).TextInfo;
-				ToolStripMenuItem config = new ToolStripMenuItem(txinfo.ToTitleCase(name));
-				config.ToolTipText = name;
+				ToolStripMenuItem config = new ToolStripMenuItem(txinfo);
+				config.ToolTipText = txinfo;
 				config.Click += this.SetOpenCC_CNS_Config;
-				if (MyConfig.ReadString(MyConfig.TAG_OPENCC_CNS).Equals(name, StringComparison.OrdinalIgnoreCase))
+				if (MyConfig.ReadString(MyConfig.TAG_OPENCC_CNS).Equals(txinfo, StringComparison.OrdinalIgnoreCase))
 					config.Checked = true;
 				this.menuitem_replace_with_cns.DropDownItems.Add(config);
 			}
@@ -2268,18 +2262,17 @@ namespace DataEditorX
 			this.menuitem_replace_with_cns.DropDownItems.Add(toTraditional);
 
 			this.menuitem_replace_with_cnt.DropDownItems.Clear();
-			foreach (long key in OPENCC_CNT.Keys)
+			foreach (long key in this.OPENCC_CNT.Keys)
 			{
-				string name = DataManager.GetValue(this.OPENCC_CNT_NAME, key);
-				if (string.IsNullOrEmpty(name))
+				string txinfo = DataManager.GetValue(this.OPENCC_CNT_NAME, key);
+				if (string.IsNullOrEmpty(txinfo))
 					continue;
 				if (key == 4) //繁体转繁体分隔
 					this.menuitem_replace_with_cnt.DropDownItems.Add(new ToolStripSeparator());
-				TextInfo txinfo = new CultureInfo(CultureInfo.InstalledUICulture.Name).TextInfo;
-				ToolStripMenuItem config = new ToolStripMenuItem(txinfo.ToTitleCase(name));
-				config.ToolTipText = name;
+				ToolStripMenuItem config = new ToolStripMenuItem(txinfo);
+				config.ToolTipText = txinfo;
 				config.Click += this.SetOpenCC_CNT_Config;
-				if (MyConfig.ReadString(MyConfig.TAG_OPENCC_CNT).Equals(name, StringComparison.OrdinalIgnoreCase))
+				if (MyConfig.ReadString(MyConfig.TAG_OPENCC_CNT).Equals(txinfo, StringComparison.OrdinalIgnoreCase))
 					config.Checked = true;
 				this.menuitem_replace_with_cnt.DropDownItems.Add(config);
 			}
