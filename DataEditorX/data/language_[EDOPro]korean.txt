@@ -1,0 +1,184 @@
+﻿#
+CodeEditForm.mainMenu.menuitem_file	파일(&F)
+CodeEditForm.mainMenu.menuitem_open	열기
+CodeEditForm.mainMenu.menuitem_save	저장
+CodeEditForm.mainMenu.menuitem_saveas	다른 이름으로 저장
+CodeEditForm.mainMenu.menuitem_quit	종료
+CodeEditForm.mainMenu.menuitem_setting	도구(&S)
+CodeEditForm.mainMenu.menuitem_showmap	전체 지도 보이기
+CodeEditForm.mainMenu.menuitem_showinput	텍스트 상자 보이기
+CodeEditForm.mainMenu.menuitem_find	찾기
+CodeEditForm.mainMenu.menuitem_replace	바꾸기
+CodeEditForm.mainMenu.menuitem_setcard	카드 선택
+CodeEditForm.mainMenu.menuitem_help	도움말(&H)
+CodeEditForm.mainMenu.menuitem_about	CodeEditor에 대하여
+#
+DataEditForm.pl_bottom.btn_img	이미지 선택
+DataEditForm.pl_main.splitContainer..lb_types	종류　　　　　　　　　　　　 (※해당사항 전부 체크)
+DataEditForm.pl_main.splitContainer..lb_markers	 링크          마커
+DataEditForm.pl_main.splitContainer..lb_tiptexts	스트링　　　　　　　　　　　 (※여기 스크립트 아님)
+DataEditForm.pl_main.splitContainer..lb_categorys	세부사항　　　　　　　　　　 (※체크하지 않아도 됨)
+DataEditForm.pl_main.splitContainer..lb_cardcode	코드번호
+DataEditForm.pl_main.splitContainer..lb_cardalias	(동명)
+DataEditForm.pl_main.splitContainer..lb_atkdef	공 / 수
+DataEditForm.pl_main.splitContainer..lb_pleft_right	P 스케일
+DataEditForm.pl_main.splitContainer..lv_cardlist.0	코드번호
+DataEditForm.pl_main.splitContainer..lv_cardlist.1	카드명
+DataEditForm.pl_bottom.btn_reset	리셋
+DataEditForm.pl_bottom.btn_lua	스크립트
+DataEditForm.pl_bottom.btn_serach	검색
+DataEditForm.pl_bottom.btn_del	카드 삭제
+DataEditForm.pl_bottom.btn_undo	되돌리기
+DataEditForm.pl_bottom.btn_mod	수정
+DataEditForm.pl_bottom.btn_add	카드 추가
+DataEditForm.pl_bottom.btn_PageDown	>>
+DataEditForm.pl_bottom.btn_PageUp	<<
+DataEditForm.pl_main.lv_cardlist.0	코드번호
+DataEditForm.pl_main.lv_cardlist.1	카드명
+DataEditForm.mainMenu.menuitem_file	파일(&F)
+DataEditForm.mainMenu.menuitem_open	열기(&O)
+DataEditForm.mainMenu.menuitem_new	새 파일(&N)
+DataEditForm.mainMenu.menuitem_copyselectto	선택한 카드를 복사...
+DataEditForm.mainMenu.menuitem_copyto	모든 카드를 복사...
+DataEditForm.mainMenu.menuitem_openLastDataBase	최근 데이터베이스 열기
+DataEditForm.mainMenu.menuitem_quit	종료
+DataEditForm.mainMenu.menu_image	MSE(&M)
+DataEditForm.mainMenu.menuitem_importmseimg	MSE 이미지 넣기
+DataEditForm.mainMenu.menuitem_mseconfig	MSE 설정
+DataEditForm.mainMenu.menu_data	데이터(&D)
+DataEditForm.mainMenu.menuitem_operacardsfile	카드 이미지 및 스크립트 동기화
+DataEditForm.mainMenu.menuitem_openfileinthis	CodeEditor로 스크립트 열기
+DataEditForm.mainMenu.menuitem_addrequire	Add REQUIRE Automatically
+DataEditForm.mainMenu.menuitem_findluafunc	C++ 소스 코드에서 Lua 함수 찾기
+DataEditForm.mainMenu.menuitem_readydk	덱 파일 읽기
+DataEditForm.mainMenu.menuitem_readimages	이미지 폴더 선택
+DataEditForm.mainMenu.menuitem_compdb	cdb 파일 압축
+DataEditForm.mainMenu.menuitem_exportdata	데이터 내보내기
+DataEditForm.mainMenu.menuitem_readmse	MSE 설정 파일 읽기
+DataEditForm.mainMenu.menuitem_saveasmse_select	선택한 카드를 MSE로 저장
+DataEditForm.mainMenu.menuitem_saveasmse	모든 카드를 MSE로 저장
+DataEditForm.mainMenu.menuitem_cutimages	이미지 자르기
+DataEditForm.mainMenu.menuitem_convertimage	이미지 불러오기
+DataEditForm.mainMenu.menuitem_exportMSEimage	MSE 설정을 이미지로 내보내기
+DataEditForm.mainMenu.menuitem_cancelTask	작업 취소
+DataEditForm.mainMenu.menuitem_testpendulumtext	펜듈럼 텍스트 테스트
+DataEditForm.mainMenu.menuitem_export_all_sql	모든 카드를 SQL으로 내보내기
+DataEditForm.mainMenu.menuitem_export_select_sql	선택한 카드를 SQL으로 내보내기
+DataEditForm.mainMenu.menuitem_help	도움말(&H)
+DataEditForm.mainMenu.menuitem_about	DataEditorX에 대하여
+DataEditForm.mainMenu.menuitem_language	언어
+DataEditForm.mainMenu.menuitem_checkupdate	업데이트 확인
+DataEditForm.mainMenu.menuitem_autocheckupdate	자동 업데이트 확인
+DataEditForm.mainMenu.menuitem_github	Github 소스 코드 확인
+DataEditForm.mainMenu.menuitem_autoreturn	(*)자동 줄 바꿈
+DataEditForm.mainMenu.menuitem_replace	(*)...
+#
+MainForm.mainMenu.menuitem_file	파일(&F)
+MainForm.mainMenu.menuitem_open	열기
+MainForm.mainMenu.menuitem_new	새 파일
+MainForm.mainMenu.menuitem_save	저장
+MainForm.mainMenu.menuitem_copyselect	선택한 카드 복사
+MainForm.mainMenu.menuitem_copyall	모든 카드 복사
+MainForm.mainMenu.menuitem_pastecards	카드 붙여넣기
+MainForm.mainMenu.menuitem_comp1	카드 비교 1
+MainForm.mainMenu.menuitem_comp2	카드 비교 2
+MainForm.mainMenu.menuitem_history	최근 목록(&H)
+MainForm.mainMenu.menuitem_shistory	최근 스크립트 목록
+MainForm.mainMenu.menuitem_quit	종료(&Q)
+MainForm.mainMenu.menuitem_windows	창(&W)
+MainForm.mainMenu.menuitem_dataeditor	새 DataEditor 열기
+MainForm.mainMenu.menuitem_codeeditor	새 CodeEditor 열기
+MainForm.mainMenu.menuitem_close	창 닫기
+MainForm.mainMenu.menuitem_closeother	나머지 창 닫기
+MainForm.mainMenu.menuitem_closeall	모두 닫기
+#
+0x0	정보
+0x1	오류
+0x2	경고
+0x3	질문
+0x4	생성 완료!
+0x5	생성 실패!
+0x6	추가 완료!
+0x7	추가 실패!
+0x8	코드번호는 0 이하가 될 수 없습니다!
+0x9	이미 존재합니다!
+0xa	변경되지 않았습니다.
+0xb	카드를 삭제할까요?
+0xc	스크립트 파일을 열까요?
+0xd	데이터베이스를 열까요?
+0xe	이미 존재하는 카드를 대체할까요?
+0xf	최신 버전입니다.\n다시 다운로드 하시겠습니까?
+0x10	업데이트 확인 실패.\n네트워크 상태를 확인하세요.
+0x11	새로운 버전이 있습니다.\n다운로드 하시겠습니까?
+0x12	파일이 없습니다!
+0x13	선택한 데이터베이스가 없습니다!
+0x14	데이터베이스 파일 선택
+0x15	덱 파일 선택
+0x16	이미지 폴더 선택
+0x17	다운로드 완료!
+0x18	다운로드 실패
+0x19	선택한 스크립트 텍스트가 없습니다!
+0x1a	삭제 성공!
+0x1b	삭제 실패!
+0x1c	수정 성공!
+0x1d	수정 실패!
+0x1e	이름 :
+0x1f	버전 :
+0x20	만든 사람 :
+0x21	데이터베이스 파일(*.cdb)|*.cdb|모든 파일(*.*)|*.*
+0x22	덱 파일(*.ydk)|*.ydk|모든 파일(*.*)|*.*
+0x23	카드군 코드 에러!
+0x24	카드의 이미지를 선택하세요
+0x25	jpg(*.jpg)|*.jpg|bmp(*.bmp)|*.bmp|png(*.png)|*.png|모든 파일(*.*)|*.*
+0x26	작업 중입니다.
+0x27	업데이트 확인 중...
+0x28	데이터베이스 복사 중...
+0x29	데이터베이스 복사 완료!
+0x2a	MSE 설정 파일 저장
+0x2b	MSE set(*.mse-set)|*.mse-set|모든 파일(*.*)|*.*
+0x2c	MSE 설정 내보내기 중...
+0x2d	MSE 설정 내보내기 완료!
+0x2e	이미지 자르는 중...
+0x2f	이미지 자르기 완료!
+0x30	선택된 카드가 없습니다.
+0x31	이미 존재하는 이미지를 대체할까요?
+0x32	이미지 변환 중...
+0x33	이미지 변환 완료!
+0x34	데이터베이스 압축 완료!
+0x35	설정의 텍스트만을 업데이트 합니까?
+0x36	작업이 취소되었습니다.
+0x37	작업이 일시정지되었습니다.
+0x38	작업이 재개되었습니다.
+0x39	작업 오류!
+0x3a	작업을 취소할까요?
+0x3b	복사했습니다.
+0x3c	붙여넣었습니다.
+0x3d	목록 지우기
+0x3e	데이터 내보내기 중...
+0x3f	데이터 내보내기 완료!
+0x40	카드 텍스트를 비교합니까?
+0x41	카드 비교 완료!
+0x42	파일 열기
+0x43	Script(*.lua)|*.lua|all files(*.*)|*.*
+0x44	새 파일
+0x45	저장 완료!
+0x46	스크립트를 저장합니까?
+0x47	MSE 설정 읽기
+0x48	MSE 설정 읽기가 완료되었습니다.
+0x49	변경 사항을 적용하기 위해 프로그램을 다시 시작하십시오.
+0x4a	MSE 이미지 설정 내보내기에 성공하였습니다.
+0x4b	MSE 이미지 설정 내보내기에 실패하였습니다.
+0x100	코드번호
+0x101	카드명
+0x102	룰
+0x103	동명
+0x104	카드군
+0x105	종류
+0x106	ATK
+0x107	DEF
+0x108	Level
+0x109	종족
+0x110	속성
+0x111	세부사항
+0x112	Desc
+0x113	스트링
