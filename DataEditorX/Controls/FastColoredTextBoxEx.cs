@@ -69,7 +69,8 @@ namespace FastColoredTextBoxNS
 
             if (ea.ToolTipText != null)
             {
-                this.ShowTooltipWithLabel(ea.ToolTipTitle, ea.ToolTipText);
+                //this.ShowTooltipWithLabel(ea.ToolTipTitle, ea.ToolTipText);
+                this.ToolTip.Show($"{ea.ToolTipTitle}\r\n\r\n{ea.ToolTipText}", this, new Point(this.lastMouseCoord.X, this.lastMouseCoord.Y + this.CharHeight));
             }
         }
         public void ShowTooltipWithLabel(AutocompleteItem item)
