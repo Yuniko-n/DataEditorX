@@ -347,11 +347,19 @@ namespace DataEditorX
                 dlg.Title = LanguageHelper.GetMsg(LMSG.OpenFile);
                 if (this.GetActive() != null || this.dockPanel.Contents.Count == 0)//判断当前窗口是不是DataEditor
                 {
-                    dlg.Filter = LanguageHelper.GetMsg(LMSG.CdbType);
+                    try
+                    {
+                        dlg.Filter = LanguageHelper.GetMsg(LMSG.CdbType);
+                    }
+                    catch { }
                 }
                 else
                 {
-                    dlg.Filter = LanguageHelper.GetMsg(LMSG.ScriptFilter);
+                    try
+                    {
+                        dlg.Filter = LanguageHelper.GetMsg(LMSG.ScriptFilter);
+                    }
+                    catch { }
                 }
 
                 if (dlg.ShowDialog() == DialogResult.OK)
@@ -375,11 +383,19 @@ namespace DataEditorX
                 dlg.Title = LanguageHelper.GetMsg(LMSG.NewFile);
                 if (this.GetActive() != null)//判断当前窗口是不是DataEditor
                 {
-                    dlg.Filter = LanguageHelper.GetMsg(LMSG.CdbType);
+                    try
+                    {
+                        dlg.Filter = LanguageHelper.GetMsg(LMSG.CdbType);
+                    }
+                    catch { }
                 }
                 else
                 {
-                    dlg.Filter = LanguageHelper.GetMsg(LMSG.ScriptFilter);
+                    try
+                    {
+                        dlg.Filter = LanguageHelper.GetMsg(LMSG.ScriptFilter);
+                    }
+                    catch { }
                 }
 
                 if (dlg.ShowDialog() == DialogResult.OK)
