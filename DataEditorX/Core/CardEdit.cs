@@ -303,7 +303,16 @@ namespace DataEditorX.Core
                         FileMode.OpenOrCreate, FileAccess.Write))
                     {
                         StreamWriter sw = new StreamWriter(fs, new UTF8Encoding(false));
-                        if (string.IsNullOrEmpty(addrequire))
+                        if (MyConfig.ReadString(MyConfig.TAG_LANGUAGE).IndexOf("EDOPro", System.StringComparison.OrdinalIgnoreCase) >= 0)
+                        {   // 如果当前语言环境为：EDOPro
+                            // EDOPro script
+                            sw.WriteLine("--" + c.name);
+                            sw.WriteLine("local s,id=GetID()");
+                            sw.WriteLine("function s.initial_effect(c)");
+                            sw.WriteLine("\t");
+                            sw.WriteLine("end");
+                        }
+                        else if (string.IsNullOrEmpty(addrequire))
                         {
                             // OCG script
                             sw.WriteLine("--" + c.name);
