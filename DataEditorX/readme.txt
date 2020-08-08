@@ -1,5 +1,5 @@
-﻿[DataEditorX]3.0.0.5[DataEditorX]
-[URL]https://github.com/Yuniko-n/DataEditorX/releases/download/3.0.0.5/DataEditorX-3.0.0.5.zip[URL]
+﻿[DataEditorX]3.0.0.6[DataEditorX]
+[URL]https://github.com/Yuniko-n/DataEditorX/releases/download/3.0.0.6/DataEditorX-3.0.0.6.zip[URL]
 
 ★运行环境(Environment)
 本程序基于.Net framework 4.6开发
