@@ -14,6 +14,7 @@ CodeEditForm.mainMenu.menuitem_help	幫助(&H)
 CodeEditForm.mainMenu.menuitem_about	關於
 CodeEditForm.mainMenu.menuitem_tools	工具(&T)
 CodeEditForm.mainMenu.menuitem_testlua	語法錯誤檢查
+CodeEditForm.mainMenu.menuitem_ImeMode	正常顯示文字 (反應將會變慢)
 CodeEditForm.mainMenu.menuitem_effectcreator	效果生成器
 #
 DataEditForm.pl_bottom.btn_img	匯入圖片

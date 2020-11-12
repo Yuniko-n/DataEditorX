@@ -54,6 +54,7 @@ namespace DataEditorX
             this.menuitem_about = new System.Windows.Forms.ToolStripMenuItem();
             this.menuitem_tools = new System.Windows.Forms.ToolStripMenuItem();
             this.menuitem_testlua = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuitem_ImeMode = new System.Windows.Forms.ToolStripMenuItem();
             this.menuitem_effectcreator = new System.Windows.Forms.ToolStripMenuItem();
             this.tb_input = new System.Windows.Forms.TextBox();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
@@ -193,6 +194,7 @@ namespace DataEditorX
             // 
             this.menuitem_tools.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menuitem_testlua,
+            this.menuitem_ImeMode,
             this.menuitem_effectcreator});
             this.menuitem_tools.Name = "menuitem_tools";
             this.menuitem_tools.Size = new System.Drawing.Size(67, 21);
@@ -205,6 +207,13 @@ namespace DataEditorX
             this.menuitem_testlua.Size = new System.Drawing.Size(180, 22);
             this.menuitem_testlua.Text = "Syntax Check";
             this.menuitem_testlua.Click += new System.EventHandler(this.menuitem_testlua_Click);
+            // 
+            // menuitem_ImeMode
+            // 
+            this.menuitem_ImeMode.Name = "menuitem_ImeMode";
+            this.menuitem_ImeMode.Size = new System.Drawing.Size(180, 22);
+            this.menuitem_ImeMode.Text = "Text support";
+            this.menuitem_ImeMode.Click += new System.EventHandler(this.menuitem_ImeMode_Click);
             // 
             // menuitem_effectcreator
             // 
@@ -350,6 +359,7 @@ namespace DataEditorX
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.ToolStripMenuItem menuitem_tools;
         private System.Windows.Forms.ToolStripMenuItem menuitem_testlua;
+        private System.Windows.Forms.ToolStripMenuItem menuitem_ImeMode;
         private System.Windows.Forms.ToolStripMenuItem menuitem_effectcreator;
     }
 }

@@ -308,6 +308,10 @@ namespace DataEditorX.Core
                             // EDOPro script
                             sw.WriteLine("--" + c.name);
                             sw.WriteLine("local s,id=GetID()");
+                            if (!string.IsNullOrEmpty(addrequire))
+                            {
+                                sw.WriteLine("Duel.LoadScript(\"" + addrequire + ".lua\")");
+                            }
                             sw.WriteLine("function s.initial_effect(c)");
                             sw.WriteLine("\t");
                             sw.WriteLine("end");
