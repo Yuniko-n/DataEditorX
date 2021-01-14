@@ -1131,9 +1131,23 @@ namespace DataEditorX.Core.Mse
                 return text;
             }
 
-            text = text.Replace(text, OpenCC.Converter.Convert(text, configFileName));
+            string texts = "";
+            if (configFileName == "Microsoft.SimplifiedChinese")
+            {
+                texts = OpenCC.ChineseStrConv.ToSimplified(text);
+                //texts = Microsoft.VisualBasic.Strings.StrConv(text, Microsoft.VisualBasic.VbStrConv.SimplifiedChinese, 0);
+            }
+            else if (configFileName == "Microsoft.TraditionalChinese")
+            {
+                texts = OpenCC.ChineseStrConv.ToTraditional(text);
+                //texts = Microsoft.VisualBasic.Strings.StrConv(text, Microsoft.VisualBasic.VbStrConv.TraditionalChinese, 0);
+            }
+            else
+            {
+                texts = OpenCC.ChineseStrConv.OpenCCStrConv(text, configFileName);
+            }
 
-            return text;
+            return texts;
         }
 
         public Card ReplaceWithCNsOrCNt(Card card, string configFileName)

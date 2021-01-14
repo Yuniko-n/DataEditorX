@@ -30,7 +30,7 @@ namespace OpenCC
         }
     }
 
-    public static class Converter
+    public static class ChineseStrConv
     {
         /// <summary>
         /// object for lock statement.
@@ -44,7 +44,7 @@ namespace OpenCC
         /// <param name="configFileName">Config file name.</param>
         /// <returns></returns>
         /// <exception cref="ExternalException">Throw when OpenCC occurs an error!</exception>
-        public static string Convert(string input, string configFileName)
+        public static string OpenCCStrConv(string input, string configFileName)
         {
             IntPtr opencc_ptr = opencc_open(configFileName);
             if (opencc_ptr == new IntPtr(-1))
@@ -131,5 +131,29 @@ namespace OpenCC
         /// <returns>Error message</returns>
         [DllImport("opencc")]
         private static extern IntPtr opencc_error();
+
+
+
+        ///////////////////////////////////////////////////////
+        internal const int LOCALE_SYSTEM_DEFAULT = 0;
+        internal const int LCMAP_SIMPLIFIED_CHINESE = 0x02000000;
+        internal const int LCMAP_TRADITIONAL_CHINESE = 0x04000000;
+    
+        [DllImport("kernel32", CharSet = CharSet.Auto, SetLastError = true)]
+        internal static extern int LCMapString(int Locale, int dwMapFlags, string lpSrcStr, int cchSrc, [Out] string lpDestStr, int cchDest);
+    
+        public static string ToSimplified(string source)
+        {
+            string target = new string(' ', source.Length);
+            int ret = LCMapString(LOCALE_SYSTEM_DEFAULT, LCMAP_SIMPLIFIED_CHINESE, source, source.Length, target, source.Length);
+            return target;
+        }
+    
+        public static string ToTraditional(string source)
+        {
+            string target = new string(' ', source.Length);
+            int ret = LCMapString(LOCALE_SYSTEM_DEFAULT, LCMAP_TRADITIONAL_CHINESE, source, source.Length, target, source.Length);
+            return target;
+        }
     }
 }

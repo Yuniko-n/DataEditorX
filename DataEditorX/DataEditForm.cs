@@ -2293,6 +2293,8 @@ namespace DataEditorX
 				string txinfo = DataManager.GetValue(this.OPENCC_CNS_NAME, key);
 				if (string.IsNullOrEmpty(txinfo))
 					continue;
+				if (key == 1) //分隔
+					this.menuitem_replace_with_cns.DropDownItems.Add(new ToolStripSeparator());
 				ToolStripMenuItem config = new ToolStripMenuItem(txinfo);
 				config.ToolTipText = txinfo;
 				config.Click += this.SetOpenCC_CNS_Config;
@@ -2311,7 +2313,7 @@ namespace DataEditorX
 				string txinfo = DataManager.GetValue(this.OPENCC_CNT_NAME, key);
 				if (string.IsNullOrEmpty(txinfo))
 					continue;
-				if (key == 4) //繁体转繁体分隔
+				if (key == 1 || key == 4) //分隔
 					this.menuitem_replace_with_cnt.DropDownItems.Add(new ToolStripSeparator());
 				ToolStripMenuItem config = new ToolStripMenuItem(txinfo);
 				config.ToolTipText = txinfo;
@@ -2363,7 +2365,15 @@ namespace DataEditorX
 		}
 		void RunReplace(string configFileName)
 		{
-			if (DataBase.Read(nowCdbFile, true, "").Length > 1000)
+			if (configFileName == MyPath.Combine(MyPath.Combine(Application.StartupPath, MyConfig.TAG_OPENCC), "Microsoft.SimplifiedChinese"))
+			{
+				configFileName = "Microsoft.SimplifiedChinese";
+			}
+			else if (configFileName == MyPath.Combine(MyPath.Combine(Application.StartupPath, MyConfig.TAG_OPENCC), "Microsoft.TraditionalChinese"))
+			{
+				configFileName = "Microsoft.TraditionalChinese";
+			}
+			else if (DataBase.Read(nowCdbFile, true, "").Length > 1000)
 			{
 				MyMsg.Show(LMSG.PerformanceWarning);
 			}
