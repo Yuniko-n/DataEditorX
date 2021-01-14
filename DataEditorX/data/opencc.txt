@@ -10,11 +10,11 @@
 0x3	s2hk.json
 0x4	s2twp.json
 ##opencc_cns_name
-0x0	简体到繁体（微软）
-0x1	简体到繁体
-0x2	简体到台湾正体
-0x3	简体到香港繁体
-0x4	简体到繁体（台湾正体标准）并转换为台湾常用词汇
+0x0	[微软] 简体到繁体
+0x1	[OpenCC] 简体到繁体
+0x2	[OpenCC] 简体到台湾正体
+0x3	[OpenCC] 简体到香港繁体
+0x4	[OpenCC] 简体到繁体（台湾正体标准）并转换为台湾常用词汇
 ##opencc_cnt
 0x0	Microsoft.SimplifiedChinese
 0x1	t2s.json
@@ -28,15 +28,15 @@
 0x9	jp2t.json
 0x10	tw2t.json
 ##opencc_cnt_name
-0x0	繁體到簡體（微軟）
-0x1	繁體到簡體
-0x2	台灣正體到簡體
-0x3	香港繁體到簡體
-0x4	繁體（台灣正體標準）到簡體並轉換爲中國大陸常用詞彙
-0x5	繁體（OpenCC 標準）到台灣正體
-0x6	香港繁體到繁體（OpenCC 標準）
-0x7	繁體（OpenCC 標準）到香港繁體
-0x8	繁體（OpenCC 標準，舊字體）到日文新字體
-0x9	日文新字體到繁體（OpenCC 標準，舊字體）
-0x10	台灣正體到繁體（OpenCC 標準）
+0x0	[微软] 繁體到簡體
+0x1	[OpenCC] 繁體到簡體
+0x2	[OpenCC] 台灣正體到簡體
+0x3	[OpenCC] 香港繁體到簡體
+0x4	[OpenCC] 繁體（台灣正體標準）到簡體並轉換爲中國大陸常用詞彙
+0x5	[OpenCC] 繁體（OpenCC 標準）到台灣正體
+0x6	[OpenCC] 香港繁體到繁體（OpenCC 標準）
+0x7	[OpenCC] 繁體（OpenCC 標準）到香港繁體
+0x8	[OpenCC] 繁體（OpenCC 標準，舊字體）到日文新字體
+0x9	[OpenCC] 日文新字體到繁體（OpenCC 標準，舊字體）
+0x10	[OpenCC] 台灣正體到繁體（OpenCC 標準）
 #end

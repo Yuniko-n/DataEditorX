@@ -2313,7 +2313,7 @@ namespace DataEditorX
 				string txinfo = DataManager.GetValue(this.OPENCC_CNT_NAME, key);
 				if (string.IsNullOrEmpty(txinfo))
 					continue;
-				if (key == 1 || key == 4) //分隔
+				if (key == 1 || key == 5) //分隔
 					this.menuitem_replace_with_cnt.DropDownItems.Add(new ToolStripSeparator());
 				ToolStripMenuItem config = new ToolStripMenuItem(txinfo);
 				config.ToolTipText = txinfo;
