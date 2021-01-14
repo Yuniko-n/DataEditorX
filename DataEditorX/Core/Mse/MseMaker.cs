@@ -1126,9 +1126,28 @@ namespace DataEditorX.Core.Mse
 
         public string ReplaceWithCNsOrCNt(string text, string configFileName)
         {
+            if (text == "" || text == null)
+            {
+                return text;
+            }
+
             text = text.Replace(text, OpenCC.Converter.Convert(text, configFileName));
 
             return text;
         }
+
+        public Card ReplaceWithCNsOrCNt(Card card, string configFileName)
+        {
+            card.name = ReplaceWithCNsOrCNt(card.name, configFileName);
+            card.desc = ReplaceWithCNsOrCNt(card.desc, configFileName);
+
+            for (int i = 0; i < card.Str.Length; i++)
+            {
+                card.Str[i] = ReplaceWithCNsOrCNt(card.Str[i], configFileName);
+            }
+
+            return card;
+        }
+
     }
 }

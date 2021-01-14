@@ -461,13 +461,9 @@ namespace DataEditorX.Core
 					return;
 				}
 				this.worker.ReportProgress(i / count, string.Format("{0}/{1}", i, count));
-				if (cards[i].name != null)
+				if (cards[i] != null)
 				{
-					cards[i].name = MseHelper.ReplaceWithCNsOrCNt(cards[i].name, configName);
-				}
-				if (cards[i].desc != null)
-				{
-					cards[i].desc = MseHelper.ReplaceWithCNsOrCNt(cards[i].desc, configName);
+					cards[i] = MseHelper.ReplaceWithCNsOrCNt(cards[i], configName);
 				}
 			}
 			DataBase.CopyDB(cdbName, false, cards);
