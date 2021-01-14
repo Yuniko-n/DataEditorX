@@ -1,5 +1,5 @@
 ﻿[DataEditorX]3.0.0.7[DataEditorX]
-[URL]https://gitee.com/Yuniko-n/DataEditorX/attach_files/584468/download/DataEditorX-3.0.0.7.zip[URL]
+[URL]https://gitee.com/Yuniko-n/DataEditorX/attach_files/584472/download/DataEditorX-3.0.0.7.zip[URL]
 
 ★运行环境(Environment)
 本程序基于.Net framework 4.6开发
