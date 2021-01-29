@@ -77,7 +77,7 @@ namespace DataEditorX
             this.dockPanel.Name = "dockPanel";
             this.dockPanel.Padding = new System.Windows.Forms.Padding(6);
             this.dockPanel.ShowAutoHideContentOnHover = false;
-            this.dockPanel.Size = new System.Drawing.Size(992, 736);
+            this.dockPanel.Size = new System.Drawing.Size(992, 636);
             this.dockPanel.TabIndex = 0;
             this.dockPanel.Theme = this.theme;
             // 
@@ -288,13 +288,13 @@ namespace DataEditorX
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(992, 761);
+            this.ClientSize = new System.Drawing.Size(992, 661);
             this.Controls.Add(this.dockPanel);
             this.Controls.Add(this.mainMenu);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.mainMenu;
-            this.MinimumSize = new System.Drawing.Size(1008, 620);
+            this.MinimumSize = new System.Drawing.Size(1008, 600);
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MainForm";
