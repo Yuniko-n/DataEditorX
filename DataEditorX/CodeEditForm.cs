@@ -56,12 +56,12 @@ namespace DataEditorX
             string fontname = MyConfig.ReadString(MyConfig.TAG_FONT_NAME);
             float fontsize = MyConfig.ReadFloat(MyConfig.TAG_FONT_SIZE, this.fctb.Font.Size);
             this.fctb.Font = new Font(fontname, fontsize);
-            this.menuitem_ImeMode.Checked = MyConfig.ReadBoolean(MyConfig.TAG_IME);
+            /*
             if (MyConfig.ReadBoolean(MyConfig.TAG_IME))
             {
                 this.fctb.ImeMode = ImeMode.On;
             }
-
+            */
             if (MyConfig.ReadBoolean(MyConfig.TAG_WORDWRAP))
             {
                 this.fctb.WordWrap = true;
@@ -643,16 +643,6 @@ namespace DataEditorX
             {
                 MyMsg.Show(LMSG.syntaxCheckPassed);
             }
-        }
-
-        private void menuitem_ImeMode_Click(object sender, EventArgs e)
-        {
-            this.menuitem_ImeMode.Checked = !this.menuitem_ImeMode.Checked;
-            MyConfig.Save(MyConfig.TAG_IME, this.menuitem_ImeMode.Checked.ToString().ToLower());
-            if (MyConfig.ReadBoolean(MyConfig.TAG_IME))
-                this.fctb.ImeMode = ImeMode.On;
-            else
-                this.fctb.ImeMode = ImeMode.Off;
         }
 
         private void effectCreatorToolStripMenuItem_Click(object sender, EventArgs e)

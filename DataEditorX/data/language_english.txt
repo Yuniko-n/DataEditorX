@@ -170,6 +170,7 @@ MainForm.mainMenu.menuitem_closeall	Close All
 0x4c	No syntax error found.
 0x4d	It is not recommended to open lots of file at a time. Continue?
 0x4e	Download completed; the application will be restarted.
+0x92	Module script?\n\nPress \"Cancel\" to remove module script.
 0x100	Code
 0x101	Name
 0x102	Rule

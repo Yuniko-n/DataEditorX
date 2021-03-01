@@ -14,7 +14,6 @@ CodeEditForm.mainMenu.menuitem_help	帮助(&H)
 CodeEditForm.mainMenu.menuitem_about	关于
 CodeEditForm.mainMenu.menuitem_tools	工具(&T)
 CodeEditForm.mainMenu.menuitem_testlua	语法错误检查
-CodeEditForm.mainMenu.menuitem_ImeMode	正常显示文字 (反应将会变慢)
 CodeEditForm.mainMenu.menuitem_effectcreator	效果生成器
 #
 DataEditForm.pl_bottom.btn_img	导入图片
@@ -182,6 +181,7 @@ MainForm.mainMenu.menuitem_closeall	关闭所有
 0x4e	下载完成，即将重新启动程序以完成更新。
 0x90	>>>开始转换<<<
 0x91	性能警告！您转换的卡片数量过多，可能会转换失败。
+0x92	是否启用?\n\n启用后，可按 "取消" 即可移除.
 0x100	卡片密码
 0x101	卡片名称
 0x102	卡片规则

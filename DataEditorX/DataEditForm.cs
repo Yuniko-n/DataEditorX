@@ -1968,7 +1968,7 @@ namespace DataEditorX
 		//add require automatically
 		private void menuitem_addrequire_Click(object sender, EventArgs e)
 		{
-			this.Addrequire = Microsoft.VisualBasic.Interaction.InputBox("Module script?\n\nPress \"Cancel\" to remove module script.", "", this.Addrequire);
+			this.Addrequire = Microsoft.VisualBasic.Interaction.InputBox(LanguageHelper.GetMsg(LMSG.EnableTips), "", this.Addrequire);
 			this.menuitem_addrequire.Checked = (this.Addrequire.Length > 0);
 			XMLReader.Save(MyConfig.TAG_ADD_REQUIRE, this.Addrequire);
 		}

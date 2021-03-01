@@ -151,7 +151,7 @@ namespace DataEditorX.Config
         /// <summary>
         /// 支持中文
         /// </summary>
-        public const string TAG_IME = "IME";
+        ///public const string TAG_IME = "IME";
         /// <summary>
         /// 自动换行
         /// </summary>
