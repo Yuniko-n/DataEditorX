@@ -26,7 +26,7 @@
 #
 # 注：关于指定位置
 # 一些函数可以获取指定位置的卡，通过三个参数指定 int player, int s, int o
-# s指对玩家player来说的己方的位置，o指对玩家player来说的对方的位置
+# s指对玩家 player 来说的己方的位置，o指对玩家 player 来说的对方的位置
 # 比如Duel.GetFieldGroup(0,LOCATION_GRAVE,LOCATION_MZONE)
 # 返回玩家0墓地和玩家1的怪兽区的所有卡
 #
@@ -73,100 +73,104 @@
 
 ========== Card ==========
 ●int[,int] Card.GetCode(Card c)
-返回c的当前代号（可能因为效果改变）
+返回卡片 c 的当前卡号（可能因为效果改变）
 
 ●int Card.GetOriginalCode(Card c)
-返回c的卡片记载的代号
+返回卡片 c 的卡片记载的卡号
 
 ●int[,int] Card.GetOriginalCodeRule(Card c)
-返回c规则上的代号（这张卡规则上当作...使用）
+返回卡片 c 规则上的代号（这张卡规则上当作XXX使用）
 
 ●int[,int,...] Card.GetFusionCode(Card c)
-返回c作为融合素材时的卡号（包括c原本的卡号）
+返回卡片 c 作为融合素材时的卡号。第2个返回值开始是其他的卡号
 
 ●int[,int,...] Card.GetLinkCode(Card c)
-返回c作为link素材的卡号（包括c原本的卡号）
+返回卡片 c 作为连接素材的卡号。第2个返回值开始是其他的卡号
 
 ●bool Card.IsFusionCode(Card c, int code[, ...])
-检查c作为融合素材时能否当作卡号为code的卡，额外参数是其他code
+检查卡片 c 作为融合素材时能否当作卡号为 code 的卡，额外参数是其他 code
 
 ●bool Card.IsLinkCode(Card c, int code[,...])
-检查c作为link素材时能否当作卡号为code的卡，额外参数是其他code
+检查卡片 c 作为连接素材时能否当作卡号为 code 的卡，额外参数是其他 code
 
-●bool Card.IsSetCard(Card c, int setname)
-检查c是否是卡名含有setname的卡
+●bool Card.IsSetCard(Card c, int setname[, ...])
+检查卡片 c 是否是卡名含有 setname 的卡(也就是字段)，额外参数是其他 setname
 
-●bool Card.IsOriginalSetCard(Card c, int setname)
-检查c是否是原本卡名含有setname的卡
+●bool Card.IsOriginalSetCard(Card c, int setname[, ...])
+检查卡片 c 是否是原本卡名含有 setname 的卡(也就是字段)
 
-●bool Card.IsPreviousSetCard(Card c, int setname)
-检查c位置变化之前是否是名字含有setname的卡
+●bool Card.IsPreviousSetCard(Card c, int setname[, ...])
+检查卡片 c 位置变化之前是否是名字含有 setname 的卡(也就是字段)
 
 ●bool Card.IsFusionSetCard(Card c, int setname)
-检查c作为融合素材时能否当作名字含有setname的卡
+检查卡片 c 作为融合素材时能否当作名字含有 setname 的卡(也就是字段)
 
 ●bool Card.IsLinkSetCard(Card c, int setname)
-检查c作为link素材时能否当作名字含有setname的卡
+检查卡片 c 作为连接素材时能否当作名字含有 setname 的卡(也就是字段)
 
 ●int Card.GetType(Card c)
-返回c的当前类型
+返回卡片 c 的当前类型
 
 ●int Card.GetOriginalType(Card c)
-返回c的卡片记载的类型
+返回卡片 c 的卡片记载的类型
 
 ●int Card.GetFusionType(Card c)
-返回c用作融合素材时的类型（与GetType的区别在于对于魔陷区的怪兽卡，返回其原本类型）
+返回卡片 c 用作融合素材时的类型（与GetType的区别在于对于魔陷区的怪兽卡，返回其原本类型）
 
 ●int Card.GetSynchroType(Card c)
-返回c用作同调素材时的类型（与GetType的区别在于对于魔陷区的怪兽卡，返回其原本类型）
+返回卡片 c 用作同调素材时的类型（与GetType的区别在于对于魔陷区的怪兽卡，返回其原本类型）
 
 ●int Card.GetXyzType(Card c)
-返回c用作同调素材时的类型（与GetType的区别在于对于魔陷区的怪兽卡，返回其原本类型）
+返回卡片 c 用作同调素材时的类型（与GetType的区别在于对于魔陷区的怪兽卡，返回其原本类型）
 
 ●int Card.GetLinkType(Card c)
-返回c用作link素材时的类型（与GetType的区别在于对于魔陷区的怪兽卡，返回其原本类型）
+返回卡片 c 用作连接素材时的类型（与GetType的区别在于对于魔陷区的怪兽卡，返回其原本类型）
 
 ●int Card.GetLevel(Card c)
-返回c的当前等级
+返回卡片 c 的当前等级
 
 ●int Card.GetRank(Card c)
-返回c的当前阶级
+返回卡片 c 的当前阶级
 
 ●int Card.GetLink(Card c)
-返回c的连接标记数量
+返回卡片 c 的连接标记数量
 
 ●int Card.GetSynchroLevel(Card c, Card sc)
-返回c的对于同调怪兽sc的同调用等级
+返回卡片 c 的对于同调怪兽 sc 的同调用等级
 此函数除了某些特定卡如调节支援士，返回值与Card.GetLevel(c)相同
 
 ●int Card.GetRitualLevel(Card c, Card rc)
-返回c的对于仪式怪兽rc仪式解放等级
+返回卡片 c 的对于仪式怪兽 rc 仪式解放等级
 此函数除了某些特定卡如仪式供物，返回值与Card.GetLevel(c)相同
 
 ●int Card.GetOriginalLevel(Card c)
-返回c的卡片记载的等级
+返回卡片 c 的卡片记载的等级
 
 ●int Card.GetOriginalRank(Card c)
-返回c的卡片记载的阶级
+返回卡片 c 的卡片记载的阶级
 
 ●bool Card.IsXyzLevel(Card c, Card xyzc, int lv)
-检查c对于超量怪兽xyzc的超量用等级是否是lv
+检查卡片 c 对于超量怪兽 xyzc 的超量用等级是否是 lv
 
 ●int Card.GetLeftScale(Card c)
-返回c的左灵摆刻度
+返回卡片 c 的左灵摆刻度
 
 ●int Card.GetOriginalLeftScale(Card c)
-返回c的原本的左灵摆刻度
+返回卡片 c 的原本的左灵摆刻度
 
 ●int Card.GetRightScale(Card c)
-返回c的右灵摆刻度
+返回卡片 c 的右灵摆刻度
 
 ●int Card.GetOriginalRightScale(Card c)
-返回c的原本的右灵摆刻度
+返回卡片 c 的原本的右灵摆刻度
+
+●int Card.GetCurrentScale(Card c)
+返回卡片 c 的当前灵摆刻度
+若 c 在左侧的灵摆区，则返回左灵摆刻度；否则返回右灵摆刻度
 
 ●bool Card.IsLinkMarker(Card c, int dir)
-检查c是否是连接标记为 dir 的卡
-dir的值有：
+检查卡片 c 是否是连接标记为 dir 的卡
+dir 的值有：
 LINK_MARKER_BOTTOM_LEFT		=0x001 -- ↙
 LINK_MARKER_BOTTOM			=0x002 -- ↓
 LINK_MARKER_BOTTOM_RIGHT	=0x004 -- ↘
@@ -177,37 +181,37 @@ LINK_MARKER_TOP				=0x080 -- ↑
 LINK_MARKER_TOP_RIGHT		=0x100 -- ↗
 
 ●Group Card.GetLinkedGroup(Card c)
-返回c的连接区的卡片组（目前只限怪兽区）
+返回卡片 c 的连接区的卡片组（目前只限怪兽区）
 
 ●int Card.GetLinkedGroupCount(Card c)
-返回c的连接区的卡片组的卡的数量（目前只限怪兽区）
+返回卡片 c 的连接区的卡片组的卡的数量（目前只限怪兽区）
 
 ●int Card.GetLinkedZone(Card c[, int player=c:GetControler()])
-返回c的[以 player 来看的场上的]连接区域
+返回卡片 c 的[以 player 来看的场上的]连接区域
 
 ●Group Card.GetMutualLinkedGroup(Card c)
-返回和c互相连接状态的卡片组
+返回和卡片 c 互相连接状态的卡片组
 
 ●int Card.GetMutualLinkedGroupCount(Card c)
-返回和c互相连接状态的卡片组的数量
+返回和卡片 c 互相连接状态的卡片组的数量
 
 ●int Card.GetMutualLinkedZone(Card c[, int player=c:GetControler()])
 返回[以 player 来看的]与卡片 c 互相连接的卡 所在的区域 
 
 ●bool Card.IsLinkState(Card c)
-检查c是否是连接状态
+检查卡片 c 是否是连接状态
 
 ●bool Card.IsExtraLinkState(Card c)
-检查c是否是额外连接状态
+检查卡片 c 是否是额外连接状态
 
 ●Group Card.GetColumnGroup(Card c)
-返回与c同一纵列的c以外的卡片组
+返回与卡片 c 同一纵列的 c 以外的卡片组
 
 ●int Card.GetColumnGroupCount(Card c)
-用法同 Card.GetColumnGroup ，只是返回的是卡片的数量
+返回与卡片 c 同一纵列的 c 以外的卡片的数量
 
 ●int Card.GetColumnZone(Card c, int location[, int player=c:GetControler()])
-返回[以 player 来看的] location 范围内与 c 同一纵列的区域(c所在的位置排除)，
+返回[以 player 来看的] location 范围内与卡片 c 同一纵列的区域(c 所在的位置排除)，
 location 的值是 LOCATION_MZONE,LOCATION_SZONE,LOCATIOIN_ONFIELD 
 返回值是1个32位的2进制数
 高16位是以 player 来看的对方的区域，其中前8位是魔法陷阱区域，后8位是怪兽区
@@ -217,330 +221,341 @@ location 的值是 LOCATION_MZONE,LOCATION_SZONE,LOCATIOIN_ONFIELD
 0000 0010 0010 0000  --自己的区域
 
 ●bool Card.IsAllColumn(Card c)
-检查与c同一纵列的区域是否全都有卡
+检查与卡片 c 同一纵列的区域是否全都有卡
 
 ●int Card.GetAttribute(Card c)
-返回c的当前属性
+返回卡片 c 的当前属性
 注：对某些多属性怪兽如光与暗之龙，此函数的返回值可能是几个属性的组合值
 
 ●int Card.GetOriginalAttribute(Card c)
-返回c的卡片记载的属性
+返回卡片 c 的卡片记载的属性
 
 ●int Card.GetFusionAttribute(Card c[, int player=PLAYER_NONE])
-返回c[由player融合召唤时]用作融合素材时的属性
+返回卡片 c [由 player 融合召唤时]用作融合素材时的属性
 
 ●int Card.GetLinkAttribute(Card c[, int player=PLAYER_NONE])
-返回c[由player连接召唤时]用作连接素材时的属性
+返回卡片 c [由 player 连接召唤时]用作连接素材时的属性
 
 ●int Card.GetRace(Card c)
-返回c的当前种族
+返回卡片 c 的当前种族
 注：对某些多种族怪兽如动画效果的魔术猿，此函数的返回值可能是几个种族的组合值
 
 ●int Card.GetOriginalRace(Card c)
-返回c的卡片记载的种族
+返回卡片 c 的卡片记载的种族
 
 ●int Card.GetLinkRace(Card c[, int player=PLAYER_NONE])
-返回c[由player连接召唤时]作为连接素材时的种族
+返回卡片 c [由 player 连接召唤时]作为连接素材时的种族
 
 ●int Card.GetAttack(Card c)
-返回c的当前攻击力
+返回卡片 c 的当前攻击力
 
 ●int Card.GetBaseAttack(Card c)
-返回c的原本攻击力
+返回卡片 c 的原本攻击力
 
 ●int Card.GetTextAttack(Card c)
-返回c的卡片记载的攻击力，返回值是负数表示是"?"
+返回卡片 c 的卡片记载的攻击力，返回值是负数表示是"?"
 
 ●int Card.GetDefense(Card c)
-返回c的当前守备力
+返回卡片 c 的当前守备力
 
 ●int Card.GetBaseDefense(Card c)
-返回c的原本守备力
+返回卡片 c 的原本守备力
 
 ●int Card.GetTextDefense(Card c)
-返回c的卡片记载的守备力，返回值是负数表示是"?"
+返回卡片 c 的卡片记载的守备力，返回值是负数表示是"?"
 
 ●int[,int] Card.GetPreviousCodeOnField(Card c)
-返回c位置变化之前在场上的卡号
+返回卡片 c 位置变化之前在场上的卡号
 
 ●int Card.GetPreviousTypeOnField(Card c)
-返回c位置变化之前在场上的类型
+返回卡片 c 位置变化之前在场上的类型
 
 ●int Card.GetPreviousLevelOnField(Card c)
-返回c位置变化之前在场上的等级
+返回卡片 c 位置变化之前在场上的等级
 
 ●int Card.GetPreviousRankOnField(Card c)
-返回c位置变化之前在场上的阶级
+返回卡片 c 位置变化之前在场上的阶级
 
 ●int Card.GetPreviousAttributeOnField(Card c)
-返回c位置变化之前在场上的属性
+返回卡片 c 位置变化之前在场上的属性
 
 ●int Card.GetPreviousRaceOnField(Card c)
-返回c位置变化之前在场上的种族
+返回卡片 c 位置变化之前在场上的种族
 
 ●int Card.GetPreviousAttackOnField(Card c)
-返回c位置变化之前在场上的攻击力
+返回卡片 c 位置变化之前在场上的攻击力
 
 ●int Card.GetPreviousDefenseOnField(Card c)
-返回c位置变化之前在场上的守备力
+返回卡片 c 位置变化之前在场上的守备力
 
 ●int Card.GetOwner(Card c)
-返回c的持有者
+返回卡片 c 的持有者
 
 ●int Card.GetControler(Card c)
-返回c的当前控制者
+返回卡片 c 的当前控制者
 
 ●int Card.GetPreviousControler(Card c)
-返回c的位置变化之前的控制者
+返回卡片 c 的位置变化之前的控制者
 
 ●int Card.GetReason(Card c)
-返回c的位置变化原因
+返回卡片 c 的位置变化原因
 
 ●Card Card.GetReasonCard(Card c)
-返回导致c的位置变化的卡
+返回导致卡片 c 的位置变化的卡
 此函数仅在某卡被战斗破坏时，因为上级召唤被解放，或者成为特殊召唤使用的素材时有效
 
 ●int Card.GetReasonPlayer(Card c)
-返回导致c的位置变化的玩家
+返回导致卡片 c 的位置变化的玩家
 
 ●Effect Card.GetReasonEffect(Card c)
-返回导致c的位置变化的效果
+返回导致卡片 c 的位置变化的效果
 
 ●int Card.GetPosition(Card c)
-返回c当前的表示形式
+返回卡片 c 当前的表示形式
 
 ●int Card.GetPreviousPosition(Card c)
-返回c位置变化前的表示形式
+返回卡片 c 位置变化前的表示形式
 
 ●int Card.GetBattlePosition(Card c)
-返回c在本次战斗发生之前的表示形式
+返回卡片 c 在本次战斗发生之前的表示形式
 
 ●int Card.GetLocation(Card c)
-返回c当前的所在位置
+返回卡片 c 当前的所在位置
 
 ●int Card.GetPreviousLocation(Card c)
-返回c位置变化前的所在的位置
+返回卡片 c 位置变化前的所在的位置
 
 ●int Card.GetSequence(Card c)
-返回c在当前位置的序号
+返回卡片 c 在当前位置的序号
 在场上时，序号代表所在的格子，从左往右分别是0-4，5-6，场地魔法格的序号为5，左右灵摆区域为6-7
 在其它地方时，序号表示的是第几张卡，最下面的卡的序号为0
 
 ●int Card.GetPreviousSequence(Card c)
-返回c位置变化前的序号
+返回卡片 c 位置变化前的序号
+在场上时，序号代表所在的格子，从左往右分别是0-4，5-6，场地魔法格的序号为5，左右灵摆区域为6-7
+在其它地方时，序号表示的是第几张卡，最下面的卡的序号为0
 
 ●int Card.GetSummonType(Card c)
-返回c的召唤/特殊召唤的方式
+返回卡片 c 的召唤/特殊召唤的方式
 
 ●int Card.GetSummonLocation(Card c)
-返回c的召唤/特殊召唤的位置
+返回卡片 c 的召唤/特殊召唤的位置
 
 ●int Card.GetSummonPlayer(Card c)
 返回召唤/特殊召唤 c 上场的玩家
 
 ●int Card.GetDestination(Card c)
-返回c位置变化的目的地
+返回卡片 c 位置变化的目的地
 此函数仅在处理位置转移代替效果时有效
 
 ●int Card.GetLeaveFieldDest(Card c)
-返回c离场时因改变去向的效果（如大宇宙）的目的地
+返回卡片 c 离场时因改变去向的效果（如大宇宙）的目的地
 
 ●int Card.GetTurnID(Card c)
-返回c转移到当前位置的回合
+返回卡片 c 转移到当前位置的回合
 
 ●int Card.GetFieldID(Card c)
-返回c转移到当前位置的时间标识
+返回卡片 c 转移到当前位置的时间标识
 此数值唯一，越小表示c是越早出现在那个位置
 卡片从里侧翻开也会改变此数值
 
 ●int Card.GetRealFieldID(Card c)
-返回c转移到当前位置的真实的时间标识
+返回卡片 c 转移到当前位置的真实的时间标识
 卡片从里侧翻开不会改变此数值
 
 ●bool Card.IsOriginalCodeRule(Card c, int code1[, int code2,...])
-检查c的卡号是否规则上（就是CDB里显示的卡密）是 code1[, 或者为 code2...]
+检查卡片 c 的卡号是否规则上（就是CDB里显示的卡密）是 code1[, 或者为 code2...]
 
 ●bool Card.IsCode(Card c, int code1[, int code2,...])
-检查c的卡号是否是 code1[, 或者为 code2...]
+检查卡片 c 的卡号是否是 code1[, 或者为 code2...]
 
 ●bool Card.IsType(Card c, int type)
-检查c是否属于类型type
+检查卡片 c 是否属于类型 type
 
 ●bool Card.IsFusionType(Card c, int type)
-检查c用作融合素材时是否属于类型type（与IsType的区别在于对于魔陷区的怪兽卡，用其原本类型作判断）
+检查卡片 c 用作融合素材时是否属于类型 type （与IsType的区别在于对于魔陷区的怪兽卡，用其原本类型作判断）
 
 ●bool Card.IsSynchroType(Card c, int type)
-检查c用作同调素材时是否属于类型type（与IsType的区别在于对于魔陷区的怪兽卡，用其原本类型作判断）
+检查卡片 c 用作同调素材时是否属于类型 type （与IsType的区别在于对于魔陷区的怪兽卡，用其原本类型作判断）
 
 ●bool Card.IsXyzType(Card c, int type)
-检查c用作超量素材时是否属于类型type（与IsType的区别在于对于魔陷区的怪兽卡，用其原本类型作判断）
+检查卡片 c 用作超量素材时是否属于类型 type （与IsType的区别在于对于魔陷区的怪兽卡，用其原本类型作判断）
 
 ●bool Card.IsLinkType(Card c, int type)
-检查c用作连接素材时是否属于类型type（与IsType的区别在于对于魔陷区的怪兽卡，用其原本类型作判断）
+检查卡片 c 用作连接素材时是否属于类型 type （与IsType的区别在于对于魔陷区的怪兽卡，用其原本类型作判断）
 
 ●bool Card.IsLevel(Card c, int level1[, int level2,...])
-检查c是否是等级 level1[, 或者为 level2...]
+检查卡片 c 是否是等级 level1[, 或者为 level2...]
 
 ●bool Card.IsRank(Card c, int rank1[, int rank2,...])
-检查c是否是阶级 rank1[, 或者为 rank2...]
+检查卡片 c 是否是阶级 rank1[, 或者为 rank2...]
 
 ●bool Card.IsLink(Card c, int link1[, int link2,...])
-检查c的连接标记数量是否是 link1[, 或者为 link2...]
+检查卡片 c 的连接标记数量是否是 link1[, 或者为 link2...]
 
 ●bool Card.IsAttack(Card c, int atk1[, int atk2,...])
-检查c的攻击力是否是 atk1[, 或者为 atk2...]，如果c不是怪兽卡，或者不在 LOCATION_MZONE 则都返回false
+检查卡片 c 的攻击力是否是 atk1[, 或者为 atk2...]，如果c不是怪兽卡，或者不在 LOCATION_MZONE 则都返回false
 
 ●bool Card.IsDefense(Card c, int def[, int atk2,...])
-检查c的守备力是否是 def1[, 或者为 def2...]，如果c不是怪兽卡，或者不在 LOCATION_MZONE 则都返回false
+检查卡片 c 的守备力是否是 def1[, 或者为 def2...]，如果c不是怪兽卡，或者不在 LOCATION_MZONE 则都返回false
 
 ●bool Card.IsRace(Card c, int race)
-检查c是否属于种族race
+检查卡片 c 是否属于种族 race
 
 ●bool Card.IsLinkRace(Card c, int race[, int player=PLAYER_NONE])
-检查c[由player连接召唤时]用作连接素材时是否属于种族race
+检查卡片 c [由 player 连接召唤时]用作连接素材时是否属于种族 race
 
 ●bool Card.IsAttribute(Card c, int attribute)
-检查c是否属于属性attribute
+检查卡片 c 是否属于属性 attribute
 
 ●bool Card.IsFusionAttribute(Card c, int attribute[, int player=PLAYER_NONE])
-检查c[由player融合召唤时]用作融合素材是否属于属性attribute
+检查卡片 c [由 player 融合召唤时]用作融合素材是否属于属性 attribute
 
 ●bool Card.IsLinkAttribute(Card c, int attribute[, int player=PLAYER_NONE])
-检查c[由player连接召唤时]用作连接素材是否属于属性attribute
+检查卡片 c [由 player 连接召唤时]用作连接素材是否属于属性 attribute
+
+●bool Card.IsExtraDeckMonster(Card c)
+检查卡片 c 是否属于额外卡组的怪兽(融合·同调·超量·连接)
 
 ●bool Card.IsReason(Card c, int reason)
-检查c是否包含原因reason
+检查卡片 c 是否包含原因 reason
 
 ●bool Card.IsSummonType(Card c, int sumtype)
-检查c的召唤类型是否是sumtype
+检查卡片 c 的召唤类型是否是 sumtype
+
+●bool Card.IsSummonLocation(Card c, int tloc)
+检查卡片 c 的召唤区域是否是 tloc
+
+●bool Card.IsSummonPlayer(Card c, int sumplayer)
+检查卡片 c 的召唤玩家是否是 sumplayer
 
 ●bool Card.IsStatus(Card c, int status)
-检查c是否包含某个状态码
+检查卡片 c 是否包含某个状态码 status
 
-●bool Card.IsNotTuner(Card c)
-检查c是否可以当成非调整来使用
+●bool Card.IsNotTuner(Card c, Card sc)
+检查卡片 c 是否可以作为同调怪兽 sc 的调整以外的怪兽
 
 ●void Card.SetStatus(Card c, int state, bool enable)
-给c设置或者取消状态码
+给卡片 c 设置或者取消状态码
 除非妳清楚的了解每个状态码的含意，否则不要轻易使用此函数
 
 ●bool Card.IsDualState(Card c)
-检查c属否处于再召唤状态
+检查卡片 c 属否处于再召唤状态
 
 ●void Card.EnableDualState(Card c)
-把c设置成再召唤状态
+把卡片 c 设置成再召唤状态
 
 ●void Card.SetTurnCounter(Card c, int ct)
-设置c的回合计数器为 ct （光之护封剑、异国的剑士等）
+设置卡片 c 的回合计数器为 ct （光之护封剑、异国的剑士等）
 
 ●int Card.GetTurnCounter(Card c)
-返回c的回合计数器
+返回卡片 c 的回合计数器
 
 ●void Card.SetMaterial(Card c, nil|Group g)
-把g中的所有卡作为c的素材（上级召唤，特殊召唤）
-第二个参数如果传入 nil ,是把卡片c 的素材清除
+把卡片组 g 中的所有卡作为卡片 c 的素材（上级召唤，特殊召唤）
+第二个参数如果传入 nil ,是把卡片 c 的素材清除
 
 ●Group Card.GetMaterial(Card c)
-返回c出场使用的素材
+返回卡片 c 出场使用的素材
 
 ●int Card.GetMaterialCount(Card c)
-返回c出场使用的素材数量
+返回卡片 c 出场使用的素材数量
 
 ●Group Card.GetEquipGroup(Card c)
-返回c当前装备着的卡片组
+返回卡片 c 当前装备着的卡片组
 
 ●int Card.GetEquipCount(Card c)
-返回c当前装备着的卡片数量
+返回卡片 c 当前装备着的卡片数量
 
 ●Card Card.GetEquipTarget(Card c)
-返回c当前的装备对象
+返回卡片 c 当前的装备对象
 
 ●Card Card.GetPreviousEquipTarget(Card c)
-返回c之前的装备对象
+返回卡片 c 之前的装备对象
 
 ●bool Card.CheckEquipTarget(Card c1, Card c2)
-检查c2是否是c1的正确的装备对象
+检查卡片 c2是否是卡片 c1 的正确的装备对象
 ##由 EFFECT_EQUIP_LIMIT 效果或同盟状态确定
 
 ●bool Card.CheckUnionTarget(Card c1, Card c2)
-检查c2是否是c1的正确的同盟对象
+检查卡片 c2 是否是卡片 c1 的正确的同盟对象
 ##由 EFFECT_UNION_LIMIT 效果确定
 
 ●int,int Card.GetUnionCount(Card c)
-返回c当前装备的同盟卡数量
+返回卡片 c 当前装备的同盟卡数量
 第二个返回值是 旧同盟 的数量 
 
 ●Group Card.GetOverlayGroup(Card c)
-返回c当前叠放着的卡片组
+返回卡片 c 当前叠放着的卡片组
 
 ●int Card.GetOverlayCount(Card c)
-返回c当前叠放着的卡片数量
+返回卡片 c 当前叠放着的卡片数量
 
 ●Card Card.GetOverlayTarget(Card c)
-返回以c为超量素材的卡
+返回以卡片 c 为超量素材的卡
 
 ●bool Card.CheckRemoveOverlayCard(Card c, int player, int count, int reason)
-检查玩家player能否以reason为原因，至少移除c叠放的count张卡
+检查玩家 player 能否以 reason 为原因，至少取除卡片 c 下面叠放的 count 张卡
 
-●int Card.RemoveOverlayCard(Card c, int player, int min, int max, int reason)
-以reason为原因，让玩家player移除c叠放的min-max张卡，返回值表示是否成功
+●int Card.RemoveOverlayCard(Card c, int player, int minc, int maxc, int reason)
+以 reason 为原因，让玩家 player 取除卡片 c 下面叠放的 minc-maxc 张卡，返回值表示取除的数量
 
 ●Group Card.GetAttackedGroup(Card c)
-返回c本回合攻击过的卡片组
+返回卡片 c 本回合攻击过的卡片组
 
 ●int Card.GetAttackedGroupCount(Card c)
-返回c本回合攻击过的卡片数量
+返回卡片 c 本回合攻击过的卡片数量
 
 ●int Card.GetAttackedCount(Card c)
-返回c本回合攻击过的次数
+返回卡片 c 本回合攻击过的次数
 注：如果此值与 Card.GetAttackedGroupCount(c) 的返回值不同，那么说明卡片c本回合进行过直接攻击
 
 ●Group Card.GetBattledGroup(Card c)
-返回与c本回合进行过战斗的卡片组
+返回本回合与卡片 c 进行过战斗的卡片组
 进行过战斗指发生过伤害的计算，用于剑斗兽等卡的判定
 
 ●int Card.GetBattledGroupCount(Card c)
-返回与c本回合进行过战斗的的卡片数量
+返回本回合与卡片 c 进行过战斗的的卡片数量
 
 ●int Card.GetAttackAnnouncedCount(Card c)
-返回c本回合攻击宣言的次数
+返回卡片 c 本回合攻击宣言的次数
 注：攻击被无效不会被计入攻击过的次数，但是会计入攻击宣言的次数
 
 ●bool Card.IsDirectAttacked(Card c)
-检查c是否直接攻击过
+检查卡片 c 是否直接攻击过
 
 ●void Card.SetCardTarget(Card c1, Card c2)
-把c2作为c1的永续对象
-c1和c2的联系会在c1或c2任意一卡离场或变成里侧表示时reset
+把卡片 c2 作为卡片 c1 的永续对象
+c1 和 c2 的联系会在 c1 或 c2 任意一卡离场或变成里侧表示时重置
 
 ●Group Card.GetCardTarget(Card c)
-返回c当前所有的永续对象
+返回卡片 c 当前所有的永续对象
 
 ●Card Card.GetFirstCardTarget(Card c)
-返回c当前第一个永续对象，没有则返回 nil
+返回卡片 c 当前第一个永续对象，没有则返回 nil
 
 ●int Card.GetCardTargetCount(Card c)
-返回c当前的永续对象的数量
+返回卡片 c 当前的永续对象的数量
 
 ●bool Card.IsHasCardTarget(Card c1, Card c2)
-检查c2是否取c1为永续对象
+检查卡片 c2 是否取卡片 c1 为永续对象
 
 ●void Card.CancelCardTarget(Card c1, Card c2)
-取消c2为c1的永续对象
+取消卡片 c2 为 c1 的永续对象
 
 ●Group Card.GetOwnerTarget(Card c)
-返回取c作为永续对象的所有卡
+返回取卡片 c 作为永续对象的所有卡
 
 ●int Card.GetOwnerTargetCount(Card c)
-返回取c作为永续对象的卡的数量
+返回取卡片 c 作为永续对象的卡的数量
 
 ●Effect,... Card.GetActivateEffect(Card c)
-返回c的“卡片发动”的效果，即类型为EFFECT_TYPE_ACTIVATE的效果
+返回卡片 c 的“卡片发动”的效果，即类型为EFFECT_TYPE_ACTIVATE的效果
 仅对魔法和陷阱有效。对于多个卡片发动的效果的卡(比如 神之宣告)，会全部返回
 
 ●Effect[,Group,int,int,Effect,int,int] Card.CheckActivateEffect(Card c, bool neglect_con, bool neglect_cost, bool copy_info)
-返回c的可以发动时机正确的“卡的发动”的效果，neglect_con=true则无视发动条件，neglect_cost=true则无视发动cost
-copy_info=false或者自由时点的效果则只返回这个效果 e
+返回卡片 c 的可以发动时机正确的“卡的发动”的效果，neglect_con==true 则无视发动条件，neglect_cost==true 则无视发动cost
+copy_info==false 或者自由时点的效果则只返回这个效果 e
 否则还返回这个效果的触发时点的信息 e,eg,ep,ev,re,r,rp
 
 ●void|Effect[,function,int,int,int] Card.GetTunerLimit(Card c)
@@ -550,7 +565,7 @@ filter_target 是过滤条件
 location 是位置
 min,max 是数量
 min 默认值是 0 ，max 默认值是 99
-意思大概是： 这张卡作为同调素材的场合，其他卡要是 满足条件 filter_target 位置是 location 数量为 min-max 的卡
+意思大概是： 这张卡作为同调素材的场合，其他卡要是 满足条件 filter_target 位置是 location 数量为 minc-maxc 的卡
 返回值大概等同于下面这个效果对应名字参数的值(参考对象<极星灵 黑精灵>)：
 local e=Effect.CreateEffect(c)
 e:SetType(EFFECT_TYPE_SINGLE)
@@ -567,7 +582,7 @@ e 是有这个影响的效果
 filter_target 是过滤条件
 min,max 是数量
 min 默认值是 0 ，max 默认值是 99
-意思大概是： 这张卡作为同调素材的场合，其他卡要是 满足条件 filter_target 数量为 min-max 的手卡
+意思大概是： 这张卡作为同调素材的场合，其他卡要是 满足条件 filter_target 数量为 minc-maxc 的手卡
 返回值大概等同于下面这个效果对应名字参数的值(参考对象<极星灵 黑精灵>)：
 local e=Effect.CreateEffect(c)
 e:SetType(EFFECT_TYPE_SINGLE)
@@ -579,18 +594,18 @@ e:SetValue(LOCATION_HAND)
 c:RegisterEffect(e)
 
 ●int Card.RegisterEffect(Card c, Effect e[, bool forced=false])
-把效果e注册给c，返回效果的全局id，并设置e的Handler为c
-默认情况下注册时如果c带有免疫e的效果那么注册会失败
-如果forced为true则不会检查c对e的免疫效果
+把效果 e 注册给卡片 c ，返回效果的全局id，并设置 e 的 Handler 为 c
+默认情况下注册时如果 c 带有免疫 e 的效果那么注册会失败
+如果 forced==true 则不会检查卡片 c 对e的免疫效果
 
-●... Card.IsHasEffect(Card c, int code[, int check_player])
-检查c是否受到效果种类是code的效果的影响
+●... Card.IsHasEffect(Card c, int code[, int check_player=PLAYER_NONE])
+检查卡片 c 是否受到效果种类是code的效果的影响
 没有则返回nil
 有则返回那些效果
 
 ●void Card.ResetEffect(Card c, int reset_code, int reset_type)
-以重置类型为reset_type、重置种类为reset_code手动重置c受到的效果的影响
-reset_type只能是以下类型，对应的重置种类为
+以重置类型为 reset_type 、重置种类为 reset_code 手动重置卡片 c 受到的效果的影响
+reset_type 只能是以下类型，对应的重置种类为
 RESET_EVENT       发生事件重置        reset_code为事件
 RESET_PHASE       阶段结束重置        reset_code为阶段
 RESET_CODE        重置指定code的效果  reset_code为效果的种类code，只能重置EFFECT_TYPE_SINGLE的永续型效果
@@ -598,401 +613,417 @@ RESET_COPY        重置复制的效果      reset_code为copy_id
 RESET_CARD        重置卡片的效果      reset_code为效果owner的卡号
 
 ●int Card.GetEffectCount(Card c, int code)
-返回c受到影响的种类是code的效果的数量
+返回卡片 c 受到影响的种类是code的效果的数量
 
 ●Effect Card.RegisterFlagEffect(Card c, int code, int reset_flag, int property, int reset_count[, int label, int desc])
-为c注册一个标识用效果
+为卡片 c 注册一个标识用效果
+效果代码为 code  ，描述为 desc ，标签为 label ，这个效果会在达到 reset_count 次 reset_flag 时点重置， property 一般写0即可
 注：注册给卡的标识用效果不会用于系统，
-即使code与内置效果code重合也不会影响，
-并且类型总是EFFECT_TYPE_SINGLE，reset方法，property和一般的效果相同，
+即使 code 与内置效果 code 重合也不会影响，
+并且类型总是 EFFECT_TYPE_SINGLE，reset 方法，property 和一般的效果相同，
 并且不会无效化，不受卡的免疫效果影响
 
 ●int Card.GetFlagEffect(Card c, int code)
-返回c的种类是code的标识效果的数量
+返回卡片 c 的种类是 code 的标识效果的数量
 
 ●void Card.ResetFlagEffect(Card c, int code)
-手动清除c的种类是code的标识效果
+手动清除卡片 c 的种类是 code 的标识效果
 
 ●bool Card.SetFlagEffectLabel(Card c, int code, int label)
-返回c是否存在种类为code的标识效果，若存在则设置其Label属性为label
+返回卡片 c 是否存在种类为 code 的标识效果，若存在则设置其Label属性为 label (如果已经有Label ，则会清除原本的Label)
 
 ●int[,...] Card.GetFlagEffectLabel(Card c, int code)
-返回c的种类为code的标识效果的Label(数量可能不止一个)，没有此效果则返回nil
+返回卡片 c 的种类为 code 的标识效果的Label(数量可能不止1个)，没有此效果则返回nil
 
 ●void Card.CreateRelation(Card c1, Card c2, int reset_flag)
-为c1建立与c2的联系，此联系仅会由于c1发生RESET_EVENT的事件reset
+为卡片 c1 建立与卡片 c2 的联系，此联系仅会由于 c1 发生 RESET_EVENT 的事件重置
 
 ●void Card.ReleaseRelation(Card c1, Card c2)
-手动释放c1对于c2的联系
+手动释放卡片 c1 对于卡片 c2 的联系
 
 ●void Card.CreateEffectRelation(Card c, Effect e)
-为卡片c和效果e建立联系
+为卡片 c 和效果 e 建立联系
 
 ●void Card.ReleaseEffectRelation(Card c, Effect e)
-手动释放c与效果e的联系
+手动释放卡片 c 与效果 e 的联系
 
 ●void Card.ClearEffectRelation(Card c)
-清空c所有联系的效果
+清空卡片 c 所有效果联系
 
 ●bool Card.IsRelateToEffect(Card c, Effect e)
-检查c是否和效果e有联系
+检查卡片 c 是否和效果 e 有联系
 注：每次发动进入连锁的效果时，发动效果的卡，以及发动效果时指定的对象
 （用Duel.SetTargetCard或者Duel.SelectTarget指定的，包括取对象和不取对象）
 会自动与那个效果建立联系，一旦离场，联系会重置
 
 ●bool Card.IsRelateToChain(Card c, int chainc)
-检查c是否和连锁chainc有联系
-注：每次发动进入连锁的效果时，发动效果的卡，以及发动效果时指定的对象
-（用Duel.SetTargetCard或者Duel.SelectTarget指定的，包括取对象和不取对象）
-会自动与那个效果建立联系，一旦离场，联系会重置
+检查卡片 c 是否和连锁 chainc 有联系。 chainc==0 表示当前连锁
 
 ●bool Card.IsRelateToCard(Card c1, Card c2)
-检查c1是否和c2有联系
+检查卡片 c1 是否和卡片 c2 有联系
 
 ●bool Card.IsRelateToBattle(Card c)
-检查c是否和本次战斗关联
+检查卡片 c 是否和本次战斗关联
 注：此效果通常用于伤害计算后伤害阶段结束前，用于检查战斗的卡是否离场过
 
 ●int Card.CopyEffect(Card c, int code, int reset_flag[, int reset_count=1])
-为c添加卡号是code的卡的可复制的效果，并且添加额外的reset条件
+为卡片 c 添加卡号是 code 的卡的可复制的效果，并且添加额外的重置条件，那些效果会在 reset_count 次 reset_flag 时点后重置
 返回值是表示复制效果的代号id
 
 ●int Card.ReplaceEffect(Card c, int code, int reset_flag[, int reset_count=1])
-把c的效果替换为卡号是code的卡的效果，并且添加额外的reset条件
+把卡片 c 的效果替换为卡号是 code 的卡的效果，并且添加额外的重置条件，那些效果会在 reset_count 次 reset_flag 时点后重置
 返回值是表示替换效果的代号id
 
 ●void Card.EnableReviveLimit(Card c)
-为c添加苏生限制
-##实际上是不可复制、不会被无效的EFFECT_UNSUMMONABLE_CARD和EFFECT_REVIVE_LIMIT效果
+为卡片 c 添加苏生限制
+等价于：
+local e1=Effect.CreateEffect(c)
+e1:SetType(EFFECT_TYPE_SINGLE)
+e1:SetCode(EFFECT_REVIVE_LIMIT)
+e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
+c:RegisterEffect(e1)
 
 ●void Card.CompleteProcedure(Card c)
 使c完成正规的召唤手续
 ##此函数也可通过 c:SetStatus(STATUS_PROC_COMPLETE,true)实现
 
 ●bool Card.IsDisabled(Card c)
-检查c是否处于无效状态
+检查卡片 c 是否处于无效状态
 
 ●bool Card.IsDestructable(Card c[, Effect e])
-检查c是否是可被[效果 e]破坏的(处在可被破坏的位置)
+检查卡片 c 是否是可被[效果 e]破坏的
 
 ●bool Card.IsSummonableCard(Card c)
-检查c是否是可通常召唤的卡
+检查卡片 c 是否是可通常召唤的卡
 
 ●bool Card.IsFusionSummonableCard(Card c[, int sum_type])
-检查c是否是可[用 sum_type 方式]融合召唤的卡
+检查卡片 c 是否是可[用 sum_type 方式]融合召唤的卡
 
 ●bool Card.IsSpecialSummonable(Card c[, int sum_type])
-检查是否可以对c[用 sum_type 方式]进行特殊召唤手续
+检查是否可以对卡片 c [用 sum_type 方式]进行特殊召唤手续
 
 ●bool Card.IsSynchroSummonable(Card c ,Card tuner|nil[, Group mg, int minc=0, int maxc=0])
-检查是否可以以tuner作为调整，用场上[或mg][minc ~ maxc 张卡]为同调素材对c进行同调召唤手续
+检查是否可以以卡片 tuner 作为调整，用场上[或 mg 中][minc ~ maxc 张]的卡为同调素材对卡片 c 进行同调召唤手续
 c 如果不是同调会返回 false
 
 ●bool Card.IsXyzSummonable(Card c, Group mg|nil[, minc=0, maxc=0])
-检查是否可以在场上的卡[或mg][中选出 minc-maxc 个超量素材]对c进行超量召唤手续
+检查是否可以在场上的卡[或 mg][中选出 minc-maxc 个超量素材]对卡片 c 进行超量召唤手续
 c 如果不是超量会返回 false
 
 ●bool Card.IsLinkSummonable(Card c, Group mg|nil[, Card lcard, minc=0, maxc=0])
-检查是否可以用[包含卡 lcard 的]场上[或mg]的卡[中选出 minc-maxc 个连接素材]对c进行连接召唤手续
+检查是否可以用[包含卡 lcard 的]场上[或 mg 中]的卡[选出 minc-maxc 个连接素材]对卡片 c 进行连接召唤手续
 c 如果不是连接会返回 false
 
 ●bool Card.IsSummonable(Card c, bool ignore_count, Effect e|nil[, int minc=0, int zone=0x1f])
-检查c是否可以进行通常召唤（不包含通常召唤的set)，ignore_count=true则不检查召唤次数限制
-e~=nil则检查c是否可以以效果e进行通常召唤，minc 表示至少需要的祭品数（用于区分妥协召唤与上级召唤）,zone 表示必须要召唤到的区域
+检查卡片 c 是否可以进行通常召唤（不包含通常召唤的set)，ignore_count==true 则不检查召唤次数限制
+e~=nil 则检查卡片 c 是否可以以效果 e 进行通常召唤，minc 表示至少需要的祭品数（用于区分妥协召唤与上级召唤）,zone 表示必须要召唤到的区域
 
 ●bool Card.IsMSetable(Card, bool ignore_count, Effect e|nil[, int minc=0, int zone=0x1f])
-检查c是否可进行通常召唤的set，ignore_count=true则不检查召唤次数限制
-e~=nil则检查c是否可以以效果e进行通常召唤的set，minc 表示至少需要的祭品数（用于区分妥协召唤set与上级召唤set）,zone 表示必须要放置到的区域
+检查卡片 c 是否可进行通常召唤的set，ignore_count==true 则不检查召唤次数限制
+e~=nil 则检查卡片 c 是否可以以效果 e 进行通常召唤的set，minc 表示至少需要的祭品数（用于区分妥协召唤set与上级召唤set）,zone 表示必须要放置到的区域
 
 ●bool Card.IsSSetable(Card c[, bool ignore_field=false])
-检查c是否可以set到魔法陷阱区，ignore_field=true则无视魔陷区格子是否能使用的限制
+检查卡片 c 是否可以set到魔法陷阱区，ignore_field==true 则无视魔陷区格子是否能使用的限制
 
 ●bool Card.IsCanBeSpecialSummoned(Card c, Effect e, int sumtype, int sumplayer, bool nocheck, bool nolimit[, int sumpos=POS_FACEUP, int toplayer=sumplayer, int zone=0xff])
-检查c是否可以被玩家sumplayer用效果e[以sumtype方式和sumpos表示形式]特殊召唤[到玩家 toplayer 的区域zone]
-如果nocheck是true则不检查c的召唤条件，如果nolimit是true则不检查c的苏生限制
+检查卡片 c 是否可以被玩家 sumplayer 用效果 e[以 sumtype 方式和 sumpos 表示形式]特殊召唤[到玩家 toplayer 的区域 zone]
+如果 nocheck==true 则不检查卡片 c 的召唤条件，如果 nolimit==true 则不检查卡片 c 的苏生限制
 
-●bool Card.IsAbleToHand(Card c)
-检查c是否可以送去手牌
+●bool Card.IsAbleToHand(Card c[, int player=c:GetOwner()])
+检查卡片 c 是否可以送去[玩家 player 的]手牌
 注：仅当卡片或者玩家受到“不能加入手牌”的效果的影响时（如雷王）此函数才返回false
 ##以下几个函数类似
 
 ●bool Card.IsAbleToDeck(Card c)
-检查c是否可以送去卡组
+检查卡片 c 是否可以送去卡组
 
 ●bool Card.IsAbleToExtra(Card c)
-检查c是否可以送去额外卡组
+检查卡片 c 是否可以送去额外卡组
 对于非融合、同调等额外怪兽或者非灵摆怪兽此函数均返回false
 
 ●bool Card.IsAbleToGrave(Card c)
-检查c是否可以送去墓地
+检查卡片 c 是否可以送去墓地
 
 ●bool Card.IsAbleToRemove(Card c[, int player, int pos=POS_FACEUP, int reason=REASON_EFFECT])
-检查c是否可以被[玩家 player 以 pos 的表示形式,reason 原因]除外
+检查卡片 c 是否可以被[玩家 player 以 pos 的表示形式,reason 原因]除外
 
 ●bool Card.IsAbleToHandAsCost(Card c)
-检查c是否可以作为cost送去手牌
+检查卡片 c 是否可以作为cost送去手牌
 注：此函数会在Card.IsAbleToHand的基础上追加检测c的实际目的地
 当c送往手牌会被送去其它地方时（如缩退回路适用中，或者c是融合、同调 等额外怪兽的一种），此函数返回false
 ##以下几个函数类似
 
 ●bool Card.IsAbleToDeckAsCost(Card c)
-检查c是否可以作为cost送去卡组
+检查卡片 c 是否可以作为cost送去卡组
 
 ●bool Card.IsAbleToExtraAsCost(Card c)
-检查c是否可以作为cost送去额外卡组，主卡组的灵摆卡会返回false
+检查卡片 c 是否可以作为cost送去额外卡组，主卡组的灵摆卡会返回false
 
 ●bool Card.IsAbleToDeckOrExtraAsCost(Card c)
-检查c是否可以作为cost送去卡组或额外卡组（用于新宇侠、剑斗兽融合怪兽的召唤手续检测）等价于 (c:IsAbleToDeckAsCost() or c:IsAbleToExtraAsCost())
+检查卡片 c 是否可以作为cost送去卡组或额外卡组（用于新宇侠、剑斗兽融合怪兽的召唤手续检测）
+等价于 (c:IsAbleToDeckAsCost() or c:IsAbleToExtraAsCost())
 
 ●bool Card.IsAbleToGraveAsCost(Card c)
-检查c是否可以作为cost送去墓地
+检查卡片 c 是否可以作为cost送去墓地
 
 ●bool Card.IsAbleToRemoveAsCost(Card c[, int pos=POS_FACEUP])
-检查c是否可以[以 pos 表示形式]作为cost除外
-
-●bool Card.IsAbleToDecreaseAttackAsCost(Card c[, int atk])
-检查c是否可以作为cost降低[atk 数值]攻击力
-若c不是怪兽或者不在怪兽区，或是里侧表示，或受到 EFFECT_SET_ATTACK_FINAL(邪神 恐惧根源等) or EFFECT_REVERSE_UPDATE(天邪鬼的诅咒)效果影响，或是攻击力小于atk，则返回false
-
-●bool Card.IsAbleToDecreaseDefenseAsCost(Card c[, int def])
-检查c是否可以作为cost降低[def 数值]守备力
-若c不是怪兽或者不在怪兽区，或是里侧表示，或受到 EFFECT_SET_DEFENSE_FINAL(邪神 恐惧根源等) or EFFECT_REVERSE_UPDATE(天邪鬼的诅咒)效果影响，或是守备力小于def，则返回false
+检查卡片 c 是否可以[以 pos 表示形式]作为cost除外
 
 ●bool Card.IsReleasable(Card c)
-检查c是否可以被解放（非上级召唤用）
+检查卡片 c 是否可以被解放（非上级召唤用）
 如果 c 满足以下条件，都会返回 false
 召唤(广义的)之际、 在墓地或者除外、 在手卡并且是魔法·陷阱、 玩家受到不能把卡解放的效果影响、 不能做上级召唤以外的祭品
 
 ●bool Card.IsReleasableByEffect(Card c)
-检查c是否可以被效果解放
+检查卡片 c 是否可以被效果解放
 
 ●bool Card.IsDiscardable(Card[, int reason=REASON_COST])
-检查c是否可以以reason原因丢弃
+检查卡片 c 是否可以以 reason 原因丢弃
 注：此函数仅用于检测，
-以REASON_DISCARD作为原因把一张手卡送墓并不会导致那张卡不能丢弃
+以 REASON_DISCARD 作为原因把一张手卡送墓并不会导致那张卡不能丢弃
 
 ●bool Card.IsAttackable(Card c)
-检查c是否可以攻击
+检查卡片 c 是否可以攻击
 
 ●bool Card.IsChainAttackable(Card c[, int ac = 2, bool monsteronly = false])
-检查c是否可以连续攻击，c的攻击宣言次数>=ac则返回false
-monsteronly = true 则表示只能对怪兽攻击
-注：当c因为闪光之双剑等效果进行过多次攻击之后此函数返回false
+检查卡片 c 是否可以连续攻击，c 的攻击宣言次数>=ac 则返回false
+monsteronly==true 则表示只能对怪兽攻击
+注：当 c 因为闪光之双剑等效果进行过多次攻击，并且 ac==2 的时候此函数返回false
 
 ●bool Card.IsFaceup(Card c)
-检查c是否是表侧表示
+检查卡片 c 是否是表侧表示
 
 ●bool Card.IsAttackPos(Card c)
-检查c是否是攻击表示
+检查卡片 c 是否是攻击表示
 
 ●bool Card.IsFacedown(Card c)
-检查c是否是里侧表示
+检查卡片 c 是否是里侧表示
 
 ●bool Card.IsDefensePos(Card c)
-检查c是否是守备表示
+检查卡片 c 是否是守备表示
 
 ●bool Card.IsPosition(Card c, int pos)
-检查c是否是表示形式pos
+检查卡片 c 是否是表示形式 pos
 
 ●bool Card.IsPreviousPosition(Card c, int pos)
-检查c位置变化之前是否是表示形式pos
+检查卡片 c 位置变化之前是否是表示形式 pos
 
 ●bool Card.IsControler(Card c, int controler)
-检查c的当前控制着是否是controler
+检查卡片 c 的当前控制着是否是 controler
+
+●bool Card.IsPreviousControler(Card c, int controler)
+检查卡片 c 位置变化之前的控制着是否是 controler
 
 ●bool Card.IsOnField(Card c)
-检查c是否在场
+检查卡片 c 是否在场
 注：当怪兽召唤，反转召唤，特殊召唤时召唤成功之前，此函数返回false
 
 ●bool Card.IsLocation(Card c, int location)
-检查c当前位置是否是location
-注：location=LOCATION_MZONE时，怪兽召唤(广义的)之际或被无效会返回 false
-location=LOCATION_SZONE时，魔陷发动无效会返回false
+检查卡片 c 当前位置是否是 location
+注：location==LOCATION_MZONE 时，怪兽召唤(广义的)之际或被无效会返回 false
+location==LOCATION_SZONE 时，魔陷发动无效会返回false
 
 ●bool Card.IsPreviousLocation(Card c, int location)
-检查c之前的位置是否是location
+检查卡片 c 之前的位置是否是 location
 
 ●bool Card.IsLevelBelow(Card c, int level)
-检查c是否是等级level以下（至少为1）
+检查卡片 c 是否是等级 level 以下（至少为1）
 
 ●bool Card.IsLevelAbove(Card c, int level)
-检查c是否是等级level以上
+检查卡片 c 是否是等级 level 以上
 
 ●bool Card.IsRankBelow(Card c, int rank)
-检查c是否是阶级rank以下（至少为1）
+检查卡片 c 是否是阶级 rank 以下（至少为1）
 
 ●bool Card.IsRankAbove(Card c, int rank)
-检查c是否是阶级rank以上
+检查卡片 c 是否是阶级 rank 以上
 
 ●bool Card.IsLinkBelow(Card c, int link)
-检查c是否连接标记数量是link以下（至少为1）
+检查卡片 c 是否连接标记数量是 link 以下（至少为1）
 
 ●bool Card.IsLinkAbove(Card c, int link)
-检查c是否连接标记数量是link以上
+检查卡片 c 是否连接标记数量是 link 以上
 
 ●bool Card.IsAttackBelow(Card c, int atk)
-检查c是否是攻击力atk以下（至少为0）
+检查卡片 c 是否是攻击力 atk 以下（至少为0）
 
 ●bool Card.IsAttackAbove(Card c, int atk)
-检查c是否是攻击力atk以上
+检查卡片 c 是否是攻击力 atk 以上
 
 ●bool Card.IsDefenseBelow(Card c, int def)
-检查c是否是守备力def以下（至少为0）
+检查卡片 c 是否是守备力 def 以下（至少为0）
 
 ●bool Card.IsDefenseAbove(Card c, int def)
-检查c是否是守备力def以上
+检查卡片 c 是否是守备力 def 以上
 
 ●bool Card.IsPublic(Card c)
-检查c是否处于公开状态
+检查卡片 c 是否处于公开状态
 
 ●bool Card.IsForbidden(Card c)
-检查c是否处于被宣言禁止状态
+检查卡片 c 是否处于被宣言禁止状态
 
 ●bool Card.IsAbleToChangeControler(Card c)
-检查c是否可以改变控制权
+检查卡片 c 是否可以改变控制权
 注：仅当卡收到了“不能改变控制权”的效果的影响时，此函数返回false
 
 ●bool Card.IsControlerCanBeChanged(Card c[, bool ignore_mzone=false, int zone=0xff])
-检查c的控制权是否可以改变。 ignore_mzone=true 会忽视转移控制权后的玩家场上是否有空格位， zone 表示必须要使用的位置
+检查卡片 c 的控制权是否可以改变。 ignore_mzone==true 会忽视转移控制权后的玩家场上是否有空格位， zone 表示必须要使用的位置
 
 ●bool Card.AddCounter(Card c, int countertype, int count[, bool singly=false])
-为c放置count个countertype类型的指示物，singly为true表示逐个添加至count 个为止
+为卡片 c 放置 count 个 countertype 类型的指示物，singly==true 表示逐个添加至 count 个为止
 
 ●void Card.RemoveCounter(Card c, int player, int countertype, int count, int reason)
-让玩家player以原因reason移除c上的count个countertype类型的指示物， countertype=0 则清除c的所有指示物,否则返回是否成功
+让玩家 player 以原因 reason 移除卡片 c 上的 count 个 countertype 类型的指示物， countertype==0 则清除c的所有指示物,否则返回是否成功
 
 ●int Card.GetCounter(Card c, int countertype)
-返回c上的countertype类型的指示物的数量， countertype=0 则返回c上所有类型的指示物数量之和
+返回卡片 c 上的 countertype 类型的指示物的数量， countertype==0 则返回卡片 c 上所有类型的指示物数量之和
 
-●void Card.EnableCounterPermit(Card c, int countertype[, int location, function filter])
-允许c[在位置location]放置[满足条件 filter 的]需要“可以放置”才能放置的指示物countertype
-location的默认值与c的种类有关，灵摆怪兽需要指定能否在怪兽区域或灵摆区域放置指示物
+●void Card.EnableCounterPermit(Card c, int countertype[, int prange, function confilter])
+允许卡片 c [在位置 prange 的场合，在满足条件 confilter 的情况下]被放置需要“可以放置”才能放置的指示物 countertype (参考对象：暗黑女武神<83269557>)
+prange 的默认值与 c 的种类有关，灵摆怪兽需要指定能否在怪兽区域或灵摆区域放置指示物
+等价于：
+local e1=Effect.CreateEffect(c)
+e1:SetType(EFFECT_TYPE_SINGLE)
+e1:SetProperty(EFFECT_FLAG_SINGLE_RANGE)
+e1:SetCode(EFFECT_COUNTER_PERMIT|countertype)
+e1:SetCondition(confilter(e) end)
+e1:SetRange(prange)
+c:RegisterEffect(e1)
 
 ●void Card.SetCounterLimit(Card c, int countertype, int count)
-设定c放置countertype类型指示物的上限
+设定卡片 c 放置 countertype 类型指示物的上限为 count
 
 ●bool Card.IsCanChangePosition(Card c)
-检查c是否可以用效果改变表示形式
+检查卡片 c 是否可以用效果改变表示形式
 
 ●bool Card.IsCanTurnSet(Card c)
-检查c是否可以转成里侧表示
+检查卡片 c 是否可以转成里侧表示
 
-●bool Card.IsCanAddCounter(Card c, int countertype[, int count, int singly=false, int location])
-检查c是否可以[逐个(singly=true)在 location 区域]放置[count 个]countertype类型的指示物
+●bool Card.IsCanAddCounter(Card c, int countertype, int count[, int singly=false, int location])
+检查是否可以给[在 location 区域存在的]卡片 c [逐个(singly==true)]放置 count 个 countertype 类型的指示物
 
 ●bool Card.IsCanRemoveCounter(Card c, int player, int countertype, int count, int reason)
-检查玩家player是否可以以原因reason移除c上的count个countertype类型的指示物
+检查玩家 player 是否可以以原因 reason 移除卡片 c 上的 count 个 countertype 类型的指示物
 
-●bool Card.IsCanOverlay(Card c[, int player])
-检查c是否可以被[玩家 player]叠放
+●bool Card.IsCanHaveCounter(Card c, int countertype)
+检查卡片 c 是否可以放置 countertype 类型的指示物
+
+●bool Card.IsCanOverlay(Card c[, int player=c:GetOwner()])
+检查卡片 c 是否可以被[玩家 player]叠放
 衍生物、不在场上的卡或者是被禁止的卡、不是玩家 player 的卡并且不会被改变控制权的卡 都会返回false
 
 ●bool Card.IsCanBeFusionMaterial(Card c[, Card fc, int summon_type=SUMMON_TYPE_FUSION])
-检查c是否可以成为[融合怪兽fc的summon_type方式的]融合素材
+检查卡片 c 是否可以成为[融合怪兽 fc 的 summon_type 方式的]融合素材
 
 ●bool Card.IsCanBeSynchroMaterial(Card c[, Card sc, Card tuner])
-检查c是否可以成为[以 tuner 为调整的同调怪兽sc的]同调素材
+检查卡片 c 是否可以成为[以 tuner 为调整的同调怪兽 sc 的]同调素材
 
 ●bool Card.IsCanBeRitualMaterial(Card c, Card sc|nil)
-检查c是否可以作为[仪式怪兽sc的]仪式素材,没有指定sc的场合，必须填nil
+检查卡片 c 是否可以作为[仪式怪兽 sc 的]仪式素材,没有指定sc的场合，必须填nil
 
 ●bool Card.IsCanBeXyzMaterial(Card c, Card sc|nil)
-检查c是否可以成为[超量怪兽sc的]超量素材,没有指定sc的场合，必须填nil
+检查卡片 c 是否可以成为[超量怪兽 sc 的]超量素材,没有指定sc的场合，必须填nil
 
 ●bool Card.IsCanBeLinkMaterial(Card c, Card sc|nil)
-检查c是否可以成为[连接怪兽sc的]连接素材,没有指定sc的场合，必须填nil
+检查卡片 c 是否可以成为[连接怪兽 sc 的]连接素材,没有指定sc的场合，必须填nil
 
-●bool Card.CheckFusionMaterial(Card c[, Group mg|nil, Card gc|nil, int chkf=PLAYER_NONE, bool not_material=FALSE])
-检查场上[或mg]是否包含了c需要[必须包含gc在内]的一组融合素材
-##根据c的种类为EFFECT_FUSION_MATERIAL的效果的Condition函数检查
+●bool Card.CheckFusionMaterial(Card c[, Group mg|nil, Card gc|nil, int chkf=PLAYER_NONE, bool not_material=false])
+检查场上[或 mg 中]是否包含了卡片 c 需要[必须包含卡片 gc 在内]的一组融合素材
+not_material==true 则即使有素材原本不能作为 c 的融合素材，也能判定为那些素材可以凑齐一组 c 的融合素材
+(参考对象：融合解除<95286165>，固定音型<9113513>，团结的剑斗兽<66290900>，奇迹接触<35255456>，新宇融合<14088859>)
+##根据 c 的种类为 EFFECT_FUSION_MATERIAL 的效果的 Condition 函数检查
 
 ●bool Card.CheckFusionSubstitute(Card c, Card fc)
-检查c能否代替融合怪兽fc的记述卡名的素材
+检查卡片 c 能否代替融合怪兽 fc 的记述卡名的素材
 
 ●bool Card.IsImmuneToEffect(Card c, Effect e)
-检查c是否免疫效果e（即不受效果e的影响）
+检查卡片 c 是否免疫效果 e(即不受效果 e 的影响)
 
 ●bool Card.IsCanBeEffectTarget(Card c[, Effect e])
-检查c是否可以成为效果[e的]对象
+检查卡片 c 是否可以成为效果[e 的]对象
 
 ●bool Card.IsCanBeBattleTarget(Card c1, Card c2)
-检查c1是否可以成为c2的攻击目标
+检查卡片 c1 是否可以成为卡片 c2 的攻击目标
 
 ●void Card.AddMonsterAttribute(Card c, int type[, int attribute, int race, int level, int atk, int def])
-为魔陷卡c添加怪兽数值,type 为怪兽类型，不能是没有等级的怪兽
+为魔陷卡 c 添加怪兽数值,type 为怪兽类型，不能是没有等级的怪兽
 注：在数据库中有记录的数值视为原本数值
 不再需要 Card.AddMonsterAttributeComplete(Card c)
 
 ●void Card.CancelToGrave(Card c[, bool cancel=true])
-取消送墓确定状态，cancel=false则重新设置送墓确定状态
+取消送墓确定状态，cancel==false 则重新设置送墓确定状态
 注：送墓确定状态指的是在场上发动的不留场的魔法和陷阱后，这些卡片的状态
 送墓确定状态中的卡无法返回手牌和卡组，并且连锁结束时送去墓地
 此函数的作用是取消此状态使其留场，用于诱饵人偶和废铁稻草人等卡
 
 ●int,int Card.GetTributeRequirement(Card c)
-返回通常召唤c所需要的祭品的最小和最大数量
+返回通常召唤卡片 c 所需要的祭品的最小和最大数量
 
 ●Card Card.GetBattleTarget(Card c)
-返回与c进行战斗的卡，没有则返回nil
+返回与卡片 c 进行战斗的卡，没有则返回nil
 
 ●Group,bool Card.GetAttackableTarget(Card c)
-返回c可攻击的卡片组以及能否直接攻击
+返回卡片 c 可攻击的卡片组以及能否直接攻击
 
 ●void Card.SetHint(Card c, int type, int value)
-为c设置类型为type的卡片提示信息
-type只能为以下值，对应的value类型为
-CHINT_TURN              回合数
-CHINT_CARD              卡片id
-CHINT_RACE              种族
-CHINT_ATTRIBUTE         属性
-CHINT_NUMBER            数字
-CHINT_DESC              描述
+为卡片 c 设置类型为 type 的卡片提示信息
+type 只能为以下值，对应的 value 类型为
+CHINT_TURN              =1 --回合数
+CHINT_CARD              =2 --卡片id
+CHINT_RACE              =3 --种族
+CHINT_ATTRIBUTE         =4 --属性
+CHINT_NUMBER            =5 --数字
+CHINT_DESC              =6 --描述
 
 ●void Card.ReverseInDeck(Card c)
-设置c在卡组中正面表示（POS_FACEUP_DEFENSE）
+设置卡片 c 在卡组中表面向上（POS_FACEUP_DEFENSE）
 
 ●void Card.SetUniqueOnField(Card c, int s, int o, function|int unique_code[, int unique_location=LOCATIOIN_ONFIELD])
-设置c以unique_code只能在场上[或怪兽区域或魔陷区域，由unique_location决定]只能存在1张,function 的返回值类型必须是int
-s不为0会检查自己场上的唯一性，o不为0则检查对方场上的唯一性
+设置卡片 c 以 unique_code 只能在场上[或怪兽区域或魔陷区域，由 unique_location 决定]只能存在1张。
+s 不为0会检查自己场上的唯一性，o 不为0则检查对方场上的唯一性
+如果 unique_code 是 function 类型，则需要返回一个 bool 类型的值，通常用于判定某系列在场的唯一性。函数原型如下(参考对象：地缚神 系列，罪 系列)
+function filter(c)
+end
 
 ●bool Card.CheckUniqueOnField(Card c,int check_player[, int check_location=LOCATION_ONFIELD, Card icard|nil])
-检查c在check_player场上的唯一性
+检查卡片 c 在 check_player 场上[check_location 区域]的唯一性[, 忽略卡片 icard 的唯一性影响]
+参考对象：晴天气 锈红<54895237>
 
 ●void Card.ResetNegateEffect(Card c[, int code1,...])
-重置c受到的卡号为code1[, code2...]的卡片的效果的影响
+重置卡片 c 受到的卡号为 code1[, code2...]的卡片的效果的影响
 
 ●void Card.AssumeProperty(Card c,int assume_type, int assume_value)
-把c的assume_type的数值当作assume_value使用（基因组斗士）
+把卡片 c 的 assume_type 的数值当作 assume_value 使用（基因组斗士）
 assume_type为以下类型
-ASSUME_CODE         卡号
-ASSUME_TYPE         类型
-ASSUME_LEVEL        等级
-ASSUME_RANK         阶级
-ASSUME_ATTRIBUTE    属性
-ASSUME_RACE         种族
-ASSUME_ATTACK       攻击力
-ASSUME_DEFENSE      守备力
+ASSUME_CODE         =1 --卡号
+ASSUME_TYPE         =2 --类型
+ASSUME_LEVEL        =3 --等级
+ASSUME_RANK         =4 --阶级
+ASSUME_ATTRIBUTE    =5 --属性
+ASSUME_RACE         =6 --种族
+ASSUME_ATTACK       =7 --攻击力
+ASSUME_DEFENSE      =8 --守备力
 
 ●void Card.SetSPSummonOnce(Card c, int spsummon_code)
-设置c一回合只能进行1次特殊召唤（灵兽，波动龙）
-相同的spsummon_code共用1个次数
+设置卡片 c 一回合只能进行1次特殊召唤（灵兽，波动龙）
+相同的 spsummon_code 共用1个次数
 
 ========== Effect ==========
 ●Effect Effect.CreateEffect(Card c)
 新建一个空效果
-并且效果的Owner为c
+并且效果的Owner为 c
 
 ●Effect Effect.GlobalEffect()
 新建一个全局效果
 
 ●Effect Effect.Clone(Effect e)
-新建一个效果e的副本
+新建一个效果 e 的副本
 
 ●void Effect.Reset(Effect e)
-把效果e重置，重置之后不可以再使用此效果
+把效果 e 重置，重置之后不可以再使用此效果
 
 ●int Effect.GetFieldID(Effect e)
-获取效果e的id
+获取效果 e 的id
 
 ●void Effect.SetDescription(Effect e, int desc)
 设置效果 e 的效果描述
@@ -1001,10 +1032,10 @@ ASSUME_DEFENSE      守备力
 设置效果 e 的Code属性
 
 ●void Effect.SetRange(Effect e, int range)
-设置效果 e 的Range属性，即e的生效位置
+设置效果 e 的Range属性，即 e 的生效位置
 
 ●void Effect.SetTargetRange(Effect e, int s_range, int o_range)
-设置效果 e 的Target Range属性
+设置效果 e 的TargetRange属性
 	s_range指影响的我方区域
 	o_range值影响的对方区域
 	如果property属性中指定了EFFECT_FLAG_ABSOLUTE_RANGE标志，
@@ -1012,25 +1043,25 @@ ASSUME_DEFENSE      守备力
 	如果这是一个召唤(覆盖)/限制召唤(覆盖)/特殊召唤手续
 	(EFFECT_SUMMON_PROC/EFFECT_LIMIT_SUMMON_PROC/EFFECT_SPSUMMON_PROC等)的效果，
 		并且property指定了EFFECT_FLAG_SPSUM_PARAM标志，
-		那么s_range表示特殊召唤到的哪个玩家的场地，
-	o_range表示可选择的表示形式
+		那么 s_range 表示可选择的表示形式，
+		o_range 表示特殊召唤到的哪个玩家的场地，0是己方，1是对方
 
 ●void Effect.SetAbsoluteRange(Effect e, int playerid, int s_range, int o_range)
-设置效果 e 的target range属性并设置 EFFECT_FLAG_ABSOLUTE_TARGET 标志
-	如果 playerid != 0 ，s_range和o_range反转
+设置效果 e 的TargetRange属性并设置 EFFECT_FLAG_ABSOLUTE_TARGET 标志
+	如果 playerid != 0 ，则 s_range 和 o_range 反转
 
 ●void Effect.SetCountLimit(Effect e, int count=1[, int code=0])
-设置效果 e 的一回合可以发动的次数count（仅触发型效果有效），相同的code(不等于0或1时)共用1个次数
-code包含以下数值具有特殊的性质
-EFFECT_COUNT_CODE_OATH          誓约使用次数
-EFFECT_COUNT_CODE_DUEL          决斗中使用次数
-EFFECT_COUNT_CODE_SINGLE        同一张卡多个效果公共使用次数（不限制同名卡）
+设置效果 e 的一回合可以发动的次数 count（仅触发型效果有效），相同的 code (不等于0或1时)共用1个次数
+code 包含以下数值具有特殊的性质
+EFFECT_COUNT_CODE_OATH			=0x10000000 --发动次数限制(誓约次数, 发动被无效不计数)
+EFFECT_COUNT_CODE_DUEL			=0x20000000 --决斗中使用次数
+EFFECT_COUNT_CODE_SINGLE		=0x1		--同一张卡的多个效果公共使用次数
 
 ●void Effect.SetReset(Effect e, int reset_flag[, int reset_count=1])
 设置效果 e 的reset参数
 
 ●void Effect.SetType(Effect e, int type)
-为效果e设置Type属性
+为效果 e 设置Type属性
 EFFECT_TYPE_SINGLE			=0x0001		--自己状态变化时触发
 EFFECT_TYPE_FIELD			=0x0002		--场上所有卡状态变化时触发
 EFFECT_TYPE_EQUIP			=0x0004		--装备效果
@@ -1078,31 +1109,31 @@ EFFECT_TYPE_TARGET          =0x4000     --影响持续取的对象的效果（�
 设置效果 e 的Operation属性
 
 ●void Effect.SetOwnerPlayer(Effect e[, int player=0])
-设置效果 e 的OwnerPlayer属性为player
+设置效果 e 的OwnerPlayer属性为 player
 
 ●int Effect.GetDescription(Effect e)
-返回效果 e 的效果描述，没有则无返回值，下同（到 GetCategory ）
+返回效果 e 的效果描述，没有则无返回值
 
 ●int Effect.GetCode(Effect e)
-返回效果 e 的code属性
+返回效果 e 的code属性，没有则无返回值
 
 ●int Effect.GetType(Effect e)
-返回效果 e 的Type属性
+返回效果 e 的Type属性，没有则无返回值
 
 ●int,int Effect.GetProperty(Effect e)
-返回效果 e 的Property属性
+返回效果 e 的Property属性，没有则无返回值
 
 ●int[,...] Effect.GetLabel(Effect e)
-返回效果 e 的Label(全部返回)
+返回效果 e 的Label(全部返回)，没有则无返回值
 
 ●Card|Group|Effect Effect.GetLabelObject(Effect e)
-返回效果 e 的LabelObject属性
+返回效果 e 的LabelObject，没有则返回 nil
 
 ●int Effect.GetCategory(Effect e)
-返回效果 e 的Category属性
+返回效果 e 的Category属性，没有则无返回值
 
 ●Card Effect.GetOwner(Effect e)
-返回效果 e 的Owner属性
+返回效果 e 的Owner属性，就是该效果的拥有卡
 
 ●Card Effect.GetHandler(Effect e)
 返回效果 e 在哪一张卡上生效(通常是用Card.RegisterEffect注册该效果的卡)
@@ -1127,29 +1158,29 @@ EFFECT_TYPE_TARGET          =0x4000     --影响持续取的对象的效果（�
 比如灵摆的结果是 灵摆+魔法
 
 ●bool Effect.IsActiveType(Effect e, int type)
-检查效果 e 的效果类型（怪兽·魔法·陷阱等）是否有type
+检查效果 e 的效果类型（怪兽·魔法·陷阱等）是否有 type
 
 ●int Effect.GetOwnerPlayer(Effect e)
 返回效果 e 的OwnerPlayer属性，一般是Owner的控制者
 
 ●int Effect.GetHandlerPlayer(Effect e)
-返回效果 e 的当前控制者，一般是Handle的控制者
+返回效果 e 的当前控制者，一般是Handler的控制者
 
 ●bool Effect.IsHasProperty(Effect e, int prop1[, int prop2])
-检查效果e是否含有标志prop1[和prop2]
+检查效果 e 是否含有标志 prop1[和 prop2]
 
 ●bool Effect.IsHasCategory(Effect e, int cate)
-检查效果e是否含有效果分类cate
+检查效果 e 是否含有效果分类 cate
 
 ●bool Effect.IsHasType(Effect e, int type)
-检查效果e是否属于类型type
+检查效果 e 是否属于类型 type
 
 ●bool Effect.IsActivatable(Effect e, int player[, bool neglect_loc=false, bool neglect_target=false])
-检查效果e能否由player发动
-neglect_loc=true 为不检测发动位置， neglect_target=true 为不检测对象要求
+检查效果 e 能否由 player 发动
+neglect_loc==true 为不检测发动位置， neglect_target==true 为不检测对象要求
 
 ●bool Effect.IsActivated(Effect e)
-检查效果e能否是发动的效果，也就是以下类型
+检查效果 e 能否是发动的效果，也就是以下类型
 EFFECT_TYPE_ACTIVATE		=0x0010		--魔陷发动
 EFFECT_TYPE_FLIP			=0x0020		--翻转效果
 EFFECT_TYPE_IGNITION		=0x0040		--起动效果
@@ -1159,10 +1190,10 @@ EFFECT_TYPE_TRIGGER_F		=0x0200		--诱发必发效果
 EFFECT_TYPE_QUICK_F			=0x0400		--诱发即时必发效果（熊猫龙等）
 
 ●int Effect.GetActivateLocation(Effect e)
-返回效果e的发动区域
+返回效果 e 的发动区域
 
 ●int Effect.GetActivateSequence(Effect e)
-返回效果e的发动区域序号
+返回效果 e 的发动区域序号
 
 ●bool Effect.CheckCountLimit(Effect e, int p)
 检测玩家 p 是否还有可以发动的效果 e 的次数
@@ -1175,55 +1206,55 @@ EFFECT_TYPE_QUICK_F			=0x0400		--诱发即时必发效果（熊猫龙等）
 新建一个空的卡片组
 
 ●void Group.KeepAlive(Group g)
-让卡片组g持续，把卡片组设置为效果的LabelObject需要设置
+让卡片组 g 持续，把卡片组设置为效果的LabelObject需要设置
 
 ●void Group.DeleteGroup(Group g)
-删除卡片组g
+删除卡片组 g 
 
 ●Group Group.Clone(Group g)
-新建卡片组g的副本
+新建卡片组 g 的副本
 
 ●Group Group.FromCards(...)
-不定参数，把传入的所有卡组合成一个卡片组g并返回，所有参数只能是 Card 类型。没有参数时，相当于Group.CreateGroup()
+不定参数，把传入的所有卡组合成一个卡片组 g 并返回，所有参数只能是 Card 类型。没有参数时，相当于 Group.CreateGroup()
 
 ●void Group.Clear(Group g)
-清空卡片组g里的内容
+清空卡片组 g 里的内容
 
 ●void Group.AddCard(Group g, Card c)
-往卡片组g中增加卡片c
+往卡片组 g 中增加卡片c
 
 ●void Group.RemoveCard(Group g, Card c)
-把卡片c从卡片组g中移除
+把卡片c从卡片组 g 中移除
 
 ●Card Group.GetFirst(Group g)
-返回卡片组g中第一张卡，并重置当前指针到g中第一张卡
+返回卡片组 g 中第一张卡，并重置当前指针到 g 中第一张卡
 如果g中不存在卡则返回nil
 
 ●Card Group.GetNext(Group g)
-使指针指向卡片组g下一张卡并返回这张卡，如果不存在则返回nil
+使指针指向卡片组 g 下一张卡并返回这张卡，如果不存在则返回nil
 
 ●int Group.GetCount(Group g)
-返回卡片组g中卡的数量
+返回卡片组 g 中卡的数量
 
 ●int Group.__len(Group g)
 和 Group.GetCount 一样
 
 ●void Group.ForEach(Group g, function f,...)
-为卡片组g中的每一张卡调用一次f ,第三个参数开始为额外参数
+为卡片组 g 中的每一张卡调用一次 f ,第三个参数开始为额外参数
 
 ●Group Group.Filter(Group g, function f, Card|Group ex|nil, ...)
-过滤函数，从卡片组g中筛选满足筛选条件f并且不等于ex的卡
+过滤函数，从卡片组 g 中筛选满足筛选条件 f 并且不等于 ex 的卡
 从第4个参数开始为额外参数
 
 ●int Group.FilterCount(Group g, function f, Card|Group ex|nil, ...)
-过滤函数，和Group.Filter基本相同，不同之处在于此函数只返回满足条件的卡的数量
+过滤函数，和 Group.Filter 基本相同，不同之处在于此函数只返回满足条件的卡的数量
 
-●Group Group.FilterSelect(Group g, int player, function f, int min, int max, Card|Group ex|nil, ...)
-过滤函数，让玩家player从卡片组g中选择 min-max 张满足筛选条件f并且不等于ex的卡
+●Group Group.FilterSelect(Group g, int player, function f, int minc, int maxc, Card|Group ex|nil, ...)
+过滤函数，让玩家 player 从卡片组 g 中选择 minc-maxc 张满足筛选条件 f 并且不等于 ex 的卡
 从第7个参数开始为额外参数
 
-●Group Group.Select(Group g, int player, int min, int max, Card|Group ex|nil)
-让玩家player从卡片组g中选择min-max张不等于ex的卡
+●Group Group.Select(Group g, int player, int minc, int maxc, Card|Group ex|nil)
+让玩家 player 从卡片组 g 中选择 minc-maxc 张不等于 ex 的卡
 
 ●Card Group.SelectUnselect(Group cg, Group sg, int player[, bool btok=false, bool cancelable=false, int minc=1, int maxc=1])
 让玩家 player 从卡片组 cg 中选择 1 张卡放入卡片组 sg ，并返回选的卡。  
@@ -1231,45 +1262,46 @@ btok 表示是否可以点击完成选择的按钮， cancelable 表示是否可
 minc 和 maxc 是客户端的文字缓冲提示，表示需要选择 minc-maxc 张卡，但是这个只是影响视觉效果，并不代表必须要选择那个数量
 
 ●Group Group.RandomSelect(Group g, int player, int count)
-让玩家player从卡片组g中随机选择count张卡
-因为是随机选择，所以参数player基本无用，由系统随机选取
+让玩家 player 从卡片组 g 中随机选择 count 张卡
+因为是随机选择，所以参数 player 基本无用，由系统随机选取
 
 ●bool Group.IsExists(Group g, function f, int count, Card|Group ex|nil, ...)
-过滤函数，检查卡片组g中是否存在至少count张满足筛选条件f并且不等于ex的卡
+过滤函数，检查卡片组 g 中是否存在至少 count 张满足筛选条件 f 并且不等于 ex 的卡
 从第5个参数开始为额外参数
 
-●bool Group.CheckWithSumEqual(Group g, function f, int sum, int min=0, int max, ...)
-子集求和判定函数，f为返回一个interger值的函数
-检查卡片组g中是否存在一个数量为min-max的子集满足以f对子集的每一个元素求值的和等于sum，从第6个参数开始为额外参数
+●bool Group.CheckWithSumEqual(Group g, function f, int sum, int minc=0, int maxc, ...)
+子集求和判定函数，f 为返回一个interger值的函数
+检查卡片组 g 中是否存在一个数量为 minc-maxc 的子集满足以f对子集的每一个元素求值的和等于 sum，从第6个参数开始为额外参数
 	比如：g:CheckWithSumEqual(Card.GetSynchroLevel,7,2,99)
-	检查g中是否存在一个子集元素数量在2-99之间的子集，并且满足子集的同调用等级之和等于7
+	检查 g 中是否存在一个子集元素数量在 2-99 之间的子集，并且满足子集的同调用等级之和等于7
 
-●Group Group.SelectWithSumEqual(Group g, int player, function f, int sum, int min, int max, ...)
-让玩家player从卡片组g中选取一个数量为min-max的子集使子集的特定函数 f 的和等于sum，从第7个参数开始为额外参数
+●Group Group.SelectWithSumEqual(Group g, int player, function f, int sum, int minc, int maxc, ...)
+让玩家 player 从卡片组 g 中选取一个数量为 minc-maxc 的子集使子集的特定函数 f 的和等于 sum，从第7个参数开始为额外参数
 
 ●bool Group.CheckWithSumGreater(Group g, function f, int sum, ...)
-子集求和判定函数之二，f为返回一个interger值的函数
-检查卡片组g中是否存在一个子集满足以f对子集的每一个元素求值的和刚好大于或者等于sum，从第4个参数开始为额外参数
+子集求和判定函数之二，f 为返回一个interger值的函数
+检查卡片组 g 中是否存在一个子集满足以f对子集的每一个元素求值的和刚好大于或者等于sum，从第4个参数开始为额外参数
 比如：g:CheckWithSumGreater(Card.GetRitualLevel,8)
-	检查g中是否存在一个子集满足子集的仪式用等级之和大于等于8
+	检查 g 中是否存在一个子集满足子集的仪式用等级之和大于等于8
 	注：判定必须是“刚好”大于或者等于
 	以等级为例，要使等级合计大于等于8，可以选择LV1+LV7而不可以选择LV1+LV4+LV4(在这些选择都满足的情况下)
 
 ●Group Group.SelectWithSumGreater(Group g, int player, function f, int sum, ...)
-让玩家player从卡片组g中选取一个子集使子集的特定函数f的和刚好大于等于sum，从第5个参数开始为额外参数
+让玩家 player 从卡片组 g 中选取一个子集使子集的特定函数 f 的和刚好大于等于 sum，从第5个参数开始为额外参数
 
 ●Group,int Group.GetMinGroup(Group g, function f, ...)
-f为返回一个interger值的函数，从卡片组g中筛选出具有最小的f的值的卡(可能会有多个满足条件的)
+f 为返回一个interger值的函数，从卡片组 g 中筛选出具有最小的 f 的值的卡(可能会有多个满足条件的)
 第2个返回值为这个最小值，从第3个参数开始为额外参数
 要使用第2个返回值注意检查g非空
 
 ●Group,int Group.GetMaxGroup(Group g, function f, ...)
-f为返回一个interger值的函数，从卡片组g中筛选出具有最大的f的值的卡(可能会有多个满足条件的)
+f 为返回一个interger值的函数，从卡片组 g 中筛选出具有最大的 f 的值的卡(可能会有多个满足条件的)
 第2个返回值为这个最大值，从第3个参数开始为额外参数
 要使用第2个返回值注意检查g非空
 
 ●int Group.GetSum(Group g, function f, ...)
-计算g中所有卡的取值的总和，f为为每张卡的取值函数(返回值类型是interger)，从第3个参数开始为额外参数
+计算卡片组 g 中所有卡的取值的总和，f 为为每张卡的取值函数(返回值类型是interger)，从第3个参数开始为额外参数
+参考对象：狱火机 系列
 等价于：
 function GetSum(g,f,...)
 	local ct=0
@@ -1281,28 +1313,28 @@ function GetSum(g,f,...)
 end
 
 ●int Group.GetClassCount(Group g, function f, ...)
-计算g中所有卡的种类数量，f为分类的依据，返回相同的值视为同一种类，从第3个参数开始为额外参数
+计算卡片组 g 中所有卡的种类数量，f 为分类的依据，返回相同的值视为同一种类，从第3个参数开始为额外参数
 比如 g:GetClassCount(Card.GetCode) 就是计算g中卡名不同的卡的数量
 
 ●void Group.Remove(Group g, function f, Card ex|nil, ...)
-从g中移除满足筛选条件f并且不等于ex的所有卡，第4个参数开始是额外参数
+从卡片组 g 中移除满足筛选条件 f 并且不等于 ex 的所有卡，第4个参数开始是额外参数
 
 ●void Group.Merge(Group g1, Group g2)
-把g2中的所有卡合并到g1，若g1中原本就有属于g2的卡，那些卡将不会重复
-注：g2本身不会发生变化
+把卡片组 g2 中的所有卡合并到卡片组 g1，若 g1 中原本就有属于 g2 的卡，那些卡将不会重复
+注：g2 本身不会发生变化
 
 ●void Group.Sub(Group g1, Group g2)
-从g1中移除属于g2中的卡
-注：g2本身不会发生变化
+从卡片组 g1 中移除属于卡片组 g2 中的卡
+注：g2 本身不会发生变化
 
 ●bool Group.Equal(Group g1, Group g2)
-判断g1和g2是否相同
+判断卡片组 g1 和卡片组 g2 是否相同
 
 ●bool Group.IsContains(Group g, Card c)
-检查g中是否存在卡片c
+检查卡片组 g 中是否存在卡片 c
 
 ●Card Group.SearchCard(Group g, function f, ...)
-过滤函数，返回g中满足筛选条件f的第一张卡，若没有则返回nil，从第3个参数开始为额外参数
+过滤函数，返回卡片组 g 中满足筛选条件 f 的第一张卡，若没有则返回nil，从第3个参数开始为额外参数
 
 ●int Group.GetBinClassCount(Group g, function f, ...)
 和 Group.GetClassCount 类似，但是算法不同(使用位运算)
@@ -1324,68 +1356,67 @@ end
 
 ========== Duel ==========
 ●void Duel.EnableGlobalFlag(int global_flag)
-设置全局标记global_flag
+设置全局标记 global_flag
 
 ●int Duel.GetLP(int player)
-返回玩家player的当前LP
+返回玩家 player 的当前LP
 
 ●void Duel.SetLP(int player, int lp)
-设置玩家player的当前LP为lp
+设置玩家 player 的当前LP为 lp
 
 ●int Duel.GetTurnPlayer()
 返回当前的回合玩家
 
 ●int Duel.GetTurnCount([int player])
-返回[player所经过的]当前的回合数
+返回[玩家 player 所经过的]当前的回合数
 
 ●int Duel.GetDrawCount(int player)
-返回玩家player每回合的规则抽卡数量
+返回玩家 player 每回合的规则抽卡数量
 
 ●void Duel.RegisterEffect(Effect e, int player)
-把效果e作为玩家player的效果注册给全局环境
+把效果 e 作为玩家 player 的效果注册给全局环境
 
 ●Effect Duel.RegisterFlagEffect(int player, int code, int reset_flag, int property, int reset_count=1[, int label=0])
-为玩家player注册全局环境下的标识效果，并返回这个效果
+为玩家 player 注册全局环境下的标识效果，并返回这个效果
 此效果总是影响玩家的(EFFECT_FLAG_PLAYER_TARGET)并且不会被无效化
-其余部分与Card.RegisterFlagEffect相同
+其余部分与 Card.RegisterFlagEffect 相同
 
 ●int Duel.GetFlagEffect(int player, int code)
 返回玩家 player 的 code 标识效果的数量
 
 ●void Duel.ResetFlagEffect(int player, int code)
-手动reset玩家player的 code 标识效果
+手动reset玩家 player 的 code 标识效果
 
 ●bool Duel.SetFlagEffectLabel(int player, int code, int label)
-返回player是否存在种类为code的标识效果，并设置其Label属性为label
+返回玩家 player 是否存在种类为 code 的标识效果，并设置其Label属性为 label (原先的Label会被清除)
 
 ●int[,...] Duel.GetFlagEffectLabel(int player, int code)
-返回玩家player的种类为code的标识效果的全部Label，没有此效果标识则返回nil
+返回玩家 player 的种类为 code 的标识效果的全部Label，没有此效果标识则返回nil
 
 ●int Duel.Destroy(Card|Group targets, int reason[ ,int dest = LOCATION_GRAVE])
-以reason原因破坏targets去dest，返回值是实际被破坏的数量
-如果reason包含REASON_RULE，则破坏事件将不会检查卡片是否免疫效果，
-不会触发代破效果并且无视“不能破坏”
+以 reason 原因破坏 targets 去 dest，返回值是实际被破坏的数量
+如果 reason 包含 REASON_RULE，则破坏事件将不会检查卡片是否免疫效果，不会触发代破效果并且无视“不能破坏”
 
 ●int Duel.Remove(Card|Group targets, int pos, int reason)
-以reason原因，pos表示形式除外targets，返回值是实际被操作的数量
-如果reason包含REASON_TEMPORARY，那么视为是暂时除外，可以通过Duel.ReturnToField返回到场上
+以 reason 原因，pos 表示形式除外 targets，返回值是实际被操作的数量
+如果 reason 包含 REASON_TEMPORARY，那么视为是暂时除外，可以通过 Duel.ReturnToField 返回到场上
 
 ●int Duel.SendtoGrave(Card|Group targets, int reason)
-以reason原因把targets送去墓地，返回值是实际被操作的数量
+以 reason 原因把 targets 送去墓地，返回值是实际被操作的数量
 
 ●int Duel.SendtoHand(Card|Group targets, int player|nil, int reason)
-以reason原因把targets送去玩家player的手牌，返回值是实际被操作的数量
-如果player是nil则返回卡的持有者的手牌
+以 reason 原因把 targets 送去玩家 player 的手牌，返回值是实际被操作的数量
+如果 player==nil 则返回卡的持有者的手牌
 
 ●int Duel.SendtoDeck(Card|Group targets, int player|nil, int seq, int reason)
-以reason原因把targets送去玩家player的卡组，返回值是实际被操作的数量
-如果player是nil则返回卡的持有者的卡组
-如果seq=0，则是返回卡组最顶端；seq=1则是返回卡组最底端；
+以 reason 原因把 targets 送去玩家 player 的卡组，返回值是实际被操作的数量
+如果 player==nil 则返回卡的持有者的卡组
+如果 seq==0，则是返回卡组最顶端；seq==1则是返回卡组最底端；
 其余情况则是返回最顶端并且标记需要洗卡组
 
 ●int Duel.SendtoExtraP(Card|Group targets, int player|nil, int reason)
-以reason原因把灵摆卡targets表侧表示送去玩家player的额外卡组，返回值是实际被操作的数量
-如果player是nil则返回卡的持有者的额外卡组
+以 reason 原因把灵摆卡targets表侧表示送去玩家 player 的额外卡组，返回值是实际被操作的数量
+如果 player==nil 则返回卡的持有者的额外卡组
 
 ●Group Duel.GetOperatedGroup()
 此函数返回之前一次卡片操作实际操作的卡片组。包括
@@ -1393,66 +1424,66 @@ Duel.Destroy, Duel.Remove, Duel.SendtoGrave,
 Duel.SendtoHand, Duel.SendtoDeck, Duel.SendtoExtraP, Duel.Release, 
 Duel.ChangePosition, Duel.SpecialSummon, Duel.DiscardDeck
 
-●void Duel.Summon(int player, Card c, bool ignore_count, Effect e|nil[, int min=0, int zone=0x1f])
-让玩家 player 以效果e对卡片c[在区域 zone]进行通常召唤(非set)，至少使用min个祭品
+●void Duel.Summon(int player, Card c, bool ignore_count, Effect e|nil[, int minc=0, int zone=0x1f])
+让玩家 player 以效果 e 对卡片 c[在区域 zone]进行通常召唤(非set)，至少使用 minc 个祭品
 如果e=nil,那么就按照一般的通常召唤规则进行通常召唤
 如果ignore_count=true，则忽略每回合的通常召唤次数限制
 
 ●void Duel.SpecialSummonRule(int player, Card c[, int sumtype=0])
-让玩家player对卡片c[用 sumtype 方式]进行特殊召唤手续（？）
+让玩家 player 对卡片 c[用 sumtype 方式]进行特殊召唤手续（？）
 
 ●void Duel.SynchroSummon(int player, Card c, Card tuner|nil[, Group mg|nil, int minc=0, int maxc=0])
-让玩家player以tuner作为调整,场上[或mg][minc-maxc 张]的卡为素材，对c进行同调召唤手续
+让玩家 player 以 tuner 作为调整,场上[或 mg 中][minc-maxc 张]的卡为素材，对卡片 c 进行同调召唤手续
 
 ●void Duel.XyzSummon(int player, Card c, Group mg|nil[, int minc=0, int maxc=0])
-让玩家player用场上的卡[或mg][选minc-maxc 个素材]对c进行超量召唤手续
-mg非空且min为0则直接把mg全部作为超量素材
+让玩家 player 用场上的卡[或 mg 中][选 minc-maxc 个素材]对卡片 c 进行超量召唤手续
+mg 非空且 minc==0 则直接把 mg 全部作为超量素材
 
 ●void Duel.LinkSummon(int player, Card c, Group mg|nil[, Card lc, int minc=0, int maxc=0])
-让玩家player用场上[或mg][包含卡片 lc 在内][minc-maxc 张]的卡对c进行连接召唤手续
+让玩家 player 用场上[或mg][包含卡片 lc 在内][minc-maxc 张]的卡对卡片 c 进行连接召唤手续
 
-●void Duel.MSet(int player, Card c, bool ignore_count, Effect e|nil[,int min=0, int zone=0x1f])
-让玩家 player 以效果e对卡片c[在区域 zone]进行通常召唤的Set，至少使用min个祭品
-如果e=nil,那么就按照一般的通常召唤规则进行通常召唤
-如果ignore_count=true，则忽略每回合的通常召唤次数限制
+●void Duel.MSet(int player, Card c, bool ignore_count, Effect e|nil[,int minc=0, int zone=0x1f])
+让玩家 player 以效果 e 对卡片 c[在区域 zone]进行通常召唤的Set，至少使用 minc 个祭品
+如果 e==nil,那么就按照一般的通常召唤规则进行通常召唤
+如果 ignore_count==true，则忽略每回合的通常召唤次数限制
 
 ●void|int Duel.SSet(int player, Card|Group targets[, int target_player=player, bool confirm=true])
-让玩家player把targets盖放到target_player的魔法陷阱区， confirm 表示是否需要确认，返回成功操作的数量
-若targets为Group类型并且为空，则无返回值
+让玩家 player 把 targets 盖放到 target_player 的魔法陷阱区， confirm 表示是否需要确认，返回成功操作的数量
+若 targets 为Group类型并且为空，则无返回值
 
 ●bool|Card Duel.CreateToken(int player, int code)
-根据code新建一个衍生物并返回这个卡，该衍生物的拥有者为player
+根据 code 新建一个衍生物并返回这个卡，该衍生物的拥有者为 player
 如果 player 不是 0或者1，则返回false
 
 ●int Duel.SpecialSummon(Card|Group targets, int sumtype, int sumplayer, int target_player, bool nocheck, bool nolimit, int pos[, int zone=0xff])
-让玩家 sumplayer 以sumtype方式，pos表示形式把targets特殊召唤到target_player场上[的区域 zone]
-如果nocheck为true则无视卡的召唤条件，如果nolimit为true则无视卡的苏生限制
+让玩家 sumplayer 以 sumtype 方式，pos 表示形式把 targets 特殊召唤到 target_player 场上[的区域 zone]
+如果 nocheck==true 则无视卡的召唤条件，如果 nolimit==true 则无视卡的苏生限制
 返回值是特殊召唤成功的卡的数量
 
 ●bool Duel.SpecialSummonStep(Card c, int sumtype, int sumplayer, int target_player, bool nocheck, bool nolimit, int pos[, int zone=0xff])
-此函数是Duel.SpecialSummon的分解过程，只特殊召唤一张卡c ，其他参数用法和 Duel.SpecialSummon 一样
+此函数是 Duel.SpecialSummon 的分解过程，只特殊召唤一张卡c ，其他参数用法和 Duel.SpecialSummon 一样
 此函数用于一个效果同时特殊召唤多张参数不同的卡
-此函数必须和Duel.SpecialSummonComplete()一起使用
+此函数必须和 Duel.SpecialSummonComplete()一起使用
 返回值表示是否特殊召唤成功
 
 ●int Duel.SpecialSummonComplete()
-此函数在确定复数个Duel.SpecialSummonStep调用完毕之后调用，用于触发事件
+此函数在确定复数个 Duel.SpecialSummonStep 调用完毕之后调用，用于触发事件
 
 ●bool Duel.IsCanAddCounter(int player[, int countertype, int count, Card c])
-检查玩家player能否[向卡片c]添加[count个countertype类型的]指示物，如果 player 不是 0或者1，则返回false
+检查玩家 player 能否[向卡片 c]添加[count 个 countertype 类型的]指示物，如果 player 不是 0或者1，则返回false
 额外参数如果要用，必须全写
 
 ●bool Duel.RemoveCounter(int player, int s, int o, int countertype, int count, int reason)
-让玩家player以reason为原因移除场上存在的countertype类型的count个指示物，返回值表示是否成功
-s表示对player来说的己方的可移除指示物的位置，o表示对player来说的对方的可移除指示物的位置
+让玩家 player 以 reason 为原因移除场上存在的 countertype 类型的 count 个指示物，返回值表示是否成功
+s 表示对 player 来说的己方的可移除指示物的位置，o 表示对 player 来说的对方的可移除指示物的位置
 
 ●bool Duel.IsCanRemoveCounter(int player, int s, int o, int countertype, int count, int reason)
-检查玩家player以reason为原因是否能移除场上的countertype类型的count个指示物
-s表示对player来说的己方的可移除指示物的位置，o表示对player来说的对方的可移除指示物的位置
+检查玩家 player 以 reason 为原因是否能移除场上的 countertype 类型的 count 个指示物
+s 表示对 player 来说的己方的可移除指示物的位置，o 表示对 player 来说的对方的可移除指示物的位置
 
 ●int Duel.GetCounter(int player, int s, int o, int countertype)
-返回场上存在的countertype类型的指示物的数量
-s表示对player来说的己方的位置，o表示对player来说的对方的位置
+返回场上存在的 countertype 类型的指示物的数量
+s 表示对 player 来说的己方的位置，o 表示对 player 来说的对方的位置
 
 ●int Duel.ChangePosition(Card|Group targets, int au[, int ad=au, int du=au, int dd=au, bool noflip=false, bool setavailable=false])
 根据对应位置的参数改变targets里 对应形式 的表示形式。返回实际操作的数量。
@@ -1461,73 +1492,73 @@ s表示对player来说的己方的位置，o表示对player来说的对方的位
 里侧攻击表示 = ad
 表侧守备表示 = du
 里侧守备表示 = dd
-如果noflip=true则不触发反转效果（但会触发反转时的诱发效果）
-如果setavailable=true则对象之后变成里侧也发动反转效果
+如果 noflip==true 则不触发反转效果（但会触发反转时的诱发效果）
+如果 setavailable==true 则对象之后变成里侧也发动反转效果
 比如: Duel.ChangePosition(g,POS_FACEUP_DEFENSE,POS_FACEUP_DEFENSE,POS_FACEUP_ATTACK,POS_FACEUP_DEFENSE)
-就表示 把卡片组g 中 原本(表侧攻击表示的卡 和 里侧攻击表示的卡 和 里侧守备表示的卡) 变成 表侧守备表示，
+就表示 把卡片组 g  中 原本(表侧攻击表示的卡 和 里侧攻击表示的卡 和 里侧守备表示的卡) 变成 表侧守备表示，
 	原本 表侧守备表示的卡 变成 表侧攻击表示
 
 ●int Duel.Release(Card|Group targets, int reason)
-以reason原因解放targets ，返回值是实际解放的数量
+以 reason 原因解放 targets ，返回值是实际解放的数量
 如果reason含有REASON_COST，则不会检查卡片是否不受效果影响
 
 ●bool Duel.MoveToField(Card c, int move_player, int target_player, int dest, int pos, bool enable[, int zone=0xff])
-让玩家move_player把c移动的target_player的场上，返回值表示是否成功
-dest只能是 LOCATION_MZONE, LOCATION_SZONE, LOCATION_FZONE, LOCATION_PZONE , pos表示可选表示形式， enable 表示是否立刻适用c的效果， zone 表示必须要放到的格子
+让玩家 move_player 把卡片 c 移动到 target_player 的场上的 dest 区域，返回值表示是否成功
+dest 只能是 LOCATION_MZONE, LOCATION_SZONE, LOCATION_FZONE, LOCATION_PZONE , pos 表示可选表示形式， enable 表示是否立刻适用 c 的效果， zone 表示必须要放到的格子
 场地魔法必须写 LOCATION_FZONE 
 如果要灵摆怪兽作为灵摆魔法移到灵摆区，必须写 LOCATION_PZONE
 
 ●bool Duel.ReturnToField(Card c[, int pos, int zone=0xff])
-把c[以表示形式pos]返回到场上[的区域 zone]，pos默认值是离场前的表示形式，返回值表示是否成功
-c必须是以REASON_TEMPORARY原因离场，并且离场后没有离开过那个位置
+把卡片 c[以表示形式 pos]返回到场上[的区域 zone]，pos 默认值是离场前的表示形式，返回值表示是否成功
+c 必须是以 REASON_TEMPORARY 原因离场，并且离场后没有离开过那个位置
 
 ●void Duel.MoveSequence(Card c, int seq)
-移动c的序号，通常用于在场上换格子或者在卡组中移动到最上方或者最下方
+移动卡片 c 的序号，通常用于在场上换格子或者在卡组中移动到最上方或者最下方
 比如对卡组中的 c 使用这个 Duel.MoveSequence(c,1), 就是把卡片 c 放到卡组最下面
 
 ●void Duel.SwapSequence(Card c1, Card c2)
-交换c1和c2的位置
+交换卡片 c1 和卡片 c2 的位置
 
 ●void Duel.Activate(Effect e)
-发动效果e（？）
+发动效果 e （？）
 
 ●void Duel.SetChainLimit(function f)
-设定连锁条件，f的函数原型为 bool f(e,ep,tp)
-e表示要限制连锁的效果，ep表示要限制连锁的玩家，tp表示发动该效果的玩家
-在cost或者target处理中调用此函数可以限制可以连锁的效果的种类（如超融合）
-如果f返回false表示不能连锁，一旦设置连锁条件后发生了新的连锁那么连锁条件将会解除
+设定连锁条件，f 的函数原型为 bool f(e,ep,tp)
+e 表示要限制连锁的效果，ep 表示要限制连锁的玩家，tp 表示发动该效果的玩家
+在 cost 或者 target 处理中调用此函数可以限制可以连锁的效果的种类（如超融合）
+如果 f 返回false表示不能连锁，一旦设置连锁条件后发生了新的连锁那么连锁条件将会解除
 
 ●void Duel.SetChainLimitTillChainEnd(function f)
-功能同Duel.SetChainLimit，但是此函数设定的连锁条件直到连锁结束才会解除
+功能同 Duel.SetChainLimit，但是此函数设定的连锁条件直到连锁结束才会解除
 
 ●Effect Duel.GetChainMaterial(int player)
-返回玩家player受到的连锁素材的效果，此函数仅用于融合类卡的效果
+返回玩家 player 受到的连锁素材的效果，此函数仅用于融合类卡的效果
 
 ●void Duel.ConfirmDecktop(int player, int count)
-确认玩家player卡组最上方count张卡
+确认玩家 player 卡组最上方 count 张卡
 
 ●void Duel.ConfirmExtratop(int player, int count)
-确认玩家player额外卡组里侧的卡 最上方count张卡
+确认玩家 player 额外卡组里侧的卡 最上方 count 张卡
 
 ●void Duel.ConfirmCards(int player, Card|Group targets)
-给玩家player确认targets
+给玩家 player 确认 targets 
 
 ●void Duel.SortDecktop(int sort_player, int target_player, int count)
-让玩家sort_player对玩家target_player的卡组最上方count张卡进行排序，最先选的卡在最上面，然后下面是第二张选择的卡，以此类推
+让玩家 sort_player 对玩家 target_player 的卡组最上方 count 张卡进行排序，最先选的卡在最上面，然后下面是第二张选择的卡，以此类推
 最多只能排序16张卡
 
 ●bool[,Group,int,int,Effect,int,int] Duel.CheckEvent(int event[, bool get_info])
-检查当前是否是event时点
-若get_info=true并且是正确的时点，则还返回触发时点的信息 eg,ep,ev,re,r,rp
+检查当前是否是 event 时点
+若 get_info==true 并且是正确的时点，则还返回触发时点的信息 eg,ep,ev,re,r,rp
 
 ●void Duel.RaiseEvent(Group|Card eg, int code, Effect re, int r, int rp, int ep, int ev)
-以eg,ep,ev,re,r,rp触发一个时点 code
+以 eg,ep,ev,re,r,rp 触发一个时点 code
 
 ●void Duel.RaiseSingleEvent(Card eg, int code, Effect re, int r, int rp, int ep, int ev)
-以eg,ep,ev,re,r,rp为卡片ec触发一个单体时点 code
+以 eg,ep,ev,re,r,rp 为卡片 ec 触发一个单体时点 code
 
 ●bool Duel.CheckTiming(int timing)
-检查当前是否是timing提示时点
+检查当前是否是 timing 提示时点
 TIMING_DRAW_PHASE			=0x1			--抽卡阶段时点
 TIMING_STANDBY_PHASE		=0x2        	--准备阶段时点
 TIMING_MAIN_END				=0x4        	--主要阶段结束时点
@@ -1567,35 +1598,35 @@ TIMING_BATTLE_STEP_END		=0x4000000  	--戰鬥步驟結束時
 来源玩家指当前生效的场地卡的控制者，或者海神的巫女等卡的控制者
 
 ●void Duel.Win(int player, int win_reason)
-当前效果处理完令player以win_reason决斗胜利
+当前效果处理完令 playe r以 win_reason 决斗胜利
 
 ●int Duel.Draw(int player, int count, int reason)
-让玩家player以原因reason抽count张卡，返回实际抽的卡的数量
-如果reason含有REASON_RULE则此次抽卡不受“不能抽卡”的效果的影响
+让玩家 player 以原因 reason 抽 count 张卡，返回实际抽的卡的数量
+如果 reason 含有 REASON_RULE 则此次抽卡不受“不能抽卡”的效果的影响
 
 ●int Duel.Damage(int player, int value, int reason[, bool is_step=false])
-以reason原因给与玩家player造成value的伤害，返回实际收到的伤害值
+以 reason 原因给与玩家 player 造成 value 的伤害，返回实际收到的伤害值
 如果受到伤害变成回复等效果的影响时，返回值为0.
-is_step为true则是伤害/恢复LP过程的分解，需要调用Duel.RDComplete()触发时点
+is_step==true 则是伤害/恢复LP过程的分解，需要调用 Duel.RDComplete()触发时点
 
 ●int Duel.Recover(int player, int value, int reason[, bool is_step=false])
-以reason原因使玩家player回复value的LP，返回实际的回复值
+以 reason 原因使玩家 player 回复 value 的LP，返回实际的回复值
 如果受到回复变成伤害等效果的影响时，返回值为0.
-is_step为true则是伤害/恢复LP过程的分解，需要调用Duel.RDComplete()触发时点
+is_step==true 则是伤害/恢复LP过程的分解，需要调用 Duel.RDComplete()触发时点
 
 ●void Duel.RDComplete()
 在调用Duel.Damage/Duel.Recover时，若is_step参数为true，则需调用此函数触发时点
 
 ●bool Duel.Equip(int player, Card c1, Card c2[, bool up=true, bool is_step=false])
-让玩家player把c1作为装备卡装备给c2，返回值表示是否成功
-up=false则保持装备卡之前的表示形式
-is_step=true则是装备过程的分解，需要配合Duel.EquipComplete使用
+让玩家 player 把卡片 c1 作为装备卡装备给卡片 c2，返回值表示是否成功
+up==false 则保持装备卡之前的表示形式
+is_step==true 则是装备过程的分解，需要配合 Duel.EquipComplete()使用
 
 ●void Duel.EquipComplete()
 在调用Duel.Equip时，若is_step参数为true，则需调用此函数触发时点
 
 ●bool Duel.GetControl(Card|Group targets, int player[, int reset_phase=0, int reset_count=0, int zone=0xff])
-让玩家 player [直到 reset_count 次 reset_phase 时][在区域 zone]得到 targets 的控制权，返回值表示是否成功
+让玩家 player [直到发生 reset_count 次 reset_phase 之前][在区域 zone]得到 targets 的控制权，返回值表示是否成功
 reset_phase ,reset_count 若要使用，必须都用
 PHASE_DRAW			=0x01	--抽卡阶段
 PHASE_STANDBY		=0x02	--准备阶段
@@ -1609,42 +1640,42 @@ PHASE_MAIN2			=0x100	--主要阶段2
 PHASE_END			=0x200	--结束阶段
 
 ●bool Duel.SwapControl(Card|Group targets1, Card|Group targets2[, int reset_phase=0, int reset_count=0])
-交换targets1与targets2的控制权，返回值表示是否成功
+交换 targets1 与 targets2 的控制权，返回值表示是否成功
 第三个第四个参数同 Duel.GetControl
 
 ●bool Duel.CheckLPCost(int player, int cost)
-检查玩家player是否能支付cost点lp
+检查玩家 player 是否能支付cost点lp
 
 ●void Duel.PayLPCost(int player, int cost)
-让玩家player支付cost点lp
+让玩家 player 支付 cost 点LP
 
 ●int Duel.DiscardDeck(int player, int count, int reason)
-以原因reason把玩家player的卡组最上端count张卡送去墓地，返回实际转移的数量
+以原因 reason 把玩家 player 的卡组最上端 count 张卡送去墓地，返回实际转移的数量
 
-●int Duel.DiscardHand(int player, function f|nil, int min, int max, int reason, Card|Group ex|nil, ...)
-过滤函数让玩家player选择并以reason原因丢弃满足筛选条件f并且不等于ex的min-max张手卡
+●int Duel.DiscardHand(int player, function f|nil, int minc, int maxc, int reason, Card|Group ex|nil, ...)
+过滤函数让玩家 player 选择并以 reason 原因丢弃满足筛选条件 f 并且不等于 ex 的 minc-maxc 张手卡
 第7个参数开始为额外参数
 
 ●void Duel.DisableShuffleCheck([bool disable=true])
 使下一个操作不检查是否需要洗切卡组或手卡
 注：如果不调用此函数，
-除了调用Duel.DiscardDeck和Duel.Draw之外从卡组中取出卡或者把卡加入手卡
-或者把卡加入卡组（非最上端或最底端）时，系统会自动在效果处理结束时洗切卡组或手卡
-如果不希望如此，比如从卡组顶端除外一张卡等操作，那么需要调用此函数
+除了调用 Duel.DiscardDeck 和 Duel.Draw 之外从卡组中取出卡，或者把卡加入手卡，
+或者把卡加入卡组（非最上端或最底端）时，系统会自动在效果处理结束时洗切卡组或手卡。
+如果不希望如此，比如从卡组顶端除外一张卡等操作，那么需要调用此函数。
 此函数仅保证紧接着的一次操作不会进行洗卡检测
 
 ●void Duel.DisableSelfDestroyCheck([bool disable=true])
 让自毁检测无效(?)
 
 ●void Duel.ShuffleDeck(int player)
-手动洗切玩家player的卡组
+手动洗切玩家 player 的卡组
 注：会重置洗卡检测的状态
 
 ●void Duel.ShuffleExtra(int player)
-手动洗切玩家player的额外卡组
+手动洗切玩家 player 的额外卡组
 
 ●void Duel.ShuffleHand(int player)
-手动洗切玩家player的手卡
+手动洗切玩家 player 的手卡
 注：会重置洗卡检测的状态
 
 ●void Duel.ShuffleSetCard(Group g)
@@ -1652,99 +1683,99 @@ PHASE_END			=0x200	--结束阶段
 此函数现在可以洗切魔陷区的覆盖卡
 
 ●void Duel.ChangeAttacker(Card c[, bool ignore_count=false])
-将攻击怪兽变为c
-若 ignore_count=true 则原来的攻击怪兽不视为攻击过
+将攻击怪兽变为卡片 c
+若 ignore_count==true 则原来的攻击怪兽不视为攻击过
 
 ●bool Duel.ChangeAttackTarget(Card c|nil)
-将攻击对象变为c，c为nil表示直接攻击，返回值表示是否成功转移攻击对象
+将攻击对象变为卡片 c，c==nil 表示直接攻击，返回值表示是否成功转移攻击对象
 
 ●void Duel.CalculateDamage(Card c1, Card c2[, bool new_attack=false])
-令c1与c2进行战斗伤害计算（c1 攻击 c2）
-若 new_attack=true 则视为 攻击的卡进行过攻击宣言（？）
+令卡片 c1 与卡片 c2 进行战斗伤害计算（c1 攻击 c2）
+若 new_attack==true 则视为 攻击的卡进行过攻击宣言（？）
 
 ●int Duel.GetBattleDamage(int player)
-返回玩家player在本次战斗中受到的伤害
+返回玩家 player 在本次战斗中受到的伤害
 
 ●void Duel.ChangeBattleDamage(int player, int value[, bool check=true])
-把玩家player在本次战斗中受到的伤害变成value，若 check=false 则原本战斗伤害就算为0也改变伤害
+把玩家 player 在本次战斗中受到的伤害变成value，若 check==false 则原本战斗伤害就算为0也改变伤害
 
 ●void Duel.ChangeTargetCard(int chainc, Group g)
-把连锁chainc的对象换成g
-chainc=0 表示当前效果
+把连锁 chainc 的对象换成卡片组 g 
+chainc==0 表示当前连锁
 
 ●void Duel.ChangeTargetPlayer(int chainc, in player)
-把连锁chainc的对象玩家换成player
-chainc=0 表示当前效果
+把连锁 chainc 的对象玩家换成玩家 player 
+chainc==0 表示当前连锁
 
 ●void Duel.ChangeTargetParam(int chainc, int param)
-把连锁chainc的参数换成param
-chainc=0 表示当前效果
+把连锁 chainc 的参数换成 param 
+chainc==0 表示当前连锁
 
 ●void Duel.BreakEffect()
 中断当前效果，使之后的效果处理视为不同时处理，此函数会造成错时点
 
 ●void Duel.ChangeChainOperation(int chainc, function f)
-把连锁chainc的效果的处理函数换成f，用于实现“把效果变成”等的效果
-chainc=0 表示当前效果
+把连锁 chainc 的效果的处理函数换成 f，用于实现“把效果变成”等的效果
+chainc==0 表示当前连锁
 f(e,tp,eg,ep,ev,re,r,rp)
 
 ●bool Duel.NegateActivation(int chainc)
-使连锁chainc的发动无效，返回值表示是否成功
-chainc=0 表示当前效果
+使连锁 chainc 的发动无效，返回值表示是否成功
+chainc==0 表示当前连锁
 
 ●bool Duel.NegateEffect(int chainc)
-使连锁chainc的效果无效，返回值表示是否成功
-chainc=0 表示当前效果
+使连锁 chainc 的效果无效，返回值表示是否成功
+chainc==0 表示当前连锁
 
 ●void Duel.NegateRelatedChain(Card c, int reset)
-使和卡片c有关的连锁都无效化，发生reset事件则重置,reset 默认包含 RESET_CHAIN
+使和卡片  c有关的连锁都无效化，发生 reset 事件则重置,reset 默认包含 RESET_CHAIN
 
 ●void Duel.NegateSummon(Card|Group targets)
-使正在召唤·反转召唤·特殊召唤的targets的召唤无效
+使正在召唤·反转召唤·特殊召唤的 targets 的召唤无效
 
 ●void Duel.IncreaseSummonedCount([Card c])
-手动增加1次玩家[对于卡片c]的已经通常召唤过的次数
+手动增加1次玩家[对于卡片 c]的已经通常召唤过的次数
 
 ●bool Duel.CheckSummonedCount([Card c])
-检查回合玩家本回合是否还能通常召唤[卡片c]
+检查回合玩家本回合是否还能通常召唤[卡片 c]
 
 ●int Duel.GetLocationCount(int player, int location[, int use_player, int reason = LOCATION_REASON_TOFIELD, int zone=0xff])
-返回玩家player的场上location可用的[区域 zone 里的]空格数
-location只能是LOCATION_MZONE或者LOCATION_SZONE
-reason为LOCATION_REASON_TOFIELD或LOCATION_REASON_CONTROL
+返回玩家 player 的场上区域 location 内的可用的[区域 zone 里的]空格数
+location 只能是 LOCATION_MZONE 或者 LOCATION_SZONE
+reason 为 LOCATION_REASON_TOFIELD 或 LOCATION_REASON_CONTROL
 ##第三个第四个额外参数与凯撒斗技场等限制格子的效果有关
 
 ●int Duel.GetMZoneCount(int player[, Group|Card targets|nil, int use_player, int reason = LOCATION_REASON_TOFIELD, int zone=0xff])
-返回玩家player场上[targets 离开后]可用的[区域 zone 里的]怪兽区数量
+返回玩家 player 场上[targets 离开后]可用的[区域 zone 里的]怪兽区数量
 ##第三个第四个额外参数与凯撒斗技场等限制格子的效果有关
 
 ●int Duel.GetLocationCountFromEx(int player[, int reason_player=player, Group|Card targets|nil, Card sc, int zone=0xff])
-返回玩家player场上[假如因玩家 reason_player 的原因让 targets 离场后，把卡片 sc 在 zone 区域特殊召唤]可用的 能让额外卡组的怪兽 出场的空格数
+返回玩家 player 场上[假如因玩家 reason_player 的原因让 targets 离场后，把卡片 sc 在 zone 区域特殊召唤]可用的 能让额外卡组的怪兽 出场的空格数
 
 ●int Duel.GetUsableMZoneCount(int player[, int use_player])
-返回玩家player场上[对于 use_player 来说]可用的怪兽区数量（？）
+返回玩家 player 场上[对于 use_player 来说]可用的怪兽区数量（？）
 
 ●Group Duel.GetLinkedGroup(int player, int s_range, int o_range)
-返回以玩家player来看的 s_range 和 o_range 区域的处于连接状态的卡片组[其实只要后面2个参数不为0就行，只要不为0，都会变成LOCATION_MZONE]（？）
+返回以玩家 player 来看的 s_range 和 o_range 区域的处于连接状态的卡片组[其实只要后面2个参数不为0就行，只要不为0，都会变成LOCATION_MZONE]（？）
 
 ●int Duel.GetLinkedGroupCount(int player, int s_range, int o_range)
-返回以玩家player来看的 s_range 和 o_range 区域的处于连接状态的卡片的数量（？）
+返回以玩家 player 来看的 s_range 和 o_range 区域的处于连接状态的卡片的数量（？）
 
 ●int Duel.GetLinkedZone(int player)
-返回以玩家player来看的所有连接区域
+返回以玩家 player 来看的所有连接区域
 
 ●Card Duel.GetFieldCard(int player, int location, int seq)
-返回玩家player的场上位于location序号为seq的卡，常用于获得场地区域·灵摆区域的卡
+返回玩家 player 的场上位于区域 location 序号为 seq 的卡，常用于获得场地区域·灵摆区域的卡
 注：召唤·反转召唤·特殊召唤 之际 或者 发动被无效 的卡无法获取
 
 ●bool Duel.CheckLocation(int player, int location, int seq)
-检查玩家player的场上位于location序号为seq的空格是否可用
+检查玩家 player 的场上位于区域 location 序号为 seq 的空格是否可用
 
 ●int Duel.GetCurrentChain()
 返回当前正在处理的连锁序号
 
 ●... Duel.GetChainInfo(int chainc, ...)
-返回连锁chainc的信息，如果chainc=0，则返回当前正在处理的连锁的信息
+返回连锁 chainc 的信息，如果 chainc==0，则返回当前正在处理的连锁的信息
 此函数根据传入的参数个数按顺序返回相应数量的返回值参数可以是:
 CHAININFO_CHAIN_COUNT               连锁序号
 CHAININFO_TRIGGERING_EFFECT         连锁的效果
@@ -1765,7 +1796,7 @@ Duel.GetChainInfo(0,CHAININFO_TRIGGERING_LOCATION,CHAININFO_TARGET_CARDS)
 将会返回当前连锁发生的位置和对象卡
 
 ●Group,int,int,Effect,int,int Duel.GetChainEvent(int chainc)
-返回连锁 chainc 的相关参数，如果 chainc=0，则返回当前正在处理的连锁的相关参数
+返回连锁 chainc 的相关参数，如果 chainc==0，则返回当前正在处理的连锁的相关参数
 返回6个参数，eg,ep,ev,re,r,rp
 
 ●Card,... Duel.GetFirstTarget()
@@ -1776,8 +1807,8 @@ Duel.GetChainInfo(0,CHAININFO_TRIGGERING_LOCATION,CHAININFO_TARGET_CARDS)
 返回当前的阶段
 
 ●void Duel.SkipPhase(int player, int phase, int reset_flag, int reset_count[, int value])
-跳过玩家player的phase阶段，并在特定的阶段后reset，reset参数和效果相同
-value只对phase=PHASE_BATTLE才有用，value=1跳过战斗阶段的结束步骤，用于“变成回合结束阶段”等（招财猫王，闪光弹）
+跳过玩家 player 的 phase 阶段，并在特定的阶段后 reset，reset参数和效果相同
+value 只对 phase==PHASE_BATTLE 才有用，value==1 跳过战斗阶段的结束步骤，用于“变成回合结束阶段”等（招财猫王，闪光弹）
 
 ●bool Duel.IsDamageCalculated()
 用于在伤害阶段检查是否已经计算了战斗伤害
@@ -1789,178 +1820,181 @@ value只对phase=PHASE_BATTLE才有用，value=1跳过战斗阶段的结束步�
 返回此次战斗被攻击的卡，如果返回nil表示是直接攻击
 
 ●Card,Card Duel.GetBattleMonster(int player)
-返回本次进行战斗的怪兽。以玩家player来看，第一个是自己的怪兽，第二个是对方的怪兽，没有进行战斗的怪兽的话，则为nil(2个返回值都可能会有 nil 的值)
+返回本次进行战斗的怪兽。以玩家 player 来看，第一个是自己的怪兽，第二个是对方的怪兽，没有进行战斗的怪兽的话，则为nil(2个返回值都可能会有 nil 的值)
 
 ●bool Duel.NegateAttack()
 无效此次攻击，返回值表示是否成功
 此次攻击已经被其他效果无效或导致攻击的卡不能攻击则返回false
 
 ●void Duel.ChainAttack([Card c])
-使攻击卡[或卡片c]可以再进行1次攻击（比如 大开辟，破灭的女王）
+使攻击卡[或卡片 c]可以再进行1次攻击（比如 大开辟，破灭的女王）
 
 ●void Duel.Readjust()
 刷新场上的卡的信息
 非特定情况或者不清楚原理请勿使用此函数以免形成死循环
 
 ●void Duel.AdjustInstantly([Card c])
-手动刷新场上[受到卡片c影响]的卡的无效状态
+手动刷新场上[受到卡片 c 影响]的卡的无效状态
 
 ●Group Duel.GetFieldGroup(int player, int s, int o)
-返回以player来看的指定位置的卡，s代表以player来看的自己的位置，o代表以player来看的对方的位置
+返回以 player 来看的指定位置的卡，s 代表以 player 来看的自己的位置，o 代表以 player 来看的对方的位置
 
 ●int Duel.GetFieldGroupCount(int player, int s, int o)
 同 Duel.GetFieldGroup ，只是返回的是卡的数量
 
 ●Group Duel.GetDecktopGroup(int player, int count)
-返回玩家player的卡组最上方的count张卡
+返回玩家 player 的卡组最上方的 count 张卡
 
 ●Group Duel.GetExtraTopGroup(int player, int count)
-返回玩家player的额外卡组表侧表示的卡中最上方的count张卡
+返回玩家 player 的额外卡组表侧表示的卡中最上方的 count 张卡
+参考对象：电脑网风暴<42461852>
 
 ●Group Duel.GetMatchingGroup(function f|nil, int player, int s, int o, Card|Group ex|nil, ...)
-过滤函数，返回以player来看的指定位置满足过滤条件f并且不等于ex的卡
-s代表以player来看的自己的位置，o代表以player来看的对方的位置
+过滤函数，返回以 player 来看的指定位置满足过滤条件 f 并且不等于 ex 的卡
+s 代表以 player 来看的自己的位置，o 代表以 player 来看的对方的位置
 第6个参数开始为额外参数
 
 ●int Duel.GetMatchingGroupCount(function f|nil, int player, int s, int o, Card|Group ex|nil, ...)
-过滤函数，返回以player来看的指定位置满足过滤条件f并且不等于ex的卡的数量
-s代表以player来看的自己的位置，o代表以player来看的对方的位置
+过滤函数，返回以 player 来看的指定位置满足过滤条件 f 并且不等于 ex 的卡的数量
+s 代表以 player 来看的自己的位置，o 代表以 player 来看的对方的位置
 第6个参数开始为额外参数
 
 ●Card Duel.GetFirstMatchingCard(function f|nil, int player, int s, int o, Card|Group ex|nil, ...)
-过滤函数，返回以player来看的指定位置满足过滤条件f并且不等于ex的第一张卡,没有则返回nil
-s代表以player来看的自己的位置，o代表以player来看的对方的位置
+过滤函数，返回以 player 来看的指定位置满足过滤条件 f 并且不等于 ex 的第一张卡,没有则返回nil
+s 代表以 player 来看的自己的位置，o 代表以 player 来看的对方的位置
 第6个参数开始为额外参数
 
 ●bool Duel.IsExistingMatchingCard(function f|nil, int player, int s, int o, int count, Card|Group ex|nil, ...)
-过滤函数，检查以player来看的指定位置是否存在至少count张满足过滤条件f并且不等于ex的卡
-s代表以player来看的自己的位置，o代表以player来看的对方的位置
+过滤函数，检查以 player 来看的指定位置是否存在至少 count 张满足过滤条件 f 并且不等于 ex 的卡
+s 代表以 player 来看的自己的位置，o 代表以 player 来看的对方的位置
 第7个参数开始为额外参数
 
-●Group Duel.SelectMatchingCard(int sel_player, function f|nil, int player, int s, int o, int min, int max, Card|Group ex|nil, ...)
-过滤函数，让玩家sel_player选择以player来看的指定位置满足过滤条件f并且不等于ex的min-max张卡
-s代表以player来看的自己的位置，o代表以player来看的对方的位置
+●Group Duel.SelectMatchingCard(int sel_player, function f|nil, int player, int s, int o, int minc, int maxc, Card|Group ex|nil, ...)
+过滤函数，让玩家 sel_player 选择以 player 来看的指定位置满足过滤条件 f 并且不等于 ex 的 minc-maxc 张卡
+s 代表以 player 来看的自己的位置，o 代表以 player 来看的对方的位置
 第9个参数开始为额外参数
 
 ●Group Duel.GetReleaseGroup(int player[, bool use_hand=false])
-返回玩家player可解放（非上级召唤用）的卡片组， use_hand=true 则包括手卡
+返回玩家 player 可解放（非上级召唤用）的卡片组， use_hand==true 则包括手卡
 
 ●integer Duel.GetReleaseGroupCount(int player[, bool use_hand=false])
-返回玩家player可解放（非上级召唤用）的卡片数量， use_hand=true 则包括手卡
+返回玩家 player 可解放（非上级召唤用）的卡片数量， use_hand==true 则包括手卡
 
 ●bool Duel.CheckReleaseGroup(int player, function f|nil, int count, Card|Group ex|nil, ...)
-检查玩家player场上是否存在至少count张满足过滤条件f并且不等于ex的可解放的卡（非上级召唤用）
+检查玩家 player 场上是否存在至少 count 张满足过滤条件 f 并且不等于 ex 的可解放的卡（非上级召唤用）
 第5个参数开始为额外参数
 
-●Group Duel.SelectReleaseGroup(int sel_player, function f|nil, int min, int max, Card|Group ex|nil, ...)
-过滤函数，让玩家sel_player从场上选择min-max张不等于ex的满足条件f的可解放的卡（非上级召唤用）
+●Group Duel.SelectReleaseGroup(int sel_player, function f|nil, int minc, int maxc, Card|Group ex|nil, ...)
+过滤函数，让玩家sel_player从场上选择 minc-maxc 张满足过滤条件 f 并且不等于 ex 的可解放的卡（非上级召唤用）
 第6个参数开始为额外参数
 
 ●bool Duel.CheckReleaseGroupEx(int player, function f|nil, int count, Card|Group ex|nil, ...)
-检查玩家player场上·手卡是否存在至少count张满足过滤条件f并且不等于ex的可解放的卡（非上级召唤用）
+检查玩家 player 场上·手卡是否存在至少 count 张满足过滤条件 f 并且不等于 ex 的可解放的卡（非上级召唤用）
 第5个参数开始为额外参数
 
-●Group Duel.SelectReleaseGroupEx(int player, function f|nil, int min, int max, Card|Group ex|nil, ...)
-过滤函数，让玩家player从场上·手卡选择min-max张满足过滤条件f并且不等于ex的可解放的卡（非上级召唤用）
+●Group Duel.SelectReleaseGroupEx(int player, function f|nil, int minc, int maxc, Card|Group ex|nil, ...)
+过滤函数，让玩家 player 从场上·手卡选择minc-maxc张满足过滤条件 f 并且不等于 ex 的可解放的卡（非上级召唤用）
 第6个参数开始为额外参数
 
 ●Group Duel.GetTributeGroup(Card c)
-返回场上用于通常召唤c可解放（上级召唤用）的卡片组
+返回场上用于通常召唤卡片 c 可解放（上级召唤用）的卡片组
 
 ●int Duel.GetTributeCount(Card c[, Group mg|nil, bool ex=false])
-返回场上[或mg中]用于通常召唤c的祭品数量，ex=true则允许对方场上的怪兽（太阳神之翼神龙-球体形）
-此数量不一定等于Duel.GetTributeGroup的返回值中的卡片数量
+返回场上[或 mg 中]用于通常召唤卡片 c 的祭品数量，ex==true 则允许对方场上的怪兽（太阳神之翼神龙-球体形）
+此数量不一定等于 Duel.GetTributeGroup 的返回值中的卡片数量
 因为某些卡可以作为多个祭品来使用
 
-●Group Duel.CheckTribute(Card c, int min[, int max=min, Group mg|nil, int toplayer=c:GetControler(), int zone=0x1f])
-判断场上[或mg中]是否存在用于通常召唤c[到toplayer场上的区域 zone]的min[到max]个祭品
+●Group Duel.CheckTribute(Card c, int minc[, int maxc=minc, Group mg|nil, int toplayer=c:GetControler(), int zone=0x1f])
+判断场上[或 mg 中]是否存在用于通常召唤卡片 c[到 toplayer 场上的区域 zone]的 minc[到 maxc]个祭品
 
-●Group Duel.SelectTribute(int player, Card c, int min, int max[, Group mg|nil, int toplayer=player])
-让玩家player从场上[或mg中]选择用于通常召唤c的min-max个祭品，召唤到 toplayer 场上
+●Group Duel.SelectTribute(int player, Card c, int minc, int maxc[, Group mg|nil, int toplayer=player])
+让玩家 player 从场上[或 mg 中]选择用于通常召唤卡片 c 的 minc-maxc 个祭品，召唤到 toplayer 场上
 
 ●int Duel.GetTargetCount(function f|nil, int player, int s, int o, Card|Group ex|nil, ...)
-基本同Duel.GetMatchingGroupCount ，不同之处在于需要追加判定卡片是否能成为当前正在处理的效果的对象
+基本同 Duel.GetMatchingGroupCount ，不同之处在于需要追加判定卡片是否能成为当前正在处理的效果的对象
 
 ●bool Duel.IsExistingTarget(function f|nil, int player, int s, int o, int count, Card|Group ex|nil, ...)
-基本同Duel.IsExistingMatchingCard ，不同之处在于需要追加判定卡片是否能成为当前正在处理的效果的对象
+基本同 Duel.IsExistingMatchingCard ，不同之处在于需要追加判定卡片是否能成为当前正在处理的效果的对象
 
-●Group Duel.SelectTarget(int sel_player, function f|nil, int player, int s, int o, int min, int max, Card|Group ex|nil, ...)
-基本同Duel.SelectMatchingCard ，不同之处在于此函数会同时将当前正在处理的连锁的对象设置成选择的卡
+●Group Duel.SelectTarget(int sel_player, function f|nil, int player, int s, int o, int minc, int maxc, Card|Group ex|nil, ...)
+基本同 Duel.SelectMatchingCard ，不同之处在于此函数会同时将当前正在处理的连锁的对象设置成选择的卡
 
 ●Group Duel.SelectFusionMaterial(int player, Card c, Group g[, Card gc|nil, int chkf=PLAYER_NONE, bool not_material=false])
-让玩家player从g中选择一组[必须包含gc在内的]融合怪兽c的融合素材
+让玩家 player 从卡片组 g 中选择一组[必须包含卡片 gc 在内的]融合怪兽 c 的融合素材
+not_material==true 则即使有素材原本不能作为 c 的融合素材，也能判定为那些素材可以凑齐一组 c 的融合素材
+(参考对象：次元融合杀<89190953>，团结的剑斗兽<66290900>，奇迹接触<35255456>，新宇融合<14088859>)
 ##根据c的种类为EFFECT_FUSION_MATERIAL的效果的Operation操作
 
 ●void Duel.SetFusionMaterial(Group g)
-设置g为需要使用的融合素材
+设置卡片组 g 为需要使用的融合素材
 
 ●void Duel.SetSynchroMaterial(Group g)
-设置g为需要使用的同调素材
+设置卡片组 g 为需要使用的同调素材
 
-●Group Duel.SelectSynchroMaterial(int player, Card c, function f1|nil, function f2|nil, int min, int max[, Card smat|nil, Group mg|nil])
-让玩家player从场上[或mg中]选择用于同调c需要的[必须包含smat在内（如果有mg~=nil则忽略此参数）]满足条件的一组素材
-f1是 1 只需要满足的过滤条件，f2是 min-max 只需要满足的过滤条件
+●Group Duel.SelectSynchroMaterial(int player, Card c, function f1|nil, function f2|nil, int minc, int maxc[, Card smat|nil, Group mg|nil])
+让玩家 player 从场上[或 mg 中]选择用于同调卡片 c 需要的[必须包含卡片 smat 在内（如果有 mg~=nil 则忽略此参数）]满足条件的一组素材
+f1 是 1 只需要满足的过滤条件，f2 是 minc-maxc 只需要满足的过滤条件
 f1,f2 之中，至少有一种为调整的条件
 
-●bool Duel.CheckSynchroMaterial(Card c, function f1|nil, function f2|nil, int min, int max[, Card smat|nil, Group mg|nil])
-检查场上[或mg中]是否存在一组[必须包括smat在内的（如果有mg~=nil则忽略此参数）]满足条件的卡作为同调召唤c的素材
-f1是 1 只需要满足的过滤条件，f2是 min-max 只需要满足的过滤条件
+●bool Duel.CheckSynchroMaterial(Card c, function f1|nil, function f2|nil, int minc, int maxc[, Card smat|nil, Group mg|nil])
+检查场上[或 mg 中]是否存在一组[必须包括卡片 smat 在内的（如果有 mg~=nil 则忽略此参数）]满足条件的卡作为同调召唤卡片 c 的素材
+f1 是 1 只需要满足的过滤条件，f2 是 minc-maxc 只需要满足的过滤条件
 f1,f2 之中，至少有一种为调整的条件
 
-●Group Duel.SelectTunerMaterial(int player, Card c, Card tuner, function f1|nil, function f2|nil, int min, int max[, Group mg|nil])
-让玩家从场上[或mg中]选择用于同调c需要的满足条件的以tuner作为调整的min-max张卡的一组素材
-f1是 1 只需要满足的过滤条件，f2是 min-max 只需要满足的过滤条件
+●Group Duel.SelectTunerMaterial(int player, Card c, Card tuner, function f1|nil, function f2|nil, int minc, int maxc[, Group mg|nil])
+让玩家从场上[或 mg 中]选择用于同调召唤卡片 c 需要的满足条件的以卡片 tuner 作为调整的 minc-maxc 张卡的一组素材
+f1 是 1 只需要满足的过滤条件，f2 是 minc-maxc 只需要满足的过滤条件
 
-●bool Duel.CheckTunerMaterial(Card c, Card tuner, function f1|nil, function f2|nil, int min, int max[, Group mg|nil])
-检查场上[或mg中]是否存在一组以tuner作为调整,并且满足条件的卡作为同调召唤c的素材
-f1是 1 只需要满足的过滤条件，f2是 min-max 只需要满足的过滤条件
+●bool Duel.CheckTunerMaterial(Card c, Card tuner, function f1|nil, function f2|nil, int minc, int maxc[, Group mg|nil])
+检查场上[或 mg 中]是否存在一组以卡片 tuner 作为调整,并且满足条件的卡作为同调召唤卡片 c 的素材
+f1 是 1 只需要满足的过滤条件，f2 是 minc-maxc 只需要满足的过滤条件
 
 ●Group Duel.GetRitualMaterial(int player)
-返回玩家player可用的用于仪式召唤素材的卡片组
+返回玩家 player 可用的用于仪式召唤素材的卡片组
 包含手上，场上可解放的以及墓地的仪式魔人等卡
 
 ●void Duel.ReleaseRitualMaterial(Group g)
-解放仪式用的素材g，如果是墓地的仪式魔人等卡则除外
+解放仪式用的素材卡片组 g，如果是墓地的仪式魔人等卡则除外
 
-●Group Duel.GetFusionMaterial(int player)
-返回玩家player可用的用于融合召唤素材的卡片组
-包含手卡·场上的怪兽的以及受 EFFECT_EXTRA_FUSION_MATERIAL 影响的卡
+●Group,Group Duel.GetFusionMaterial(int player[,int location=LOCATION_HAND+LOCATION_MZONE])
+第一个返回值是 玩家 player  [在区域 location 内的]可用的用于融合召唤素材的卡片组(包含受 EFFECT_EXTRA_FUSION_MATERIAL 效果影响的卡)
+第二个返回值是 只包含 手卡、怪兽区[、除外、墓地、卡组、额外卡组、P区·魔陷区原本种类是]怪兽卡的卡片组(也即是没有包含受 EFFECT_EXTRA_FUSION_MATERIAL 效果影响的卡)
 
 ●bool Duel.IsSummonCancelable()
 检测能否取消召唤(?)
 
 ●void Duel.SetSelectedCard(Card|Group targets)
-将 targets 设置为必须选择的卡（？）
+将 targets 设置为已选择的卡（？）
 
 ●Group Duel.GrabSelectedCard()
-获取必须选择的卡并返回，同时将必须选择的卡清除（？）
+获取已选择的卡并返回，同时将已选择的卡清除（？）
 
 ●void Duel.SetTargetCard(Card|Group targets)
-把当前正在处理的连锁的对象设置成targets
+把当前正在处理的连锁的对象设置成 targets
 注，这里的对象指的的广义的对象，包括不取对象的效果可能要处理的对象
 
 ●void Duel.ClearTargetCard()
 把当前正在处理的连锁的对象全部清除
 
 ●void Duel.SetTargetPlayer(int player)
-把当前正在处理的连锁的对象玩家设置成player
+把当前正在处理的连锁的对象玩家设置成 player 
 
-●void Duel.SetTargetParam(inte param)
-把当前正在处理的连锁的对象参数设置成param
+●void Duel.SetTargetParam(int param)
+把当前正在处理的连锁的对象参数设置成 param 
 
 ●void Duel.SetOperationInfo(int chainc, int category, Card|Group targets, int count, int target_player, int target_param)
-设置连锁 chainc 的操作信息此操作信息包含了效果处理中确定要处理的效果分类 chainc=0 表示当前连锁
-比如潜行狙击手需要设置CATEGORY_DICE，但是不能设置CATEGORY_DESTROY，因为不确定
-对于破坏效果，targets需要设置成发动时可能成为连锁的影响对象的卡，
-并设置count为发动时确定的要处理的卡的数量
-比如黑洞发动时，targets需要设定为场上的所有怪兽，count设置成场上的怪的数量
-对于需要移动卡片位置的CATEGORY_SPECIAL_SUMMON,CATEGORY_TOHAND,CATEGORY_TODECK等分类，
-如果要处理的卡是确定的（比如取对象），则设置targets为这些卡，count为数量，
+设置连锁 chainc 的操作信息此操作信息包含了效果处理中确定要处理的效果分类。 chainc==0 表示当前连锁
+比如潜行狙击手需要设置 CATEGORY_DICE，但是不能设置 CATEGORY_DESTROY，因为不确定
+对于破坏效果，targets 需要设置成发动时可能成为连锁的影响对象的卡，
+并设置 count 为发动时确定的要处理的卡的数量
+比如黑洞发动时，targets 需要设定为场上的所有怪兽，count 设置成场上的怪的数量
+对于需要移动卡片位置的 CATEGORY_SPECIAL_SUMMON,CATEGORY_TOHAND,CATEGORY_TODECK 等分类，
+如果要处理的卡是确定的（比如取对象），则设置 targets 为这些卡，count 为数量，
 如果要处理的卡是不确定的（效果处理时才能确定，一般是不取对象的效果），
-	则设置targets为nil，count为预计要处理的卡的数量，
-	target_player为预计要处理的卡的持有者（不确定就为0）
-	target_param为预计要处理的卡的位置
-例如增援：SetOperationInfo(0,CATEGORY_TOHAND,nil,1,tp,LOCATION_DECK)
+	则设置 targets 为nil，count 为预计要处理的卡的数量，
+	target_player 为预计要处理的卡的持有者（不确定就为0）
+	target_param 为预计要处理的卡的位置
+例如增援：Duel.SetOperationInfo(0,CATEGORY_TOHAND,nil,1,tp,LOCATION_DECK)
 操作信息用于很多效果的发动的检测，例如星尘龙，王家长眠之谷等
 --特别注意：如果 category 是 CATEGORY_DRAW ，那 target_param 代表要抽的数量。抽卡的效果通常要用到 Duel.SetTargetPlayer 和 Duel.SetTargetParam
 例如 强欲之壶： 
@@ -1970,43 +2004,45 @@ f1是 1 只需要满足的过滤条件，f2是 min-max 只需要满足的过滤�
 
 
 ●bool[,Card|Group,int,int,int] Duel.GetOperationInfo(int chainc, int category)
-返回连锁chainc的category分类的操作信息，存在的话，则返回值为5个， chainc=0 则是表示当前连锁
+返回连锁 chainc 的category分类的操作信息，存在的话，则返回值为5个， chainc==0 则是表示当前连锁
 第一个返回值是false的话表示不存在该分类
 后4个返回值对应Duel.SetOperationInfo的后4个参数：Card|Group targets, int count, int target_player, int target_param
 
 ●int Duel.GetOperationCount(int chainc)
-返回连锁chainc包含的操作分类的数量
+返回连锁 chainc 包含的操作分类的数量
+chainc==0 表示当前连锁
 
 ●void Duel.ClearOperationInfo(int chainc)
-清除连锁chainc的所有操作分类
+清除连锁 chainc 的所有操作分类
+chainc==0 表示当前连锁
 
-●bool Duel.CheckXyzMaterial(Card c, function f|nil, int lv, int min, int max, Group mg|nil)
-检查场上[或mg中]是否存在用于超量召唤c的超量用等级为lv的min-max个满足条件f的叠放素材
+●bool Duel.CheckXyzMaterial(Card c, function f|nil, int lv, int minc, int maxc, Group mg|nil)
+检查场上[或 mg 中]是否存在用于超量召唤卡片 c 的超量用等级为 lv 的 minc-maxc 个满足过滤条件 f 的叠放素材
 
-●Group Duel.SelectXyzMaterial(int player, Card c, function f|nil, int lv, int min, int max[, Group mg|nil])
-让玩家player为超量怪兽c从场上[或mg中]选择超量用等级为lv的min-max个满足条件f的叠放素材
+●Group Duel.SelectXyzMaterial(int player, Card c, function f|nil, int lv, int minc, int maxc[, Group mg|nil])
+让玩家 player 为超量怪兽 c 从场上[或 mg 中]选择超量用等级为 lv 的 minc-maxc 个满足条件f的叠放素材
 
 ●void Duel.Overlay(Card c, Card|Group ocard)
-把ocard作为c的叠放卡叠放
+把卡片(组) ocard 作为卡片 c 的叠放卡叠放
 
 ●Group Duel.GetOverlayGroup(int player, int s, int o)
-返回以player来看的指定位置的所有叠放的卡
-s代表以player来看的自己的位置，o代表以player来看的对方的位置
+返回以 player 来看的指定位置的所有叠放的卡
+s 代表以 player 来看的自己的位置，o 代表以 player 来看的对方的位置
 
 ●int Duel.GetOverlayCount(int player, int s, int o)
-返回以player来看的指定位置的所有叠放的卡的数量
-s代表以player来看的自己的位置，o代表以player来看的对方的位置
+返回以 player 来看的指定位置的所有叠放的卡的数量
+s 代表以 player 来看的自己的位置，o 代表以 player 来看的对方的位置
 
 ●bool Duel.CheckRemoveOverlayCard(int player, int s, int o, int count, int reason)
-检查player能否以原因reason移除以player来看的指定位置至少count张卡
-s代表以player来看的自己的位置，o代表以player来看的对方的位置
+检查 player 能否以原因 reason 移除以 player 来看的指定位置至少 count 张卡
+s 代表以 player 来看的自己的位置，o 代表以 player 来看的对方的位置
 
-●int Duel.RemoveOverlayCard(int player, int s, int o, int min, int max, int reason)
-让player以reason原因移除以player来看的指定位置的min-max张叠放卡，返回值表示取除的数量
-s代表以player来看的自己的位置，o代表以player来看的对方的位置
+●int Duel.RemoveOverlayCard(int player, int s, int o, int minc, int maxc, int reason)
+让player以 reason 原因移除以 player 来看的指定位置的 minc-maxc 张叠放卡，返回值表示取除的数量
+s 代表以 player 来看的自己的位置，o 代表以 player 来看的对方的位置
 
 ●void Duel.Hint(int hint_type, int player, int desc)
-给玩家player发送hint_type类型的消息提示，提示内容为desc
+给玩家 player 发送 hint_type 类型的消息提示，提示内容为 desc
 #hint_type只能为以下类型：
 #HINT_SELECTMSG		将提示内容写入缓存，用于选择卡片的提示，例如Duel.SelectMatchingCard等
 #HINT_OPSELECTED	向player提示“对方选择了：...”，常用于向对方玩家提示选择发动了什么效果
@@ -2020,13 +2056,13 @@ s代表以player来看的自己的位置，o代表以player来看的对方的位
 #HINT_EFFECT		同HINT_CARD
 
 ●void Duel.HintSelection(Group g)
-手动为卡片组g显示被选为对象的动画效果，并记录这些卡被选为对象(广义的)
+手动为卡片组 g 显示被选为对象的动画效果，并记录这些卡被选为对象(广义的)
 
 ●bool Duel.SelectEffectYesNo(int player, Card c[, int desc=95])
-让玩家player选择是否发动卡片c的效果[，提示文字可以自行用desc替换，desc 用 aux.Stringid 获取]
+让玩家 player 选择是否发动卡片c的效果[，提示文字可以自行用 desc 替换，desc 用 aux.Stringid 获取]
 
 ●bool Duel.SelectYesNo(int player, int desc)
-让玩家player选择是或否
+让玩家 player 选择是或否
 
 ●int Duel.SelectOption(int player, int desc1, ...)
 让玩家选择选项，从第二个参数开始，每一个参数代表一条选项
@@ -2037,22 +2073,22 @@ s代表以player来看的自己的位置，o代表以player来看的对方的位
 但是此函数只有一个 check_action_permission(L) 操作，还没有返回值，不知何用
 
 ●int Duel.SelectPosition(int player, Card c, int pos)
-让玩家player选择c的表示形式（返回值是一个int 类型的，但是我不知道是什么）
+让玩家 player 选择卡片 c 的表示形式（返回值是一个int 类型的，但是我不知道是什么）
 
 ●int Duel.SelectField(int player, int count, int s, int o, int filter)
-让玩家player选择指定位置(s 和 o)中filter以外的count个格子，并返回选择位置的标记
-s代表以player来看的自己的位置，o代表以player来看的对方的位置
+让玩家 player 选择指定位置(s 和 o)中 filter 以外的 count 个格子，并返回选择位置的标记
+s 代表以 player 来看的自己的位置，o 代表以 player 来看的对方的位置
 注： 此函数与 Duel.SelectDisableField 几乎一样，大概区别是不能选额外怪兽区
 
 ●int Duel.SelectDisableField(int player, int count, int s, int o, int filter)
-让玩家player选择指定位置(s 和 o)中filter以外的count个格子，并返回选择位置的标记
-s代表以player来看的自己的位置，o代表以player来看的对方的位置
+让玩家 player 选择指定位置(s 和 o)中filter以外的count个格子，并返回选择位置的标记
+s 代表以 player 来看的自己的位置，o 代表以 player 来看的对方的位置
 注意这个函数并不会实际无效所选格子
 常用于选择区域不能使用
 
 ●int Duel.AnnounceRace(int player, int count, int available)
-让玩家player从可选的种族中宣言count个种族
-available是所有可选种族的组合值，可以自行组合
+让玩家 player 从可选的种族中宣言 count 个种族
+available 是所有可选种族的组合值，可以自行组合
 可以直接将名字相加，比如 RACE_WARRIOR+RACE_SPELLCASTER
 RACE_ALL			=0x1ffffff	--全种族
 RACE_WARRIOR		=0x1		--战士
@@ -2082,8 +2118,8 @@ RACE_WYRM			=0x800000	--幻龙
 RACE_CYBERSE		=0x1000000	--电子界
 
 ●int Duel.AnnounceAttribute(int player, int count, int available)
-让玩家player从可选的属性中宣言count个属性
-available是所有可选属性的组合值，可以自行组合，可以直接将名字相加
+让玩家 player 从可选的属性中宣言 count 个属性
+available 是所有可选属性的组合值，可以自行组合，可以直接将名字相加
 ATTRIBUTE_EARTH		=0x01		--地
 ATTRIBUTE_WATER		=0x02		--水
 ATTRIBUTE_FIRE		=0x04		--炎
@@ -2093,11 +2129,11 @@ ATTRIBUTE_DARK		=0x20		--暗
 ATTRIBUTE_DEVINE	=0x40		--神
 
 ●int Duel.AnnounceLevel(int player[, int min=1, int max=12, ...])
-让玩家宣言一个[min-max]等级并返回
+让玩家宣言一个[minc-maxc]等级并返回
 第四个参数开始，表示要排除的等级
 
 ●int Duel.AnnounceCard(int player[, ...])
-让玩家player宣言一个卡片（比如：禁止令）
+让玩家 player 宣言一个卡片（比如：禁止令）
 Duel.AnnounceCardFilter 已经被合并到这个函数里
 如果参数只有2个，会自动加上第三个参数 OPCODE_ISTYPE
 多个参数参考 古代的齿车机械(18486927):
@@ -2106,9 +2142,9 @@ Duel.AnnounceCardFilter 已经被合并到这个函数里
 	getmetatable(e:GetHandler()).announce_filter={0x51,OPCODE_ISSETCARD,code,OPCODE_ISCODE,OPCODE_NOT,OPCODE_AND}
 	local ac=Duel.AnnounceCard(tp,table.unpack(getmetatable(e:GetHandler()).announce_filter))
 --Opcode
-OPCODE_ADD				=0x40000000 
-OPCODE_SUB				=0x40000001 
-OPCODE_MUL				=0x40000002 
+OPCODE_ADD				=0x40000000 --加法
+OPCODE_SUB				=0x40000001 --减法
+OPCODE_MUL				=0x40000002 --乘法
 OPCODE_DIV				=0x40000003 --除法
 OPCODE_AND				=0x40000004 --与
 OPCODE_OR				=0x40000005 --或
@@ -2121,26 +2157,26 @@ OPCODE_ISRACE			=0x40000103 --卡片过滤条件为race
 OPCODE_ISATTRIBUTE		=0x40000104 --卡片过滤条件为attribute
 
 ●int Duel.AnnounceType(int player)
-让玩家player宣言一个卡片类型（怪兽·魔法·陷阱）
+让玩家 player 宣言一个卡片类型（怪兽·魔法·陷阱）
 别想着直接宣言 复合类型（永续魔法 等）
 
 ●int,int Duel.AnnounceNumber(int player, int number, ...)
-让玩家player宣言一个数字
+让玩家 player 宣言一个数字
 从第二个参数开始，每一个参数代表一个可宣言的数字
 第一个返回值是宣言的数字，第二个返回值是宣言数字在所有选项中的位置
 
 ●int Duel.AnnounceCoin(int player)
-让玩家player宣言硬币的正反面
+让玩家 player 宣言硬币的正反面
 
 ●int[,...] Duel.TossCoin(int player, int count)
-让玩家player投count(<=5)次硬币，返回值为count个结果，0或者1, 正面是 1，反面是 0
+让玩家 player 投 count(<=5)次硬币，返回值为 count 个结果，0或者1, 正面是 1，反面是 0
 
 ●int[,...] Duel.TossDice(int player, int count1[, int count2 = 0])
-让玩家player投count1次骰子[，1-player投count2次骰子](count1+count2<=5)
-返回值为count1+count2个结果，1-6
+让玩家 player 投 count1 次骰子[，1-player投count2次骰子](count1+count2<=5)
+返回值为 count1+count2 个结果，1-6
 
 ●int Duel.RockPaperScissors([bool repeat=true])
-猜拳，若 repeat=false 则只猜一次；否则就是直到分出胜负为止。返回胜利的玩家号码
+猜拳，若 repeat==false 则只猜一次；否则就是直到分出胜负为止。返回胜利的玩家号码
 
 ●int,int,int,int,int Duel.GetCoinResult()
 返回当前投硬币的结果
@@ -2149,57 +2185,57 @@ OPCODE_ISATTRIBUTE		=0x40000104 --卡片过滤条件为attribute
 返回当前掷骰子的结果
 
 ●void Duel.SetCoinResult(int res, ... )
-强行修改投硬币的结果为res ,最多5个参数，res只能是 0 或 1, ，其他全算作 0
+强行修改投硬币的结果为 res ,最多5个参数，res 只能是 0 或 1, ，其他全算作 0
 此函数用于永续的EVENT_TOSS_COIN事件中
 
 ●void Duel.SetDiceResult(int res, ...)
-强行修改投骰子的结果为res ,最多5个参数，res只能是 1~255, ，其他数字全算作 1
+强行修改投骰子的结果为 res ,最多5个参数，res 只能是 1~255, ，其他数字全算作 1
 此函数用于永续的EVENT_TOSS_DICE事件中
 
 ●Effect|nil,... Duel.IsPlayerAffectedByEffect(int player, int code)
-检查player是否受到种类为code的效果影响，如果有就返回那些效果，没有则返回nil ,player 为0和1以外的数值时，也会返回nil
+检查玩家 player 是否受到种类为 code 的效果影响，如果有就返回那些效果，没有则返回nil ,player 为0和1以外的数值时，也会返回nil
 
 ●bool Duel.IsPlayerCanDraw(int player[, int count=0])
-检查玩家player是否可以效果抽[count张]卡
+检查玩家 player 是否可以效果抽[count 张]卡
 
 ●bool Duel.IsPlayerCanDiscardDeck(int player, int count)
-检查玩家player是否可以把卡组顶端count张卡送去墓地
+检查玩家 player 是否可以把卡组顶端 count 张卡送去墓地
 
 ●bool Duel.IsPlayerCanDiscardDeckAsCost(int player, int count)
-检查玩家player能否把卡组顶端count张卡送去墓地作为cost
+检查玩家 player 能否把卡组顶端 count 张卡送去墓地作为cost
 
 ●bool Duel.IsPlayerCanSummon(int player[, int sumtype, Card c])
-检查玩家player是否可以通常召唤[c，以sumtype方式]
+检查玩家 player 是否可以通常召唤[c，以 sumtype 方式]
 如果需要可选参数，则必须全部使用
 仅当玩家受到“不能召唤”等效果的影响时返回false
 
 ●bool Duel.IsPlayerCanMSet(int player[, int sumtype, Card c])
-检查玩家player是否可以盖放怪兽[c，以sumtype方式]
+检查玩家 player 是否可以盖放怪兽[c，以sumtype方式]
 如果需要可选参数，则必须全部使用
 
 ●bool Duel.IsPlayerCanSSet(int player[, Card c])
-检查玩家player是否可以把卡片[ c ]盖放到魔陷区
+检查玩家 player 是否可以把卡片[ c ]盖放到魔陷区
 
 ●bool Duel.IsPlayerCanSpecialSummon(int player[, int sumtype, int sumpos, int target_player, Card c])
-检查玩家player能否特殊召唤[c到target_player场上，以sumtype召唤方式，sumpos表示形式]
+检查玩家 player 能否特殊召唤[卡片 c 到 target_player 场上，以 sumtype 召唤方式，sumpos 表示形式]
 如果需要可选参数，则必须全部使用
 
 ●bool Duel.IsPlayerCanFlipSummon(int player[, Card c])
-检查玩家player是否可以反转召唤[卡片 c]
+检查玩家 player 是否可以反转召唤[卡片 c]
 
 ●bool Duel.IsPlayerCanSpecialSummonMonster(int player, int code, int setcode|nil, int type|nil, int atk|nil, int def|nil, int level|nil, int race|nil, int attribute|nil
 	[, int  pos=POS_FACEUP, int target_player=player, int sumtype=0])
-检查玩家player是否可以[以sumtype 方式][以 pos 表示形式]特殊召唤 给定参数的怪兽到target_player场上
+检查玩家 player 是否可以[以 sumtype 方式][以 pos 表示形式]特殊召唤 给定参数的怪兽到 target_player 场上
 此函数通常用于判定是否可以特招token和陷阱怪兽
 
 ●bool Duel.IsPlayerCanSpecialSummonCount(int player, int count)
-检查玩家player能否特殊召唤count次
+检查玩家 player 能否特殊召唤 count 次
 
 ●bool Duel.IsPlayerCanRelease(int player[, Card c])
-检查玩家player是否能解放[卡片 c]
+检查玩家 player 是否能解放[卡片 c]
 
 ●bool Duel.IsPlayerCanRemove(int player[, Card c, int reason=REASON_EFFECT])
-检查玩家player是否能除外[卡片 c]
+检查玩家 player 是否能[以 reason 原因]除外[卡片 c]
 
 ●bool Duel.IsPlayerCanSendtoHand(int player[, Card c])
 检查玩家是否能把卡片[c]送去手牌
@@ -2211,24 +2247,26 @@ OPCODE_ISATTRIBUTE		=0x40000104 --卡片过滤条件为attribute
 检查玩家是否能把卡片[c]送去卡组
 
 ●bool Duel.IsPlayerCanAdditionalSummon(int player)
-检查玩家是否进行过额外的通常召唤
+检查玩家是否可以额外的增加通常召唤次数。(宝石骑士·斜绿 等)
+适用过相同效果的场合返回false
 注：以前这个函数叫 Duel.IsPlayerExtraSummoned(int player)
 
 ●bool Duel.IsChainNegatable(int chainc)
-检查连锁chainc的发动能否被无效
+检查连锁 chainc 的发动能否被无效
 
 ●bool Duel.IsChainDisablable(int chainc)
-检查连锁chainc的效果能否被无效
+检查连锁 chainc 的效果能否被无效
 
 ●bool Duel.CheckChainTarget(int chainc, Card c)
-检查c是否是连锁chainc的效果的正确的对象
+检查卡片 c 是否是连锁 chainc 的效果的正确的对象
+chainc==0 表示当前连锁
 
 ●bool Duel.CheckChainUniqueness()
 检查当前连锁中是否存在同名卡的发动，返回true表示无同名卡
 
 ●int,... Duel.GetActivityCount(int player, int activity_type, ...)
-返回player进行对应的activity_type操作的次数
-activity_type为以下类型
+返回玩家 player 进行对应的 activity_type 操作的次数
+activity_type 为以下类型
 ACTIVITY_SUMMON         =1	--召唤（不包括通常召唤的放置）
 ACTIVITY_NORMALSUMMON   =2	--通常召唤（包括通常召唤的放置）
 ACTIVITY_SPSUMMON       =3	--特殊召唤
@@ -2240,9 +2278,9 @@ ACTIVITY_BATTLE_PHASE   =6	--进入战斗阶段
 检查玩家在当前阶段是否有操作（是否处于阶段开始时，如七皇之剑）
 
 ●void Duel.AddCustomActivityCounter(int counter_id, int activity_type, function f)
-设置操作类型为activity_type、代号为counter_id的计数器，放在initial_effect函数内
-f为过滤函数，以Card类型为参数，返回值为false的卡片进行以下类型的操作，计数器增加1(目前最多为1?)
-activity_type为以下类型
+设置操作类型为 activity_type、代号为 counter_id 的计数器，放在 initial_effect 函数内
+f 为过滤函数，以Card类型为参数，返回值为 false 的卡片进行以下类型的操作，计数器增加1(目前最多为1?)
+activity_type 为以下类型
 ACTIVITY_SUMMON         =1	--召唤（不包括通常召唤的set）
 ACTIVITY_NORMALSUMMON   =2	--通常召唤（包括通常召唤的set）
 ACTIVITY_SPSUMMON       =3	--特殊召唤
@@ -2251,8 +2289,8 @@ ACTIVITY_ATTACK         =5	--攻击
 ACTIVITY_CHAIN          =7	--发动效果
 
 ●int Duel.GetCustomActivityCount(int counter_id, int player, int activity_type)
-代号为counter_id的计数器的计数，返回player进行以下操作的次数(目前最多为1?)
-activity_type为以下类型
+代号为 counter_id 的计数器的计数，返回 player 进行以下操作的次数(目前最多为1?)
+activity_type 为以下类型
 ACTIVITY_SUMMON         =1	--召唤（不包括通常召唤的set）
 ACTIVITY_NORMALSUMMON   =2	--通常召唤（包括通常召唤的set）
 ACTIVITY_SPSUMMON       =3	--特殊召唤
@@ -2261,16 +2299,16 @@ ACTIVITY_ATTACK         =5	--攻击
 ACTIVITY_CHAIN          =7	--发动效果
 
 ●int Duel.GetBattledCount(int player)
-返回玩家player这回合战斗过的次数 
+返回玩家 player 这回合战斗过的次数 
 
 ●bool Duel.IsAbleToEnterBP()
 检查回合玩家能否进入战斗阶段
 
 ●void Duel.SwapDeckAndGrave(int player)
-现世与冥界的逆转专用。把玩家player的卡组和墓地交换
+现世与冥界的逆转专用。把玩家 player 的卡组和墓地交换
 
 ●void Duel.MajesticCopy(Card c1, Card c2)
-救世星龙专用。把c2记述的效果复制给c1
+救世星龙专用。把卡片 c2 记述的效果复制给卡片 c1 
 强制发动的效果可以选择是否发动
 
 ========== aux ============
@@ -2291,6 +2329,15 @@ ACTIVITY_CHAIN          =7	--发动效果
 		tc=g:GetNext()
 	end
 
+●void aux.NULL()
+就是1个空函数
+
+●bool aux.TRUE()
+return true
+
+●bool aux.FALSE()
+return false
+
 ●void aux.BeginPuzzle()
 开始残局
 ##此函数注册3个全局效果：
@@ -2298,33 +2345,38 @@ ACTIVITY_CHAIN          =7	--发动效果
 ##跳过玩家抽卡阶段与准备阶段
 
 ●bool aux.IsDualState(Effect e)
-检查二重怪兽e:GetHandler()是否是再度召唤状态（用于效果的Condition属性）
-常用于二重怪兽再度召唤获得的效果e的Condition属性
+检查二重怪兽 e:GetHandler()是否是再度召唤状态（用于效果的Condition属性）
+常用于二重怪兽再度召唤获得的效果 e 的Condition属性
 
 ●bool aux.IsNotDualState(Effect e)
 aux.IsDualState的反义（用于效果的Condition属性）
 
 ●bool aux.DualNormalCondition(Effect e)
-检查二重怪兽e:GetHandler()是否为被视为通常怪兽的状态（用于效果的Condition属性）
+检查二重怪兽 e:GetHandler()是否为被视为通常怪兽的状态（用于效果的Condition属性）
 
 ●void aux.EnableDualAttribute(Card c)
-为c添加二重怪兽属性
+为卡片 c 添加二重怪兽属性
 
 ●void aux.EnableSpiritReturn(Card c, int event1,...)
-为c添加灵魂怪兽结束阶段回到手卡的效果（发生事件event1,...的回合，结束阶段回到手卡）
+为卡片 c 添加灵魂怪兽结束阶段回到手卡的效果（发生事件event1,...的回合，结束阶段回到手卡）
 
 ●bool aux.IsUnionState(Effect e)
-检查同盟怪兽e:GetHandler()是否处于同盟装备的状态（用于效果的Condition属性）
+检查同盟怪兽 e:GetHandler()是否处于同盟装备的状态（用于效果的Condition属性）
 
 ●void aux.SetUnionState(Card c)
-为c添加同盟状态
+为卡片 c 添加同盟状态
 
 ●bool aux.CheckUnionEquip(Card uc, Card tc)
-检查同盟怪兽uc能否作为同盟装备在怪兽tc上
+检查同盟怪兽 uc 能否作为同盟装备在怪兽tc上
 
 ●bool aux.EnableUnionAttribute(Card c, function uf)
-为c添加同盟属性，uf为限定装备对象的同盟条件，原型为：
+为卡片 c 添加同盟属性，uf 为限定装备对象的同盟条件，原型为：
 bool function (Effect e, Card c) end
+
+●Effect, Effect aux.EnableChangeCode(Card c, int code,int location , function con_func)
+让卡片 c 的卡名在满足条件 con_func 的场合，在 location 区域变成 code ,此函数返回2个 Effect 
+默认区域根据 c 的原本种类决定
+参考对象：武装龙·雷电 LV10<58153103>
 
 ●function Auxiliary.TargetEqualFunction(function f, any value, ...)
 一般用在效果注册里,返回的是一个 有 bool 返回值类型的 函数，第3个参数开始为额外参数
@@ -2385,16 +2437,21 @@ end
 如果 g 中 包含 c ，则返回 false
 
 ●void aux.AddSynchroProcedure(Card c, function f1|nil, function f2|nil, int minc[, int maxc=99])
-为c添加同调召唤手续
-f1为 1 只满足的过滤条件，并且必须为调整；f2为 minc [~ maxc]只满足的过滤条件
+为卡片 c 添加同调召唤手续
+f1 为 1 只满足的过滤条件，并且必须为调整；f2 为 minc [~ maxc]只满足的过滤条件
 
 ●void aux.AddSynchroProcedure2(Card c, function f1, function f2)
 等价于aux.AddSynchroProcedure(c,f1,f2,1,1)
 
 ●void aux.AddSynchroMixProcedure(Card c, function f1|nil, function f2|nil, function f3|nil, function f4|nil, int minc, int maxc)
-为c添加同调召唤手续，
-f1,f2,f3 为 1 只满足的过滤条件，f4为 minc ~ maxc只满足的过滤条件
+为卡片 c 添加同调召唤手续，
+f1,f2,f3 为 1 只满足的过滤条件，f4 为 minc ~ maxc 只满足的过滤条件
 f1,f2,f3,f4 之中，至少有一种为调整
+4种过滤函数的原型如下：
+bool function f1(Card c, Card syncard) end -- syncard 表示要同调召唤的这张卡。为了避免可能遇到的错误，哪怕用不上，也建议写上，下面这3个的其他参数也是同样的原因
+bool function f2(Card c, Card syncard, Card c1) end -- c1 由 f1 函数里传入
+bool function f3(Card c, Card syncard, Card c1, Card c2) end -- c1 由 f1 函数里传入， c2 由 f2 函数传入
+bool function f4(Card c, Card syncard, Card c1, Card c2, Card c3) end -- c1 由 f1 函数里传入， c2 由 f2 函数传入， c3 由 f3 函数传入
 
 ●function aux.TuneMagicianFilter(Card c, Effect e)
 调弦之魔术师(73941492)专用，,返回的是一个 有 bool 返回值类型的 函数 f(e,c)
@@ -2403,13 +2460,13 @@ f1,f2,f3,f4 之中，至少有一种为调整
 调弦之魔术师(73941492)专用
 
 ●void aux.AddXyzProcedure(Card c, function f|nil, int lv, int ct[, function alterf|nil, int desc|nil, int maxc=ct, function op|nil])
-为c添加超量召唤手续
+为卡片 c 添加超量召唤手续
 用满足条件 f 的等级为 lv 的 ct[-maxc] 只怪兽进行叠放
 或者在单个怪兽（通常是超量怪兽）上叠放
-alterf 为这个怪兽满足的条件，desc为描述，op为叠放时需要的操作（比如 希望皇龙）
+alterf 为这个怪兽满足的条件，desc 为描述，op 为叠放时需要的操作（比如 希望皇龙）
 
 ●void aux.AddXyzProcedureLevelFree(Card c, function f|nil, function gf|nil, int minc, int maxc[, function alterf|nil, int desc|nil, function op|nil])
-为c添加超量召唤手续
+为卡片 c 添加超量召唤手续
 用满足条件 f 的卡片组里，满足 gf 的 minc[-maxc] 只怪兽进行叠放，f 为必要条件，gf 为额外条件
 或者在单个怪兽（通常是超量怪兽）上叠放
 alterf为这个怪兽满足的条件，desc为描述，op为叠放时需要的操作（比如 闪光No.0 希望之异热同心）
@@ -2417,79 +2474,93 @@ alterf为这个怪兽满足的条件，desc为描述，op为叠放时需要的�
 参数 gf 的函数原型为 function gf(Croup g) end
 
 ●void aux.AddFusionProcMix(Card c, bool sub, bool insf, ...)
-为c 添加融合召唤手续
+为卡片 c 添加融合召唤手续
 用额外参数里的卡各1张为融合素材,额外参数的类型 可以是 function 或者 卡密(int code),
-sub表示能否使用融合代替素材，insf 为false表示必须用素材融合召唤。若这只怪兽融合召唤只能使用上述的卡进行，sub 和 insf 都要填 false
+sub表示能否使用融合代替素材，insf==false 表示必须用素材融合召唤。若这只怪兽融合召唤只能使用上述的卡进行，sub 和 insf 都要填 false
 #以下融合函数这2个参数相同
 
 ●void aux.AddFusionProcMixRep(Card c, bool sub, bool insf, (function f1)|(int code1), int minc, int maxc, ...)
 为c 添加融合召唤手续
 用满足f1 的怪兽 minc-maxc 只，和 额外参数里 各1只的怪兽为融合素材,
 额外参数的类型 可以是 function 或者 卡密(int code)
+sub表示能否使用融合代替素材，insf==false 表示必须用素材融合召唤。若这只怪兽融合召唤只能使用上述的卡进行，sub 和 insf 都要填 false
 
 ●void aux.AddFusionProcCode2(Card c, int code1, int code2, bool sub, bool insf)
 为c 添加融合召唤手续
 用卡号为code1和code2的2只怪兽为融合素材
+sub表示能否使用融合代替素材，insf==false 表示必须用素材融合召唤。若这只怪兽融合召唤只能使用上述的卡进行，sub 和 insf 都要填 false
 等价于 aux.AddFusionProcMix(c,sub,insf,code1,code2)
 
 ●void aux.AddFusionProcCode3(Card c, int code1, int code2, int code3, bool sub, bool insf)
 为c 添加融合召唤手续
 用卡号为code1,code2,code3的3只怪兽为融合素材
+sub表示能否使用融合代替素材，insf==false 表示必须用素材融合召唤。若这只怪兽融合召唤只能使用上述的卡进行，sub 和 insf 都要填 false
 等价于 aux.AddFusionProcMix(c,sub,insf,code1,code2,code3)
 
 ●void aux.AddFusionProcCode4(Card c, int code1, int code2, int code3, int code4, bool sub, bool insf)
 为c 添加融合召唤手续
 用卡号为code1,code2,code3,code4的4只怪兽为融合素材
+sub表示能否使用融合代替素材，insf==false 表示必须用素材融合召唤。若这只怪兽融合召唤只能使用上述的卡进行，sub 和 insf 都要填 false
 等价于 aux.AddFusionProcMix(c,sub,insf,code1,code2,code4)
 
 ●void aux.AddFusionProcCodeRep(Card c, int code, int cc, bool sub, bool insf)
 为c 添加融合召唤手续
 用 cc 个卡号为 code 的怪兽为融合素材
+sub表示能否使用融合代替素材，insf==false 表示必须用素材融合召唤。若这只怪兽融合召唤只能使用上述的卡进行，sub 和 insf 都要填 false
 等价于 aux.AddFusionProcMix(c,sub,insf,table.unpack(tcode)) ,tcode 是包含 cc 个 code 的表
 
 ●void aux.AddFusionProcCodeRep2(Card c, int code, int minc, int maxc, bool sub, bool insf)
 为c 添加融合召唤手续
 用 minc-maxc 个卡号为 code 的怪兽为融合素材
+sub表示能否使用融合代替素材，insf==false 表示必须用素材融合召唤。若这只怪兽融合召唤只能使用上述的卡进行，sub 和 insf 都要填 false
 等价于 aux.AddFusionProcMixRep(c,sub,insf,code1,minc,maxc)
 
 ●void aux.AddFusionProcCodeFun(Card c, int code, function f, int cc, bool sub, bool insf)
 为c 添加融合召唤手续
 用卡号为 code 的1只怪兽，和 cc 个满足条件 f 的怪兽为融合素材
+sub表示能否使用融合代替素材，insf==false 表示必须用素材融合召唤。若这只怪兽融合召唤只能使用上述的卡进行，sub 和 insf 都要填 false
 等价于 aux.AddFusionProcMix(c,sub,insf,code1,table.unpack(fun)),fun 是包含 cc 个 满足条件 f 的卡的表
 
 ●void aux.AddFusionProcFun2(Card c, function f1, function f2, bool insf)
 为c 添加融合召唤手续
 用满足条件 f1 与 f2 的怪兽 各1只为融合素材
+insf==false 表示必须用素材融合召唤
 等价于 aux.AddFusionProcMix(c,false,insf,f1,f2)
 
 ●void aux.AddFusionProcFunRep(Card c, function f, int cc, bool insf)
 为c 添加融合召唤手续
 用 cc 个 满足相同条件 f 的怪兽为融合素材
+insf==false 表示必须用素材融合召唤
 等价于 aux.AddFusionProcMix(c,false,insf,table.unpack(fun)),fun 是包含 cc 个 满足条件 f 的卡的表
 
 ●void aux.AddFusionProcFunRep2(Card c, function f, int minc, int maxc, bool insf)
 为c 添加融合召唤手续
 用 minc-maxc 个 满足相同条件 f 的怪兽为融合素材
+insf==false 表示必须用素材融合召唤
 等价于 aux.AddFusionProcMixRep(c,false,insf,f,minc,maxc)
 
-●void aux.AddFusionProcFunFun(Card c, function f1, function f2, int cc, bool sub, bool insf)
+●void aux.AddFusionProcFunFun(Card c, function f1, function f2, int cc, bool insf)
 为c 添加融合召唤手续
 用满足过滤条件 f1 的1只怪兽 ，和满足过滤条件 f2 的 cc 只怪兽为融合素材
+insf==false 表示必须用素材融合召唤
 等价于 aux.AddFusionProcMix(c,false,insf,f1,table.unpack(fun)),fun 是包含 cc 个 满足条件 f2 的卡的表
 
-●void aux.AddFusionProcFunFunRep(Card c, function f1, function f2, int minc, int maxc, bool sub, bool insf)
+●void aux.AddFusionProcFunFunRep(Card c, function f1, function f2, int minc, int maxc, bool insf)
 为c 添加融合召唤手续
 用满足过滤条件 f1 的1只怪兽 ，和满足过滤条件 f2 的 minc-maxc 只怪兽为融合素材
+insf==false 表示必须用素材融合召唤
 等价于 aux.AddFusionProcMixRep(c,false,insf,f2,minc,maxc,f1)
 
 ●void aux.AddFusionProcCodeFunRep(Card c, int code, function f, int minc, int maxc, bool sub, bool insf)
 为c 添加融合召唤手续
 用卡号为 code 的1只怪兽 ，和满足过滤条件 f 的 minc-maxc 只怪兽为融合素材
+sub表示能否使用融合代替素材，insf==false 表示必须用素材融合召唤。若这只怪兽融合召唤只能使用上述的卡进行，sub 和 insf 都要填 false
 等价于 aux.AddFusionProcMixRep(c,sub,insf,f,minc,maxc,code1)
 
 ●void aux.AddFusionProcCode2FunRep(Card c, int code1, int code2, function f, int minc, int maxc, bool sub, bool insf)
 为c 添加融合召唤手续
 用卡号为 code1,code2 的各1只怪兽 ，和满足过滤条件 f 的 minc-maxc 只怪兽为融合素材
+sub表示能否使用融合代替素材，insf==false 表示必须用素材融合召唤。若这只怪兽融合召唤只能使用上述的卡进行，sub 和 insf 都要填 false
 等价于 aux.AddFusionProcMixRep(c,sub,insf,f,minc,maxc,code1,code2)
 
 ●void aux.AddFusionProcShaddoll(Card c, int attribute)
@@ -2498,11 +2569,11 @@ sub表示能否使用融合代替素材，insf 为false表示必须用素材融�
 ●void aux.AddContactFusionProcedure(Card c, function filter, int self_location, int opponent_location, any mat_operation[, ...])
 为c 添加接触融合手续。
 filter 表示素材的过滤条件
-self_location, opponent_location 表示以c:GetControler() 来看的自己，对方的区域
+self_location, opponent_location 表示以 c:GetControler() 来看的自己，对方的区域
 mat_operation 表示要对素材进行的操作
 
 ●void aux.AddRitualProcUltimate(Card c, function filter, function level_function, string greater_or_equal, int summon_location=LOCATION_HAND, function grave_filter, function mat_filter)
-为c添加仪式召唤效果
+为卡片 c 添加仪式召唤效果
 filter 为仪式怪兽满足的条件， level_function 表示仪式召唤要满足的等级(返回值为int类型的函数)
 greater_or_equal 的值只有 "Greater" 和 "Equal"
 summon_location 表示从哪里仪式召唤(默认是手卡)
@@ -2516,7 +2587,7 @@ greater_or_equal 的值只有 "Greater" 和 "Equal"
 chk 这个参数似乎不是必须要有
 
 ●void aux.AddRitualProcGreater(Card c, function filter, int summon_location=LOCATION_HAND, function grave_filter, function mat_filter)
-为c添加仪式召唤效果
+为卡片 c 添加仪式召唤效果
 filter 为仪式怪兽满足的条件，素材的仪式等级之和要 刚好 大于或者等于仪式怪兽的原本等级
 summon_location 表示从哪里仪式召唤(默认是手卡)
 grave_filter 表示 作为解放代替除外墓地  的仪式素材需要满足的条件
@@ -2524,7 +2595,7 @@ mat_filter 表示仪式素材要满足的条件
 等价于：aux.AddRitualProcUltimate(c,filter,Card.GetOriginalLevel,"Greater",summon_location,grave_filter,mat_filter)
 
 ●void aux.AddRitualProcGreaterCode(Card c, int code1, int summon_location=LOCATION_HAND, function grave_filter, function mat_filter)
-为c添加仪式召唤效果。会默认把 code1 添加到 c 的 codelist
+为卡片 c 添加仪式召唤效果。会默认把 code1 添加到 c 的 codelist
 code1 为仪式怪兽卡号，素材的仪式等级之和要 刚好 大于或者等于仪式怪兽的原本等级
 summon_location 表示从哪里仪式召唤(默认是手卡)
 grave_filter 表示 作为解放代替除外墓地  的仪式素材需要满足的条件
@@ -2534,7 +2605,7 @@ mat_filter 表示仪式素材要满足的条件
 	aux.AddRitualProcGreater(c,aux.FilterBoolFunction(Card.IsCode,code1),summon_location,grave_filter,mat_filter)
 
 ●void aux.AddRitualProcEqual(Card c, function filter, int summon_location=LOCATION_HAND, function grave_filter, function mat_filter)
-为c添加仪式召唤效果
+为卡片 c 添加仪式召唤效果
 filter 为仪式怪兽满足的条件，素材的仪式等级之和必须等于仪式怪兽的原本等级
 summon_location 表示从哪里仪式召唤(默认是手卡)
 grave_filter 表示 作为解放代替除外墓地  的仪式素材需要满足的条件
@@ -2542,7 +2613,7 @@ mat_filter 表示仪式素材要满足的条件
 等价于：aux.AddRitualProcUltimate(c,filter,Card.GetOriginalLevel,"Equal",summon_location,grave_filter,mat_filter)
 
 ●void aux.AddRitualProcEqualCode(Card c, int code1, int summon_location=LOCATION_HAND, function grave_filter, function mat_filter)
-为c添加仪式召唤效果
+为卡片 c 添加仪式召唤效果
 code1 为仪式怪兽卡号，素材的仪式等级之和必须等于仪式怪兽的原本等级
 summon_location 表示从哪里仪式召唤(默认是手卡)
 grave_filter 表示 作为解放代替除外墓地  的仪式素材需要满足的条件
@@ -2552,7 +2623,7 @@ mat_filter 表示仪式素材要满足的条件
 	aux.AddRitualProcEqual(c,aux.FilterBoolFunction(Card.IsCode,code1),summon_location,grave_filter,mat_filter)
 
 ●void aux.AddRitualProcEqual2(Card c, function filter, int summon_location=LOCATION_HAND, function grave_filter, function mat_filter)
-为c添加仪式召唤效果
+为卡片 c 添加仪式召唤效果
 filter 为仪式怪兽满足的条件，素材的仪式等级之和必须等于仪式怪兽的等级(此等级可能会因为其他卡效果改变)
 summon_location 表示从哪里仪式召唤(默认是手卡)
 grave_filter 表示 作为解放代替除外墓地  的仪式素材需要满足的条件
@@ -2560,7 +2631,7 @@ mat_filter 表示仪式素材要满足的条件
 等价于：aux.AddRitualProcUltimate(c,filter,Card.GetLevel,"Equal",summon_location,grave_filter,mat_filter)
 
 ●void aux.AddRitualProcEqual2Code(Card c, int code1, int summon_location=LOCATION_HAND, function grave_filter, function mat_filter)
-为c添加仪式召唤效果
+为卡片 c 添加仪式召唤效果
 code1 为仪式怪兽卡号，素材的等级之和必须等于仪式怪兽的等级(此等级可能会因为其他卡效果改变)
 summon_location 表示从哪里仪式召唤(默认是手卡)
 grave_filter 表示 作为解放代替除外墓地  的仪式素材需要满足的条件
@@ -2570,7 +2641,7 @@ mat_filter 表示仪式素材要满足的条件
 	aux.AddRitualProcEqual2(c,aux.FilterBoolFunction(Card.IsCode,code1),summon_location,grave_filter,mat_filter)
 
 ●void aux.AddRitualProcEqual2Code2(Card c, int code1, int code2, int summon_location=LOCATION_HAND, function grave_filter, function mat_filter)
-为c添加仪式召唤手续
+为卡片 c 添加仪式召唤手续
 code1,code2 为仪式怪兽卡号，素材的等级之和必须等于仪式怪兽的等级(此等级可能会因为其他卡效果改变)
 summon_location 表示从哪里仪式召唤(默认是手卡)
 grave_filter 表示 作为解放代替除外墓地  的仪式素材需要满足的条件
@@ -2580,7 +2651,7 @@ mat_filter 表示仪式素材要满足的条件
 	aux.AddRitualProcEqual2(c,aux.FilterBoolFunction(Card.IsCode,code1,code2),summon_location,grave_filter,mat_filter)
 
 ●void aux.AddRitualProcGreater2(Card c, function filter, int summon_location=LOCATION_HAND, function grave_filter, function mat_filter)
-为c添加仪式召唤手续
+为卡片 c 添加仪式召唤手续
 filter 为仪式怪兽满足的条件，素材的仪式等级之和要 刚好 大于或者等于仪式怪兽的等级(此等级可能会因为其他卡效果改变)
 summon_location 表示从哪里仪式召唤(默认是手卡)
 grave_filter 表示 作为解放代替除外墓地  的仪式素材需要满足的条件
@@ -2588,7 +2659,7 @@ mat_filter 表示仪式素材要满足的条件
 等价于：aux.AddRitualProcUltimate(c,filter,Card.GetLevel,"Equal",summon_location,grave_filter,mat_filter)
 
 ●void aux.AddRitualProcGreater2Code(Card c, int code1, int summon_location=LOCATION_HAND, function grave_filter, function mat_filter)
-为c添加仪式召唤手续
+为卡片 c 添加仪式召唤手续
 code1 为仪式怪兽卡号，素材的仪式等级之和要 刚好 大于或者等于仪式怪兽的等级(此等级可能会因为其他卡效果改变)
 summon_location 表示从哪里仪式召唤(默认是手卡)
 grave_filter 表示 作为解放代替除外墓地  的仪式素材需要满足的条件
@@ -2598,7 +2669,7 @@ mat_filter 表示仪式素材要满足的条件
 	aux.AddRitualProcGreater2(c,aux.FilterBoolFunction(Card.IsCode,code1),Card.GetLevel,"Equal",summon_location,grave_filter,mat_filter)
 
 ●void aux.AddRitualProcGreater2Code2(Card c, int code1, int code2, int summon_location=LOCATION_HAND, function grave_filter, function mat_filter)
-为c添加仪式召唤手续
+为卡片 c 添加仪式召唤手续
 code1,code2 为仪式怪兽卡号，素材的仪式等级之和要 刚好 大于或者等于仪式怪兽的等级(此等级可能会因为其他卡效果改变)
 summon_location 表示从哪里仪式召唤(默认是手卡)
 grave_filter 表示 作为解放代替除外墓地  的仪式素材需要满足的条件
@@ -2608,15 +2679,17 @@ mat_filter 表示仪式素材要满足的条件
 	aux.AddRitualProcGreater2(c,aux.FilterBoolFunction(Card.IsCode,code1,code2),Card.GetLevel,"Equal",summon_location,grave_filter,mat_filter)
 
 ●void aux.EnablePendulumAttribute(Card c[, bool active_effect=true])
-为灵摆怪兽c添加灵摆怪兽属性（灵摆召唤，灵摆卡的发动）
-active_effect=false则不注册灵摆卡“卡的发动”的效果
+为灵摆怪兽 c 添加灵摆怪兽属性（灵摆召唤，灵摆卡的发动）
+active_effect==false 则不注册灵摆卡“卡的发动”的效果
 
 ●void aux.EnableReviveLimitPendulumSummonable(Card c[, int location=0xff])
 如果 怪兽 c 从 location 灵摆召唤，也能解除苏生限制(?) (超天新龙 异色眼革命龙 (16306932))
 
 ●void aux.AddLinkProcedure(Card c, function f|nil, int minc[, int maxc=99, function gf|nil])
-为c添加连接召唤手续
+为卡片 c 添加连接召唤手续
 用 minc-maxc 个满足过滤条件 f [的卡片组里满足过滤条件 gf ]的怪兽作为连接素材
+gf 原型为：
+function gf(Group g)
 
 ●int aux.GetLinkCount(Card c)
 返回卡片 c 作为连接素材时当做的素材数量
@@ -2630,15 +2703,18 @@ end
 获取玩家 tp 的 LOCATION_MZONE 里满足条件 f 的能作为卡片 lc 的连接素材的卡片组
 
 ●void aux.EnableExtraDeckSummonCountLimit()
-打开额外卡组召唤的数量限制， 数量为1 (?)
+打开额外卡组召唤的数量限制， 数量为1。并注册了一个全局效果 (?)
 
-●bool aux.IsMaterialListCode(Card c, int code])
+●bool aux.AddMaterialCodeList(Card c, int code[, ...])
+检测 c 是否是有卡名 code[, ...] 为素材的卡
+
+●bool aux.IsMaterialListCode(Card c, int code)
 检测 c 是否是有卡名 code 为素材的卡
 function Auxiliary.IsMaterialListCode(c,code)
 	return c.material and c.material[code]
 end
 
-●bool aux.IsMaterialListSetCard(Card c, int setcode])
+●bool aux.IsMaterialListSetCard(Card c, int setcode)
 检测 c 是否是有字段 setcode 为素材的卡
 function Auxiliary.IsMaterialListSetCard(c,setcode)
 	if not c.material_setcode then return false end
@@ -2652,14 +2728,14 @@ function Auxiliary.IsMaterialListSetCard(c,setcode)
 	return false
 end
 
-●bool aux.IsMaterialListType(Card c, any ctype])
+●bool aux.IsMaterialListType(Card c, any ctype)
 检测 c 是否是有类型 ctype 为素材的卡
 function Auxiliary.IsMaterialListType(c,type)
 	return c.material_type and type&c.material_type==type
 end
 
 ●void aux.AddCodeList(Card c, int code1[, ...])
-为卡片 c 添加卡名记述
+为卡片 c 添加卡名记述 code1[, ...]
 
 ●bool aux.IsCodeListed(Card c, int code)
 检测 c 是否是有卡名 code 记述的卡
@@ -2676,10 +2752,10 @@ end
 返回以 player 来看的卡片 c 所在的那一列的序号，不包含 场地区域，从左到右 分别是 0~4
 
 ●int aux.MZoneSequence(int seq)
-返回是第几列怪兽区，从左到右 分别是 0~4 ,若在 额外怪兽区，则返回 左 1 或者 右 3 
+返回 seq 是第几列怪兽区，从左到右 分别是 0~4 ,若在 额外怪兽区，则返回 左 1 或者 右 3 
 
 ●int aux.SZoneSequence(int seq)
-返回是第几列魔陷区，从左到右 分别是 0~4 ,不包含场地区
+返回 seq 是第几列魔陷区，从左到右 分别是 0~4 ,不包含场地区
 
 ●int aux.ChangeBattleDamage(int player, int value)
 如果 player 是受到战斗伤害的玩家，则改变战斗伤害为 value
@@ -2713,7 +2789,7 @@ function Auxiliary.bdgcon(e,tp,eg,ep,ev,re,r,rp)
 end
 
 ●bool aux.bdogcon(Effect e, int tp, Group eg, int ep, int ev, Effect re, int r, int rp)
-检测 e:GetHandler() 是否和本次战斗有关，通常用于 EVENT_BATTLE_DESTROYING,并且是与对方怪兽战斗并战斗破坏对方怪兽送去墓地 的 condition
+检测 e:GetHandler() 是否和本次战斗有关，通常用于 EVENT_BATTLE_DESTROYING,并且是攻击对方怪兽并战斗破坏对方怪兽送去墓地 的 condition
 function Auxiliary.bdogcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local bc=c:GetBattleTarget()
@@ -2729,7 +2805,7 @@ end
 
 ●bool aux.dogfcon(Effect e, int tp, Group eg, int ep, int ev, Effect re, int r, int rp)
 检测 e:GetHandler() 是否是从自己场上被对方破坏送去墓地 SetCondition
-function Auxiliary.dogcon(e,tp,eg,ep,ev,re,r,rp)
+function Auxiliary.dogfcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	return c:IsPreviousLocation(LOCATION_ONFIELD) and c:GetPreviousControler()==tp
 		and c:IsReason(REASON_DESTROY) and rp==1-tp
@@ -2742,14 +2818,14 @@ function Auxiliary.exccon(e)
 end
 
 ●bool aux.bpcon(Effect e, int tp, Group eg, int ep, int ev, Effect re, int r, int rp)
-检测能否进入战斗阶段 或者 是否已经在战斗阶段内 的简单写法 SetCondition
+检测 能否进入战斗阶段 或者 是否已经在战斗阶段内 的简单写法 SetCondition
 function Auxiliary.bpcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.IsAbleToEnterBP() or (Duel.GetCurrentPhase()>=PHASE_BATTLE_START and Duel.GetCurrentPhase()<=PHASE_BATTLE)
 end
 
 ●bool aux.dscon(Effect e, int tp, Group eg, int ep, int ev, Effect re, int r, int rp)
 检测 不是伤害阶段 或者 不是已经进行过伤害计算 的简单写法 SetCondition
-function Auxiliary.bpcon(e,tp,eg,ep,ev,re,r,rp)
+function Auxiliary.dscon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetCurrentPhase()~=PHASE_DAMAGE or not Duel.IsDamageCalculated()
 end
 
@@ -2762,7 +2838,7 @@ function Auxiliary.chainreg(e,tp,eg,ep,ev,re,r,rp)
 end
 
 ●bool aux.imval1(Effect e, Card c)
-c不是免疫效果e的过滤函数的简单写法，用在效果注册里 SetValue
+c不是免疫效果 e 的过滤函数的简单写法，用在效果注册里 SetValue
 --default filter for EFFECT_CANNOT_BE_BATTLE_TARGET
 function Auxiliary.imval1(e,c)
 	return not c:IsImmuneToEffect(e)
@@ -2821,7 +2897,7 @@ function Auxiliary.sumreg(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 
-●bool Auxiliary.fuslimit(Effect e, Effect se, int sp, int st)
+●bool aux.fuslimit(Effect e, Effect se, int sp, int st)
 不能用 融合召唤 以外的方式召唤(广义的) 的过滤函数的简单写法，用在效果注册里 SetValue
 se 指召唤这张卡的效果， sp 是召唤的玩家， st 是召唤的类型
 function Auxiliary.fuslimit(e,se,sp,st)
@@ -2902,14 +2978,14 @@ end
 2619149,4253484,31247589,42592719,65984457,78868776,  虽然写法不同，但是没问题
 function Auxiliary.gbspcon(e,tp,eg,ep,ev,re,r,rp)
 	local st=e:GetHandler():GetSummonType()
-	return st>=(SUMMON_TYPE_SPECIAL+100) and st<(SUMMON_TYPE_SPECIAL+150)
+	return st&SUMMON_VALUE_GLADIATOR>0
 end
 
 ●bool aux.evospcon(Effect e, int tp, Group eg, int ep, int ev, Effect re, int r, int rp)
 进化龙通用效果(用「进化虫」怪兽的效果特殊召唤)的过滤条件的简单写法，用在效果注册里 SetCondition
 function Auxiliary.evospcon(e,tp,eg,ep,ev,re,r,rp)
 	local st=e:GetHandler():GetSummonType()
-	return st>=(SUMMON_TYPE_SPECIAL+150) and st<(SUMMON_TYPE_SPECIAL+180)
+	return st&SUMMON_VALUE_EVOLTILE>0
 end
 
 ●function aux.NecroValleyFilter(function f)
@@ -2919,6 +2995,12 @@ function Auxiliary.NecroValleyFilter(f)
 				return f(target,...) and not (target:IsHasEffect(EFFECT_NECRO_VALLEY) and Duel.IsChainDisablable(0))
 			end
 end
+
+●function aux.AddUrsarcticSpSummonEffect(Card c)
+主卡6只北极天熊自身①效果的效果注册
+
+●function aux.AtkEqualsDef(Card c)
+怪兽区的 攻击力与守备力相同的怪兽 的过滤条件
 
 ●bool aux.bfgcost(Effect e, int tp, Group eg, int ep, int ev, Effect re, int r, int rp, int chk)
 把这张卡除外 的过滤条件的简单写法，，用在效果注册的 cost 里
@@ -2964,7 +3046,7 @@ function Auxiliary.drccheck(g)
 end
 
 ●bool aux.gfcheck(Group g, function f, any a1, any a2)
---check for group with 2 cards, each card match f with a1/a2 as argument
+检测 g 中的卡是否是满足过滤条件是 f 并且参数分别是 a1 和 a2 的2张卡。若 g 里的卡的数量不是2，则返回false
 function Auxiliary.gfcheck(g,f,a1,a2)
 	if #g~=2 then return false end
 	local c1=g:GetFirst()
@@ -2973,7 +3055,7 @@ function Auxiliary.gfcheck(g,f,a1,a2)
 end
 
 ●bool aux.gffcheck(Group g, function f1, any a1, function f2, any a2)
---check for group with 2 cards, each card match f1 with a1, f2 with a2 as argument
+检测 g 中的卡是否是满足1张卡过滤条件是 f1，另1张卡的过滤条件是f2， 并且参数分别是 a1 和 a2 的2张卡。若 g 里的卡的数量不是2，则返回false
 function Auxiliary.gffcheck(g,f1,a1,f2,a2)
 	if #g~=2 then return false end
 	local c1=g:GetFirst()
@@ -2994,7 +3076,7 @@ function Auxiliary.mzctcheckrel(g,tp)
 end
 
 ●bool aux.ExceptThisCard(Effect e)
-若 e:GetHandler() 与效果 e 有联系，则返回 e:GetHandler() ,否则返回 nil
+若 e:GetHandler() 与效果 e 有联系，则返回 e:GetHandler() ,否则返回 nil 。就是 这张卡以外 的简单写法，用在效果注册里
 function Auxiliary.ExceptThisCard(e)
 	local c=e:GetHandler()
 	if c:IsRelateToEffect(e) then return c else return nil end
@@ -3023,13 +3105,36 @@ function Auxiliary.tdcfop(c)
 			end
 end
 
-●bool Group.CheckSubGroup(Group g, function f[, int min=1, int max=#g, ...])
-检测卡片组 g 中是否存在满足 过滤条件 f，并且数量在 min-max 的子集, 第5个参数开始为额外参数(非常好用的检测子集函数!)
+●void aux.SequenceToGlobal(int player, int loc, int seq)
+--return the global index of the zone in (p,loc,seq)
+function Auxiliary.SequenceToGlobal(p,loc,seq)
+	if p~=0 and p~=1 then
+		return 0
+	end
+	if loc==LOCATION_MZONE then
+		if seq<=6 then
+			return 0x1<<(16*p+seq)
+		else
+			return 0
+		end
+	elseif loc == LOCATION_SZONE then
+		if seq<=4 then
+			return 0x10<<(16*p+seq)
+		else
+			return 0
+		end
+	else
+		return 0
+	end
+end
+
+●bool Group.CheckSubGroup(Group g, function f[, int minc=1, int maxc=#g, ...])
+检测卡片组 g 中是否存在满足 过滤条件 f，并且数量在 minc-maxc 的子集, 第5个参数开始为额外参数(非常好用的检测子集函数!)
 f 的函数原型为
 function f(Group sg,...) end
 
-●Group Group.SelectSubGroup(Group g, int tp, function f, bool cancelable, int min=1, int max=#g, ...)
-从卡片组 g 中选一个满足 过滤条件 f，并且数量在 min-max 的子集， cancelable 表示是否可以取消操作, 第7个参数开始为额外参数(非常好用的选择子集函数!)
+●Group Group.SelectSubGroup(Group g, int tp, function f, bool cancelable, int minc=1, int maxc=#g, ...)
+从卡片组 g 中选一个满足 过滤条件 f，并且数量在 minc-maxc 的子集， cancelable 表示是否可以取消操作, 第7个参数开始为额外参数(非常好用的选择子集函数!)
 f 的函数原型为
 function f(Group sg,...) end
 
@@ -3104,33 +3209,34 @@ end
 
 ========== Debug ==========
 ●void Debug.Message(any msg)
-显示消息
+显示消息，可以传入任何类型，最终都会被转为字符串
 
 ●Card Debug.AddCard(int code, int owner, int player, int location, int seq, int pos[, bool proc=false])
-添加卡片，将卡号为code的卡片的持有者设置为owner，以表示形式pos放置在player的场上位于location上序号为seq的格子处
-proc=true则完成正规召唤程序(即解除苏生限制)
+添加卡片，将卡号为 code 的卡片的持有者设置为 owner，以表示形式 pos 放置在 player 的场上位于 location 上序号为 seq 的格子处
+proc==true 则完成正规召唤程序(即解除苏生限制)
 
 ●void Debug.SetPlayerInfo(int playerid, int lp, int startcount, int drawcount)
-设置玩家信息，基本分为lp，初始手卡为startcount张，每回合抽drawcount张
-在残局当中， playerid ：自己=0,对方=1
+设置玩家信息，基本分为 lp，初始手卡为 startcount 张，每回合抽 drawcount 张
+在残局当中， playerid ：自己==0,对方==1
 
 ●void Debug.PreSummon(Card c, int sum_type[, int sum_location=0])
-设置卡片c的召唤信息：以 sum_type 方法(通常召唤、特殊召唤等)[从 sum_location]出场
+设置卡片 c 的召唤信息：以 sum_type 方法(通常召唤、特殊召唤等)[从 sum_location]出场
 
 ●bool Debug.PreEquip(Card equip_card, Card target)
-为target添加装备equip_card ，返回值表示是否成功
+为 target 添加装备 equip_card ，返回值表示是否成功
 
 ●void Debug.PreSetTarget(Card c, Card target)
-把target选为c的永续对象
+把 target 选为卡片 c 的永续对象
 
 ●void Debug.PreAddCounter(Card c, int counter_type[, int count=0])
-为c添加count个counter_type的指示物
+为卡片 c 添加 count 个 counter_type 的指示物
 
 ●void Debug.ReloadFieldBegin(int flag[, int rule=3])
 以选项flag开始布局
 	flag 残局： DUEL_ATTACK_FIRST_TURN+DUEL_SIMPLE_AI
 		 大师1规则： DUEL_OBSOLETE_RULING
-	rule=4 是新大师规则
+	rule==4 是新大师规则
+	rule==5 是新大师规则2020
 	
 ●void Debug.ReloadFieldEnd()
 布局结束, 位于 Debug.ReloadFieldBegin 和 Debug.ReloadFieldEnd 之间的代码才会在开始前被加载
