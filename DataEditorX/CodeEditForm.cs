@@ -81,12 +81,16 @@ namespace DataEditorX
             }
 
             Font ft = new Font(this.fctb.Font.Name, this.fctb.Font.Size / 1.2f, FontStyle.Regular);
+            /*
             this.popupMenu = new AutocompleteMenu(this.fctb)
             {
                 MinFragmentLength = 2
             };
             this.fctb.TextChanged += this.Fctb_TextChanged;
             this.popupMenu.ToolTip.Popup += this.ToolTip_Popup;
+            */
+            this.popupMenu = new FastColoredTextBoxNS.AutocompleteMenu(fctb);
+            this.popupMenu.MinFragmentLength = 2;
             this.popupMenu.Items.Font = ft;
             this.popupMenu.AutoSize = true;
             this.popupMenu.MinimumSize = new Size(300, 0);
@@ -94,9 +98,11 @@ namespace DataEditorX
             this.popupMenu.ForeColor = this.fctb.ForeColor;
             this.popupMenu.Closed += new ToolStripDropDownClosedEventHandler(this.popupMenu_Closed);
             this.popupMenu.SelectedColor = Color.LightGray;
+            /*
             this.popupMenu.VisibleChanged += this.PopupMenu_VisibleChanged;
             this.popupMenu.Opened += this.PopupMenu_VisibleChanged;
             this.popupMenu.Items.FocussedItemIndexChanged += this.Items_FocussedItemIndexChanged;
+            */
             this.title = this.Text;
         }
 
